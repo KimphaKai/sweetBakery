@@ -1,0 +1,49 @@
+.modal{
+    border: 1px solid $brown;
+    width: 1000px;
+    height: 600px;
+    margin: 50px auto 0 auto;
+    border-radius: 25px;
+    color: $brown;
+    .modalClose{
+        width: 40px;
+        height: 40px;
+        font-size: 35px;
+        font-weight: bold;
+        background-color: $brown;
+        color: white;
+        border-radius: 50px;
+        text-align: center;
+        margin: 25px 25px 0 0;
+        float: right;
+    }
+
+    #mainModalTitle{
+        margin-bottom: 30px;
+        font-size: 28pt;
+        font-weight: bold;
+    }
+
+    .modalContent{
+        margin: 70px 60px 60px 60px;
+
+        .orderItem{
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid $brown;
+            padding: 25px;
+            text-align: right;
+
+
+            .orderItemTitle{
+                font-size: 18pt;
+                font-weight: 600;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            
+        }
+        
+    }
+}

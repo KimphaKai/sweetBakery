@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail Modal</title>
+    <link rel="stylesheet" href="./public/scss/style.css">
+    <script src="./public/js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    
+    <div id="orderDetailModal" class="modal">
+        <span class="modalClose">&times;</span>
+        <div class="modalContent">
+            <p id="mainModalTitle">訂單細項</p>
+            <div class="orderItem">
+                <p class="orderItemTitle">櫻桃杯子蛋糕</p>
+                <div>
+                    <span>規格:1盒6入</span>
+                    <span>$250</span>
+                </div>
+                <p >x3</p>
+                <hr>
+                <span floatRight>小計:</span>
+                <span class="subTotal">$750</span>
+            </div>
+
+            <div class="orderItem">
+                <p class="orderItemTitle">蜂蜜檸檬蛋糕</p>
+                <div>
+                    <span>規格:1盒</span>
+                    <span>$300</span>
+                </div>
+                <p>x4</p>
+                <hr>
+                <span>小計:</span>
+                <span class="subTotal">$750</span>
+            </div>
+
+            <span >訂單金額:</span>
+            <span >$1,950</span>
+        </div>
+    </div>
+
+</body>
+</html>

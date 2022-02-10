@@ -1,0 +1,22 @@
+.classSearchArea{
+    @include inputSearch;
+    margin-bottom: 40px
+}
+
+.classReservationList{
+    // margin-top: 100px;
+    @include tableStyle;
+    tbody{
+        tr{
+            height: 80px;
+            td:nth-child(3){
+                width: 100px;  
+            }
+        }
+    }
+    .btnStyle{
+        @include btnStyle;
+        width: 100px;
+        
+    }
+}
