@@ -945,12 +945,19 @@
 }
 
 .modal {
+  position: fixed;
+  z-index: 999999;
   border: 1px solid #604545;
   width: 1000px;
   height: 600px;
-  margin: 50px auto 0 auto;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -500px;
   border-radius: 25px;
   color: #604545;
+  -webkit-box-shadow: 5px 5px 10px #707070;
+          box-shadow: 5px 5px 10px #707070;
 }
 
 .modal .modalClose {
@@ -977,6 +984,7 @@
 }
 
 .modal .modalContent .orderItem {
+  font-size: 14pt;
   margin-bottom: 10px;
   border-radius: 10px;
   border: 1px solid #604545;
@@ -989,6 +997,36 @@
   font-weight: 600;
   margin-bottom: 10px;
   text-align: left;
+}
+
+.modal .modalContent .orderItem .orderItemSize {
+  float: left;
+}
+
+.modal .modalContent .orderItem hr {
+  margin: 15px 0 10px 0;
+  background-color: #DCD6C6;
+  height: 1px;
+  border: 0;
+}
+
+.modal .modalContent .orderItem .subTotal {
+  font-weight: 600;
+}
+
+.modal .modalContent div:last-child {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.modal .modalContent div:last-child span {
+  font-size: 18pt;
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.modal .modalContent div:last-child span:first-child {
+  margin-right: 25px;
 }
 
 * {
