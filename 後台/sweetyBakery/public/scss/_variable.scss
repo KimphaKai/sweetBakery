@@ -1,0 +1,60 @@
+$brown:#604545;
+$lightBrown:#DCD6C6;
+$secondary:#978484;
+$gray:#707070;
+@mixin tableStyle {
+    width: 100%;
+    text-align: center;
+    margin: 10px auto;
+    border-collapse: collapse;
+    tr{
+        height: 55px;
+        th,td{
+            border-bottom: 5px solid white;
+            border-top: 5px solid white;
+
+        }
+        th:first-child,td:first-child{
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        th:last-child,td:last-child{
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+        }
+    }
+    thead{
+        background-color: $brown;
+        color: white;
+
+    }
+    tbody{
+        background-color: $lightBrown;
+        color: $brown;
+        .paymentStatus{
+            color: $secondary;
+        }
+        input{
+            color: $brown;
+        }
+    }
+}
+@mixin btnStyle {
+    border: 1px solid $brown;
+    border-radius: 20px;
+    width: 70px;
+    height: 35px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+@mixin inputSearch {
+    position: relative;
+    input{
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: $brown;
+        height: 30px;
+    }
+}
