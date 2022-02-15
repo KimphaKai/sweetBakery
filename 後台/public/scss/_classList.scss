@@ -1,0 +1,39 @@
+#classEditArea{
+    display: flex;
+    justify-content:space-between ;
+    button{
+        color: $brown;
+        background: white;
+        border: 1px solid $gray;
+        font-size: 14pt;
+        padding: 3px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    #classEdit{
+        display: none;
+    }
+}
+.classList{
+    @include tableStyle;
+    th:nth-of-type(4){
+        width: 100px;
+    }
+    input{
+        height: 30px;
+        text-align: center;
+    }
+    .className{
+        width: 200px;
+    }
+    .classPrice{
+        width: 90px;
+    }
+    .classDuration{
+        width: 60px;
+    }
+    .btnStyle{
+        @include btnStyle;
+
+    }
+}
