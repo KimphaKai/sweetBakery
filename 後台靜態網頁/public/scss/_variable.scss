@@ -79,8 +79,6 @@ $gray:#707070;
 
 
         .modalClose{
-            position: fixed;
-            right: 270px;
             width: 40px;
             height: 40px;
             font-size: 35px;
@@ -90,7 +88,7 @@ $gray:#707070;
             border-radius: 50px;
             text-align: center;
             margin: 25px 25px 0 0;
-            // float: right;
+            float: right;
             cursor: pointer;
         } 
         
