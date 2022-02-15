@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 10, 2022 at 07:45 AM
+-- Generation Time: Feb 15, 2022 at 03:53 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -164,6 +164,14 @@ CREATE TABLE `productcategory` (
   `categoryName` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `productcategory`
+--
+
+INSERT INTO `productcategory` (`categoryId`, `categoryName`) VALUES
+(1, '圓形蛋糕'),
+(2, '杯子蛋糕');
+
 -- --------------------------------------------------------
 
 --
@@ -186,6 +194,21 @@ CREATE TABLE `productsize` (
   `sizeId` int(3) NOT NULL,
   `sizeName` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `productsize`
+--
+
+INSERT INTO `productsize` (`sizeId`, `sizeName`) VALUES
+(1, '一盒4入'),
+(2, '一盒6入'),
+(3, '一盒8入'),
+(4, '一盒12入'),
+(5, '一盒20入'),
+(6, '一盒30入'),
+(7, '6吋'),
+(8, '8吋'),
+(9, '10吋');
 
 --
 -- Indexes for dumped tables
@@ -311,13 +334,13 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `productcategory`
 --
 ALTER TABLE `productcategory`
-  MODIFY `categoryId` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `categoryId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `productsize`
 --
 ALTER TABLE `productsize`
-  MODIFY `sizeId` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `sizeId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

@@ -105,5 +105,22 @@
 
     </div>
 
+    <script>
+        $(document).ready(function(){
+            //textarea根據內容自動調整高度
+            $( "textarea" ).on( "input", function() {
+                $(this).css('height', 'auto');
+                var textareaHeight = $(this).prop('scrollHeight');
+                $(this).css('height', `${textareaHeight}px`);
+
+                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
+                if(modalWrapHeight > 610){
+                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                };
+            });
+            
+        })
+    </script>
+
 </body>
 </html>

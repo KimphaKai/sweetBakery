@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweety Bakery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./public/scss/style.css">
+    <script src="./public/js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="navWrapper">
+            <img id="logo" src="./public/img/logo.svg" alt="">
+            <ul id="navContent">
+                <li class="navItem ">
+                    <a class="" href="#">
+                        <i class="fa fa-home" aria-hidden="true"></i>系統首頁
+                    </a>
+                </li>
+                <li class="navItem">
+                    <a href="#">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    </a>
+                </li>
+                <li class="navItem navActive">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
+                    <ul class="sub1">
+                        <li><a class="subActive" href="#">商品列表</a></li>
+                        <li><a href="#">種類管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <ul class="sub1">
+                        <li><a href="#">課程列表</a></li>
+                        <li><a href="#">課程時間</a></li>
+                        <li><a href="#">預約管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i>會員管理</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要資訊區塊 -->
+        <div id="mainWrapper">
+            <!-- 標題 -->
+            <h2 id="mainTitle">商品列表</h2>
+            <!-- 產品搜尋區 -->
+            <div id="productSearchArea">
+                <input type="text" placeholder="產品名稱查詢">
+            </div>
+            <div id="productSortArea">
+                <div id="productEditArea">
+                    <select name="" id="">
+                        <option value="">商品批次上架</option>
+                    </select>
+                    <button>儲存</button>
+                    <button>取消</button>
+                </div>
+                <button>批次修改</button>
+                <select name="#" id="">
+                    <option>全部種類商品</option>
+                    <option>杯子蛋糕</option>
+                    <option>圓形蛋糕</option>
+                    <option>餅乾</option>
+                </select>
+                <select name="#" id="">
+                    <option>預設排序</option>
+                    <option>單價由低到高排序</option>
+                    <option>單價由高到低排序</option>
+                    <option>商品上架排序</option>
+                    <option>商品下架排序</option>
+                </select>
+                <button>新增商品<i class="fa fa-plus"></i></button>
+            </div>
+
+            <table class="productList">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品種類</th>
+                        <th>單價</th>
+                        <th>規格</th>
+                        <th>商品狀態</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text"></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="text"></td>
+                        <td>1盒(6入)</td>
+                        <td>上架中</td>
+                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // 導覽列次項目展開
+            $('.navItem').on('click', function () {
+                $('.navItem').removeClass('navActive');
+                $(this).addClass('navActive');
+
+            });
+            // 被選取的次項目
+            $('.sub1>li').on('click', function () {
+                $('.sub1>li>a').removeClass('subActive');
+                $(this).find('a').addClass('subActive');
+            });
+
+        });
+        
+    </script>
+</body>
+
+</html>
