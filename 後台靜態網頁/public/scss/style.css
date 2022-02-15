@@ -973,8 +973,6 @@
 }
 
 .bigModal .modalWrap .modalClose {
-  position: fixed;
-  right: 270px;
   width: 40px;
   height: 40px;
   font-size: 35px;
@@ -984,6 +982,7 @@
   border-radius: 50px;
   text-align: center;
   margin: 25px 25px 0 0;
+  float: right;
   cursor: pointer;
 }
 
@@ -1358,8 +1357,6 @@
 }
 
 .smallModal .modalWrap .modalClose {
-  position: fixed;
-  right: 270px;
   width: 40px;
   height: 40px;
   font-size: 35px;
@@ -1369,6 +1366,7 @@
   border-radius: 50px;
   text-align: center;
   margin: 25px 25px 0 0;
+  float: right;
   cursor: pointer;
 }
 
