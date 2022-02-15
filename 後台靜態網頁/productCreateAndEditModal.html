@@ -101,7 +101,9 @@
 
                         <div class="formGroup">
                             <label for="">商品簡介:</label><br>
-                            <textarea cols="40"></textarea>
+                            <div class="textareaContainer">
+                                <textarea cols="40"></textarea>
+                            </div>
                         </div>
                         <div class="formGroup">
                             <label for="">商品成份:</label><br>
@@ -124,16 +126,10 @@
     <script>
         $(document).ready(function(){
 
+            //textarea根據內容自動調整高度
             $( "textarea" ).on( "input", function() {
+                $(this).css('height', 'auto');
                 let scrollH = $(this).prop('scrollHeight');
-                // if(scrollH>70){
-                //     $(this).css('height', 0);
-                //     $(this).css('height', `${scrollH}px`);
-                // }else{
-                //     $(this).css('height', '70px');
-                    
-                // };
-                $(this).css('height', '70px');
                 $(this).css('height', `${scrollH}px`);
                 console.log( $(this).css('height') );
             });

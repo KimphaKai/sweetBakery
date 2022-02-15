@@ -1249,8 +1249,6 @@
   font-size: 18px;
   color: #604545;
   padding: 5px;
-  min-height: 70px;
-  max-height: 150px;
   resize: none;
 }
 
@@ -1294,6 +1292,7 @@
   border-radius: 50%;
   -webkit-transition: .5s;
   transition: .5s;
+  cursor: pointer;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch input:checked + span {

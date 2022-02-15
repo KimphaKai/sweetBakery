@@ -221,10 +221,7 @@ $gray:#707070;
             font-size: 18px;
             color: $brown;
             padding: 5px;
-            min-height: 70px;
-            max-height: 150px;
             resize : none;
-            // overflow: hidden;
         }
 
         .formGroup{
@@ -261,6 +258,7 @@ $gray:#707070;
                     background-color: $brown;
                     border-radius: 50%;
                     transition: .5s;
+                    cursor: pointer;
                 }
 
             }
