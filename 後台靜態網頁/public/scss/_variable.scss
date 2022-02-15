@@ -75,8 +75,12 @@ $gray:#707070;
         border-radius: 25px;
         color: $brown;
         box-shadow: 10px 10px 25px $gray;
+        overflow: hidden;
+
 
         .modalClose{
+            position: fixed;
+            right: 270px;
             width: 40px;
             height: 40px;
             font-size: 35px;
@@ -86,12 +90,13 @@ $gray:#707070;
             border-radius: 50px;
             text-align: center;
             margin: 25px 25px 0 0;
-            float: right;
+            // float: right;
             cursor: pointer;
         } 
         
         .modalContent{
             margin: 60px;
+
             #mainModalTitle{
                 margin-bottom: 30px;
                 font-size: 28pt;
