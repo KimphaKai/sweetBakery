@@ -944,23 +944,34 @@
   width: 100px;
 }
 
-.modal {
-  position: fixed;
-  z-index: 999999;
-  border: 1px solid #604545;
-  width: 1000px;
-  height: 600px;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -500px;
-  border-radius: 25px;
-  color: #604545;
-  -webkit-box-shadow: 5px 5px 10px #707070;
-          box-shadow: 5px 5px 10px #707070;
+.bigModal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.modal .modalClose {
+.bigModal .modalWrap {
+  width: 1000px;
+  height: 600px;
+  background-color: white;
+  border-radius: 25px;
+  color: #604545;
+  -webkit-box-shadow: 10px 10px 25px #707070;
+          box-shadow: 10px 10px 25px #707070;
+}
+
+.bigModal .modalWrap .modalClose {
   width: 40px;
   height: 40px;
   font-size: 35px;
@@ -971,19 +982,20 @@
   text-align: center;
   margin: 25px 25px 0 0;
   float: right;
+  cursor: pointer;
 }
 
-.modal #mainModalTitle {
+.bigModal .modalWrap .modalContent {
+  margin: 60px;
+}
+
+.bigModal .modalWrap .modalContent #mainModalTitle {
   margin-bottom: 30px;
   font-size: 28pt;
   font-weight: bold;
 }
 
-.modal .modalContent {
-  margin: 70px 60px 60px 60px;
-}
-
-.modal .modalContent .orderItem {
+.bigModal .modalWrap .modalContent .orderItem {
   font-size: 14pt;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -992,41 +1004,437 @@
   text-align: right;
 }
 
-.modal .modalContent .orderItem .orderItemTitle {
+.bigModal .modalWrap .modalContent .orderItem .orderItemTitle {
   font-size: 18pt;
   font-weight: 600;
   margin-bottom: 10px;
   text-align: left;
 }
 
-.modal .modalContent .orderItem .orderItemSize {
+.bigModal .modalWrap .modalContent .orderItem .orderItemSize {
   float: left;
 }
 
-.modal .modalContent .orderItem hr {
+.bigModal .modalWrap .modalContent .orderItem hr {
   margin: 15px 0 10px 0;
   background-color: #DCD6C6;
   height: 1px;
   border: 0;
 }
 
-.modal .modalContent .orderItem .subTotal {
+.bigModal .modalWrap .modalContent .orderItem .subTotal {
   font-weight: 600;
 }
 
-.modal .modalContent div:last-child {
+.bigModal .modalWrap .modalContent .orderContent:last-child {
   margin-top: 20px;
   text-align: right;
 }
 
-.modal .modalContent div:last-child span {
+.bigModal .modalWrap .modalContent .orderContent:last-child span {
   font-size: 18pt;
   font-weight: 600;
   margin-right: 15px;
 }
 
-.modal .modalContent div:last-child span:first-child {
+.bigModal .modalWrap .modalContent .orderContent:last-child span:first-child {
   margin-right: 25px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th, .bigModal .modalWrap .modalContent .productDetailTable td {
+  border-bottom: 10px solid white;
+  border-top: 10px solid white;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th:first-child, .bigModal .modalWrap .modalContent .productDetailTable td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th:last-child, .bigModal .modalWrap .modalContent .productDetailTable td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable thead {
+  background-color: #604545;
+  color: white;
+  height: 55px;
+  font-size: 14pt;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable tbody {
+  background-color: #DCD6C6;
+  color: #604545;
+  height: 350px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable tbody .detailImg {
+  width: 80%;
+  border: 1px solid #604545;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th:first-child, .bigModal .modalWrap .modalContent .productDetailTable td:first-child {
+  width: 350px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th:last-child, .bigModal .modalWrap .modalContent .productDetailTable td:last-child {
+  width: 250px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable th:nth-child(2), .bigModal .modalWrap .modalContent .productDetailTable th:last-child, .bigModal .modalWrap .modalContent .productDetailTable td:nth-child(2), .bigModal .modalWrap .modalContent .productDetailTable td:last-child {
+  padding: 0 20px;
+}
+
+.bigModal .modalWrap .modalContent .productDetailTable td:nth-child(2), .bigModal .modalWrap .modalContent .productDetailTable td:last-child {
+  text-align: left;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable th, .bigModal .modalWrap .modalContent .classDetailTable td {
+  border-bottom: 10px solid white;
+  border-top: 10px solid white;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable th:first-child, .bigModal .modalWrap .modalContent .classDetailTable td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable th:last-child, .bigModal .modalWrap .modalContent .classDetailTable td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable thead {
+  background-color: #604545;
+  color: white;
+  height: 55px;
+  font-size: 14pt;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable tbody {
+  background-color: #DCD6C6;
+  color: #604545;
+  height: 350px;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable tbody .detailImg {
+  width: 80%;
+  border: 1px solid #604545;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable th, .bigModal .modalWrap .modalContent .classDetailTable td {
+  width: 500px;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable th:last-child, .bigModal .modalWrap .modalContent .classDetailTable td:last-child {
+  padding: 0 50px 0 30px;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable td:last-child {
+  text-align: left;
+}
+
+.bigModal .modalWrap .modalContent .classDetailTable tbody .detailImg {
+  width: 65%;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 410px;
+      grid-template-rows: 410px;
+  grid-gap: 40px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #uploadArea {
+  margin: 0 auto;
+  width: 400px;
+  height: 160px;
+  background-color: #DCD6C6;
+  border: 1px solid #604545;
+  text-align: center;
+  padding: 45px 0;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #uploadArea div {
+  margin: 0 auto;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 50px;
+  color: white;
+  background-color: #604545;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 auto;
+  width: 400px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem {
+  position: relative;
+  width: 110px;
+  margin-top: 12px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem:not(:nth-child(3)) {
+  margin-right: 28px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:first-child {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50px;
+  font-size: 14pt;
+  font-weight: bold;
+  color: white;
+  background-color: #604545;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:last-child {
+  width: 110px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:last-child img {
+  width: 100%;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField {
+  font-size: 15pt;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField input, .bigModal .modalWrap .modalContent .bigModalForm .formField select {
+  border: 1px solid #604545;
+  width: 160px;
+  height: 30px;
+  font-size: 18px;
+  color: #604545;
+  padding: 5px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField textarea {
+  border: 1px solid #604545;
+  font-size: 18px;
+  color: #604545;
+  padding: 5px;
+  min-height: 70px;
+  max-height: 150px;
+  resize: none;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup {
+  margin-bottom: 10px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(96, 69, 69, 0.3);
+  border-radius: 35px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch span:before {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  content: "";
+  width: 35px;
+  height: 35px;
+  background-color: #604545;
+  border-radius: 50%;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch input:checked + span {
+  background-color: #978484;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch input:checked + span:before {
+  -webkit-transform: translateX(-25px);
+          transform: translateX(-25px);
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup:last-child {
+  text-align: right;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup:last-child button {
+  border: 1px solid #604545;
+  border-radius: 10px;
+  color: #604545;
+  background-color: white;
+  font-size: 12pt;
+  width: 60px;
+  height: 35px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup:last-child button:first-child {
+  margin-right: 5px;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup:last-child button:hover {
+  color: white;
+  background-color: #604545;
+  cursor: pointer;
+}
+
+.smallModal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.smallModal .modalWrap {
+  width: 1000px;
+  height: 600px;
+  background-color: white;
+  border-radius: 25px;
+  color: #604545;
+  -webkit-box-shadow: 10px 10px 25px #707070;
+          box-shadow: 10px 10px 25px #707070;
+}
+
+.smallModal .modalWrap .modalClose {
+  width: 40px;
+  height: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  background-color: #604545;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  margin: 25px 25px 0 0;
+  float: right;
+  cursor: pointer;
+}
+
+.smallModal .modalWrap .modalContent {
+  margin: 60px;
+}
+
+.smallModal .modalWrap .modalContent #mainModalTitle {
+  margin-bottom: 30px;
+  font-size: 28pt;
+  font-weight: bold;
+}
+
+.smallModal .modalWrap {
+  width: 650px;
+  height: 500px;
+}
+
+.smallModal .modalWrap .smallModalForm {
+  width: 500px;
+  margin: 0 auto;
+  font-size: 18pt;
+}
+
+.smallModal .modalWrap .smallModalForm p, .smallModal .modalWrap .smallModalForm .formGroup {
+  width: 320px;
+  margin: 25px auto;
+}
+
+.smallModal .modalWrap .smallModalForm p input, .smallModal .modalWrap .smallModalForm .formGroup input {
+  color: #604545;
+  width: 180px;
+  height: 35px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.smallModal .modalWrap .smallModalForm p input[type="time"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm p input[type="date"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm .formGroup input[type="time"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm .formGroup input[type="date"]::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(27%) sepia(4%) saturate(3615%) hue-rotate(314deg) brightness(91%) contrast(82%);
+          filter: invert(27%) sepia(4%) saturate(3615%) hue-rotate(314deg) brightness(91%) contrast(82%);
+}
+
+.smallModal .modalWrap .smallModalForm p:first-child, .smallModal .modalWrap .smallModalForm .formGroup:first-child {
+  margin-top: 45px;
+}
+
+.smallModal .modalWrap .smallModalForm p:last-child, .smallModal .modalWrap .smallModalForm .formGroup:last-child {
+  text-align: right;
+}
+
+.smallModal .modalWrap .smallModalForm p:last-child button, .smallModal .modalWrap .smallModalForm .formGroup:last-child button {
+  border: 1px solid #604545;
+  border-radius: 10px;
+  color: #604545;
+  background-color: white;
+  font-size: 14pt;
+  width: 65px;
+  height: 38px;
+}
+
+.smallModal .modalWrap .smallModalForm p:last-child button:first-child, .smallModal .modalWrap .smallModalForm .formGroup:last-child button:first-child {
+  margin-right: 5px;
+}
+
+.smallModal .modalWrap .smallModalForm p:last-child button:hover, .smallModal .modalWrap .smallModalForm .formGroup:last-child button:hover {
+  color: white;
+  background-color: #604545;
+  cursor: pointer;
 }
 
 * {
