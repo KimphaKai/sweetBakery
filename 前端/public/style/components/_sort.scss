@@ -1,0 +1,11 @@
+.classSort, .productSort{
+  // border: 2px solid $pink;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  select{
+    padding: 0.5rem 0.1rem;
+    background-color: $pink;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+}

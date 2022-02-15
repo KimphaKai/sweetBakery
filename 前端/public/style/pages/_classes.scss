@@ -1,0 +1,74 @@
+.classes{
+  .heading{
+    @include page-heading(0);
+    width: 82%;
+    margin: 2rem 10%;
+    img{
+      display: inline-block;
+      width: 3rem;
+    }
+    .divider{
+      @include divider(100);
+    }
+  }
+
+  .classes-wrapper{
+   margin: 0 8%;
+  }
+
+  .search-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+    
+  .search{
+    --size: 2rem;
+    display: flex;
+    height: var(--size);
+    margin-right: 1rem;
+    .search-input{
+      border: 1px solid $gray;
+      padding: 0 0.5rem 0 1rem;
+      background: transparent;
+      width: 15rem;
+      border-radius: 2rem;
+    }
+    .search-btn{
+      background: transparent;
+      font-size: 1.25rem;
+      padding: 0 0.2rem;
+      color: $text-color;
+      cursor: pointer;
+    }
+  }
+
+
+  /* sort style in component/sort.scss */
+
+
+  @media screen and (max-width: 750px){
+    .classCard{
+      flex-wrap: wrap;
+    }
+    .content{
+      h2, > div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  @media screen and (max-width: 485px){
+    .heading{
+      width: 100%;
+    }
+    .search-container{
+      justify-content: center;
+      align-items: center;
+      margin-left: 4.5rem;
+    }
+
+  }
+}

@@ -1,0 +1,103 @@
+.about{
+  .heading{
+    @include page-heading(0);
+    width: 76%;
+    margin: 2rem 12%;
+    .divider{
+      @include divider(100);
+    }
+  }
+
+  .about-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10%;
+  }
+
+  .content{
+    display: flex;
+    padding: 1.5rem 2rem;
+    &.odd{
+      flex-direction: row-reverse;
+    }
+    img{
+      width: 500px;
+      height: 100%;
+      max-width: 100%; 
+    }
+    p{
+      padding: 0 1rem;
+      line-height: 2rem;
+    }
+  }
+
+  .info-cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10rem 0;
+    color: #fff;
+  }
+    .store-info{
+      width: 350px;
+      background-color: $pink;
+      box-shadow: 1rem 1rem 0 $green;
+      ul{
+        margin: 2rem;
+        li{
+          line-height: 2rem;
+          a{
+            color: #fff;
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .social{
+        font-size: 2rem;
+        text-align: center;
+        i{
+          margin: 0 0.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+    .store-hour{
+      width: 350px;
+      background-color: $pink;
+      box-shadow: 1rem 1rem 0 $green;
+      ul{
+        margin: 2rem;
+        li{
+          display: flex;
+          justify-content: space-between;
+          line-height: 2rem;
+        }
+      }
+    }
+    .card-heading{
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 5px;
+      font-weight: normal;
+    }
+  
+
+
+  //media query 
+  //flex-wrap: wrap when screen reach certain size 
+  @media screen and (max-width: 1200px) {
+    .content{
+      flex-wrap: wrap;
+      p{
+        padding: 0;
+      }
+    }
+  }
+
+  // @media screen and (max-width: )
+  
+}
