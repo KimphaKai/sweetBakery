@@ -125,15 +125,6 @@
 
     <script>
         $(document).ready(function(){
-<<<<<<< HEAD
-
-            //textarea根據內容自動調整高度
-            $( "textarea" ).on( "input", function() {
-                $(this).css('height', 'auto');
-                let scrollH = $(this).prop('scrollHeight');
-                $(this).css('height', `${scrollH}px`);
-                console.log( $(this).css('height') );
-=======
             //textarea根據內容自動調整高度
             $( "textarea" ).on( "input", function() {
                 $(this).css('height', 'auto');
@@ -145,7 +136,6 @@
                     $( '.modalWrap' ).css('overflow-y' , 'scroll');
                 };
                 console.log(modalWrapHeight);
->>>>>>> 後台
             });
             
         })
