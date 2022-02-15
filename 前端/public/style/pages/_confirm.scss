@@ -1,0 +1,39 @@
+.form{
+  margin: 2rem 10rem;
+  .heading{
+    .page-heading{
+      color: $text-color;
+    }
+    .divider{
+     @include divider(100)
+    } 
+  }
+  .class-info{
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+    img{
+      max-width: 100%;
+      margin-right: 5rem;
+    }
+    .class-content{
+      line-height: 2.5rem;
+      font-size: 1.5rem;
+      color: $black;
+    }
+  }
+
+  .guest-info{
+    // margin-bottom: 20rem;
+    .divider{
+      @include divider(80)
+    } 
+    .guestName, .guestPhone{
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  //media query  class-info -> change line-height, guest-info divider width to 100%?
+}

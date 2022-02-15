@@ -1,0 +1,73 @@
+footer{
+  border-top: 1px solid $pink;
+  margin: 1rem 0;
+  .footer-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .logo{
+    img{
+      margin: 1rem;
+      max-width: 8rem;
+    }
+  }
+   
+  .store-info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.8rem;
+    h4{
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+  }
+  .aboutInfo{
+    margin-top: 1rem;
+    i{
+      color: $pink;
+      margin-right: 1rem;
+    }
+    a{
+      color: $black;
+      &:hover{
+        color: $text-color;
+        text-decoration: none;
+      }
+    }
+  }
+  span{
+    color: $text-color;
+  }
+    
+  .social{
+    font-size: 2rem;
+    i{
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+    .fa-facebook{
+      color: #3b5998;
+    }
+    .fa-instagram{
+      color: #C13584;
+    }
+    .fa-line{
+      color: #00B900;
+    }
+  }
+ 
+  @media screen and (max-width: 600px) {
+    .footer-container{
+      flex-direction: column;
+    }
+    .store-info{
+      margin: 1rem 0;
+    }
+    .social{
+      margin: 1rem 0;
+    }
+  }
+}

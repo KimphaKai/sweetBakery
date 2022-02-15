@@ -1,0 +1,124 @@
+.form{
+  margin: 2rem 15%;
+  .heading{
+    @include page-heading(0);
+    .divider{
+     @include divider(100)
+    } 
+  }
+  .classInfo{
+    display: flex;
+    margin: 2rem 0;
+    padding: 0.5rem;
+    img{
+      max-width: 100%;
+      margin-right: 2rem;
+    }
+  }
+
+  .classContent{
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .classTitle{
+    font-size: 3.5vmin;
+    font-weight: 700;
+  }
+
+  .remain{
+    font-size: 0.8rem;
+    color: $text-color;
+    white-space: nowrap;
+  }
+
+  .classTime{
+    font-size: 2vmin;
+  }
+
+  .classPrice{
+    font-size: 1rem;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  // .guest-input{
+  //   #guestNum{
+  //     font-size: 1.3rem;
+  //     text-align: center;
+  //     width: 3rem;
+  //   }
+  //   .guestBtn {
+  //     border: 2px solid $text-color;
+  //     background-color: transparent;
+  //     color: $text-color;
+  //     font-size: 1rem;
+  //     border-radius: 0.3rem;
+  //     width: 35px;
+  //     height: 35px;
+  //     margin: 0.8rem 0;
+  //     i{
+  //       display: flex;
+  //       justify-content: center;
+  //       align-items: center;
+  //     }
+  //     &:hover{
+  //       background-color: $pink;
+  //       color: #fff;
+  //       border: none;
+  //     }
+  //   }
+  // }
+
+
+  .guest-info{
+    .divider{
+      @include divider(80)
+    } 
+    .guestName, .guestPhone{
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  .formInput{
+    display: flex;
+    margin-top: 1rem;
+    border: 1px solid $gray;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    &:focus{
+      border: 2px solid $pink;
+    }
+  }
+
+  .buttons{
+    margin-top: 2rem;
+    .submit{
+      border: 1px solid $gray;
+      background-color: transparent;
+      color: $black;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+    }
+    .cancel{
+      margin-left: 1rem;
+      color: $black;
+      background-color: transparent;
+      border: 1px solid $gray;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+    }
+   
+  }
+
+  @media screen and (max-width: 1150px) {
+    .classInfo{
+      flex-wrap: wrap;
+    }
+  }
+
+}
