@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweety Bakery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./public/scss/style.css">
+    <script src="./public/js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="navWrapper">
+            <img id="logo" src="./public/img/logo.svg" alt="">
+            <ul id="navContent">
+                <li class="navItem ">
+                    <a class="" href="#">
+                        <i class="fa fa-home" aria-hidden="true"></i>系統首頁
+                    </a>
+                </li>
+                <li class="navItem navActive">
+                    <a href="#">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    </a>
+                </li>
+                <li class="navItem ">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
+                    <ul class="sub1">
+                        <li><a href="#">商品列表</a></li>
+                        <li><a href="#">種類管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <ul class="sub1">
+                        <li><a href="#">課程列表</a></li>
+                        <li><a href="#">課程時間</a></li>
+                        <li><a href="#">預約管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i>會員管理</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要資訊區塊 -->
+        <div id="mainWrapper">
+            <!-- 標題 -->
+            <h2 id="mainTitle">訂單管理</h2>
+            <div id="orderWrapper">
+                <ul id="buttonWrapper">
+                    <li class="tabButton tabBtnActive"><a href="#">未確認訂單</a></li>
+                    <li class="tabButton"><a href="#">未取貨</a></li>
+                    <li class="tabButton"><a href="#">已取貨</a></li>
+                </ul>
+                <div id="orderArea">
+                    <div id="unCheckList">
+                        <table class="orderList">
+                            <thead>
+                                <tr>
+                                    <th>訂單編號</th>
+                                    <th>訂購人姓名</th>
+                                    <th>訂購人電話</th>
+                                    <th>下定日期</th>
+                                    <th>取貨日期</th>
+                                    <th>訂單金額</th>
+                                    <th>訂單確認</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="notClaimed">
+                        <label>訂購人電話查詢: <input type="text" id="phoneSearch"></label>
+                        <table class="orderList">
+                            <thead>
+                                <tr>
+                                    <th>訂單編號</th>
+                                    <th>訂購人姓名</th>
+                                    <th>訂購人電話</th>
+                                    <th>下定日期</th>
+                                    <th>取貨日期</th>
+                                    <th>訂單金額</th>
+                                    <th>付款狀態</th>
+                                    <th>訂單取消</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
+                                    <td><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
+                                    <td><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
+                                    <td><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
+                                    <td><button class="btnStyle">取消</button></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
+                                    <td><button class="btnStyle">取消</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="claimed">
+                        <table class="orderList">
+                            <thead>
+                                <tr>
+                                    <th>訂單編號</th>
+                                    <th>訂購人姓名</th>
+                                    <th>訂購人電話</th>
+                                    <th>下定日期</th>
+                                    <th>取貨日期</th>
+                                    <th>訂單金額</th>
+                                    <th>付款狀態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                <tr>
+                                    <td>202201190001</td>
+                                    <td>劉大偉</td>
+                                    <td>0954254855</td>
+                                    <td>2022-01-19</td>
+                                    <td>2022-01-30</td>
+                                    <td>2,222</td>
+                                    <td><span class="paymentStatus">已付款</span></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        $(document).ready(function () {
+            // 導覽列次項目展開
+            $('.navItem').on('click', function () {
+                $('.navItem').removeClass('navActive');
+                $(this).addClass('navActive');
+
+            });
+            // 被選取的次項目
+            $('.sub1>li').on('click', function () {
+                $('.sub1>li>a').removeClass('subActive');
+                $(this).find('a').addClass('subActive');
+            });
+            // 訂單頁籤
+            $('.tabButton').on('click',function(){
+                $('.tabButton').removeClass('tabBtnActive');
+                $(this).addClass('tabBtnActive');
+                let showArea=$(this).text();
+                if(showArea==='未確認訂單'){
+                    $('#notClaimed').hide();
+                    $('#unCheckList').show();
+                    $('#claimed').hide();
+                }else if(showArea==='未取貨'){
+                    $('#notClaimed').show();
+                    $('#unCheckList').hide();
+                    $('#claimed').hide();
+                }else{
+                    $('#notClaimed').hide();
+                    $('#unCheckList').hide();
+                    $('#claimed').show();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
