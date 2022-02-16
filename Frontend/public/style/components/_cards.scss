@@ -1,0 +1,104 @@
+//product cards
+.productCard{
+  --padding: 1rem;
+  margin-top: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-width: 300px;
+}
+.card-image{
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  img{
+    width: 100%;
+    height: 200px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    &:hover{
+      transform: scale(1.025);
+      transition: 300ms ease-in-out;
+    }
+  }
+}
+.body-wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  .card-body{
+    padding: 0 var(--padding);
+    .productName{
+      font-size: 1.2rem;
+      a{
+        color: $black;
+      }
+    }
+  }
+  .cartBtn{
+    margin-top: 0.5rem;
+    padding: var(--padding);
+    padding-top: 0;    
+    .fa-shopping-cart{
+      color: $pink;
+      font-size: 2rem;
+      cursor: pointer;
+      &:hover{
+        color: $gray;
+      }
+    }
+  }
+}
+
+
+/* ---------------------------------- */
+
+//class cards
+.classCard{
+  display: flex;
+  margin: 1rem;
+  border-bottom: 2px solid $gray;
+}
+.classImg{
+  width: 500px;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+.content{
+  width: 100%;
+  padding: 1rem;
+  .classTitle{
+    font-size: 4vmin;
+    a{
+      color: $text-color;
+    }
+  }
+  .classTime{
+    margin-left: 1rem;
+  }
+  .divider{
+    width: 100%;
+    height: 1px;
+    margin-top: 1rem;
+    background: $black;
+  }
+  .remain{
+    color: $text-color;
+    font-weight: 700;
+    font-size: 0.8rem;
+    float: right;
+  }
+  .classInfo{
+    margin: 0 1rem;
+    width: 100%;
+    .heading{
+      text-decoration: underline;
+      margin: 1rem 0;
+    }
+    .desc{
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    /* button style in _button.scss */
+  }
+}

@@ -1,0 +1,37 @@
+//abstracts 
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+//layout
+@import "layout/navigation";
+@import "layout/carousel";
+@import "layout/categories";
+@import "layout/bestseller";
+@import "layout/classRec";
+@import "layout/gallery";
+@import "layout/footer";
+
+//base 
+@import "base/reset";
+
+//components
+@import "components/cards";
+@import "components/pagination";
+@import "components/buttons";
+@import "components/slider";
+@import "components/sort";
+@import "components/productModal";
+@import "components/loginModal";
+@import "components/forgetPwModal";
+
+//pages
+@import "pages/home";
+@import "pages/about";
+@import "pages/confirm";
+@import "pages/classForm";
+@import "pages/classes";
+@import "pages/classDetail";
+@import "pages/products";
+@import "pages/productDetail";
+
+

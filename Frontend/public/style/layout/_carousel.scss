@@ -1,0 +1,16 @@
+.carousel{
+  .swiper{
+    position: relative;
+
+    img{
+      width: 100%;
+    }
+    .swiper-pagination-bullet-active{
+      background-color: $pink;
+    }
+    .swiper-button-prev, .swiper-button-next{
+      color: $pink;
+      font-weight: 700;
+    }
+  }
+}

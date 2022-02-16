@@ -1,0 +1,34 @@
+@mixin section-heading{
+  color: $text-color;
+  margin: 5rem 5rem 3rem 5rem ;
+  padding: 0 2rem;
+  border-left: 10px solid $text-color;
+  height: 3rem;
+}
+
+@mixin page-heading($margin){
+  .page-heading{
+      // color: $text-color;
+      color: $pink;
+    }
+    margin-left: $margin;
+}
+
+@mixin divider($width){
+  background-color: $gray;
+  height: 2px;
+  width: $width#{'%'};
+}
+
+@mixin closeModal{
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 2rem;
+  text-align: center;
+  color: $pink;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.5;
+  }
+}
