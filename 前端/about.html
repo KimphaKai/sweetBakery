@@ -75,13 +75,85 @@
                 <circle cx="25" cy="27" r="2" />
                 <circle cx="12" cy="27" r="2" />
               </svg>
-              <div class="cartItems">1</div>
+              <div class="cartItems"><span>0</span></div>
             </a>
           </div>
         </div>
       </div>
     </nav>
+
+
+    <!-- Sign in and Sign up Modal -->
+    <div class="loginModal">
+      <div class="container">
+        <div class="closeModal">&times;</div>
+        <div class="form-container sign-up-container">
+          <form action="#">
+            <h1>會員註冊</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-line"></i></a>
+            </div>
+            <span>&mdash;或&mdash;</span>
+            <input type="email" placeholder="電子信箱" required />
+            <input type="password" placeholder="密碼" required />
+            <input type="password" placeholder="確認密碼" requried />
+            <input type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
+            <button>註冊</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form action="#">
+            <h1>會員登入</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-line"></i></a>
+            </div>
+            <span>&mdash;或&mdash;</span>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <a class="forgetPwBtn" href="#">忘記密碼?</a>
+            <button>登入</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <span id="signIn">已是會員？ 登入</span>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <span id="signUp">不是會員？註冊</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay"></div>
+    </div>
+
+    <!-- Forget Password Modal -->
+    <div class="forgetPwModal">
+      <div class="container">
+        <div class="closeModal">&times;</div>
+        <div class="form-container">
+          <img src="public/img/Image 2.png" alt="">
+          <form action="#">
+            <h1>忘記密碼</h1>
+            <input type="email" placeholder="電子信箱" required />
+            <button class="sendBtn">送出</button>
+            <br>
+            <div class="login">
+              <a class="loginBtn" href="#">登入</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-overlay"></div>
+    </div>
+
   </header>
+
 
 
   <!-- ABOUT -->

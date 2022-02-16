@@ -19,3 +19,16 @@
   height: 2px;
   width: $width#{'%'};
 }
+
+@mixin closeModal{
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 2rem;
+  text-align: center;
+  color: $pink;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.5;
+  }
+}

@@ -81,12 +81,83 @@
                 <circle cx="25" cy="27" r="2" />
                 <circle cx="12" cy="27" r="2" />
               </svg>
-              <div class="cartItems">1</div>
+              <div class="cartItems"><span>0</span></div>
             </a>
           </div>
         </div>
       </div>
     </nav>
+
+
+    <!-- Sign in and Sign up Modal -->
+    <div class="loginModal">
+      <div class="container">
+        <div class="closeModal">&times;</div>
+        <div class="form-container sign-up-container">
+          <form action="#">
+            <h1>會員註冊</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-line"></i></a>
+            </div>
+            <span>&mdash;或&mdash;</span>
+            <input type="email" placeholder="電子信箱" required />
+            <input type="password" placeholder="密碼" required />
+            <input type="password" placeholder="確認密碼" requried />
+            <input type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
+            <button>註冊</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form action="#">
+            <h1>會員登入</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-line"></i></a>
+            </div>
+            <span>&mdash;或&mdash;</span>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <a class="forgetPwBtn" href="#">忘記密碼?</a>
+            <button>登入</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <span id="signIn">已是會員？ 登入</span>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <span id="signUp">不是會員？註冊</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay"></div>
+    </div>
+
+    <!-- Forget Password Modal -->
+    <div class="forgetPwModal">
+      <div class="container">
+        <div class="closeModal">&times;</div>
+        <div class="form-container">
+          <img src="public/img/Image 2.png" alt="">
+          <form action="#">
+            <h1>忘記密碼</h1>
+            <input type="email" placeholder="電子信箱" required />
+            <button class="sendBtn">送出</button>
+            <br>
+            <div class="login">
+              <a class="loginBtn" href="#">登入</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-overlay"></div>
+    </div>
+
   </header>
 
 
@@ -194,7 +265,7 @@
   </section>
 
   <!-- Product Modal -->
-  <div class="modal-overlay">
+  <div class="modal-container">
     <div class="modal-wrapper">
       <button class="closeModal">&times;</button>
       <div class="modal-body">
@@ -218,24 +289,6 @@
     </div>
   </div>
 
-  <!-- <button data-modal-target="#modal">Open Modal</button>
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <div class="title">Example Modal</div>
-      <button data-close-button class="close-button">&times;</button>
-    </div>
-    <div class="modal-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod alias ut illo doloremque eum ipsum obcaecati
-      distinctio debitis reiciendis quae quia soluta totam doloribus quos nesciunt necessitatibus, consectetur quisquam
-      accusamus ex, dolorum, dicta vel? Nostrum voluptatem totam, molestiae rem at ad autem dolor ex aperiam. Amet
-      assumenda eos architecto, dolor placeat deserunt voluptatibus tenetur sint officiis perferendis atque! Voluptatem
-      maxime eius eum dolorem dolor exercitationem quis iusto totam! Repudiandae nobis nesciunt sequi iure! Eligendi,
-      eius libero. Ex, repellat sapiente!
-    </div>
-  </div>
-  <div id="overlay"></div> -->
-
-
   <!-- CLASS RECOMMENDATION SECTION -->
   <section class="classRec">
     <h1 class="section-heading">課程推薦</h1>
@@ -244,7 +297,7 @@
         <a href="/classDetail.html"> <img src="public/img/class/class1.jpg"></a>
       </div>
       <div class="content">
-        <h2 class="classTitle"><a href="/classDetail.html">【親手製作 - 日式布丁草莓蛋糕】</a></h2>
+        <h2 class="classTitle"><a href="/classDetail.html">親手製作 - <span>日式布丁草莓蛋糕</span></a></h2>
         <div class="classTime"> 時間: 2022/03/19 (六）14:00 ~ 16:30 </div>
         <div class="divider"></div>
         <h5 class="remain">剩餘名額: 5人</h5>
@@ -254,7 +307,6 @@
             和冬季主角"草莓"的完美組合，擁有一人嗑光一整顆的美味魔力!
             從最簡單的打發攪拌手法，到進階的配方比例探討包含在這堂課中
             不管是初學者或有經驗的同學都能收穫滿滿喔！</p>
-          <button onclick="location.href='/classForm.html'" class="signUpBtn">立即報名</button>
         </div>
       </div>
     </div>
