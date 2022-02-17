@@ -98,7 +98,7 @@ header{
     }
   }
 
-  .search-btn{
+  .searchBtn{
     background: transparent;
     cursor: pointer;
     svg{
@@ -135,7 +135,7 @@ header{
   }
 
   @media screen and (max-width: 900px) {
-    // padding: 1rem 2rem 1rem 5rem;
+    padding: 1rem 2rem 1rem 5rem;
     .burgerMenu{
       display: block;
     }
@@ -168,6 +168,10 @@ header{
 
     .search-input{
       display: none;
+    }
+
+    .search-input.active{
+      display: inline-block;
     }
 
   }

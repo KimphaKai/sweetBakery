@@ -30,24 +30,26 @@
     p{
       padding: 0 1rem;
       line-height: 2rem;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      width: 80%;
     }
   }
 
   .info-cards{
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
     margin: 10rem 0;
     color: #fff;
   }
     .store-info{
-      width: 350px;
       background-color: $pink;
       box-shadow: 1rem 1rem 0 $green;
+      font-size: 1.3rem;
       ul{
-        margin: 2rem;
+        margin: 3rem;
         li{
-          line-height: 2rem;
+          line-height: 4rem;
           a{
             color: #fff;
             &:hover{
@@ -57,24 +59,28 @@
         }
       }
       .social{
-        font-size: 2rem;
+        font-size: 3rem;
         text-align: center;
         i{
-          margin: 0 0.5rem;
+          margin: 3rem 0.5rem;
           cursor: pointer;
         }
       }
     }
     .store-hour{
-      width: 350px;
       background-color: $pink;
       box-shadow: 1rem 1rem 0 $green;
+      font-size: 1.5rem;
       ul{
         margin: 2rem;
         li{
           display: flex;
           justify-content: space-between;
           line-height: 2rem;
+          span{
+            margin: 0 3rem;
+            line-height: 3rem;
+          }
         }
       }
     }
@@ -83,6 +89,7 @@
       margin-top: 1rem;
       letter-spacing: 5px;
       font-weight: normal;
+      font-size: 2rem;
     }
   
 

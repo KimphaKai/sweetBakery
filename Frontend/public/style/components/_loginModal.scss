@@ -8,10 +8,11 @@
   overflow: hidden;
   z-index: 1;
   display: none;
+
   .container{
     background: #fff;
     width: 750px;
-    max-width: 100%;
+    // max-width: 100%;
     min-height: 500px;
     border-radius: 1rem;
     position: relative;

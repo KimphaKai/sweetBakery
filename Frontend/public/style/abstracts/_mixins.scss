@@ -4,12 +4,14 @@
   padding: 0 2rem;
   border-left: 10px solid $text-color;
   height: 3rem;
+  font-size: 2rem;
 }
 
 @mixin page-heading($margin){
   .page-heading{
       // color: $text-color;
       color: $pink;
+      font-size: 2rem;
     }
     margin-left: $margin;
 }

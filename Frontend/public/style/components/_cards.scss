@@ -68,14 +68,19 @@
   width: 100%;
   padding: 1rem;
   .classTitle{
-    font-size: 4vmin;
+    font-size: 2rem;
     a{
       color: $text-color;
     }
   }
+  
   .classTime{
-    margin-left: 1rem;
+    display: inline;
+    i{
+      margin-right: 0.5rem;
+    }
   }
+
   .divider{
     width: 100%;
     height: 1px;
@@ -85,11 +90,10 @@
   .remain{
     color: $text-color;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     float: right;
   }
   .classInfo{
-    margin: 0 1rem;
     width: 100%;
     .heading{
       text-decoration: underline;

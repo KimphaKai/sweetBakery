@@ -1,5 +1,5 @@
 .form{
-  margin: 2rem 15%;
+  margin: 2rem 10%;
   .heading{
     @include page-heading(0);
     .divider{
@@ -17,67 +17,45 @@
   }
 
   .classContent{
-    line-height: 2rem;
+    line-height: 3rem;
     font-size: 1.2rem;
   }
 
   .classTitle{
-    font-size: 3.5vmin;
+    font-size: 2rem;
     font-weight: 700;
   }
 
   .remain{
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     color: $text-color;
     white-space: nowrap;
   }
 
   .classTime{
-    font-size: 2vmin;
+    font-size: 1.2rem;
+    i{
+      margin-right: 0.5rem;
+    }
   }
 
   .classPrice{
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: $text-color;
   }
 
-  // .guest-input{
-  //   #guestNum{
-  //     font-size: 1.3rem;
-  //     text-align: center;
-  //     width: 3rem;
-  //   }
-  //   .guestBtn {
-  //     border: 2px solid $text-color;
-  //     background-color: transparent;
-  //     color: $text-color;
-  //     font-size: 1rem;
-  //     border-radius: 0.3rem;
-  //     width: 35px;
-  //     height: 35px;
-  //     margin: 0.8rem 0;
-  //     i{
-  //       display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-  //     }
-  //     &:hover{
-  //       background-color: $pink;
-  //       color: #fff;
-  //       border: none;
-  //     }
-  //   }
-  // }
-
-
   .guest-info{
+    font-size: 1.3rem;
     .divider{
       @include divider(80)
     } 
-    .guestName, .guestPhone{
+    .guestName, .guestPhone, .guestNotes{
       margin-top: 1rem;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
+      span{
+        color: $red;
+      }
     }
   }
 
@@ -87,6 +65,10 @@
     border: 1px solid $gray;
     border-radius: 0.3rem;
     padding: 0.5rem;
+    width: 20rem;
+    &::placeholder{
+      font-size: 1rem;
+    }
     &:focus{
       border: 2px solid $pink;
     }
@@ -100,17 +82,28 @@
       color: $black;
       border-radius: 0.5rem;
       margin-top: 1rem;
-      font-size: 1rem;
-      padding: 0.5rem 1.5rem;
+      font-size: 1.3rem;
+      // width: 2rem;
+      // height: 1rem;
+      padding: 0.5rem 2rem;
       cursor: pointer;
+      &:hover{
+        background-color: $pink;
+        border-color: $pink;
+        color: #fff;
+      }
     }
     .cancel{
       margin-left: 1rem;
       color: $black;
       background-color: transparent;
       border: 1px solid $gray;
-      padding: 0.5rem 1.5rem;
       border-radius: 0.5rem;
+      padding: 0.5rem 2rem;
+      &:hover{
+        background-color: $gray;
+        color: $text-color;
+      }
     }
    
   }

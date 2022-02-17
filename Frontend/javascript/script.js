@@ -1,19 +1,66 @@
 $(document).ready(function () {
 
+  //search Function
+  var max = [];
+  var productNameLength = $('.productName').length;
+  for (i = 0; i <= productNameLength; i++) {
+    max.push({ name: $('.productName:eq(' + i + ')').text() });
+  }
+
+  $(".searchBtn").on("click", function () {  //inputID
+    // $("#testSearch").html("");
+    var val = $.trim(this.value);
+    if (val) {
+      val = val.toLowerCase();
+      $.each(max, function (_, item) {
+        if (item.name.toLowerCase().indexOf(val) != -1) {
+          console.log("test")
+          // $("#testSearch").append(item.name + '<br>');
+        }
+      });
+    }
+  });
+
+  //increment/decrement
+  var remain = $(".remain").text()
+
   $(".plus").on("click", function () {
-    var inputVal = $(this).closest("div").find(".inputNum")
-    var currentVal = parseInt(inputVal.val())
-    //increment currentVal
-    inputVal.val(currentVal + 1)
-    // console.log(inputNum.val())
+    // var inputVal = $(this).closest("div").find(".inputNum")
+    // var currentVal = parseInt(inputVal)
+
+    var inputNum = $(".inputNum");
+    var value = $(".inputNum").val();
+    value++;
+    inputNum.val(value);
+
+    if (value > remain) {
+      $(".errorMsg").css("display", "inline-block");
+      $(".signUpBtn").prop("disabled", true);
+    } else {
+      $(".errorMsg").css("display", "none");
+      $(".signUpBtn").prop("disabled", false);
+    }
+
+    // console.log(`plus: ${value}`)
   })
 
   $(".minus").on("click", function () {
-    var inputVal = $(this).closest("div").find(".inputNum")
-    var currentVal = parseInt(inputVal.val())
-    if (currentVal > 1) {
-      inputVal.val(currentVal - 1)
+
+    var inputNum = $(".inputNum");
+    var value = $(".inputNum").val();
+    if (value > 1) {
+      value--;
+      inputNum.val(value);
     }
+
+    if (value <= remain) {
+      $(".errorMsg").css("display", "none");
+      $(".signUpBtn").prop("disabled", false)
+    } else {
+      $(".errorMsg").css("display", "inline-block");
+      $(".signUpBtn").prop("disabled", true)
+    }
+
   })
 
   $(".fa-shopping-cart").on("click", () => {
@@ -64,6 +111,14 @@ $(document).ready(function () {
   $(".loginBtn").on("click", function () {
     $(".forgetPwModal").hide()
     $(".loginModal").show()
+  })
+
+  $(".modal-overlay").on("click", function () {
+    $(".loginModal").hide()
+  })
+
+  $(".searchBtn").on("click", function () {
+    $(".search-input").toggleClass("active")
   })
 
 });

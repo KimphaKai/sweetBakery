@@ -1,16 +1,30 @@
 .signUpBtn{
   background: $text-color;
   min-width: 80%;
-  padding: 1em 0;
+  padding: 1rem 0;
   border-radius: 8px;
   color: #fff;
+  font-size: 1.6rem;
   cursor: pointer;
-  &:hover{
+  &:hover:not([disabled]){
     color: #fff;
     border: 0;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     transition: 300ms ease-in-out;
   }
+  &:disabled:hover{
+    cursor: not-allowed;
+  }
+}
+
+.buyBtn, .addToCartBtn{
+  padding: 1.5rem 2rem;
+  width: 100%;
+  cursor: pointer;
+  margin: 1rem 1rem 0 0;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn{
@@ -20,7 +34,7 @@
   cursor: pointer;
   .fa-cart-plus{
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   &:hover{
     background-color: $pink;
@@ -34,6 +48,7 @@
   color: #fff;
   &:hover{
     background-color: $gray;
+    color: $text-color;
     transition: 300ms ease-in-out;
   }
 }

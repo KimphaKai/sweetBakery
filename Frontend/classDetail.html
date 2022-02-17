@@ -165,7 +165,7 @@
       <img src="public/img/class/class1.jpg">
       <div class="classContent">
         <h2 class="classTitle">親手製作 - 日式布丁草莓蛋糕
-          <span class="remain"><label>(剩餘名額:</label> 5人)</span>
+          <span>(剩餘名額: <span class="remain">5</span> 人)</span>
         </h2>
         <div class="classTime"><i class="fas fa-calendar"></i>2022 /01/22 (六) 14:00 ~ 16:30</div>
         <div class="classPrice">NT $2,200</div>
@@ -174,8 +174,10 @@
           <button class="minus guestBtn fas fa-minus"></button>
           <input id="guestNum" class="inputNum" type="number" value="1">
           <button class="plus guestBtn fas fa-plus"></button>
+          <span class="errorMsg">已超過上限人數</span>
         </div>
         <button onclick="location.href='/classForm.html'" class="signUpBtn">立即報名</button>
+        <!-- <button class="signUpBtn">立即報名</button> -->
       </div>
     </div>
 

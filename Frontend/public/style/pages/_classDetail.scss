@@ -1,13 +1,11 @@
 .classDetail{
-  margin: 2rem 15%;
-  color: $black;
+  margin: 2rem 10%;
   .heading{
     @include page-heading(0);
   }
   .divider{
     @include divider(100);
   }
-
 
   .classInfo{
     display: flex;
@@ -21,47 +19,41 @@
   }
 
   .classContent{
-    line-height: 2rem;
+    line-height: 3rem;
     font-size: 1.2rem;
   }
 
   .classTitle{
-    font-size: 4vmin;
+    // font-size: 4vmin;
+    font-size: 2rem;
     font-weight: 700;
-  }
-
-  .remain{
-    font-size: 0.8rem;
-    color: $text-color;
-    white-space: nowrap;
+    span, .remain{
+      font-size: 1.3rem;
+      color: $text-color;
+      white-space: nowrap;
+    }
   }
 
   .classTime{
-    font-size: 2vmin;
+    font-size:1.3rem;
     i{
       margin-right: 0.5rem;
     }
   }
 
   .classPrice{
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: $text-color;
   }
 
-  .classDesc{
-    p{
-      margin: 1rem 0;
-    }
-    img{
-      margin: 1rem 0;
-    }
-  }
-
   .guest-input{
     margin-top: 5rem;
+    label{
+      font-size: 1.2rem;
+    }
     #guestNum{
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       text-align: center;
       max-width: 5rem;
     }
@@ -71,8 +63,8 @@
       color: $text-color;
       font-size: 1rem;
       border-radius: 0.5rem;
-      width: 30px;
-      height: 30px;
+      width: 3rem;
+      height: 3rem;
       margin: 0.8rem 0;
       cursor: pointer;
       i{
@@ -85,13 +77,33 @@
         color: #fff;
         border: none;
       }
+
+    }
+    .errorMsg{
+      font-size: 0.8rem;
+      color: $red;
+      margin-left: 1rem;
+      // white-space: nowrap;
+      display: none;
+    }
+  }
+
+  .classDesc{
+    p{
+      margin: 1rem 0;
+      font-size: 1.3rem;
+    }
+    img{
+      margin: 1rem 0;
     }
   }
 
   @media screen and (max-width: 1150px) {
     .classInfo{
       flex-wrap: wrap;
-      
+    }
+    .classTime{
+      font-size: 0.8rem;
     }
   }
 }
