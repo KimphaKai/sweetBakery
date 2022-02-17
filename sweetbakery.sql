@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 16, 2022 at 01:06 AM
+-- Generation Time: Feb 17, 2022 at 07:37 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -153,6 +153,15 @@ CREATE TABLE `product` (
   `productStatus` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`productId`, `categoryId`, `sizeId`, `productTitle`, `productInfo`, `productPrice`, `ingredient`, `productStatus`) VALUES
+(10001, 1, 7, '奶油蛋糕', '台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕\r\n入口前味微苦的巧克力，\r\n中段帶有濃郁的咖啡香，\r\n尾韻則為淡淡的榛果及焦糖香味…', 250, '雞蛋、牛奶、動物鮮奶油、低筋麵粉、比利時鈕扣調溫巧克力、奶油、砂糖、吉利丁', '下架'),
+(10002, 1, 7, '巧克力蛋糕', '台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕\r\n入口前味微苦的巧克力，\r\n中段帶有濃郁的咖啡香，\r\n尾韻則為淡淡的榛果及焦糖香味…', 350, '雞蛋、牛奶、動物鮮奶油、低筋麵粉、比利時鈕扣調溫巧克力、奶油、砂糖、吉利丁', '上架中'),
+(20001, 2, 1, '櫻桃杯子蛋糕', '台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕\r\n入口前味微苦的巧克力，\r\n中段帶有濃郁的咖啡香，\r\n尾韻則為淡淡的榛果及焦糖香味…', 150, '雞蛋、牛奶、動物鮮奶油、低筋麵粉、比利時鈕扣調溫巧克力、奶油、砂糖、吉利丁', '上架中');
+
 -- --------------------------------------------------------
 
 --
@@ -183,6 +192,21 @@ CREATE TABLE `productimg` (
   `imgPath` varchar(256) NOT NULL,
   `productImgId` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `productimg`
+--
+
+INSERT INTO `productimg` (`productId`, `imgPath`, `productImgId`) VALUES
+(10001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/butterscotch%201-1.jpg?alt=media&token=170bc7cf-3ea7-4aa3-a709-a0de5d414262', 1),
+(10001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/butterscotch%201-2.jpg?alt=media&token=2c96709c-cf52-447c-898a-95cb6a21bc06', 2),
+(10001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/butterscotch%201-3.jpg?alt=media&token=41599a12-3959-4177-9831-d7036711d0da', 3),
+(10002, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/choco-fruit%201-1.jpg?alt=media&token=ca23a2de-60bc-4828-939d-86485f3d99f5', 4),
+(10002, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/choco-fruit%201-2.jpg?alt=media&token=38ee4bec-c5ec-4787-8dad-2c4fd934c0cb', 5),
+(10002, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/choco-fruit%201-3.jpg?alt=media&token=4706db33-2db6-4f96-8bf9-bda063f70aea', 6),
+(20001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/cupcake%201-1.jpg?alt=media&token=7ede4d42-9003-4797-98e7-a3c454c667ed', 7),
+(20001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/cupcake%201-2.jpg?alt=media&token=9e94c094-7744-41b9-a166-ce4929f2e1c5', 8),
+(20001, 'https://firebasestorage.googleapis.com/v0/b/sweetbakeryimg.appspot.com/o/cupcake%201-3.jpeg?alt=media&token=d97c2ad4-deb7-46f1-8aee-d10e7e576de9', 9);
 
 -- --------------------------------------------------------
 
