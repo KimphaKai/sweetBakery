@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 17, 2022 at 07:37 AM
+-- Generation Time: Feb 18, 2022 at 12:56 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -298,8 +298,8 @@ ALTER TABLE `orderlist`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`productId`),
-  ADD KEY `categoryId` (`categoryId`),
-  ADD KEY `sizeId` (`sizeId`);
+  ADD KEY `sizeId` (`sizeId`),
+  ADD KEY `categoryId` (`categoryId`);
 
 --
 -- Indexes for table `productcategory`
@@ -347,12 +347,6 @@ ALTER TABLE `classreservation`
 --
 ALTER TABLE `classtime`
   MODIFY `classTimeId` int(8) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `productcategory`
---
-ALTER TABLE `productcategory`
-  MODIFY `categoryId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `productsize`
@@ -407,8 +401,8 @@ ALTER TABLE `orderlist`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `productcategory` (`categoryId`),
-  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`sizeId`) REFERENCES `productsize` (`sizeId`);
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`sizeId`) REFERENCES `productsize` (`sizeId`),
+  ADD CONSTRAINT `product_ibfk_3` FOREIGN KEY (`categoryId`) REFERENCES `productcategory` (`categoryId`);
 
 --
 -- Constraints for table `productimg`
