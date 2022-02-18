@@ -8,20 +8,23 @@
         text-align: center;
         border:  1px solid $gray;
         border-radius: 50px;
-        margin-right: 20px;
+        margin: 0 35px 15px 0;
+        padding: 0 20px 5px 20px;
         height:90px;
         width: 240px;
         line-height: 30pt;
         position: relative;
+        box-shadow:3px 3px 8px $secondary;
         .title{
             font-size: 10pt;
             color: $brown;
-            margin-left: 10px;
+            margin-left: 50px;
         }
         .dataNum{
             font-size: 33pt;
+            font-weight: 500;
             color: $brown;
-            margin-left: 40px;
+            margin-left: 70px;
         }
         .unit{
             color: $brown;
@@ -33,7 +36,7 @@
             color: $lightBrown;
             width: 50px;
             height: 50px;
-            left: 10px;
+            left: 20px;
             top: 24%;
             border-radius: 50px;
             background-color: $brown;
@@ -53,6 +56,7 @@
         margin-left: 20px;
         .tabItem{
             text-align: center;
+            font-size: 16pt;
             width: 130px;
             padding: 11px 20px;
             background-color: white;
@@ -90,30 +94,34 @@
         padding-top: 25px;
         display: flex;
         justify-content:space-between ;
-        height: 400px;
+        height: 425px;
         #leftArea{
             padding-left: 20px;
             line-height: 60pt;
             select{
                 color: $brown;
                 font-size: 16pt;
+                height: 40px;
+                padding: 0 5px;
+                border: 1px solid $brown;
                 border-radius: 5px;
-                margin-right: 15px;
-                
+                margin-right: 10px;
             } 
             p{
-                
                 color: $brown;
+                font-size: 18pt;
+                margin-bottom: 10px;
             }  
             #sales{
-                font-size: 55pt;
+                margin-left: 45px;
+                font-size: 60pt;
                 color: $brown;
                 font-weight: bolder;
                 
             }
             span{
                 text-align: right;
-                font-size: 10pt;
+                font-size: 16pt;
                 color: $brown;
             }
         }
@@ -129,15 +137,20 @@
         margin: 0 20px ;
         padding: 0 20px;
         padding-top: 35px;
-        height: 420px;
+        height: 425px;
+        position: relative;
         
         .selectArea{
             text-align: right;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             select{
                 color: $brown;
                 font-size: 16pt;
-
+                height: 40px;
+                padding: 0 5px;
+                border: 1px solid $brown;
+                border-radius: 5px;
+                margin-right: 10px;
             }
         }
         #rankTable{

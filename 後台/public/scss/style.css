@@ -1,30 +1,34 @@
 #navWrapper {
-  width: 250px;
+  width: 300px;
   height: 100vh;
   text-align: center;
   background-color: #604545;
   border-top-right-radius: 50px;
   padding-top: 10pt;
+  font-size: 15.5pt;
 }
 
 #navWrapper i {
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 #navWrapper #logo {
   width: 70%;
-  margin-bottom: 20px;
+  margin: 25px 0;
 }
 
 #navWrapper #navContent {
   color: #DCD6C6;
   list-style: none;
-  line-height: 30pt;
+  line-height: 35pt;
 }
 
 #navWrapper #navContent li {
   margin: 15px auto;
   padding: 3px 0px;
+  cursor: pointer;
+  width: 85%;
+  margin-right: 0;
 }
 
 #navWrapper #navContent .navItem {
@@ -37,15 +41,18 @@
 
 #navWrapper #navContent .navItem:hover {
   background-color: #978484;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 #navWrapper #navContent .navItem a {
   text-decoration: none;
   color: #DCD6C6;
+  padding: 15px 0;
 }
 
 #navWrapper #navContent .sub1 {
-  font-size: 12pt;
+  font-size: 14pt;
   list-style: none;
   display: none;
 }
@@ -54,8 +61,6 @@
   background-color: #DCD6C6;
   color: #604545;
   font-weight: bolder;
-  width: 85%;
-  margin-right: 0;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -86,6 +91,10 @@
   }
 }
 
+#navWrapper #navContent .navActive:hover {
+  background-color: #DCD6C6;
+}
+
 #navWrapper #navContent .navActive .sub1 {
   text-align: right;
   font-weight: normal;
@@ -94,10 +103,16 @@
           animation: showSub 0.5s;
 }
 
+#navWrapper #navContent .navActive .sub1 li {
+  width: 70%;
+}
+
 #navWrapper #navContent .navActive .sub1 li:hover {
-  background-color: #DCD6C6;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color: rgba(151, 132, 132, 0.3);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 #navWrapper #navContent .navActive .sub1 li a {
@@ -128,23 +143,27 @@
   text-align: center;
   border: 1px solid #707070;
   border-radius: 50px;
-  margin-right: 20px;
+  margin: 0 35px 15px 0;
+  padding: 0 20px 5px 20px;
   height: 90px;
   width: 240px;
   line-height: 30pt;
   position: relative;
+  -webkit-box-shadow: 3px 3px 8px #978484;
+          box-shadow: 3px 3px 8px #978484;
 }
 
 #capsulesArea .capsule .title {
   font-size: 10pt;
   color: #604545;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
 #capsulesArea .capsule .dataNum {
   font-size: 33pt;
+  font-weight: 500;
   color: #604545;
-  margin-left: 40px;
+  margin-left: 70px;
 }
 
 #capsulesArea .capsule .unit {
@@ -158,7 +177,7 @@
   color: #DCD6C6;
   width: 50px;
   height: 50px;
-  left: 10px;
+  left: 20px;
   top: 24%;
   border-radius: 50px;
   background-color: #604545;
@@ -182,6 +201,7 @@
 
 #tabWrapper #tabs .tabItem {
   text-align: center;
+  font-size: 16pt;
   width: 130px;
   padding: 11px 20px;
   background-color: white;
@@ -225,7 +245,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 400px;
+  height: 425px;
 }
 
 #tabWrapper #salesInfo #leftArea {
@@ -236,23 +256,29 @@
 #tabWrapper #salesInfo #leftArea select {
   color: #604545;
   font-size: 16pt;
+  height: 40px;
+  padding: 0 5px;
+  border: 1px solid #604545;
   border-radius: 5px;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 #tabWrapper #salesInfo #leftArea p {
   color: #604545;
+  font-size: 18pt;
+  margin-bottom: 10px;
 }
 
 #tabWrapper #salesInfo #leftArea #sales {
-  font-size: 55pt;
+  margin-left: 45px;
+  font-size: 60pt;
   color: #604545;
   font-weight: bolder;
 }
 
 #tabWrapper #salesInfo #leftArea span {
   text-align: right;
-  font-size: 10pt;
+  font-size: 16pt;
   color: #604545;
 }
 
@@ -268,17 +294,23 @@
   margin: 0 20px;
   padding: 0 20px;
   padding-top: 35px;
-  height: 420px;
+  height: 425px;
+  position: relative;
 }
 
 #tabWrapper #rankInfo .selectArea {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 #tabWrapper #rankInfo .selectArea select {
   color: #604545;
   font-size: 16pt;
+  height: 40px;
+  padding: 0 5px;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 #tabWrapper #rankInfo #rankTable {
@@ -286,6 +318,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 #tabWrapper #rankInfo #rankTable tr {
@@ -305,6 +338,15 @@
 #tabWrapper #rankInfo #rankTable tr th:last-child, #tabWrapper #rankInfo #rankTable tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+#tabWrapper #rankInfo #rankTable tr input[type="text"],
+#tabWrapper #rankInfo #rankTable tr input[type="number"],
+#tabWrapper #rankInfo #rankTable tr input[type="date"],
+#tabWrapper #rankInfo #rankTable tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 #tabWrapper #rankInfo #rankTable thead {
@@ -340,13 +382,14 @@
 
 #orderWrapper #buttonWrapper .tabButton {
   line-height: 45pt;
-  border: 1px solid #DCD6C6;
   font-size: 18pt;
   width: 33.3%;
-  height: 55px;
+  height: 70px;
+  line-height: 70px;
   border-radius: 10px;
   -webkit-box-shadow: 0 5px 2px #DCD6C6;
           box-shadow: 0 5px 2px #DCD6C6;
+  cursor: pointer;
 }
 
 #orderWrapper #buttonWrapper .tabButton a {
@@ -354,9 +397,15 @@
   text-decoration: none;
 }
 
+#orderWrapper #buttonWrapper .tabButton:hover {
+  background-color: rgba(220, 214, 198, 0.3);
+}
+
 #orderWrapper #buttonWrapper .tabBtnActive {
   -webkit-box-shadow: 0 5px 2px #604545;
           box-shadow: 0 5px 2px #604545;
+  font-weight: bold;
+  pointer-events: none;
 }
 
 #orderWrapper #orderArea .orderList {
@@ -364,6 +413,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 #orderWrapper #orderArea .orderList tr {
@@ -385,6 +435,15 @@
   border-bottom-right-radius: 20px;
 }
 
+#orderWrapper #orderArea .orderList tr input[type="text"],
+#orderWrapper #orderArea .orderList tr input[type="number"],
+#orderWrapper #orderArea .orderList tr input[type="date"],
+#orderWrapper #orderArea .orderList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
+}
+
 #orderWrapper #orderArea .orderList thead {
   background-color: #604545;
   color: white;
@@ -403,13 +462,23 @@
   color: #604545;
 }
 
+#orderWrapper #orderArea .orderList tr {
+  cursor: pointer;
+}
+
 #orderWrapper #orderArea .orderList .btnStyle {
   border: 1px solid #604545;
   border-radius: 20px;
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
+}
+
+#orderWrapper #orderArea .orderList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
 }
 
 #orderWrapper #orderArea #notClaimed {
@@ -419,11 +488,16 @@
 }
 
 #orderWrapper #orderArea #notClaimed label {
+  font-size: 14pt;
   color: #604545;
 }
 
 #orderWrapper #orderArea #notClaimed label input {
-  height: 30px;
+  font-size: 15pt;
+  height: 35px;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 #orderWrapper #orderArea #claimed {
@@ -435,6 +509,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 #orderWrapper #orderArea #claimed .orderList tr {
@@ -454,6 +529,15 @@
 #orderWrapper #orderArea #claimed .orderList tr th:last-child, #orderWrapper #orderArea #claimed .orderList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+#orderWrapper #orderArea #claimed .orderList tr input[type="text"],
+#orderWrapper #orderArea #claimed .orderList tr input[type="number"],
+#orderWrapper #orderArea #claimed .orderList tr input[type="date"],
+#orderWrapper #orderArea #claimed .orderList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 #orderWrapper #orderArea #claimed .orderList thead {
@@ -483,7 +567,23 @@
   right: 0;
   top: 0;
   color: #604545;
-  height: 30px;
+  height: 35px;
+  font-size: 15pt;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+#productSearchArea input {
+  right: 30px;
+}
+
+#productSearchArea i {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  font-size: 15pt;
+  color: #604545;
 }
 
 #productSortArea {
@@ -495,29 +595,44 @@
 #productSortArea #productEditArea {
   position: absolute;
   left: 0;
+}
+
+#productSortArea #productEditArea div {
   display: none;
 }
 
 #productSortArea select {
-  font-size: 16pt;
-  border-radius: 3px;
-  padding: 3px 3px;
+  font-size: 14pt;
   color: #604545;
+  height: 35px;
+  padding: 0 5px;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  margin: 10px 5px 0 0;
 }
 
 #productSortArea button {
   color: #604545;
-  background: white;
-  border: 1px solid #707070;
+  background-color: white;
+  border: 1px solid #604545;
   font-size: 14pt;
-  padding: 3px 5px;
-  border-radius: 3px;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  margin: 10px 5px 0 0;
 }
 
-#productSortArea button:first-of-type {
-  position: absolute;
-  left: 0;
+#productSortArea button i {
+  margin: 0 5px;
+}
+
+#productSortArea button:hover {
+  background-color: #604545;
+  color: white;
 }
 
 .productList {
@@ -525,6 +640,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 .productList tr {
@@ -544,6 +660,15 @@
 .productList tr th:last-child, .productList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.productList tr input[type="text"],
+.productList tr input[type="number"],
+.productList tr input[type="date"],
+.productList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 .productList thead {
@@ -570,7 +695,8 @@
 }
 
 .productList input[type="checkbox"] {
-  padding-left: 10px;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .productList input {
@@ -592,34 +718,64 @@
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
 }
 
-#addCategoryArea {
-  margin-top: 20px;
+.productList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
 }
 
-#addCategoryArea h3 {
+#addCategoryArea {
+  margin-top: 25px;
+  color: #604545;
+}
+
+#addCategoryArea h2 {
   font-weight: normal;
   color: #604545;
   margin-bottom: 15px;
 }
 
 #addCategoryArea label {
-  color: #604545;
+  font-size: 14pt;
 }
 
 #addCategoryArea label input {
-  height: 30px;
+  color: #604545;
+  border: 1px solid #604545;
+  font-size: 14pt;
+  height: 35px;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 #addCategoryArea button {
   color: #604545;
-  background: white;
-  border-radius: 2px;
-  border: 1px solid #707070;
-  height: 30px;
-  width: 65px;
+  background-color: white;
+  border: 1px solid #604545;
+  font-size: 14pt;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+#addCategoryArea button i {
+  margin: 0 5px;
+}
+
+#addCategoryArea button:hover {
+  background-color: #604545;
+  color: white;
+}
+
+#addCategoryArea .warningTxt {
+  color: darkred;
 }
 
 .categoryList {
@@ -627,6 +783,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 .categoryList tr {
@@ -646,6 +803,15 @@
 .categoryList tr th:last-child, .categoryList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.categoryList tr input[type="text"],
+.categoryList tr input[type="number"],
+.categoryList tr input[type="date"],
+.categoryList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 .categoryList thead {
@@ -672,7 +838,13 @@
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
+}
+
+.categoryList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
 }
 
 .categoryList input {
@@ -680,27 +852,111 @@
   text-align: center;
 }
 
-#classEditArea {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.categoryList tr button:nth-child(2),
+.categoryList tr button:nth-child(3) {
+  display: none;
 }
 
-#classEditArea button {
+#mainWrapper {
+  position: relative;
+}
+
+.classSearchArea {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.classSearchArea input {
+  position: absolute;
+  right: 0;
+  top: 0;
   color: #604545;
-  background: white;
-  border: 1px solid #707070;
-  font-size: 14pt;
-  padding: 3px 5px;
-  border-radius: 3px;
-  cursor: pointer;
+  height: 35px;
+  font-size: 15pt;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.classSearchArea input {
+  right: 30px;
+}
+
+.classSearchArea i {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  font-size: 15pt;
+  color: #604545;
+}
+
+#classEditArea {
+  position: absolute;
+  left: 0;
+  top: 125px;
 }
 
 #classEditArea #classEdit {
   display: none;
+}
+
+#classEditArea select {
+  font-size: 14pt;
+  color: #604545;
+  height: 35px;
+  padding: 0 5px;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  margin: 10px 5px 0 0;
+}
+
+#classEditArea button {
+  color: #604545;
+  background-color: white;
+  border: 1px solid #604545;
+  font-size: 14pt;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  margin: 10px 5px 0 0;
+}
+
+#classEditArea button i {
+  margin: 0 5px;
+}
+
+#classEditArea button:hover {
+  background-color: #604545;
+  color: white;
+}
+
+.newClass {
+  color: #604545;
+  background-color: white;
+  border: 1px solid #604545;
+  font-size: 14pt;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  float: right;
+  margin: 10px 5px 0 0;
+}
+
+.newClass i {
+  margin: 0 5px;
+}
+
+.newClass:hover {
+  background-color: #604545;
+  color: white;
 }
 
 .classList {
@@ -708,6 +964,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 .classList tr {
@@ -727,6 +984,15 @@
 .classList tr th:last-child, .classList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.classList tr input[type="text"],
+.classList tr input[type="number"],
+.classList tr input[type="date"],
+.classList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 .classList thead {
@@ -774,30 +1040,105 @@
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
 }
 
+.classList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
+}
+
+#mainWrapper {
+  position: relative;
+}
+
+.classTimeSearchArea {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.classTimeSearchArea input {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #604545;
+  height: 35px;
+  font-size: 15pt;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.classTimeSearchArea input {
+  right: 30px;
+}
+
+.classTimeSearchArea i {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  font-size: 15pt;
+  color: #604545;
+}
+
 #classTimeEditArea {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  position: absolute;
+  left: 0;
+  top: 125px;
 }
 
 #classTimeEditArea button {
   color: #604545;
-  background: white;
-  border: 1px solid #707070;
+  background-color: white;
+  border: 1px solid #604545;
   font-size: 14pt;
-  padding: 3px 5px;
-  border-radius: 3px;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  margin: 10px 5px 0 0;
+}
+
+#classTimeEditArea button i {
+  margin: 0 5px;
+}
+
+#classTimeEditArea button:hover {
+  background-color: #604545;
+  color: white;
 }
 
 #classTimeEditArea #classTimeEdit {
   display: none;
+}
+
+.newClassTime {
+  color: #604545;
+  background-color: white;
+  border: 1px solid #604545;
+  font-size: 14pt;
+  height: 35px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+  margin: 10px 5px 0 0;
+  float: right;
+}
+
+.newClassTime i {
+  margin: 0 5px;
+}
+
+.newClassTime:hover {
+  background-color: #604545;
+  color: white;
 }
 
 .classTimeList {
@@ -805,6 +1146,7 @@
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 .classTimeList tr {
@@ -824,6 +1166,15 @@
 .classTimeList tr th:last-child, .classTimeList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.classTimeList tr input[type="text"],
+.classTimeList tr input[type="number"],
+.classTimeList tr input[type="date"],
+.classTimeList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 .classTimeList thead {
@@ -846,6 +1197,7 @@
 
 .classTimeList tbody tr {
   height: 80px;
+  padding: 5px 0;
 }
 
 .classTimeList tbody td:nth-of-type(3) {
@@ -853,7 +1205,7 @@
 }
 
 .classTimeList input {
-  margin-top: 4px;
+  margin: 5px 0;
 }
 
 .classTimeList .totalPeople {
@@ -866,27 +1218,51 @@
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
 }
 
-.classSearchArea {
-  position: relative;
-  margin-bottom: 40px;
+.classTimeList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
 }
 
-.classSearchArea input {
+.classReservationSearchArea {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.classReservationSearchArea input {
   position: absolute;
   right: 0;
   top: 0;
   color: #604545;
-  height: 30px;
+  height: 35px;
+  font-size: 15pt;
+  border: 1px solid #604545;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.classReservationSearchArea input {
+  right: 30px;
+}
+
+.classReservationSearchArea i {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  font-size: 15pt;
+  color: #604545;
 }
 
 .classReservationList {
+  margin-top: 100px;
   width: 100%;
   text-align: center;
   margin: 10px auto;
   border-collapse: collapse;
+  font-size: 14pt;
 }
 
 .classReservationList tr {
@@ -906,6 +1282,15 @@
 .classReservationList tr th:last-child, .classReservationList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.classReservationList tr input[type="text"],
+.classReservationList tr input[type="number"],
+.classReservationList tr input[type="date"],
+.classReservationList tr input[type="time"] {
+  border-radius: 5px;
+  border: 1px solid #604545;
+  font-size: 14pt;
 }
 
 .classReservationList thead {
@@ -940,19 +1325,23 @@
   width: 70px;
   height: 35px;
   margin-left: 10px;
+  font-size: 13pt;
   cursor: pointer;
   width: 100px;
+}
+
+.classReservationList .btnStyle:hover {
+  background-color: #978484;
+  color: white;
 }
 
 .bigModal {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -969,6 +1358,7 @@
   color: #604545;
   -webkit-box-shadow: 10px 10px 25px #707070;
           box-shadow: 10px 10px 25px #707070;
+  overflow: hidden;
 }
 
 .bigModal .modalWrap .modalClose {
@@ -983,6 +1373,10 @@
   margin: 25px 25px 0 0;
   float: right;
   cursor: pointer;
+}
+
+.bigModal .modalWrap .modalClose:hover {
+  background-color: #978484;
 }
 
 .bigModal .modalWrap .modalContent {
@@ -1026,18 +1420,18 @@
   font-weight: 600;
 }
 
-.bigModal .modalWrap .modalContent .orderContent:last-child {
+.bigModal .modalWrap .modalContent .oderTotal {
   margin-top: 20px;
   text-align: right;
 }
 
-.bigModal .modalWrap .modalContent .orderContent:last-child span {
+.bigModal .modalWrap .modalContent .oderTotal span {
   font-size: 18pt;
   font-weight: 600;
   margin-right: 15px;
 }
 
-.bigModal .modalWrap .modalContent .orderContent:last-child span:first-child {
+.bigModal .modalWrap .modalContent .oderTotal span:first-child {
   margin-right: 25px;
 }
 
@@ -1221,6 +1615,11 @@
   font-weight: bold;
   color: white;
   background-color: #604545;
+  cursor: pointer;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:first-child:hover {
+  background-color: #978484;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:last-child {
@@ -1242,6 +1641,7 @@
   font-size: 18px;
   color: #604545;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm .formField textarea {
@@ -1249,9 +1649,8 @@
   font-size: 18px;
   color: #604545;
   padding: 5px;
-  min-height: 70px;
-  max-height: 150px;
   resize: none;
+  border-radius: 5px;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm .formField .formGroup {
@@ -1294,6 +1693,7 @@
   border-radius: 50%;
   -webkit-transition: .5s;
   transition: .5s;
+  cursor: pointer;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm .formField .toggleSwitch input:checked + span {
@@ -1332,12 +1732,10 @@
 .smallModal {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1354,6 +1752,7 @@
   color: #604545;
   -webkit-box-shadow: 10px 10px 25px #707070;
           box-shadow: 10px 10px 25px #707070;
+  overflow: hidden;
 }
 
 .smallModal .modalWrap .modalClose {
@@ -1368,6 +1767,10 @@
   margin: 25px 25px 0 0;
   float: right;
   cursor: pointer;
+}
+
+.smallModal .modalWrap .modalClose:hover {
+  background-color: #978484;
 }
 
 .smallModal .modalWrap .modalContent {
@@ -1402,6 +1805,8 @@
   height: 35px;
   font-size: 20px;
   padding: 5px;
+  border: 1px solid #604545;
+  border-radius: 5px;
 }
 
 .smallModal .modalWrap .smallModalForm p input[type="time"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm p input[type="date"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm .formGroup input[type="time"]::-webkit-calendar-picker-indicator, .smallModal .modalWrap .smallModalForm .formGroup input[type="date"]::-webkit-calendar-picker-indicator {
@@ -1457,8 +1862,56 @@
 }
 
 #container #mainWrapper #mainTitle {
-  padding-top: 10px;
+  margin: 35px 0 10px 0;
   color: #604545;
-  padding-bottom: 10px;
+  font-size: 28pt;
+  font-weight: bold;
+}
+
+#paginationArea {
+  position: absolute;
+  bottom: 15px;
+  left: 43%;
+  right: 43%;
+  font-size: 13pt;
+}
+
+#paginationArea a {
+  padding: 5px 8px;
+  color: #604545;
+  text-decoration: none;
+  border-radius: 50px;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+#paginationArea .nonActivePage:hover {
+  background-color: #DCD6C6;
+}
+
+#paginationArea .activePage {
+  font-weight: bolder;
+  pointer-events: none;
+  cursor: default;
+}
+
+#paginationArea .preNextPage {
+  background-color: #604545;
+  color: #DCD6C6;
+  margin: 0 3px;
+}
+
+#paginationArea .preNextPage:hover {
+  background-color: #978484;
+}
+
+::-moz-selection {
+  background: rgba(220, 214, 198, 0.5);
+  color: #604545;
+}
+
+::selection {
+  background: rgba(220, 214, 198, 0.5);
+  color: #604545;
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweety Bakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./public/scss/style.css">
     <script src="./public/js/jquery-3.6.0.js"></script>
 </head>
@@ -14,31 +14,33 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <img id="logo" src="./public/img/logo.svg" alt="">
+            <a href="./backendHome.html">
+                <img id="logo" src="./public/img/logo.svg" alt="">
+            </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="#">
+                    <a class="" href="./backendHome.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
                 <li class="navItem">
-                    <a href="#">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    <a href="./order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
                     </a>
                 </li>
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a class="" href="#">商品列表</a></li>
-                        <li><a href="#">種類管理</a></li>
+                        <li><a class="" href="./productList.html">商品列表</a></li>
+                        <li><a href="./productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem navActive">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a href="#">課程列表</a></li>
-                        <li><a href="#">課程時間</a></li>
-                        <li><a href="#" class="subActive">預約管理</a></li>
+                        <li><a href="./classList.html">課程列表</a></li>
+                        <li><a href="./classTimeList.html">課程時間</a></li>
+                        <li><a href="./classReservation.html" class="subActive">預約管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
@@ -51,70 +53,78 @@
             <!-- 標題 -->
             <h2 id="mainTitle">預約管理</h2>
             <!-- 課程搜尋區 -->
-            <div class="classSearchArea">
+            <div class="classReservationSearchArea">
                 <input type="text" placeholder="課程名稱查詢">
+                <i class="fas fa-search"></i>
             </div>
             
             <table class="classReservationList">
                 <thead>
                     <tr>
                         <th>預約編號</th>
-                        <th>預約課程</th>
-                        <th>課程時間</th>
                         <th>預約人姓名</th>
                         <th>預約人電話</th>
                         <th>預約人數</th>
+                        <th>預約課程</th>
+                        <th>課程時間</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2022/01/22 14:00</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
                         <td>4</td>
+                        <td>日式布丁草莓蛋糕</td>
+                        <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
                     <tr>
                         <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2022/01/22 14:00</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
                         <td>4</td>
+                        <td>日式布丁草莓蛋糕</td>
+                        <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
                     <tr>
                         <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2022/01/22 14:00</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
                         <td>4</td>
+                        <td>日式布丁草莓蛋糕</td>
+                        <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
                     <tr>
                         <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2022/01/22 14:00</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
                         <td>4</td>
+                        <td>日式布丁草莓蛋糕</td>
+                        <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
                     <tr>
                         <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2022/01/22 14:00</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
                         <td>4</td>
+                        <td>日式布丁草莓蛋糕</td>
+                        <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
                 </tbody>
             </table>
+            <div id="paginationArea">
+                <a href="#" class="preNextPage">&lt;</a>
+                <a href="#" class="activePage">1</a>
+                <a href="#" class="nonActivePage">2</a>
+                <a href="#" class="nonActivePage">3</a>
+                <a href="#" class="preNextPage">&gt;</a>
+            </div>
 
         </div>
     </div>

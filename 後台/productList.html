@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweety Bakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./public/scss/style.css">
     <script src="./public/js/jquery-3.6.0.js"></script>
 </head>
@@ -14,31 +14,33 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <img id="logo" src="./public/img/logo.svg" alt="">
+            <a href="./backendHome.html">
+                <img id="logo" src="./public/img/logo.svg" alt="">
+            </a>            
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="#">
+                    <a class="" href="./backendHome.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
                 <li class="navItem">
-                    <a href="#">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    <a href="./order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
                     </a>
                 </li>
                 <li class="navItem navActive">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a class="subActive" href="#">商品列表</a></li>
-                        <li><a href="#">種類管理</a></li>
+                        <li><a class="subActive" href="./productList.html">商品列表</a></li>
+                        <li><a href="./productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a href="#">課程列表</a></li>
-                        <li><a href="#">課程時間</a></li>
-                        <li><a href="#">預約管理</a></li>
+                        <li><a href="./classList.html">課程列表</a></li>
+                        <li><a href="./classTimeList.html">課程時間</a></li>
+                        <li><a href="./classReservation.html">預約管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
@@ -53,16 +55,20 @@
             <!-- 產品搜尋區 -->
             <div id="productSearchArea">
                 <input type="text" placeholder="產品名稱查詢">
+                <i class="fas fa-search"></i>
             </div>
             <div id="productSortArea">
                 <div id="productEditArea">
-                    <select name="" id="">
-                        <option value="">商品批次上架</option>
-                    </select>
-                    <button>儲存</button>
-                    <button>取消</button>
+                    <button class="editAll">批次修改</button>
+                    <div>
+                        <select name="" id="">
+                            <option value="">商品批次上架</option>
+                            <option value="">商品批次下架</option>
+                        </select>
+                        <button class="editAreaSave">儲存</button>
+                        <button class="editAreaCancel">取消</button>
+                    </div>
                 </div>
-                <button>批次修改</button>
                 <select name="#" id="">
                     <option>全部種類商品</option>
                     <option>杯子蛋糕</option>
@@ -76,13 +82,13 @@
                     <option>商品上架排序</option>
                     <option>商品下架排序</option>
                 </select>
-                <button>新增商品<i class="fa fa-plus"></i></button>
+                <button class="newProduct">新增商品<i class="fa fa-plus"></i></button>
             </div>
 
             <table class="productList">
                 <thead>
                     <tr>
-                        <th><input type="checkbox"></th>
+                        <th><input type="checkbox" disabled id="CBchecked"></th>
                         <th>商品編號</th>
                         <th>商品名稱</th>
                         <th>商品種類</th>
@@ -94,81 +100,203 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
-                        <td><input class="productName" type="text"></td>
+                        <td><input class="productName" type="text" disabled></td>
                         <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="text"></td>
+                        <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
-                        <td>上架中</td>
-                        <td><button class="btnStyle">下架</button><button class="btnStyle">編輯</button><button class="btnStyle">刪除</button></td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
                 </tbody>
             </table>
+            <div id="paginationArea">
+                <a href="#" class="preNextPage">&lt;</a>
+                <a href="#" class="activePage">1</a>
+                <a href="#" class="nonActivePage">2</a>
+                <a href="#" class="nonActivePage">3</a>
+                <a href="#" class="preNextPage">&gt;</a>
+            </div>
 
         </div>
     </div>
+
+    <div id="productCreateAndEditModal" class="bigModal">
+
+        <div class="modalWrap">
+
+
+            <span class="modalClose">&times;</span>
+
+            <div class="modalContent">
+
+                <p id="mainModalTitle">商品新增/編輯</p>
+                
+                <div class="bigModalForm">
+
+                    <div id="uploadImg">
+                        <div id="uploadArea">
+                            <div>+</div>
+                            <p>點擊或拖曳上傳</p>
+                        </div>
+                        <div id="showImgArea">
+
+                            <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formField">
+
+                        <div class="formGroup">
+                            <label for="">商品名稱:</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="">商品類別:</label>
+                            <select name="" id="">
+                                <option value="roundCake">圓形蛋糕</option>
+                                <option value="cupCake">杯子蛋糕</option>
+                                <option value="cookie">餅乾</option>
+                            </select>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="sizeId">商品規格:</label>
+                            <select id="sizeId">
+
+                            </select>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="">商品單價:</label>
+                            <input type="number">
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="">商品狀態:</label>
+                            <label class="toggleSwitch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="">商品簡介:</label><br>
+                            <textarea cols="40"></textarea>
+                        </div>
+                        <div class="formGroup">
+                            <label for="">商品成份:</label><br>
+                            <textarea cols="40"></textarea>
+                        </div>
+                        <div class="formGroup">
+                            <button type="button">儲存</button>
+                            <button type="button" class="modalCancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+                
+                    
+            </div>
+            
+        </div>
+
+    </div>
+    
     <script>
+        // $(".bigModal").hide();
         $(document).ready(function () {
             // 導覽列次項目展開
             $('.navItem').on('click', function () {
@@ -181,6 +309,95 @@
                 $('.sub1>li>a').removeClass('subActive');
                 $(this).find('a').addClass('subActive');
             });
+
+            //新增/編輯商品跳出視窗
+
+            function openModal(_this, item){
+                //判斷是edit還是new modal
+                var modalTitle = $(_this).text().substr(0,2);
+                switch (modalTitle){
+                    case "新增":
+                        $('#mainModalTitle').text(`新增${item}`);
+                        break;
+                    case "編輯":
+                        $('#mainModalTitle').text(`編輯${item}`);
+                        break;
+                }
+                $(".bigModal").css("display","flex").show();
+            };
+
+            function closeModal(){
+                $(".bigModal").hide();
+            }
+            $(".newProduct").on("click", function(){
+                openModal(this,"商品");
+            })
+            
+            $(".editProduct").on("click", function(){
+                openModal(this,"商品");
+            })
+
+            //modalClose功能
+            $(".modalClose").on("click", function(){
+                closeModal();
+            })
+            $(".modalCancel").on("click", function(){
+                closeModal();
+            });
+
+            //textarea根據內容自動調整高度
+            $( "textarea" ).on( "input", function() {
+                $(this).css('height', 'auto');
+                var textareaHeight = $(this).prop('scrollHeight');
+                $(this).css('height', `${textareaHeight}px`);
+
+                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
+                if(modalWrapHeight > 610){
+                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                };
+            });
+
+            //productEditArea
+
+            function doEditArea(disabled, hideElm, showElm){
+                $(".productList input").prop("disabled", disabled);
+                $(hideElm).hide();
+                $(showElm).show();
+            }
+            //批次修改
+            $(".editAll").on("click", function(){
+                doEditArea(false,".editAll","#productEditArea > div");
+
+            })
+            //儲存+取消
+            $(".editAreaSave").on('click',function(){
+                doEditArea(true,"#productEditArea > div",".editAll");
+            })
+
+            $(".editAreaCancel").on('click',function(){
+                doEditArea(true,"#productEditArea > div",".editAll");
+            })
+
+            //productStatus
+            $(".productStatusBtn").on('click',function(){
+                var status = $(this).parent('td').prev('.productStatus').text();
+                $(this).text(status.substr(0,2));
+                status= status ==="上架中"?  "下架" : "上架";
+                $(this).parent('td').prev('.productStatus').text(status+"中");
+            })
+
+            //checkbox
+            $("input[ type = checkbox ]").change(function(){
+                $(`input[ name = '${this.id}' ]`).prop('checked',this.checked);
+                $(`input[ id = '${this.name}' ]`).prop('checked', function(){
+                    if ($(`input[ type = 'checkbox' ]:not(:first):checked`).length == $('tr').length){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            })
+
 
         });
         
