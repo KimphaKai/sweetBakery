@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 18, 2022 at 12:56 AM
+-- Generation Time: Feb 18, 2022 at 04:07 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -105,6 +105,14 @@ CREATE TABLE `member` (
   `fb` varchar(50) NOT NULL,
   `google` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`memberId`, `email`, `userPassword`, `userName`, `userPhone`, `userBirthday`, `fb`, `google`) VALUES
+('dede', 'cosmo4956@gmail.com', '123456', '李慧婷', '', '1999-02-17', '', ''),
+('hhhhfffcrcrc', 'hhl5778@gmail.com', '123456', '袁于晴', '0954254754', '1999-02-17', '', '');
 
 -- --------------------------------------------------------
 
