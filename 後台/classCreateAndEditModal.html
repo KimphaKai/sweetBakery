@@ -89,7 +89,7 @@
 
                         <div class="formGroup">
                             <label for="">商品簡介:</label><br>
-                            <textarea name="" id="" cols="40" rows="10"></textarea>
+                            <textarea name="" id="" cols="40"></textarea>
                         </div>
                         <div class="formGroup">
                             <button type="button">儲存</button>
@@ -105,5 +105,22 @@
 
     </div>
 
+
+    <script>
+        $(document).ready(function(){
+
+            //textarea根據內容自動調整高度
+            $( "textarea" ).on( "input", function() {
+                $(this).css('height', 'auto');
+                var textareaHeight = $(this).prop('scrollHeight');
+                $(this).css('height', `${textareaHeight}px`);
+
+                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
+                if(modalWrapHeight > 610){
+                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                };
+            });
+        })
+    </script>
 </body>
 </html>

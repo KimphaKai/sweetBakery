@@ -34,7 +34,7 @@
                 }
             }
         
-            .orderContent:last-child{
+            .oderTotal{
                 margin-top: 20px;
                 text-align: right;
                 span{
@@ -131,6 +131,8 @@
                     height: 35px;
                     font-size: 20px;
                     padding: 5px;
+                    border: 1px solid $brown;
+                    border-radius: 5px;
                     &[type="time"]::-webkit-calendar-picker-indicator,
                     &[type= "date"]::-webkit-calendar-picker-indicator{
                         filter: invert(27%) sepia(4%) saturate(3615%) hue-rotate(314deg) brightness(91%) contrast(82%);

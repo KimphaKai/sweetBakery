@@ -1,23 +1,27 @@
 #addCategoryArea{
-    margin-top: 20px;
-    h3{
+    margin-top: 25px;
+    color: $brown;
+    h2{
         font-weight: normal;
         color: $brown;
         margin-bottom: 15px;
     }
     label{
-        color: $brown;
+        font-size: 14pt;
         input{
-            height: 30px;
+            color: $brown;
+            border: 1px solid $brown;
+            font-size: 14pt;
+            height: 35px;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
     }
     button{
-        color: $brown;
-        background: white;
-        border-radius: 2px;
-        border: 1px solid $gray;
-        height: 30px;
-        width: 65px;
+        @include buttonStyle;
+    }
+    .warningTxt{
+        color: darkred;
     }
 }
 .categoryList{
@@ -29,6 +33,13 @@
     input{
         height: 30px;
         text-align: center;
+    }
+
+    tr{
+        button:nth-child(2),
+        button:nth-child(3){
+            display: none;
+        }
     }
    
 }

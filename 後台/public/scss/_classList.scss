@@ -1,18 +1,45 @@
-#classEditArea{
-    display: flex;
-    justify-content:space-between ;
-    button{
+#mainWrapper{
+    position: relative;
+}
+.classSearchArea{
+    @include inputSearch;
+    margin-bottom: 45px;
+    input{
+        right: 30px;
+    }
+    i{
+        position: absolute;
+        right: 0;
+        top: 7px;
+        font-size: 15pt;
         color: $brown;
-        background: white;
-        border: 1px solid $gray;
-        font-size: 14pt;
-        padding: 3px 5px;
-        border-radius: 3px;
-        cursor: pointer;
     }
+}
+#classEditArea{
+    position: absolute;
+    left: 0;
+    top: 125px; 
+    // .classEditAll{
+    //     display: none;
+    // }
+
     #classEdit{
-        display: none;
+        display: none
     }
+
+    select{
+        @include selectStyle;
+        margin: 10px 5px 0 0;
+    }
+    button{
+        @include buttonStyle;
+        margin: 10px 5px 0 0;
+    }
+}
+.newClass{
+    @include buttonStyle;
+    float: right;
+    margin: 10px 5px 0 0;
 }
 .classList{
     @include tableStyle;

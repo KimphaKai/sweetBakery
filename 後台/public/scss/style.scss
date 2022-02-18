@@ -22,11 +22,52 @@
         width: 90%;
         margin: 10px 30px;
         #mainTitle{
-            padding-top: 10px;
+            margin: 35px 0 10px 0;
             color: $brown;
-            padding-bottom: 10px;
-            
+            font-size: 28pt;
+            font-weight: bold;
         }
     }
+}
+
+#paginationArea{
+    position: absolute;
+    bottom: 15px;
+    left: 43%;
+    right: 43%;
+    font-size: 13pt;
+    a{
+        padding: 5px 8px;
+        color: $brown;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: background-color .3s;  
+    }
+
+    .nonActivePage{
+        &:hover{
+            background-color: $lightBrown;
+        }
+    }
+
+    .activePage{
+        font-weight: bolder;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .preNextPage{
+        background-color: $brown; 
+        color: $lightBrown;
+        margin: 0 3px; 
+        &:hover{
+            background-color:$secondary;
+        }      
+    }
+}
+
+::selection {
+	background: rgba($lightBrown, .5);
+	color: $brown;
 }
 

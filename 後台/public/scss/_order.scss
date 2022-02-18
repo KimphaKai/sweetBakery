@@ -8,26 +8,34 @@
         margin-bottom: 35px;
         .tabButton{
             line-height: 45pt;
-            border: 1px solid $lightBrown;
             font-size: 18pt;
             width: 33.3%;
-            height: 55px;
+            height: 70px;
+            line-height: 70px;
             border-radius: 10px;
             box-shadow: 0 5px 2px $lightBrown;
+            cursor: pointer;
             
             a{
                 color: $brown; 
                 text-decoration: none;
             }
+            &:hover{
+                background-color: rgba($lightBrown, 0.3);
+            }
         }
         .tabBtnActive{
             box-shadow: 0 5px 2px $brown;
-
+            font-weight: bold;
+            pointer-events: none;
         }
     }
     #orderArea{
         .orderList{
             @include tableStyle;
+            tr{
+                cursor: pointer;
+            }
             
             .btnStyle{
                 
@@ -39,10 +47,14 @@
             padding-top: 10px;
             text-align: right;
             label{
-                
+                font-size: 14pt;
                 color: $brown;
                 input{
-                    height: 30px;
+                    font-size: 15pt;
+                    height: 35px;
+                    border: 1px solid $brown;
+                    border-radius: 5px;
+                    padding: 0 5px;
                 }
             }
         }

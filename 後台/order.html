@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweety Bakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./public/scss/style.css">
     <script src="./public/js/jquery-3.6.0.js"></script>
 </head>
@@ -14,31 +14,33 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <img id="logo" src="./public/img/logo.svg" alt="">
+            <a href="./backendHome.html">
+                <img id="logo" src="./public/img/logo.svg" alt="">
+            </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="#">
+                    <a class="" href="./backendHome.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
                 <li class="navItem navActive">
-                    <a href="#">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    <a href="./order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
                     </a>
                 </li>
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a href="#">商品列表</a></li>
-                        <li><a href="#">種類管理</a></li>
+                        <li><a href="./productList.html">商品列表</a></li>
+                        <li><a href="./productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a href="#">課程列表</a></li>
-                        <li><a href="#">課程時間</a></li>
-                        <li><a href="#">預約管理</a></li>
+                        <li><a href="./classList.html">課程列表</a></li>
+                        <li><a href="./classTimeList.html">課程時間</a></li>
+                        <li><a href="./classReservation.html">預約管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
@@ -49,7 +51,7 @@
         <!-- 主要資訊區塊 -->
         <div id="mainWrapper">
             <!-- 標題 -->
-            <h2 id="mainTitle">訂單管理</h2>
+            <p id="mainTitle">訂單管理</p>
             <div id="orderWrapper">
                 <ul id="buttonWrapper">
                     <li class="tabButton tabBtnActive"><a href="#">未確認訂單</a></li>
@@ -78,58 +80,68 @@
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190002</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190003</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190004</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190005</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190006</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle">取消</button></td>
+                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div id="paginationArea">
+                            <a href="#" class="preNextPage">&lt;</a>
+                            <a href="#" class="activePage">1</a>
+                            <a href="#" class="nonActivePage">2</a>
+                            <a href="#" class="nonActivePage">3</a>
+                            <a href="#" class="preNextPage">&gt;</a>
+                        </div>
                     </div>
                     <div id="notClaimed">
-                        <label>訂購人電話查詢: <input type="text" id="phoneSearch"></label>
+                        <label>
+                            訂購人電話查詢: <input type="text" id="phoneSearch" maxlength="10">
+                            <i class="fas fa-search"></i>
+                        </label>
                         <table class="orderList">
                             <thead>
                                 <tr>
@@ -151,51 +163,58 @@
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
-                                    <td><button class="btnStyle">取消</button></td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle paid">已付款</button></td>
+                                    <td><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190002</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
-                                    <td><button class="btnStyle">取消</button></td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle paid">已付款</button></td>
+                                    <td><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190003</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
-                                    <td><button class="btnStyle">取消</button></td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle paid">已付款</button></td>
+                                    <td><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190004</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
-                                    <td><button class="btnStyle">取消</button></td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle paid">已付款</button></td>
+                                    <td><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190005</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
                                     <td>2022-01-30</td>
                                     <td>2,222</td>
-                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle">已付款</button></td>
-                                    <td><button class="btnStyle">取消</button></td>
+                                    <td><span class="paymentStatus">未付款</span><button class="btnStyle paid">已付款</button></td>
+                                    <td><button class="btnStyle cancel">取消</button></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div id="paginationArea">
+                            <a href="#" class="preNextPage">&lt;</a>
+                            <a href="#" class="activePage">1</a>
+                            <a href="#" class="nonActivePage">2</a>
+                            <a href="#" class="nonActivePage">3</a>
+                            <a href="#" class="preNextPage">&gt;</a>
+                        </div>
                     </div>
                     <div id="claimed">
                         <table class="orderList">
@@ -221,7 +240,7 @@
                                     <td><span class="paymentStatus">已付款</span></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190002</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
@@ -230,7 +249,7 @@
                                     <td><span class="paymentStatus">已付款</span></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190003</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
@@ -239,7 +258,7 @@
                                     <td><span class="paymentStatus">已付款</span></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190004</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
@@ -248,7 +267,7 @@
                                     <td><span class="paymentStatus">已付款</span></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190005</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
@@ -257,7 +276,7 @@
                                     <td><span class="paymentStatus">已付款</span></td>
                                 </tr>
                                 <tr>
-                                    <td>202201190001</td>
+                                    <td>202201190006</td>
                                     <td>劉大偉</td>
                                     <td>0954254855</td>
                                     <td>2022-01-19</td>
@@ -268,12 +287,72 @@
                                 
                             </tbody>
                         </table>
+                        <div id="paginationArea">
+                            <a href="#" class="preNextPage">&lt;</a>
+                            <a href="#" class="activePage">1</a>
+                            <a href="#" class="nonActivePage">2</a>
+                            <a href="#" class="nonActivePage">3</a>
+                            <a href="#" class="preNextPage">&gt;</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
     </div>
+
+    <div id="orderDetailModal" class="bigModal">
+
+        <div class="modalWrap">
+
+
+            <span class="modalClose">&times;</span>
+
+            <div class="modalContent orderContent">
+
+                <p id="mainModalTitle">訂單細項</p>
+                <div class="orderItem">
+                    <p class="orderItemTitle">櫻桃杯子蛋糕</p>
+                    <div>
+                        <span class="orderItemSize">規格:1盒6入</span>
+                        <span>250</span>
+                    </div>
+                    <p>x3</p>
+                    <hr>
+                    <span class="subTotal">
+                        <span>小計:</span>
+                        <span >750</span>
+                    </span>
+                </div>
+                <div class="orderItem">
+                    <p class="orderItemTitle">蜂蜜檸檬蛋糕</p>
+                    <div>
+                        <span class="orderItemSize">規格:1盒</span>
+                        <span>300</span>
+                    </div>
+                    <p>x4</p>
+                    <hr>
+                    <span class="subTotal">
+                        <span>小計:</span>
+                        <span >1,200</span>
+                    </span>
+                </div>
+                <div class="oderTotal">
+                    <span>訂單金額: </span>
+                    <span>
+                        $
+                        <span>1,950</span>
+                    </span>
+                                
+                </div>    
+            </div>
+            
+        </div>
+
+    </div>
+
+    
+
     <script>
         $(document).ready(function () {
             // 導覽列次項目展開
@@ -306,7 +385,33 @@
                     $('#claimed').show();
                 }
             });
+
+
+            //未確認訂單的取消Btn
+            $('.cancel').on('click', function(){
+                $(this).closest('tr').remove();
+            })
+
+            //未取貨頁籤裡的已付款Btn
+            $('.paid').on('click', function(){
+                $(this).closest('td').children('.paymentStatus').text('已付款');
+                $(this).remove();
+            })
+
+
+            //訂單明細彈跳視窗
+            $("tbody>tr").on("click", function(){
+                $(".bigModal").css("display","flex").show();
+            })
+
+            //modalClose功能
+            $(".modalClose").on("click", function(){
+                $(".bigModal").hide();
+            })
         });
+
+        var getState = sessionStorage.getItem('name');
+        console.log(getState);   // 1
     </script>
 </body>
 

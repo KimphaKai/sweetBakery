@@ -5,40 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweety Bakery</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./public/scss/style.css">
     <script src="./public/js/jquery-3.6.0.js"></script>
+
 </head>
 
 <body>
     <div id="container">
         <div id="navWrapper">
-            <img id="logo" src="./public/img/logo.svg" alt="">
+            <a href="./backendHome.html">
+                <img id="logo" src="./public/img/logo.svg" alt="">
+            </a>
             <ul id="navContent">
                 <li class="navItem navActive">
-                    <a class="" href="#">
+                    <a class="" href="./backendHome.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
                 <li class="navItem">
-                    <a href="#">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>訂單管理
+                    <a href="./order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
                     </a>
                 </li>
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a href="#">商品列表</a></li>
-                        <li><a href="#">種類管理</a></li>
+                        <li><a class="subActive" href="./productList.html">商品列表</a></li>
+                        <li><a href="./productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>課程管理
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a href="#">課程列表</a></li>
-                        <li><a href="#">課程時間</a></li>
-                        <li><a href="#">預約管理</a></li>
+                        <li><a class="subActive" href="./classList.html">課程列表</a></li>
+                        <li><a href="./classTimeList.html">課程時間</a></li>
+                        <li><a href="./classReservation.html">預約管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem">
@@ -49,7 +52,7 @@
         <!-- 主要資訊區塊 -->
         <div id="mainWrapper">
             <!-- 標題 -->
-            <h2 id="mainTitle">系統首頁</h2>
+            <p id="mainTitle">系統首頁</p>
             <!--三個資訊  -->
             <div id="capsulesArea">
                 <div class="capsule">
@@ -60,14 +63,14 @@
                 </div>
                 <div class="capsule">
                     <p class="title">本週新增訂單數量</p>
-                    <i class="fa fa-files-o icon"></i>
-                    <span class="dataNum">1523</span>
+                    <i class="far fa-file-alt icon"></i>
+                    <span class="dataNum">1,523</span>
                     <span class="unit">筆</span>
                 </div>
                 <div class="capsule">
                     <p class="title">會員總人數</p>
                     <i class="fa fa-users icon"></i>
-                    <span class="dataNum">1923</span>
+                    <span class="dataNum">1,923</span>
                     <span class="unit">人</span>
                 </div>
             </div>
@@ -127,6 +130,8 @@
                         </select>
                         <select name="productType" id="productType">
                             <option value="杯子蛋糕">杯子蛋糕</option>
+                            <option value="圓形蛋糕">圓形蛋糕</option>
+                            <option value="餅乾">餅乾</option>
                         </select>
                         <select name="#" id="productType">
                             <option value="">銷售數量由高到低排序</option>
@@ -142,7 +147,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>櫻桃杯子蛋糕</td>
                                 <td>132</td>
@@ -161,11 +166,15 @@
                                 <td>1</td>
                                 <td>櫻桃杯子蛋糕</td>
                                 <td>132</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div id="paginationArea">
-
+                        <a href="#" class="preNextPage">&lt;</a>
+                        <!-- <a href="#" class="activePage">1</a>
+                        <a href="#" class="nonActivePage">2</a>
+                        <a href="#" class="nonActivePage">3</a> -->
+                        <a href="#" class="preNextPage">&gt;</a>
                     </div>
                 </div>
             </div>
@@ -201,6 +210,58 @@
                     $('#rankInfo').hide();
                 }
             });
+
+
+
+            //分頁功能
+            //假資料
+            var data = [
+                {rank:1 , productName:"櫻桃杯子蛋糕-1", sales:132},
+                {rank:2 , productName:"櫻桃杯子蛋糕-2", sales:124},
+                {rank:3 , productName:"櫻桃杯子蛋糕-3", sales:118},
+                {rank:4 , productName:"櫻桃杯子蛋糕-4", sales:116},
+                {rank:5 , productName:"櫻桃杯子蛋糕-5", sales:109},
+                {rank:6 , productName:"櫻桃杯子蛋糕-6", sales:105},
+                {rank:7 , productName:"櫻桃杯子蛋糕-7", sales:102},
+                {rank:8 , productName:"櫻桃杯子蛋糕-8", sales:97},
+                {rank:9 , productName:"櫻桃杯子蛋糕-9", sales:94},
+                {rank:10 , productName:"櫻桃杯子蛋糕-10", sales:93}
+            ]
+
+            $.each(data, function (index, item) {
+            var trHtml = `
+                        <tr>
+                            <td>${item.rank}</td>
+                            <td>${item.productName}</td>
+                            <td>${item.sales}</td>
+                        </tr>`;
+            $("#rankTable tbody").append(trHtml);
+        })
+
+            // //每頁顯示4筆資料
+            // var rowsNum = 4;
+            // pageLimits=()=>{
+            //     var pagesNum = Math.ceil(data.length/rowsNum); //算出總共有幾頁
+            //     // alert(pagesNum);
+            //     // $('#paginationArea').html(''); //清空重新渲染
+            //     //產生pages number
+            //     for( var i =1; i<=pagesNum; i++){
+            //         var str = "";
+            //         if(i=1){
+            //             str += `<a href="#" class="activePage">${i}</a>`;
+            //         }else{
+            //             str += `<a href="#" class="nonActivePage">${i}</a>`;
+            //         };
+            //         console.log(str);
+
+            //         $('.preNextPage').before(str);
+
+
+            //         // $('.preNextPage').before(`<a href="#" class="activePage">${i}</a>`);
+            //     }
+            // }
+
+            // pageLimits();
         });
     </script>
 </body>

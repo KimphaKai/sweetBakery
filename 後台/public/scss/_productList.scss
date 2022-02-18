@@ -1,5 +1,15 @@
 #productSearchArea{
     @include inputSearch;
+    input{
+        right: 30px;
+    }
+    i{
+        position: absolute;
+        right: 0;
+        top: 7px;
+        font-size: 15pt;
+        color: $brown;
+    }
 }
 #productSortArea{
     margin-top: 45px;
@@ -7,30 +17,21 @@
     position: relative;
     #productEditArea{
         position: absolute;
-        left: 0;
-        display: none;
+        left: 0; 
+        div{
+            display: none;
+        }   
     }
     select{
-        font-size: 16pt;
-        border-radius: 3px;
-        padding: 3px 3px;
-        color:$brown;
-        
-        
+        @include selectStyle;
+        margin: 10px 5px 0 0;
     }
+    // .search{
+    //     color: $brown;
+    // }
     button{
-        color: $brown;
-        background: white;
-        border: 1px solid $gray;
-        font-size: 14pt;
-        padding: 3px 5px;
-        border-radius: 3px;
-        cursor: pointer;
-        &:first-of-type{
-            position: absolute;
-            left: 0;
-            // display: none;
-        }
+        @include buttonStyle;
+        margin: 10px 5px 0 0;
     }
 }
 .productList{
@@ -40,7 +41,7 @@
         padding-left: 10px;
     }
     input[type="checkbox"]{
-        padding-left: 10px;
+        transform: scale(1.5);
     }
     input{
         height: 30px;
