@@ -39,7 +39,7 @@
         <div class="search-wrapper">
           <form class="searchForm" action="/">
             <input class="search-input" type="search" name="productSearch" placeholder="搜尋商品...">
-            <button type="button" class="search-btn">
+            <button type="button" class="searchBtn">
               <svg width="1.2rem" height="1.2rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#4d4d4d">
                 <title>Asset 19</title>
                 <g id="Layer_2" data-name="Layer 2">
@@ -165,7 +165,7 @@
       <img src="public/img/class/class1.jpg">
       <div class="classContent">
         <h2 class="classTitle">親手製作 - 日式布丁草莓蛋糕
-          <span>(剩餘名額: <span class="remain">5</span> 人)</span>
+          <span>(剩餘名額: <span class="remain">10</span> 人)</span>
         </h2>
         <div class="classTime"><i class="fas fa-calendar"></i>2022 /01/22 (六) 14:00 ~ 16:30</div>
         <div class="classPrice">NT $2,200</div>
@@ -259,6 +259,15 @@
   </footer>
 
   <script src="javascript/script.js"></script>
+
+  <script>
+
+    var inputVal = document.getElementById("guestNum")
+    sessionStorage.setItem("key", inputVal.value);
+    var data = sessionStorage.getItem("key")
+    console.log(data)
+
+  </script>
 
 </body>
 
