@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
-  //reload page when back_forward
+  /** reload page when back_forward **/
   var perfEntries = performance.getEntriesByType("navigation");
 
   if (perfEntries[0].type === "back_forward") {
     location.reload(true);
   }
 
-  //increment/decrement
-  var remain = $(".remain").text()
+  /** increment/decrement **/
+  var remain = parseInt($(".remain").text())
 
   $(".plus").on("click", function () {
 
@@ -28,12 +28,26 @@ $(document).ready(function () {
 
     sessionStorage.setItem("key", value)
     var data = sessionStorage.getItem("key")
-    console.log(`session storage ${data}`)
     $(".test").text(data)
 
   })
 
+  $(".inputNum").on("keyup", function () {
+    var value = $(".inputNum").val();
 
+    if (value > remain) {
+      $(".errorMsg").css("display", "inline-block");
+      $(".signUpBtn").prop("disabled", true);
+    } else {
+      $(".errorMsg").css("display", "none");
+      $(".signUpBtn").prop("disabled", false);
+    }
+
+    sessionStorage.setItem("key", value)
+    var data = sessionStorage.getItem("key")
+    console.log(`storage ${data}`)
+
+  })
 
   $(".minus").on("click", function () {
 

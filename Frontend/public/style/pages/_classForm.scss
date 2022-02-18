@@ -25,12 +25,11 @@
   .classTitle{
     font-size: 2rem;
     font-weight: 700;
-  }
-
-  .remain{
-    font-size: 1.3rem;
-    color: $text-color;
-    white-space: nowrap;
+    span, .remain{
+      font-size: 1.3rem;
+      color: $text-color;
+      white-space: nowrap;
+    }
   }
 
   .classTime{
