@@ -8,6 +8,11 @@ $(document).ready(function () {
 
     var databaseUserEmail = []; //資料庫內的資料
 
+    // 輸入信箱，密碼，確認密碼，電話號碼，生日>
+    // 比對信箱有無存在 > 比對密碼跟確認密碼是否一樣 > 
+    // 如果無存在 > 新增到資料庫內
+
+
 
     $('.signBtn').on('click', function(){
         //得到輸入的內容
