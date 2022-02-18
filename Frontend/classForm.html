@@ -169,7 +169,7 @@
         </h2>
         <div class="classTime"><i class="fas fa-calendar"></i>2022 /01/22 (六) 14:00 ~ 16:30</div>
         <div class="classPrice">NT $2,200</div>
-        <div class="guest">報名人數: <span>2</span>人</div>
+        <div class="guest">報名人數: <span id="guestNum"></span>人</div>
       </div>
     </div>
 
@@ -227,6 +227,15 @@
   </footer>
 
   <script src="javascript/script.js"></script>
+
+  <script>
+
+    var data = sessionStorage.getItem("key")
+    var guestNum = document.getElementById("guestNum")
+
+    guestNum.innerText = data;
+
+  </script>
 
 </body>
 

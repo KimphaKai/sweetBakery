@@ -29,45 +29,46 @@
 
   .modal-body{
     display: flex;
-    // flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
     .productImg{
       max-width: 350px;
-      // height: 100%;
       margin: 0 1rem;
     }
 
     .productCheckout{
       margin-left: 1rem;
-      .productName{
-        font-size: 4vmin;
+      .productTitle{
+        font-size: 2rem;
       }
       .price{
         color: $text-color;
         font-weight: 700;
+        font-size: 1.3rem;
       }
-      .productDesc{
+      .productInfo{
         background-color: $gray;
         padding: 1rem;
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         margin-top: 1rem;
       }
 
       .productQty{
+        display: flex;
+        justify-content: center;
         margin-top: 1rem;
         #productNum{
-          font-size: 1.3rem;
+          font-size: 1.5rem;
           text-align: center;
           width: 5rem;
         }
         .btn {
           border: 2px solid $text-color;
           background-color: transparent;
-          width: 1.8rem;
-          height: 1.8rem;
+          width: 2.5rem;
+          height: 2.5rem;
           color: $text-color;
-          border-radius: 100vw;
+          border-radius: 1rem;
           cursor: pointer;
           &:hover{
             background-color: $pink;
@@ -77,11 +78,24 @@
         }
       }
       .addToCartBtn{
-        padding: 0.5rem 0;
-        width: 10rem;
+        padding: 1rem 2rem;
+        width: 100%;
         margin: 1rem 1rem 0 0;
         font-size: 1rem;
         border-radius: 0.3rem;
+      }
+    }
+  }
+  @media screen and (max-width: 785px) {
+    .modal-body{
+      flex-wrap: wrap;
+      .productImg{
+        width: 300px;
+      }
+      .productCheckout{
+        .productTitle{
+          font-size: 1.5rem;
+        }
       }
     }
   }
