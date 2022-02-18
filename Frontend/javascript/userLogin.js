@@ -2,85 +2,91 @@ $(document).ready(function () {
 
     var loginUserEmail; // 會員信箱
     var loginUserPassword; // 會員密碼
-    var databaseUserEmail = []; 
-    // 資料庫內的資料
-    // [{user = {
-    //     email:'',
-    //     password:''
-    //     }}
-    // ]
-    
+    var compareEmail = 0; // 比對email狀態 1 = true
+    var comparePassword = 0; //比對password狀態 0 = false
+    var databaseUserInformation = [{
+        name: 'cosmo',
+        email: 'cosmo4956@gmail.com',
+        password: 'cosmo',
+        phone: '0912345678'
+    }, {
+        name: 'kimpha',
+        email: 'hark521632@yahoo.com',
+        password: 'black',
+        phone: '0912345678'
+    },{
+        name: 'kimpha',
+        email: 'polo709168@gmail.com',
+        password: 'near',
+        phone: '0912345678'
+    }]
+    var databaseUserPasswordCorrent; //密碼的位置
+/// 如何拿到後台的資料放進databaseUserEmail[]裡面 ///
 
-    //點按鈕登入 > 判斷內容是否為空 > 
-    //信箱是否有註冊過(如果無註冊 須提醒) >
-    //開始比對信箱 > 比對密碼 > 
-     
 
-    //點擊登入
-    $('.loginBtn').on('click', function () {
-        RefreshLoginUserInformation();
-        if(loginUserEmail != null && loginUserPassword != null){
-            if(CheckUserEmail()){
-                return;
-            }else{
-                //message error email is wrong
-            }
-            if(checkUserPassword){
-                return;
-            }else{
+//點擊登入
+$('.loginBtn').on('click', function () {
+    GetInputLoginUserInformation(); // 取得資料
+    if (loginUserEmail != null && loginUserPassword != null) {
+
+        CheckUserEmail(); //比對信箱
+
+        if (compareEmail == 1) {
+            console.log('email is right');
+
+            checkUserPassword();
+
+            if (comparePassword == 1) {
+                console.log('password is right');
+            } else {
+                console.log('password is wrong');
                 //message error password is wrong
             }
-        }else{
-            //message error;
+        } else {
+            console.log('email is not exist');
         }
-        
+
+    } else {
+        console.log('error!! email or password is null'); //message error;
+    }
+    RefreshLoginUserInformation(); //初始化
+})
+
+//初始化
+function RefreshLoginUserInformation() {
+    compareEmail = 0;
+    comparePassword = 0;
+}
+
+//取得輸入資訊
+function GetInputLoginUserInformation() {
+    loginUserEmail = $('.loginEmail').val();
+    loginUserPassword = $('.loginPassword').val();
+}
+
+
+//察看信箱是否已經存在
+function CheckUserEmail() {
+    RefreshLoginUserInformation();
+    $(databaseUserInformation).each(function (index, item) {
+        if (loginUserEmail == item.email) {
+            compareEmail = 1;
+            databaseUserPasswordCorrent = index;
+            return false; //跳出
+        }
     })
+}
 
-    //初始化
-    function RefreshLoginUserInformation(){
-
-        loginUserEmail = $('.loginEmail').val();
-        loginUserPassword = $('.loginPassword').val();
-
-        // return loginUserEmail,loginUserEmail;
+//比對密碼是否正確
+function checkUserPassword() {
+    RefreshLoginUserInformation();
+    if (loginUserPassword == databaseUserInformation[databaseUserPasswordCorrent].password) {
+        comparePassword = 1;
+        return false; //跳出
     }
-
-    //取得會員信箱
-    function GetUserEmail() {
-            
-    }
-
-    //比對有無存在相同信箱
-    function CheckUserEmail() {
-        GetUserEmail();
-
-        $(formdatebase).each(function (index, item) {
-            if (item == loginUserEmail) {
-                //continum
-            } else {
-                //error mesasage
-            }
-        })
-    }
-
-
-    //取得會員密碼
-    function GetUserPassword() {
-     
-    }
-
-    //比對密碼是否正確
-    function checkUserPassword() {
-        GetUserPassword()
-
-        $(formdatebase).each(function (index, item) {
-            if (item == loginUserPassword) {
-                //continum
-            } else {
-                //error mesasage
-            }
-        })
-    }
+    
+    databaseUserPasswordCorrent = 0;
+}
 
 
 })
