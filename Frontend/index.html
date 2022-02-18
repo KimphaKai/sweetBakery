@@ -102,11 +102,12 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input type="email" placeholder="電子信箱" required />
-            <input type="password" placeholder="密碼" required />
-            <input type="password" placeholder="確認密碼" requried />
-            <input type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
-            <button>註冊</button>
+            <input class="signupEmail" type="email" placeholder="電子信箱" required />
+            <input class="signupPassword" type="password" placeholder="密碼" required />
+            <input class="signupCheckPassword" type="password" placeholder="確認密碼" requried />
+            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
+            <input class="signupDate" type="date">
+            <button class="signupBtn">註冊</button>
           </form>
         </div>
         <div class="form-container sign-in-container">
@@ -118,10 +119,10 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
+            <input class="loginEmail" type="email" placeholder="Email" required />
+            <input class="loginPassword" type="password" placeholder="Password" required />
             <a class="forgetPwBtn" href="#">忘記密碼?</a>
-            <button>登入</button>
+            <button class="loginBtn">登入</button>
           </form>
         </div>
         <div class="overlay-container">
@@ -363,6 +364,7 @@
   <!-- Javascript -->
   <script type="text/javascript" src="javascript/slider.js"></script>
   <script src="javascript/script.js"></script>
+  <script src="javascript/userLogin.js"></script>
 
 </body>
 
