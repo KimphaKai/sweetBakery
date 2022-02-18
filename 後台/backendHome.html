@@ -170,11 +170,11 @@
                         </tbody>
                     </table>
                     <div id="paginationArea">
-                        <a href="#" class="preNextPage">&lt;</a>
-                        <!-- <a href="#" class="activePage">1</a>
-                        <a href="#" class="nonActivePage">2</a>
-                        <a href="#" class="nonActivePage">3</a> -->
-                        <a href="#" class="preNextPage">&gt;</a>
+                        <a href="#" class="pages preNextPage">&lt;</a>
+                        <a href="#" class="pages activePage">1</a>
+                        <a href="#" class="pages nonActivePage">2</a>
+                        <a href="#" class="pages nonActivePage">3</a>
+                        <a href="#" class="pages preNextPage">&gt;</a>
                     </div>
                 </div>
             </div>
@@ -216,52 +216,97 @@
             //分頁功能
             //假資料
             var data = [
-                {rank:1 , productName:"櫻桃杯子蛋糕-1", sales:132},
-                {rank:2 , productName:"櫻桃杯子蛋糕-2", sales:124},
-                {rank:3 , productName:"櫻桃杯子蛋糕-3", sales:118},
-                {rank:4 , productName:"櫻桃杯子蛋糕-4", sales:116},
-                {rank:5 , productName:"櫻桃杯子蛋糕-5", sales:109},
-                {rank:6 , productName:"櫻桃杯子蛋糕-6", sales:105},
-                {rank:7 , productName:"櫻桃杯子蛋糕-7", sales:102},
-                {rank:8 , productName:"櫻桃杯子蛋糕-8", sales:97},
-                {rank:9 , productName:"櫻桃杯子蛋糕-9", sales:94},
-                {rank:10 , productName:"櫻桃杯子蛋糕-10", sales:93}
+                {ranks:1 , productName:"櫻桃杯子蛋糕-1", sales:132},
+                {ranks:2 , productName:"櫻桃杯子蛋糕-2", sales:124},
+                {ranks:3 , productName:"櫻桃杯子蛋糕-3", sales:118},
+                {ranks:4 , productName:"櫻桃杯子蛋糕-4", sales:116},
+                {ranks:5 , productName:"櫻桃杯子蛋糕-5", sales:109},
+                {ranks:6 , productName:"櫻桃杯子蛋糕-6", sales:105},
+                {ranks:7 , productName:"櫻桃杯子蛋糕-7", sales:102},
+                {ranks:8 , productName:"櫻桃杯子蛋糕-8", sales:97},
+                {ranks:9 , productName:"櫻桃杯子蛋糕-9", sales:94},
+                {ranks:10 , productName:"櫻桃杯子蛋糕-10", sales:93},
+                {ranks:11 , productName:"櫻桃杯子蛋糕-11", sales:91},
+                {ranks:12 , productName:"櫻桃杯子蛋糕-12", sales:90},
+
             ]
 
-            $.each(data, function (index, item) {
-            var trHtml = `
-                        <tr>
-                            <td>${item.rank}</td>
-                            <td>${item.productName}</td>
-                            <td>${item.sales}</td>
-                        </tr>`;
-            $("#rankTable tbody").append(trHtml);
-        })
+            printData(0,3);
 
-            // //每頁顯示4筆資料
-            // var rowsNum = 4;
-            // pageLimits=()=>{
-            //     var pagesNum = Math.ceil(data.length/rowsNum); //算出總共有幾頁
-            //     // alert(pagesNum);
-            //     // $('#paginationArea').html(''); //清空重新渲染
-            //     //產生pages number
-            //     for( var i =1; i<=pagesNum; i++){
-            //         var str = "";
-            //         if(i=1){
-            //             str += `<a href="#" class="activePage">${i}</a>`;
-            //         }else{
-            //             str += `<a href="#" class="nonActivePage">${i}</a>`;
-            //         };
-            //         console.log(str);
+            
+            var rowsNum = 4;//每頁顯示4筆資料
+            var pagesNum = Math.ceil(data.length/rowsNum); //算出總共有幾頁
+            var currentPage = 0;//當前所按的頁數
 
-            //         $('.preNextPage').before(str);
+            $('#paginationArea').text(''); //清空重新渲染
+            //把page的a渲染出來
+            if(pagesNum>1){
+                console.log('im in!')
+                $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
+                for(var i=1; i<=pagesNum; i++){
+                    $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                }
+                $('.nonActivePage:first').removeClass('nonActivePage').addClass('activePage');
+                $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
+            }
+
+            
+            $('.pages').on('click', function(e){
+                $('.activePage').addClass('nonActivePage').removeClass('activePage');
+                $(this).addClass('activePage').removeClass('nonActivePage');
+                e.preventDefault();
+                doPagination(this);
+                
+            })
 
 
-            //         // $('.preNextPage').before(`<a href="#" class="activePage">${i}</a>`);
-            //     }
-            // }
 
-            // pageLimits();
+            $('.preNextPage:first').on('click', function(e){
+                doPreNextPage(e, $('.activePage').prev());
+            })
+
+            $('.preNextPage:last').on('click', function(e){
+                doPreNextPage(e, $('.activePage').next() );
+            })
+
+            function doPreNextPage (event,elm){
+                event.preventDefault();
+                if(!isNaN(elm.text())){
+                    $('.activePage').addClass('nonActivePage').removeClass('activePage');
+                    elm.addClass('activePage').removeClass('nonActivePage');
+                    doPagination(elm);
+                }
+            }
+
+            function doPagination(_this){
+                currentPage = $(_this).text();
+                var rowStart = (currentPage-1)*4; 
+                var rowEnd=0;
+                if(pagesNum < currentPage*4){  //10筆 1:0123 2:4567 3:8910
+                    rowEnd=rowStart+(pagesNum%4);//start:8 end:10
+                }else{
+                    rowEnd = currentPage*4-1;//12筆 1:0123  2:4567 3:891011
+                }
+                // console.log(rowEnd);
+                $("#rankTable tbody").text('');
+                printData(rowStart,rowEnd);
+            }
+
+            function printData(start, end){
+                for(var i=start; i<=end; i++){
+                    var str = `<tr>
+                                    <td>${data[i].ranks}</td>
+                                    <td>${data[i].productName}</td>
+                                    <td>${data[i].sales}</td>
+                                </tr>`;
+                    $("#rankTable tbody").append(str);
+                }
+            }
+
+
+            
+
+            
         });
     </script>
 </body>
