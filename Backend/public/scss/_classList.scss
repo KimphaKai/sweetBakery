@@ -1,0 +1,42 @@
+#mainWrapper{
+    position: relative;
+}
+.classSearchArea{
+    @include inputSearch;
+    margin-bottom: 45px;
+    input{
+        right: 30px;
+    }
+    i{
+        position: absolute;
+        right: 0;
+        top: 7px;
+        font-size: 15pt;
+        color: $brown;
+    }
+}
+
+.newClass{
+    @include buttonStyle;
+    float: right;
+    margin: 10px 5px 0 0;
+}
+.classList{
+    @include tableStyle;
+    th:nth-of-type(4){
+        width: 100px;
+    }
+    .className{
+        width: 200px;
+    }
+    .classPrice{
+        width: 90px;
+    }
+    .classDuration{
+        width: 60px;
+    }
+    .btnStyle{
+        @include btnStyle;
+
+    }
+}
