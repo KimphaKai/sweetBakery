@@ -1,0 +1,64 @@
+#mainWrapper{
+    position: relative;
+}
+.classTimeSearchArea{
+    @include inputSearch;
+    margin-bottom: 45px;
+    input{
+        right: 30px;
+    }
+    i{
+        position: absolute;
+        right: 0;
+        top: 7px;
+        font-size: 15pt;
+        color: $brown;
+    }
+
+}
+#classTimeEditArea{
+    position: absolute;
+    left: 0;
+    top: 125px; 
+    // .classTimeEditAll{
+    //     display: none;
+    // }
+
+    button{
+        @include buttonStyle;
+        margin: 10px 5px 0 0;
+    }
+    #classTimeEdit{
+        display: none;
+    }
+    
+}
+
+.newClassTime{
+    @include buttonStyle;
+    margin: 10px 5px 0 0;
+    float: right;
+
+}
+.classTimeList{
+    @include tableStyle;
+    tbody{
+        tr{
+            height: 80px;
+            padding: 5px 0;
+        }
+        td:nth-of-type(3){
+            width: 250px;
+        }
+
+    }
+    input{
+        margin: 5px 0;
+    }
+    .totalPeople{
+        width: 60px;
+    }
+    .btnStyle{
+        @include btnStyle;
+    }
+}

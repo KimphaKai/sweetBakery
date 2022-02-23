@@ -107,7 +107,7 @@
                             <option value="11">11月</option>
                             <option value="12">12月</option>
                         </select>
-                        <p>本月銷售額</p>
+                        <p >本月銷售額</p>
                         <label id="sales">$1,223,222</label>
                         <span>(TWD)</span>
                     </div>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 <div id="rankInfo">
-                    <div class="selectArea">
+                    <div class="selectArea"> 
                         <select name="rankYear" id="salesYear">
                             <option value="2021">2021年</option>
                             <option value="2022">2022年</option>
@@ -269,14 +269,14 @@
 
 
             // 頁籤
-            $('.tabItem').on('click', function () {
+            $('.tabItem').on('click',function(){
                 $('.tabItem').removeClass('tabActive');
                 $(this).addClass('tabActive');
-                let showArea = $(this).text();
-                if (showArea === '商品排行') {
+                let showArea=$(this).text();
+                if(showArea==='商品排行'){
                     $('#salesInfo').hide();
                     $('#rankInfo').show();
-                } else {
+                }else{
                     $('#salesInfo').show();
                     $('#rankInfo').hide();
                 }
@@ -287,99 +287,84 @@
             //分頁功能
             //假資料
             var data = [
-                { ranks: 1, productName: "櫻桃杯子蛋糕-1", sales: 132 },
-                { ranks: 2, productName: "櫻桃杯子蛋糕-2", sales: 124 },
-                { ranks: 3, productName: "櫻桃杯子蛋糕-3", sales: 118 },
-                { ranks: 4, productName: "櫻桃杯子蛋糕-4", sales: 116 },
-                { ranks: 5, productName: "櫻桃杯子蛋糕-5", sales: 109 },
-                { ranks: 6, productName: "櫻桃杯子蛋糕-6", sales: 105 },
-                { ranks: 7, productName: "櫻桃杯子蛋糕-7", sales: 102 },
-                { ranks: 8, productName: "櫻桃杯子蛋糕-8", sales: 97 },
-                { ranks: 9, productName: "櫻桃杯子蛋糕-9", sales: 94 },
-                { ranks: 10, productName: "櫻桃杯子蛋糕-10", sales: 93 },
-                { ranks: 11, productName: "櫻桃杯子蛋糕-11", sales: 91 },
-                { ranks: 12, productName: "櫻桃杯子蛋糕-12", sales: 90 },
+                {ranks:1 , productName:"櫻桃杯子蛋糕-1", sales:132},
+                {ranks:2 , productName:"櫻桃杯子蛋糕-2", sales:124},
+                {ranks:3 , productName:"櫻桃杯子蛋糕-3", sales:118},
+                {ranks:4 , productName:"櫻桃杯子蛋糕-4", sales:116},
+                {ranks:5 , productName:"櫻桃杯子蛋糕-5", sales:109},
+                {ranks:6 , productName:"櫻桃杯子蛋糕-6", sales:105},
+                {ranks:7 , productName:"櫻桃杯子蛋糕-7", sales:102},
+                {ranks:8 , productName:"櫻桃杯子蛋糕-8", sales:97},
+                {ranks:9 , productName:"櫻桃杯子蛋糕-9", sales:94},
+                {ranks:10 , productName:"櫻桃杯子蛋糕-10", sales:93},
+                {ranks:11 , productName:"櫻桃杯子蛋糕-11", sales:91},
+                {ranks:12 , productName:"櫻桃杯子蛋糕-12", sales:90},
 
             ]
 
-            printData(0, 3);
+            printData(0,3);
 
-
+            
             var rowsNum = 4;//每頁顯示4筆資料
-            var pagesNum = Math.ceil(data.length / rowsNum); //算出總共有幾頁
+            var pagesNum = Math.ceil(data.length/rowsNum); //算出總共有幾頁
             var currentPage = 0;//當前所按的頁數
 
             $('#paginationArea').text(''); //清空重新渲染
-
             //把page的a渲染出來
-<<<<<<< HEAD:後台/backendHome.html
-            if (pagesNum > 1) {
-                console.log('im in!')
-=======
             if(pagesNum>1){
                 // console.log('im in!')
->>>>>>> ff08294dc8d6d9ff2cd33806e2f75837b094bb6b:Backend/public/index.html
                 $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
-                for (var i = 1; i <= pagesNum; i++) {
+                for(var i=1; i<=pagesNum; i++){
                     $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
                 }
                 $('.nonActivePage:first').removeClass('nonActivePage').addClass('activePage');
-                $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>');
+                $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
             }
 
-
-            $('.pages').on('click', function (e) {
+            
+            $('.pages').on('click', function(e){
                 $('.activePage').addClass('nonActivePage').removeClass('activePage');
                 $(this).addClass('activePage').removeClass('nonActivePage');
                 e.preventDefault();
                 doPagination(this);
-
+                
             })
 
 
 
-            $('.preNextPage:first').on('click', function (e) {
+            $('.preNextPage:first').on('click', function(e){
                 doPreNextPage(e, $('.activePage').prev());
             })
 
-            $('.preNextPage:last').on('click', function (e) {
-                doPreNextPage(e, $('.activePage').next());
+            $('.preNextPage:last').on('click', function(e){
+                doPreNextPage(e, $('.activePage').next() );
             })
 
-            function doPreNextPage(event, elm) {
+            function doPreNextPage (event,elm){
                 event.preventDefault();
-                if (!isNaN(elm.text())) {
+                if(!isNaN(elm.text())){
                     $('.activePage').addClass('nonActivePage').removeClass('activePage');
                     elm.addClass('activePage').removeClass('nonActivePage');
                     doPagination(elm);
                 }
             }
 
-            function doPagination(_this) {
+            function doPagination(_this){
                 currentPage = $(_this).text();
-<<<<<<< HEAD:後台/backendHome.html
-                var rowStart = (currentPage - 1) * 4;
-                var rowEnd = 0;
-                if (pagesNum < currentPage * 4) {  //10筆 1:0123 2:4567 3:8910
-                    rowEnd = rowStart + (pagesNum % 4);//start:8 end:10
-                } else {
-                    rowEnd = currentPage * 4 - 1;//12筆 1:0123  2:4567 3:891011
-=======
                 var rowStart = (currentPage-1)*4; 
                 var rowEnd=0;
                 if(pagesNum < currentPage*4){  //10筆 1:0123 2:4567 3:89
                     rowEnd=rowStart+(pagesNum%4);//start:8 end:10
                 }else{
                     rowEnd = currentPage*4-1;//12筆 1:0123  2:4567 3:891011
->>>>>>> ff08294dc8d6d9ff2cd33806e2f75837b094bb6b:Backend/public/index.html
                 }
                 // console.log(rowEnd);
                 $("#rankTable tbody").text('');
-                printData(rowStart, rowEnd);
+                printData(rowStart,rowEnd);
             }
 
-            function printData(start, end) {
-                for (var i = start; i <= end; i++) {
+            function printData(start, end){
+                for(var i=start; i<=end; i++){
                     var str = `<tr>
                                     <td>${data[i].ranks}</td>
                                     <td>${data[i].productName}</td>
@@ -390,9 +375,9 @@
             }
 
 
+            
 
-
-
+            
         });
     </script>
 </body>
