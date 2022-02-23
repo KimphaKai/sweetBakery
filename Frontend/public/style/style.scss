@@ -23,9 +23,9 @@
 @import "components/productModal";
 @import "components/loginModal";
 @import "components/forgetPwModal";
+@import "components/sideMenu";
 
 //pages
-@import "pages/home";
 @import "pages/about";
 @import "pages/classForm";
 @import "pages/classes";
@@ -33,7 +33,9 @@
 @import "pages/products";
 @import "pages/productDetail";
 @import "pages/user";
-@import "pages/userPasswordUpdate";
-@import "pages/userUpdate";
-
-
+@import "pages/passwordUpdate";
+@import "pages/userOrders";
+@import "pages/registeredClasses";
+@import "pages/userOrderHistory";
+@import "pages/cartCheckout";
+// @import "pages/cartList";

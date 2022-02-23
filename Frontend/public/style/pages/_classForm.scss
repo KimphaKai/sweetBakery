@@ -1,7 +1,13 @@
 .form{
-  margin: 2rem 10%;
+  // margin: 2rem 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 1000px;
+  max-width: 100%;
   .heading{
-    @include page-heading(0);
+    @include page-heading($pink);
     .divider{
      @include divider(100)
     } 

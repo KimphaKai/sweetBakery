@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   position: -webkit-sticky;
   position: sticky;
@@ -77,10 +78,14 @@ header .nav-items .nav-link {
   position: relative;
 }
 
+header .nav-items .nav-link.active {
+  border-bottom: 3px solid #F5B5BF;
+}
+
 header .nav-items .nav-link::after {
   content: "";
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 100%;
   bottom: -3px;
   left: 0;
@@ -96,7 +101,7 @@ header .nav-items .nav-link::after {
   transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
 }
 
-header .nav-items .nav-link:hover:after {
+header .nav-items .nav-link:hover:not(.active):after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transform-origin: bottom left;
@@ -220,19 +225,19 @@ header .icons .cartIcon .cartItems {
   }
 }
 
-.carousel .swiper {
+.carousel .heroSwiper {
   position: relative;
 }
 
-.carousel .swiper img {
+.carousel .heroSwiper img {
   width: 100%;
 }
 
-.carousel .swiper .swiper-pagination-bullet-active {
+.carousel .heroSwiper .swiper-pagination-bullet-active {
   background-color: #F5B5BF;
 }
 
-.carousel .swiper .swiper-button-prev, .carousel .swiper .swiper-button-next {
+.carousel .heroSwiper .swiper-button-prev, .carousel .heroSwiper .swiper-button-next {
   color: #F5B5BF;
   font-weight: 700;
 }
@@ -353,7 +358,7 @@ header .icons .cartIcon .cartItems {
 }
 
 .classRec .classCard {
-  border: 2px solid #dddddd;
+  border: 2px solid #ececec;
   border-radius: 10px;
   margin: 0 6%;
 }
@@ -433,7 +438,7 @@ header .icons .cartIcon .cartItems {
 }
 
 footer {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ececec;
 }
 
 footer .footer-container {
@@ -448,6 +453,7 @@ footer .footer-container {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 1.2rem 0;
 }
 
 footer .logo img {
@@ -640,11 +646,11 @@ table {
   padding: 0 var(--padding);
 }
 
-.body-wrapper .card-body .productTitle {
+.body-wrapper .card-body .productName {
   font-size: 1.2rem;
 }
 
-.body-wrapper .card-body .productTitle a {
+.body-wrapper .card-body .productName a {
   color: #4d4d4d;
 }
 
@@ -661,7 +667,7 @@ table {
 }
 
 .body-wrapper .cartBtn .fa-shopping-cart:hover {
-  color: #dddddd;
+  opacity: 0.5;
 }
 
 /* ---------------------------------- */
@@ -670,7 +676,7 @@ table {
   display: -ms-flexbox;
   display: flex;
   margin: 1rem;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #ececec;
 }
 
 .classImg {
@@ -773,10 +779,10 @@ table {
 .signUpBtn:hover:not([disabled]) {
   color: #fff;
   border: 0;
-  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  -webkit-transition: 300ms ease-in-out;
-  transition: 300ms ease-in-out;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
 .signUpBtn:disabled:hover {
@@ -806,8 +812,8 @@ table {
 }
 
 .addToCartBtn:hover {
-  background-color: #F5B5BF;
-  color: #fff;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
   -webkit-transition: 300ms ease-in-out;
   transition: 300ms ease-in-out;
 }
@@ -818,8 +824,8 @@ table {
 }
 
 .buyBtn:hover {
-  background-color: #dddddd;
-  color: #8E4C4C;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
   -webkit-transition: 300ms ease-in-out;
   transition: 300ms ease-in-out;
 }
@@ -858,6 +864,7 @@ table {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  z-index: -1;
 }
 
 .modal-container .closeModal {
@@ -895,7 +902,7 @@ table {
   margin-left: 1rem;
 }
 
-.modal-container .modal-body .productCheckout .productTitle {
+.modal-container .modal-body .productCheckout .productName {
   font-size: 2rem;
 }
 
@@ -906,7 +913,7 @@ table {
 }
 
 .modal-container .modal-body .productCheckout .productInfo {
-  background-color: #dddddd;
+  background-color: #ececec;
   padding: 1rem;
   font-size: 1.2rem;
   margin-top: 1rem;
@@ -952,6 +959,11 @@ table {
   border-radius: 0.3rem;
 }
 
+.modal-container .modal-body .productCheckout .addToCartBtn:hover {
+  background-color: #F5B5BF;
+  color: #fff;
+}
+
 @media screen and (max-width: 785px) {
   .modal-container .modal-body {
     -ms-flex-wrap: wrap;
@@ -960,7 +972,7 @@ table {
   .modal-container .modal-body .productImg {
     width: 300px;
   }
-  .modal-container .modal-body .productCheckout .productTitle {
+  .modal-container .modal-body .productCheckout .productName {
     font-size: 1.5rem;
   }
 }
@@ -1027,7 +1039,7 @@ table {
 }
 
 .loginModal .form-container form h1 {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .loginModal .form-container form span {
@@ -1036,8 +1048,8 @@ table {
 }
 
 .loginModal .form-container form input {
-  background: #dddddd;
-  border: 1px solid #dddddd;
+  background: #ececec;
+  border: 1px solid #ececec;
   border-radius: 0.5rem;
   padding: 0.5rem 1.2rem;
   width: 100%;
@@ -1058,7 +1070,7 @@ table {
 }
 
 .loginModal .social-container .social {
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   border-radius: 50%;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1295,8 +1307,8 @@ table {
 }
 
 .forgetPwModal .form-container input {
-  background: #dddddd;
-  border: 1px solid #dddddd;
+  background: #ececec;
+  border: 1px solid #ececec;
   border-radius: 0.5rem;
   padding: 0.5rem 1.3rem;
   width: 80%;
@@ -1342,7 +1354,6 @@ table {
 }
 
 .about .heading {
-  margin-left: 0;
   width: 76%;
   margin: 2rem 12%;
 }
@@ -1353,7 +1364,7 @@ table {
 }
 
 .about .heading .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -1491,11 +1502,19 @@ table {
 }
 
 .form {
-  margin: 2rem 10%;
-}
-
-.form .heading {
-  margin-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem auto;
+  width: 1000px;
+  max-width: 100%;
 }
 
 .form .heading .page-heading {
@@ -1504,7 +1523,7 @@ table {
 }
 
 .form .heading .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -1558,7 +1577,7 @@ table {
 }
 
 .form .guest-info .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 80%;
 }
@@ -1577,7 +1596,7 @@ table {
   display: -ms-flexbox;
   display: flex;
   margin-top: 1rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   border-radius: 0.3rem;
   padding: 0.5rem;
   width: 20rem;
@@ -1608,7 +1627,7 @@ table {
 }
 
 .form .buttons .submit {
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   background-color: transparent;
   color: #4d4d4d;
   border-radius: 0.5rem;
@@ -1628,13 +1647,13 @@ table {
   margin-left: 1rem;
   color: #4d4d4d;
   background-color: transparent;
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   border-radius: 0.5rem;
   padding: 0.5rem 2rem;
 }
 
 .form .buttons .cancel:hover {
-  background-color: #dddddd;
+  background-color: #ececec;
   color: #8E4C4C;
 }
 
@@ -1650,7 +1669,6 @@ table {
 }
 
 .classes .heading {
-  margin-left: 0;
   width: 82%;
   margin: 2rem 10%;
 }
@@ -1666,7 +1684,7 @@ table {
 }
 
 .classes .heading .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -1695,7 +1713,7 @@ table {
 }
 
 .classes .search .search-input {
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   padding: 0 0.5rem 0 1rem;
   background: transparent;
   width: 15rem;
@@ -1703,7 +1721,7 @@ table {
 }
 
 .classes .search .search-input:focus {
-  border-color: #F5B5BF;
+  border: 2px solid #F5B5BF;
 }
 
 .classes .search .searchBtn {
@@ -1755,11 +1773,19 @@ table {
 }
 
 .classDetail {
-  margin: 2rem 10%;
-}
-
-.classDetail .heading {
-  margin-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem auto;
+  width: 1000px;
+  max-width: 100%;
 }
 
 .classDetail .heading .page-heading {
@@ -1768,7 +1794,7 @@ table {
 }
 
 .classDetail .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -1817,10 +1843,6 @@ table {
   color: #8E4C4C;
 }
 
-.classDetail .guest-input {
-  margin-top: 3rem;
-}
-
 .classDetail .guest-input label {
   font-size: 1.2rem;
 }
@@ -1838,8 +1860,8 @@ table {
   color: #8E4C4C;
   font-size: 1rem;
   border-radius: 0.5rem;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
 }
 
@@ -1882,17 +1904,9 @@ table {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .classDetail .classTime {
-    font-size: 0.8rem;
-  }
-}
-
-.products {
-  /* sort style in component/sort.scss */
 }
 
 .products .heading {
-  margin-left: 0;
   width: 70%;
   margin: 1rem 24%;
 }
@@ -1903,7 +1917,7 @@ table {
 }
 
 .products .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -1930,6 +1944,7 @@ table {
 
 .products .productCategories {
   margin-top: 5%;
+  position: relative;
 }
 
 .products .productCategories .menu {
@@ -1963,41 +1978,20 @@ table {
   margin-top: 1rem;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 416px) {
   .products .heading {
-    margin-left: 0;
-    width: 80%;
-    margin-left: 15%;
+    width: 95%;
+    margin-left: 5%;
   }
   .products .heading .page-heading {
-    color: #F5B5BF;
+    color: 0;
     font-size: 2rem;
-  }
-  .products .productCategories .menu {
-    display: none;
-    background-color: transparent;
-    -webkit-box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-            box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-    width: 10rem;
-    height: 18rem;
-    padding: 1rem;
-    line-height: 3.5rem;
-    margin-top: 10%;
-  }
-  .products .productCategories .menu a {
-    font-size: 1.3rem;
-    color: #fff;
-    margin-left: 1rem;
-  }
-  .products .productCategories .menu a:hover {
-    text-decoration: underline;
   }
 }
 
 .productDetail .heading {
-  margin-left: 0;
   width: 75%;
-  margin: 2rem 15%;
+  margin: 2rem auto;
 }
 
 .productDetail .heading .page-heading {
@@ -2006,7 +2000,7 @@ table {
 }
 
 .productDetail .divider {
-  background-color: #dddddd;
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
@@ -2086,6 +2080,7 @@ table {
   height: 3rem;
   margin-top: 4rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .productDetail .qtyBtn i {
@@ -2115,7 +2110,7 @@ table {
 
 .productDetail .productDesc {
   margin: 3rem 0;
-  background-color: #FFF8E7;
+  background-color: #FBF7EC;
   min-height: 300px;
   margin-right: 20%;
   width: 100%;
@@ -2156,15 +2151,15 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ececec;
+  background-color: #FBF7EC;
   padding: 2rem 0;
 }
 
-.user .sideBar {
+.user .sidebar {
   margin: 2rem 0 5rem 3rem;
 }
 
-.user .sideBar .sideMenu {
+.user .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
   border-radius: 0.3rem;
   background-color: #fff;
@@ -2176,29 +2171,28 @@ table {
   margin-right: 5rem;
 }
 
-.user .sideBar .sideMenu li {
+.user .sidebar .sideMenu li {
   font-size: 2rem;
 }
 
-.user .sideBar .sideMenu i {
+.user .sidebar .sideMenu i {
   margin-right: 0.5rem;
 }
 
-.user .sideBar .sideMenu a {
+.user .sidebar .sideMenu a {
   font-size: 1.3rem;
-  color: #919191;
+  color: #707070;
   margin: 0 auto;
   position: relative;
 }
 
-.user .sideBar .sideMenu a:hover {
+.user .sidebar .sideMenu a:hover {
   color: #8E4C4C;
 }
 
-.user .sideBar .sideMenu a#user {
+.user .sidebar .sideMenu a#user {
   color: #8E4C4C;
   font-weight: 700;
-  pointer-events: none;
 }
 
 .user .userInfoContainer {
@@ -2206,13 +2200,8 @@ table {
   border-radius: 0.3rem;
   margin: 2rem 5rem 0 0;
   background-color: #fff;
-}
-
-.user .userInfoContainer .divider {
-  margin-left: 2rem;
-  background-color: #dddddd;
-  height: 2px;
-  width: 90%;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .user .userInfoContainer .heading {
@@ -2220,6 +2209,13 @@ table {
   margin-left: 2rem;
   color: #8E4C4C;
   margin-top: 1rem;
+}
+
+.user .userInfoContainer .divider {
+  margin-left: 2rem;
+  background-color: #ececec;
+  height: 2px;
+  width: 90%;
 }
 
 .user .userInfoContainer form {
@@ -2250,10 +2246,11 @@ table {
   background: transparent;
   font-size: 1.3rem;
   color: #4d4d4d;
+  width: 100%;
 }
 
 .user .userInfoContainer .userData input:not([disabled]) {
-  border: 1px solid #dddddd;
+  border: 1px solid #707070;
   border-radius: 0.3rem;
   padding: 0.5rem 2rem 0.5rem 0.5rem;
 }
@@ -2265,32 +2262,26 @@ table {
 .user .userInfoContainer .userData select {
   cursor: pointer;
   margin-left: 2rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #ececec;
   padding: 0.5rem 3rem 0.5rem 0.5rem;
 }
 
 .user .userInfoContainer .buttons {
-  margin: 1rem 5rem;
+  margin: 3rem 5rem;
   text-align: end;
 }
 
-.user .userInfoContainer .buttons .submit {
+.user .userInfoContainer .buttons .submitBtn {
   cursor: pointer;
-  padding: 0.8rem 2rem;
+  padding: 1rem 3rem;
   border-radius: 0.3rem;
-  border: 1px solid #dddddd;
+  border: 1px solid #4d4d4d;
   font-size: 1rem;
 }
 
-.user .userInfoContainer .buttons .submit a {
-  color: #F5B5BF;
-}
-
-.user .userInfoContainer .buttons .submit:hover {
-  background-color: #F5B5BF;
-}
-
-.user .userInfoContainer .buttons .submit:hover a {
+.user .userInfoContainer .buttons .submitBtn:hover {
+  background: #F5B5BF;
+  border-color: #F5B5BF;
   color: #fff;
 }
 
@@ -2304,184 +2295,152 @@ table {
   margin-top: 1rem;
 }
 
-body .header {
-  padding: 0 2rem 0;
-  -webkit-box-shadow: #d6d6d6 0.5rem 0.5rem 0.5rem;
-          box-shadow: #d6d6d6 0.5rem 0.5rem 0.5rem;
-  width: 100%;
-}
-
-body .userPasswordUpdate {
-  width: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.userPasswordUpdate {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* sort style in component/sort.scss */
+  background-color: #FBF7EC;
+  padding: 2rem 0;
+  height: 100vh;
 }
 
-body .userPasswordUpdate .sideBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 3.5rem 0 0 3rem;
+.userPasswordUpdate .sidebar {
+  margin: 2rem 0 5rem 3rem;
 }
 
-body .userPasswordUpdate .sideBar .menu {
+.userPasswordUpdate .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  -webkit-box-shadow: -0.3rem -0.3rem 0 #F5B5BF, 0.3rem 0.3rem 0 #E1EFD4;
-          box-shadow: -0.3rem -0.3rem 0 #F5B5BF, 0.3rem 0.3rem 0 #E1EFD4;
-  border-radius: 10px;
-  background-color: white;
-  width: 12.5rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 13rem;
   height: 18rem;
-  line-height: 3.5rem;
+  line-height: 5rem;
+  margin-right: 5rem;
 }
 
-body .userPasswordUpdate .sideBar .menu li {
-  font-size: 1.6rem;
-  color: #8a8a8a;
-  margin: 0 0.3rem 0;
+.userPasswordUpdate .sidebar .sideMenu li {
+  font-size: 2rem;
 }
 
-body .userPasswordUpdate .sideBar .menu i {
+.userPasswordUpdate .sidebar .sideMenu i {
   margin-right: 0.5rem;
 }
 
-body .userPasswordUpdate .sideBar .menu a {
+.userPasswordUpdate .sidebar .sideMenu a {
   font-size: 1.3rem;
-  color: #919191;
+  color: #707070;
   margin: 0 auto;
   position: relative;
 }
 
-body .userPasswordUpdate .sideBar .menu a::after {
-  content: "";
-  position: absolute;
-  height: 3px;
+.userPasswordUpdate .sidebar .sideMenu a:hover {
+  color: #8E4C4C;
+}
+
+.userPasswordUpdate .sidebar .sideMenu a#passwordUpdate {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.userPasswordUpdate .passwordContainer {
   width: 100%;
-  bottom: -3px;
-  left: 0;
-  background: #F5B5BF;
-  border-radius: 1rem;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
-  transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  border-radius: 0.3rem;
+  margin: 2rem 5rem 0 0;
+  background-color: #fff;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-body .userPasswordUpdate .sideBar .menu a:hover:after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+.userPasswordUpdate .passwordContainer .heading {
+  font-size: 2rem;
+  margin-left: 2rem;
+  color: #8E4C4C;
+  margin-top: 1rem;
 }
 
-body .userPasswordUpdate .sideBar .menu a#userPasswordUpdate {
-  bottom: 0.3rem;
-  font-size: 1.5rem;
-  color: #838383;
-  border-bottom: 0.25rem solid #F5B5BF;
-}
-
-body .userPasswordUpdate .userData {
-  margin: 3rem 2rem 4rem 4rem;
-  padding: 2rem 3.5rem 3rem 3rem;
-  width: 40rem;
-  background-color: #fdf4f4;
-  -webkit-box-shadow: 0.2rem 0.2rem 0.2rem #b9b9b9;
-          box-shadow: 0.2rem 0.2rem 0.2rem #b9b9b9;
-  border: 2px solid #c9c9c9;
-  border-radius: 10px;
-}
-
-body .userPasswordUpdate .userData .heading {
-  font-size: 2.5em;
-  text-shadow: #929292 2px 2px;
-  color: #F5B5BF;
-  width: 100%;
-  text-align: start;
-}
-
-body .userPasswordUpdate .userData .divider {
-  margin: 1rem auto 2rem;
-  background-color: #dddddd;
+.userPasswordUpdate .passwordContainer .divider {
+  margin-left: 2rem;
+  background-color: #ececec;
   height: 2px;
-  width: 100%;
+  width: 90%;
 }
 
-body .userPasswordUpdate .userData .guestData {
+.userPasswordUpdate .passwordContainer form {
+  margin-top: 3rem;
+}
+
+.userPasswordUpdate .passwordContainer .userData {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 1rem 0;
-  font-size: 1rem;
-  width: 100%;
-  height: 2.8rem;
-}
-
-body .userPasswordUpdate .userData .guestData label {
-  margin: 0.2rem 0.5rem 0 4rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 32rem;
-  height: 100%;
+  width: 80%;
+  max-width: 100%;
+  margin: 2rem 2rem;
+  height: 2.5rem;
   font-size: 1.5rem;
-  text-align: right;
 }
 
-body .userPasswordUpdate .userData .guestData .formInput {
-  margin-right: 6rem;
-  padding: 0.5rem;
-  border: 1px solid #dddddd;
+.userPasswordUpdate .passwordContainer .userData label {
+  width: 25%;
+  opacity: 0.6;
+  text-align: end;
+}
+
+.userPasswordUpdate .passwordContainer .userData input {
+  margin-left: 2rem;
+  background: transparent;
+  font-size: 1.3rem;
+  color: #4d4d4d;
+  width: 100%;
+  border: 2px solid #ececec;
   border-radius: 0.3rem;
-  width: 20rem;
-  -webkit-box-shadow: 3.5px 3.5px 4px #d4d4d4;
-          box-shadow: 3.5px 3.5px 4px #d4d4d4;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
 }
 
-body .userPasswordUpdate .userData .guestData .formInput:focus {
-  -webkit-box-shadow: -1px -1px 3px #8a8a8a;
-          box-shadow: -1px -1px 3px #8a8a8a;
+.userPasswordUpdate .passwordContainer .userData input:focus {
+  border-color: #4d4d4d;
 }
 
-body .userPasswordUpdate .userData .buttons {
-  margin: 1rem 0 0 12.5rem;
-}
-
-body .userPasswordUpdate .userData .buttons .submit {
-  cursor: pointer;
-  margin: 1rem 1rem 1rem 0;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid #dddddd;
-  border-radius: 0.5rem;
-  background-color: #F5B5BF;
-  -webkit-box-shadow: 0.2rem 0.2rem 0 #E1EFD4;
-          box-shadow: 0.2rem 0.2rem 0 #E1EFD4;
-  color: dimgray;
+.userPasswordUpdate .passwordContainer .userData input::-webkit-input-placeholder {
   font-size: 1rem;
 }
 
-body .userPasswordUpdate .userData .buttons .submit:hover {
-  -webkit-box-shadow: 0.1rem 0.1rem 0.3rem #8a8a8a;
-          box-shadow: 0.1rem 0.1rem 0.3rem #8a8a8a;
+.userPasswordUpdate .passwordContainer .userData input:-ms-input-placeholder {
+  font-size: 1rem;
 }
 
-@media screen and (max-width: 1150px) {
-  body .userPasswordUpdate .userData .classInfo {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
+.userPasswordUpdate .passwordContainer .userData input::-ms-input-placeholder {
+  font-size: 1rem;
 }
 
-body .userPasswordUpdate .sort-container {
+.userPasswordUpdate .passwordContainer .userData input::placeholder {
+  font-size: 1rem;
+}
+
+.userPasswordUpdate .passwordContainer .buttons {
+  margin: 3rem 0 3rem 13.5rem;
+  text-align: start;
+}
+
+.userPasswordUpdate .passwordContainer .buttons .submitBtn {
+  cursor: pointer;
+  padding: 0.8rem 3rem;
+  border-radius: 0.3rem;
+  border: 1px solid #4d4d4d;
+  font-size: 1.2rem;
+}
+
+.userPasswordUpdate .passwordContainer .buttons .submitBtn:hover {
+  background: #8E4C4C;
+  color: #fff;
+}
+
+.userPasswordUpdate .sort-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2491,281 +2450,799 @@ body .userPasswordUpdate .sort-container {
   margin-top: 1rem;
 }
 
-@media screen and (max-width: 550px) {
-  body .userPasswordUpdate .heading {
-    margin-left: 0;
-    width: 80%;
-    margin-left: 15%;
-  }
-  body .userPasswordUpdate .heading .page-heading {
-    color: #F5B5BF;
-    font-size: 2rem;
-  }
-  body .userPasswordUpdate .sideBar .menu {
-    display: none;
-    background-color: transparent;
-    -webkit-box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-            box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-    width: 10rem;
-    height: 18rem;
-    padding: 1rem;
-    line-height: 3.5rem;
-    margin-top: 10%;
-  }
-  body .userPasswordUpdate .sideBar .menu li {
-    font-size: 1.3rem;
-    color: #fff;
-    margin-left: 1rem;
-  }
-  body .userPasswordUpdate .sideBar .menu a {
-    font-size: 1.3rem;
-    color: #fff;
-    margin: 0 auto;
-  }
-  body .userPasswordUpdate .sideBar .menu a:hover {
-    text-decoration: underline;
-  }
-}
-
-body .header {
-  padding: 0 2rem 0;
-  -webkit-box-shadow: #d6d6d6 0.5rem 0.5rem 0.5rem;
-          box-shadow: #d6d6d6 0.5rem 0.5rem 0.5rem;
-  width: 100%;
-}
-
-body .userUpdate {
-  width: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.userOrders {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* sort style in component/sort.scss */
+  background-color: #FBF7EC;
 }
 
-body .userUpdate .sideBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 3.5rem 0 0 3rem;
+.userOrders .sidebar {
+  margin: 2rem 0 5rem 3rem;
 }
 
-body .userUpdate .sideBar .menu {
+.userOrders .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  -webkit-box-shadow: -0.3rem -0.3rem 0 #F5B5BF, 0.3rem 0.3rem 0 #E1EFD4;
-          box-shadow: -0.3rem -0.3rem 0 #F5B5BF, 0.3rem 0.3rem 0 #E1EFD4;
-  border-radius: 10px;
-  background-color: white;
-  width: 12.5rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 13rem;
   height: 18rem;
-  line-height: 3.5rem;
+  line-height: 5rem;
+  margin-right: 5rem;
+  margin-top: 1.5rem;
 }
 
-body .userUpdate .sideBar .menu li {
-  font-size: 1.6rem;
-  color: #8a8a8a;
-  margin: 0 0.3rem 0;
+.userOrders .sidebar .sideMenu li {
+  font-size: 2rem;
 }
 
-body .userUpdate .sideBar .menu i {
+.userOrders .sidebar .sideMenu i {
   margin-right: 0.5rem;
 }
 
-body .userUpdate .sideBar .menu a {
+.userOrders .sidebar .sideMenu a {
   font-size: 1.3rem;
-  color: #919191;
-  margin: 0 auto;
-  position: relative;
+  color: #707070;
 }
 
-body .userUpdate .sideBar .menu a::after {
-  content: "";
-  position: absolute;
-  height: 3px;
+.userOrders .sidebar .sideMenu a:hover {
+  color: #8E4C4C;
+}
+
+.userOrders .sidebar .sideMenu a#userOrder {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.userOrders .content-wrapper {
+  margin-top: 3rem;
   width: 100%;
-  bottom: -3px;
-  left: 0;
-  background: #F5B5BF;
-  border-radius: 1rem;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
-  transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  margin-right: 3rem;
+  /******** 會員訂單 ********/
 }
 
-body .userUpdate .sideBar .menu a:hover:after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+.userOrders .content-wrapper .navBar {
+  width: 100%;
+  border: 1px solid #707070;
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
 
-body .userUpdate .sideBar .menu a#user {
-  bottom: 0.3rem;
+.userOrders .content-wrapper .navBar h3 {
   font-size: 1.5rem;
-  color: #838383;
-  border-bottom: 0.25rem solid #F5B5BF;
+  margin: 0 1rem 0.1rem 0;
+  color: #4d4d4d;
 }
 
-body .userUpdate .userData {
-  margin: 3rem 0 4rem 5rem;
-  padding: 2rem 2rem 3rem 2.5rem;
-  width: 42rem;
-  border-radius: 10px;
-  border: 2px solid #c9c9c9;
-  background-color: #fdf4f4;
-  -webkit-box-shadow: 0.2rem 0.2rem 0.2rem #b9b9b9;
-          box-shadow: 0.2rem 0.2rem 0.2rem #b9b9b9;
+.userOrders .content-wrapper .navBar .nav-link {
+  margin: 0 2rem;
 }
 
-body .userUpdate .userData .heading {
-  font-size: 2.5em;
-  color: #F5B5BF;
-  text-shadow: #929292 2px 2px 2px;
-  width: 100%;
-  text-align: start;
+.userOrders .content-wrapper .navBar .nav-link a {
+  position: relative;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  color: #919191;
+  background-color: #fff;
 }
 
-body .userUpdate .userData .divider {
-  margin: 1rem auto 2rem;
-  background-color: #dddddd;
+.userOrders .content-wrapper .navBar .nav-link a:hover {
+  color: #8E4C4C;
+}
+
+.userOrders .content-wrapper .navBar .nav-link a.active {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.userOrders .content-wrapper .orderCard {
+  background-color: #fff;
+  border: 1px solid #707070;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.userOrders .content-wrapper .orderCard:last-child {
+  margin-bottom: 2rem;
+}
+
+.userOrders .content-wrapper .orderDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ececec;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}
+
+.userOrders .content-wrapper .orderDetail .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userOrders .content-wrapper .orderDetail .date .orderDate {
+  margin-right: 1rem;
+}
+
+.userOrders .content-wrapper .orderHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  margin-left: 15%;
+}
+
+.userOrders .content-wrapper .divider {
+  background-color: #ececec;
   height: 2px;
   width: 100%;
 }
 
-body .userUpdate .userData .guestData {
+.userOrders .content-wrapper .orderItems {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 2rem 0 0 0;
-  padding-left: 7rem;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.userOrders .content-wrapper .orderItems .detail-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding-left: 2rem;
+}
+
+.userOrders .content-wrapper .orderItems .orderThumbnail {
+  width: 13%;
+}
+
+.userOrders .content-wrapper .orderItems .orderThumbnail img {
+  margin-left: 1rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.userOrders .content-wrapper .col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.userOrders .content-wrapper .col > span {
+  color: #707070;
+}
+
+.userOrders .content-wrapper .totalPrice {
+  text-align: end;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  color: #8E4C4C;
+}
+
+.registeredClasses {
+  background-color: #FBF7EC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.registeredClasses .sidebar {
+  margin: 2rem 0 5rem 3rem;
+}
+
+.registeredClasses .sidebar .sideMenu {
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 13rem;
+  height: 18rem;
+  line-height: 5rem;
+  margin-right: 5rem;
+  margin-top: 1.5rem;
+}
+
+.registeredClasses .sidebar .sideMenu li {
+  font-size: 2rem;
+}
+
+.registeredClasses .sidebar .sideMenu a {
+  font-size: 1.3rem;
+  color: #707070;
+}
+
+.registeredClasses .sidebar .sideMenu a:hover {
+  color: #8E4C4C;
+}
+
+.registeredClasses .sidebar .sideMenu a#userOrder {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.registeredClasses .content-wrapper {
+  margin-top: 3rem;
   width: 100%;
-  height: 2.5rem;
-  font-size: 1rem;
-  text-align: start;
+  margin-right: 3rem;
+  /******** 會員訂單 ********/
 }
 
-body .userUpdate .userData .guestData label {
-  width: 10rem;
-  text-align: right;
-  font-size: 1.5rem;
-}
-
-body .userUpdate .userData .guestData .formInput {
-  margin-right: 6rem;
-  margin-left: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid #dddddd;
-  border-radius: 0.3rem;
-  width: 20rem;
-  background-color: #fff;
-  -webkit-box-shadow: 3.5px 3.5px 4px #d4d4d4;
-          box-shadow: 3.5px 3.5px 4px #d4d4d4;
-}
-
-body .userUpdate .userData .guestData .formInputX {
-  margin-right: 6rem;
-  margin-left: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 2px solid #dddddd;
-  width: 20rem;
-}
-
-body .userUpdate .userData .selectYMD {
+.registeredClasses .content-wrapper .navBar {
+  width: 100%;
+  border: 1px solid #707070;
+  height: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0.1rem 6rem 0 0.5rem;
-  width: 20rem;
-  border: 1px solid #dddddd;
-  border-radius: 0.3rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #fff;
-  -webkit-box-shadow: 3.5px 3.5px 4px #d4d4d4;
-          box-shadow: 3.5px 3.5px 4px #d4d4d4;
-}
-
-body .userUpdate .userData .selectYMD .selectDate {
-  margin: 0.4rem 0.5rem;
-}
-
-body .userUpdate .userData .buttons {
-  margin: 1rem 0 0 12.5rem;
-}
-
-body .userUpdate .userData .buttons .submit {
-  cursor: pointer;
-  margin: 1rem 1rem 1rem 0;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid #dddddd;
   border-radius: 0.5rem;
-  background-color: #F5B5BF;
-  -webkit-box-shadow: 0.2rem 0.2rem 0 #E1EFD4;
-          box-shadow: 0.2rem 0.2rem 0 #E1EFD4;
-  color: dimgray;
-  font-size: 1rem;
 }
 
-body .userUpdate .userData .buttons .submit:hover {
-  -webkit-box-shadow: 0.1rem 0.1rem 0.3rem #8a8a8a;
-          box-shadow: 0.1rem 0.1rem 0.3rem #8a8a8a;
+.registeredClasses .content-wrapper .navBar h3 {
+  font-size: 1.5rem;
+  margin: 0 1rem 0.1rem 0;
+  color: #4d4d4d;
 }
 
-@media screen and (max-width: 1150px) {
-  body .userUpdate .userData .classInfo {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
+.registeredClasses .content-wrapper .navBar .nav-link {
+  margin: 0 2rem;
 }
 
-body .userUpdate .sort-container {
+.registeredClasses .content-wrapper .navBar .nav-link a {
+  position: relative;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  color: #919191;
+  background-color: #fff;
+}
+
+.registeredClasses .content-wrapper .navBar .nav-link a:hover {
+  color: #8E4C4C;
+}
+
+.registeredClasses .content-wrapper .navBar .nav-link a.active {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.registeredClasses .content-wrapper .myClass {
+  background-color: #fff;
+  border: 1px solid #707070;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.registeredClasses .content-wrapper .myClass:last-child {
+  margin-bottom: 2rem;
+}
+
+.registeredClasses .content-wrapper .classHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  margin-top: 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  margin-left: 15%;
 }
 
-@media screen and (max-width: 550px) {
-  body .userUpdate .heading {
-    margin-left: 0;
-    width: 80%;
-    margin-left: 15%;
-  }
-  body .userUpdate .heading .page-heading {
-    color: #F5B5BF;
-    font-size: 2rem;
-  }
-  body .userUpdate .sideBar .menu {
-    display: none;
-    background-color: transparent;
-    -webkit-box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-            box-shadow: 0.6rem 0.6rem 0 #E1EFD4;
-    width: 10rem;
-    height: 18rem;
-    padding: 1rem;
-    line-height: 3.5rem;
-    margin-top: 10%;
-  }
-  body .userUpdate .sideBar .menu li {
-    font-size: 1.3rem;
-    color: #fff;
-    margin-left: 1rem;
-  }
-  body .userUpdate .sideBar .menu a {
-    font-size: 1.3rem;
-    color: #fff;
-    margin: 0 auto;
-  }
-  body .userUpdate .sideBar .menu a:hover {
-    text-decoration: underline;
-  }
+.registeredClasses .content-wrapper .divider {
+  background-color: #ececec;
+  height: 2px;
+  width: 100%;
+}
+
+.registeredClasses .content-wrapper .classItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.registeredClasses .content-wrapper .classItems .classThumbnail {
+  width: 13%;
+}
+
+.registeredClasses .content-wrapper .classItems .classThumbnail img {
+  margin-left: 1rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.registeredClasses .content-wrapper .classItems .detail-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding-left: 2rem;
+}
+
+.registeredClasses .content-wrapper .col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.registeredClasses .content-wrapper .col > span {
+  color: #707070;
+}
+
+.registeredClasses .content-wrapper .totalPrice {
+  text-align: end;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  color: #D9534F;
+}
+
+.userOrderHistory {
+  background-color: #FBF7EC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userOrderHistory .sidebar {
+  margin: 2rem 0 5rem 3rem;
+}
+
+.userOrderHistory .sidebar .sideMenu {
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 13rem;
+  height: 18rem;
+  line-height: 5rem;
+  margin-right: 5rem;
+  margin-top: 1.5rem;
+}
+
+.userOrderHistory .sidebar .sideMenu li {
+  font-size: 2rem;
+}
+
+.userOrderHistory .sidebar .sideMenu a {
+  font-size: 1.3rem;
+  color: #707070;
+}
+
+.userOrderHistory .sidebar .sideMenu a:hover {
+  color: #8E4C4C;
+}
+
+.userOrderHistory .sidebar .sideMenu a#userOrder {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.userOrderHistory .content-wrapper {
+  margin-top: 3rem;
+  width: 100%;
+  margin-right: 3rem;
+  /******** 會員訂單 ********/
+}
+
+.userOrderHistory .content-wrapper .navBar {
+  width: 100%;
+  border: 1px solid #707070;
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.userOrderHistory .content-wrapper .navBar h3 {
+  font-size: 1.5rem;
+  margin: 0 1rem 0.1rem 0;
+  color: #4d4d4d;
+}
+
+.userOrderHistory .content-wrapper .navBar .nav-link {
+  margin: 0 2rem;
+}
+
+.userOrderHistory .content-wrapper .navBar .nav-link a {
+  position: relative;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  color: #919191;
+  background-color: #fff;
+}
+
+.userOrderHistory .content-wrapper .navBar .nav-link a:hover {
+  color: #8E4C4C;
+}
+
+.userOrderHistory .content-wrapper .navBar .nav-link a.active {
+  color: #8E4C4C;
+  font-weight: 700;
+}
+
+.userOrderHistory .content-wrapper .orderCard {
+  background-color: #fff;
+  border: 1px solid #707070;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.userOrderHistory .content-wrapper .orderCard:last-child {
+  margin-bottom: 2rem;
+}
+
+.userOrderHistory .content-wrapper .orderDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ececec;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}
+
+.userOrderHistory .content-wrapper .orderDetail .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userOrderHistory .content-wrapper .orderDetail .date .orderDate {
+  margin-right: 1rem;
+}
+
+.userOrderHistory .content-wrapper .orderHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  margin-left: 15%;
+}
+
+.userOrderHistory .content-wrapper .divider {
+  background-color: #ececec;
+  height: 2px;
+  width: 100%;
+}
+
+.userOrderHistory .content-wrapper .orderItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.userOrderHistory .content-wrapper .orderItems .orderThumbnail {
+  width: 13%;
+}
+
+.userOrderHistory .content-wrapper .orderItems .orderThumbnail img {
+  margin-left: 1rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.userOrderHistory .content-wrapper .orderItems .detail-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding-left: 2rem;
+}
+
+.userOrderHistory .content-wrapper .col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.userOrderHistory .content-wrapper .col > span {
+  color: #707070;
+}
+
+.userOrderHistory .content-wrapper .totalPrice {
+  text-align: end;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  color: #D9534F;
+}
+
+.cartCheckout {
+  height: 100%;
+  margin: 2rem 5rem;
+}
+
+.cartCheckout .heading .page-heading {
+  color: #8E4C4C;
+  font-size: 2rem;
+}
+
+.cartCheckout .divider {
+  background-color: #ececec;
+  height: 2px;
+  width: 100%;
+}
+
+.cartCheckout .cartContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #4d4d4d;
+}
+
+.cartCheckout .orderCard {
+  height: 100%;
+  width: 100%;
+}
+
+.cartCheckout .orderHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.3rem;
+  padding: 1rem 0;
+  padding-left: 15%;
+  background: #FBF7EC;
+}
+
+.cartCheckout .orderItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.cartCheckout .orderItems .detail-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding-left: 2rem;
+}
+
+.cartCheckout .orderItems .orderThumbnail {
+  width: 13%;
+}
+
+.cartCheckout .orderItems .orderThumbnail img {
+  margin-left: 1rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.cartCheckout .col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.cartCheckout .col > span {
+  color: #707070;
+}
+
+.cartCheckout .totalPrice {
+  text-align: end;
+  padding-right: 6.5%;
+  font-size: 1.3rem;
+  color: #8E4C4C;
+  font-weight: 700;
+  border-top: 1px solid #707070;
+}
+
+.cartCheckout .customerInfo {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  border: 1px solid #4d4d4d;
+}
+
+.cartCheckout .customerInfo h4 {
+  background-color: #FBF7EC;
+  color: #707070;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.cartCheckout .customerInfo .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cartCheckout .customerInfo .column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cartCheckout .customerInfo .guestData {
+  margin: 1rem 0;
+}
+
+.cartCheckout .customerInfo label, .cartCheckout .customerInfo span {
+  display: block;
+}
+
+.cartCheckout .customerInfo input {
+  border: 1px solid #ececec;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  width: 50%;
+}
+
+.cartCheckout .customerInfo input:focus {
+  border-color: #4d4d4d;
+}
+
+.cartCheckout .customerInfo .storePay {
+  font-size: 1.1rem;
+}
+
+.cartCheckout .customerInfo .submitBtn, .cartCheckout .customerInfo .cancelBtn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.cartCheckout .customerInfo .submitBtn a, .cartCheckout .customerInfo .cancelBtn a {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.cartCheckout .customerInfo .submitBtn:hover, .cartCheckout .customerInfo .cancelBtn:hover {
+  opacity: 0.8;
+}
+
+.cartCheckout .customerInfo .submitBtn {
+  background-color: #8E4C4C;
+}
+
+.cartCheckout .customerInfo .cancelBtn {
+  background-color: #707070;
 }
 /*# sourceMappingURL=style.css.map */

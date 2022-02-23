@@ -74,7 +74,7 @@
           </div>
           &nbsp;
           <div class="cartIcon">
-            <a href="#">
+            <a href="/cartList.html">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 32 32" fill="none"
                 stroke="#4d4d4d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                 <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
@@ -105,7 +105,8 @@
             <input class="signupEmail" type="email" placeholder="電子信箱" required />
             <input class="signupPassword" type="password" placeholder="密碼" required />
             <input class="signupCheckPassword" type="password" placeholder="確認密碼" requried />
-            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
+            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼"
+              requried />
             <input class="signupDate" type="date">
             <button class="signupBtn">註冊</button>
           </form>
@@ -164,8 +165,7 @@
 
   <!-- HERO CAROUSEL SECTION -->
   <section class="carousel">
-
-    <div class="swiper">
+    <div class="heroSwiper">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
@@ -231,7 +231,7 @@
             <span class="productPrice">NT $450</span>
           </div>
           <div class="cartBtn">
-            <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
+            <button class="fas fa-shopping-cart"></button>
           </div>
         </div>
       </div>
@@ -268,7 +268,7 @@
   <!-- Product Modal -->
   <div class="modal-container">
     <div class="modal-wrapper">
-      <button class="closeModal">&times;</button>
+      <div class="closeModal">&times;</div>
       <div class="modal-body">
         <div class="productImg">
           <img src="public/img/bestseller/best1.jpg">
@@ -288,6 +288,7 @@
         </div>
       </div>
     </div>
+    <!-- <div class="modal-overlay"></div> -->
   </div>
 
   <!-- CLASS RECOMMENDATION SECTION -->

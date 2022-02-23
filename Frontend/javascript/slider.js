@@ -1,5 +1,4 @@
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
+const swiper = new Swiper('.heroSwiper', {
   effect: "fade",
   autoplay: {
     delay: 3000

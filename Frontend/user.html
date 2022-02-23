@@ -99,11 +99,13 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input type="email" placeholder="電子信箱" required />
-            <input type="password" placeholder="密碼" required />
-            <input type="password" placeholder="確認密碼" requried />
-            <input type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼" requried />
-            <button>註冊</button>
+            <input class="signupEmail" type="email" placeholder="電子信箱" required />
+            <input class="signupPassword" type="password" placeholder="密碼" required />
+            <input class="signupCheckPassword" type="password" placeholder="確認密碼" requried />
+            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼"
+              requried />
+            <input class="signupDate" type="date">
+            <button class="signupBtn">註冊</button>
           </form>
         </div>
         <div class="form-container sign-in-container">
@@ -115,10 +117,10 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
+            <input class="loginEmail" type="email" placeholder="Email" required />
+            <input class="loginPassword" type="password" placeholder="Password" required />
             <a class="forgetPwBtn" href="#">忘記密碼?</a>
-            <button>登入</button>
+            <button class="loginBtn">登入</button>
           </form>
         </div>
         <div class="overlay-container">
@@ -157,54 +159,56 @@
 
   </header>
 
-
   <section class="user">
-    <div class="sideBar">
+    <div class="sidebar">
       <ul class="sideMenu">
-        <li><i class="fas fa-user"></i><a id="user" href="#">我的檔案</a></li>
-        <li><i class="fa-solid fa-unlock-keyhole"></i><a id="userPasswordUpdate"
-            href="./userPasswordUpdate .html">更改密碼</a></li>
-        <li><i class="fa-solid fa-clipboard-list"></i><a id="cupcakes" href="userOrder.html">會員訂單</a></li>
+        <li>
+          <i class="fas fa-user"></i>
+          <a id="user" href="/user.html">我的檔案</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-unlock-keyhole"></i>
+          <a href="/passwordUpdate.html">更改密碼</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-clipboard-list"></i>
+          <a href="userOrders.html">會員訂單</a>
+        </li>
       </ul>
     </div>
 
     <div class="userInfoContainer">
       <h1 class="heading">個人基本資料</h1>
       <div class="divider"></div>
-      <form action="" method="GET">
+      <form>
         <div class="userData userAcount">
           <label for="userAcount">會員帳號</label>
           <input class="formInput" id="userAcount" name="userAcount" value="username" disabled></input>
         </div>
 
-        <div class="userData userName">
+        <div class="userData">
           <label for="userName">姓名</label>
           <input class="formInput" id="userName" name="userName" value="韋禮安"></input>
         </div>
 
-        <div class="userData userMail">
+        <div class="userData">
           <label for="userMail">信箱</label>
           <input class="formInput" id="userMail" name="userMail" value="username@gmail.com" disabled></input>
         </div>
 
-        <div class="userData userPhone">
+        <div class="userData">
           <label for="userPhone">聯絡電話</label>
           <input class="formInput" id="userPhone" name="userPhone" value="0904870487"></input>
         </div>
 
-        <div class="userData userBirthday">
+        <div class="userData">
           <label for="userBirthday">生日</label>
-          <select id="year" name="yyyy" onchange="change_year(this)">
-          </select>
-          <select id="month" name="mm" onchange="change_month(this)">
-          </select>
-          <select id="day" name="dd">
-          </select>
+          <input class="formInput" id="userBirthday" name="userBirthday" value="2022-01-19" disabled></input>
         </div>
 
-        <div class=" buttons">
-          <button class="submit" type="submit" value="確認">
-            <a href="/userUpdate.html">儲存</a>
+        <div class="buttons">
+          <button class="submitBtn" type="submit" value="儲存">
+            儲存
           </button>
         </div>
       </form>
@@ -238,7 +242,6 @@
   </footer>
 
   <script src="javascript/script.js"></script>
-  <script src="javascript/birthday.js"></script>
 </body>
 
 </html>

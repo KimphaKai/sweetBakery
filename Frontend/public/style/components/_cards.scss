@@ -29,7 +29,7 @@
   margin: 1rem 0;
   .card-body{
     padding: 0 var(--padding);
-    .productTitle{
+    .productName{
       font-size: 1.2rem;
       a{
         color: $black;
@@ -45,7 +45,7 @@
       font-size: 2rem;
       cursor: pointer;
       &:hover{
-        color: $gray;
+        opacity: 0.5;
       }
     }
   }

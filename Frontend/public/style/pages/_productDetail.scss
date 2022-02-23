@@ -1,8 +1,8 @@
 .productDetail{
   .heading{
-    @include page-heading(0); 
+    @include page-heading($pink); 
     width: 75%;
-    margin: 2rem 15%;
+    margin: 2rem auto;
   }
   .divider{
     @include divider(100);
@@ -76,6 +76,7 @@
     height: 3rem;
     margin-top: 4rem;
     margin-bottom: 1rem;
+    cursor:pointer;
     i{
       display: flex;
       justify-content: center;

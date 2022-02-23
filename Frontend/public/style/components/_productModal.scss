@@ -21,6 +21,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
   }
 
   .closeModal{
@@ -38,7 +39,7 @@
 
     .productCheckout{
       margin-left: 1rem;
-      .productTitle{
+      .productName{
         font-size: 2rem;
       }
       .price{
@@ -83,9 +84,14 @@
         margin: 1rem 1rem 0 0;
         font-size: 1rem;
         border-radius: 0.3rem;
+        &:hover{
+          background-color: $pink;
+          color: #fff;
+        }
       }
     }
   }
+
   @media screen and (max-width: 785px) {
     .modal-body{
       flex-wrap: wrap;
@@ -93,7 +99,7 @@
         width: 300px;
       }
       .productCheckout{
-        .productTitle{
+        .productName{
           font-size: 1.5rem;
         }
       }

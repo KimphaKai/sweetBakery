@@ -1,6 +1,6 @@
 .about{
   .heading{
-    @include page-heading(0);
+    @include page-heading($pink);
     width: 76%;
     margin: 2rem 12%;
     .divider{

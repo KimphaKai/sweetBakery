@@ -7,13 +7,11 @@
   font-size: 2rem;
 }
 
-@mixin page-heading($margin){
+@mixin page-heading($color){
   .page-heading{
-      // color: $text-color;
-      color: $pink;
+      color: $color;
       font-size: 2rem;
     }
-    margin-left: $margin;
 }
 
 @mixin divider($width){

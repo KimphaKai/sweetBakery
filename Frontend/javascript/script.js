@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  /** reload page when back_forward **/
+  /** reload page **/
   var perfEntries = performance.getEntriesByType("navigation");
 
   if (perfEntries[0].type === "back_forward") {
@@ -28,7 +28,6 @@ $(document).ready(function () {
 
     sessionStorage.setItem("key", value)
     var data = sessionStorage.getItem("key")
-    $(".test").text(data)
 
   })
 
@@ -69,7 +68,6 @@ $(document).ready(function () {
     sessionStorage.setItem("key", value)
     var data = sessionStorage.getItem("key")
     console.log(`session storage ${data}`)
-    $(".test").text(data)
   })
 
   //open product modal when click on product cart
@@ -82,10 +80,11 @@ $(document).ready(function () {
     $(".modal-container").hide()
   })
 
-  //close product modal when click outside of modal
-  $(".modal-container").on("click", function () {
-    $(".modal-container").hide()
-  })
+  //close product modal when click outside of modal (NEED TO BE FIXED)
+  // $(".modal-container").on("click", function () {
+  //   $(".modal-container").hide()
+  // })
+
 
   //toggle burger menu on click
   $(".burgerMenu").on("click", function (e) {
@@ -138,7 +137,8 @@ $(document).ready(function () {
 
   // toggle search input field
   $(".searchBtn").on("click", function () {
-    $(".search-input").toggleClass("active")
+    // $(".search-input").toggleClass("active")
+    console.log("ok")
   })
 
 
