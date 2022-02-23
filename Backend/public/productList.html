@@ -16,7 +16,7 @@
         <div id="navWrapper">
             <a href="backendHome.html">
                 <img id="logo" src="img/logo.svg" alt="">
-            </a>            
+            </a>
             <ul id="navContent">
                 <li class="navItem ">
                     <a class="" href="backendHome.html">
@@ -96,7 +96,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td><input type="checkbox" disabled name="CBchecked"></td>
                         <td>10001</td>
                         <td><input class="productName" type="text" disabled></td>
@@ -104,73 +104,16 @@
                         <td><input class="productPrice" type="number" disabled></td>
                         <td>1盒(6入)</td>
                         <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>10001</td>
-                        <td><input class="productName" type="text" disabled></td>
-                        <td>杯子蛋糕</td>
-                        <td><input class="productPrice" type="number" disabled></td>
-                        <td>1盒(6入)</td>
-                        <td class="productStatus">上架中</td>
-                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
+                        <td><button class="btnStyle productStatusBtn">下架</button>
+                            <button
+                                class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr> -->
+
                 </tbody>
             </table>
             <div id="paginationArea">
                 <a href="#" class="preNextPage">&lt;</a>
-                <a href="#" class="activePage">1</a>
+                <a href="/productList/1" class="activePage">1</a>
                 <a href="#" class="nonActivePage">2</a>
                 <a href="#" class="nonActivePage">3</a>
                 <a href="#" class="preNextPage">&gt;</a>
@@ -233,7 +176,7 @@
 
                         <div class="formGroup">
                             <label for="productPrice">商品單價:</label>
-                            <input id="productPrice" type="number" >
+                            <input id="productPrice" type="number">
                         </div>
 
                         <div class="formGroup">
@@ -265,9 +208,9 @@
         </div>
 
     </div>
-    
+
     <script>
-        // $(".bigModal").hide();
+
         $(document).ready(function () {
             // 導覽列次項目展開
             $('.navItem').on('click', function () {
@@ -283,10 +226,10 @@
 
             //新增/編輯商品跳出視窗
 
-            function openModal(_this, item){
+            function openModal(_this, item) {
                 //判斷是edit還是new modal
-                var modalTitle = $(_this).text().substr(0,2);
-                switch (modalTitle){
+                var modalTitle = $(_this).text().substr(0, 2);
+                switch (modalTitle) {
                     case "新增":
                         $('#mainModalTitle').text(`新增${item}`);
                         break;
@@ -294,108 +237,82 @@
                         $('#mainModalTitle').text(`編輯${item}`);
                         break;
                 }
-                $(".bigModal").css("display","flex").show();
+                $(".bigModal").css("display", "flex").show();
             };
 
-            function closeModal(){
+            function closeModal() {
                 $(".bigModal").hide();
             }
-            $(".newProduct").on("click", function(){
-                openModal(this,"商品");
+            $(".newProduct").on("click", function () {
+                openModal(this, "商品");
             })
-            
-            $(".editProduct").on("click", function(){
-                openModal(this,"商品");
+
+            $(".editProduct").on("click", function () {
+                openModal(this, "商品");
             })
 
             //modalClose功能
-            $(".modalClose").on("click", function(){
+            $(".modalClose").on("click", function () {
                 closeModal();
             })
-            $(".modalCancel").on("click", function(){
+            $(".modalCancel").on("click", function () {
                 closeModal();
             });
 
             //price input 
-            $('.priceInput').on("input", function(){
+            $('.priceInput').on("input", function () {
                 console.log($(this).val());
-                if($(this).val()!=="/[0-9]/"){
+                if ($(this).val() !== "/[0-9]/") {
                     // alert('請輸入數字');
-                console.log('請輸入數字!');
+                    console.log('請輸入數字!');
 
                 }
-            })
-
-            // 取得新增編輯商品視窗的選項點增加商品button
-            $.get('/productList/editOrAddOption', function (option) {
-                // console.log(e[0][1]);
-                let category = option[0];
-                let size = option[1];
-                category.map(value => {
-                    // console.log(value)
-                    $("#categoryId").append($('<option>')
-                        .text(value.categoryName)
-                        .val(value.categoryId));
-                });
-                size.map(value => {
-                    // console.log(value)
-                    $("#sizeId").append($('<option>')
-                        .text(value.sizeName)
-                        .val(value.sizeId));
-                });
-
-                // console.log(typeof option[0]);
-
-            })
-
-            //textarea根據內容自動調整高度
-            $( "textarea" ).on( "input", function() {
-                $(this).css('height', 'auto');
-                var textareaHeight = $(this).prop('scrollHeight');
-                $(this).css('height', `${textareaHeight}px`);
-
-                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
-                if(modalWrapHeight > 610){
-                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
-                };
             });
-
             //productEditArea
 
-            function doEditArea(disabled, hideElm, showElm){
+            function doEditArea(disabled, hideElm, showElm) {
                 $(".productList input").prop("disabled", disabled);
                 $(hideElm).hide();
                 $(showElm).show();
             }
             //批次修改
-            $(".editAll").on("click", function(){
-                doEditArea(false,".editAll","#productEditArea > div");
+            $(".editAll").on("click", function () {
+                doEditArea(false, ".editAll", "#productEditArea > div");
 
             })
             //儲存+取消
-            $(".editAreaSave").on('click',function(){
-                doEditArea(true,"#productEditArea > div",".editAll");
+            $(".editAreaSave").on('click', function () {
+                doEditArea(true, "#productEditArea > div", ".editAll");
             })
 
-            $(".editAreaCancel").on('click',function(){
-                doEditArea(true,"#productEditArea > div",".editAll");
+            $(".editAreaCancel").on('click', function () {
+                doEditArea(true, "#productEditArea > div", ".editAll");
             })
 
-            //productStatus
-            $(".productStatusBtn").on('click',function(){
-                var status = $(this).parent('td').prev('.productStatus').text();
-                $(this).text(status.substr(0,2));
-                status= status ==="上架中"?  "下架" : "上架";
-                $(this).parent('td').prev('.productStatus').text(status+"中");
-            })
+
+            //textarea根據內容自動調整高度
+            $("textarea").on("input", function () {
+                $(this).css('height', 'auto');
+                var textareaHeight = $(this).prop('scrollHeight');
+                $(this).css('height', `${textareaHeight}px`);
+
+                var modalWrapHeight = $('.modalWrap').prop('scrollHeight');
+                if (modalWrapHeight > 610) {
+                    $('.modalWrap').css('overflow-y', 'scroll');
+                };
+            });
+
+
+
+
 
             //checkbox
-            $("input[ type = checkbox ]").change(function(){
-                $(`input[ name = '${this.id}' ]`).prop('checked',this.checked);
-                $(`input[ id = '${this.name}' ]`).prop('checked', function(){
-                    if ($(`input[ type = 'checkbox' ]:not(:first):checked`).length == $('tr').length){
+            $("input[ type = checkbox ]").change(function () {
+                $(`input[ name = '${this.id}' ]`).prop('checked', this.checked);
+                $(`input[ id = '${this.name}' ]`).prop('checked', function () {
+                    if ($(`input[ type = 'checkbox' ]:not(:first):checked`).length == $('tr').length) {
                         return true;
-                    }else{
+                    } else {
                         return false;
                     }
                 })
@@ -424,7 +341,7 @@
                 }
             }
             let files = [];
-            let productItem = {}
+            // let productItem = {}
 
             // 上傳區
             $('#uploadArea').on('dragover', function (e) {
@@ -469,9 +386,9 @@
                 let productStatus = $('#productStatus').prop('checked');
                 let productInfo = $('#productInfo').val();
                 let ingredient = $('#ingredient').val();
-                
 
-                if (productTitle && productPrice && productInfo && ingredient && (files.length>0)) {
+
+                if (productTitle && productPrice && productInfo && ingredient && (files.length > 0)) {
 
                     // 可送出資料
                     let formDataAdd = new FormData();
@@ -488,7 +405,7 @@
                     if (productStatus) {
                         productStatus = '上架中'
                     } else {
-                        productStatus = '下架';
+                        productStatus = '下架中';
                     }
                     formDataAdd.append('productTitle', productTitle);
                     formDataAdd.append('categoryId', categoryId);
@@ -507,7 +424,10 @@
                         success: function (data) {
                             console.log(data);
                             // 清空存放陣列的檔案
-                            files=[];
+                            files = [];
+                            showUploadedImg();
+                            $('.bigModalForm').find('input').val('');
+                            $('.bigModalForm').find('textarea').val('');
                         }
                     });
                     closeModal();
@@ -517,10 +437,101 @@
                 }
 
             });
+            //取得商品列
+            let productList = [
+                { productId: '1', categoryName: '杯子蛋糕', sizeName: '1盒6入', productTitle: '蛋糕阿', productPrice: '200', productStatus: '下架中' },
+                { productId: '2', categoryName: '杯子蛋糕', sizeName: '1盒6入', productTitle: '蛋糕阿', productPrice: '200', productStatus: '上架中' },
+                { productId: '3', categoryName: '杯子蛋糕', sizeName: '1盒6入', productTitle: '蛋糕阿', productPrice: '200', productStatus: '下架中' },
+            ];
+            showProductList();
+            function showProductList() {
+                $('.productList>tbody').find('tr').remove();
+                $.get('/productList', function (e) {
+                    productList = e;
+                    $.each(productList, function (index, value) {
+                        // console.log(value);
+                        let status = "";
+                        if (value.productStatus == '上架中') {
+                            status = '下架';
+                        } else {
+                            status = "上架";
+                        }
+                        let listHtml = `
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>${value.productId}</td>
+                        <td><input class="productName" type="text" value='${value.productTitle}' disabled></td>
+                        <td>${value.categoryName}</td>
+                        <td><input class="productPrice" type="number" value="${value.productPrice}" disabled></td>
+                        <td>${value.sizeName}</td>
+                        <td class="productStatus">${value.productStatus}</td>
+                        <td><button class="btnStyle productStatusBtn">${status}</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    `;
+                        $('.productList>tbody').append(listHtml);
+                        // console.log($('.productList')) ;
+                    });
+                });
+            }
 
+
+
+
+            // 取得新增編輯商品視窗的選項點增加商品button
+            $.get('/productList/editOrAddOption', function (option) {
+                // console.log(e[0][1]);
+                let category = option[0];
+                let size = option[1];
+                category.map(value => {
+                    // console.log(value)
+                    $("#categoryId").append($('<option>')
+                        .text(value.categoryName)
+                        .val(value.categoryId));
+                });
+                size.map(value => {
+                    // console.log(value)
+                    $("#sizeId").append($('<option>')
+                        .text(value.sizeName)
+                        .val(value.sizeId));
+                });
+
+                // console.log(typeof option[0]);
+
+            });
+            //productStatus修改上架下架
+            // let tableTr=$('.productList').find('tbody').find("tr");
+            $('.productList').on('click', ".productStatusBtn", function () {
+                let productId = $(this).parents('tr').find('td:nth-of-type(2)').text();
+                let productStatus = "";
+                if ($(this).text() == '上架') {
+                    productStatus = '上架中';
+                    $(this).text('下架');
+                    
+                } else {
+                    $(this).text('上架');
+                    productStatus = '下架中';
+                    
+                }
+                $(this).parent('td').prev('td').text(productStatus);
+                let changeStatus = {};
+                changeStatus.productId = productId;
+                changeStatus.productStatus = productStatus;
+                // console.log(changeStatus);
+                
+                $.ajax({
+                    url: '/productList/changeProductStatus',
+                    data: changeStatus,
+                    type: 'post',
+                    success: function (e) {
+                        console.log(e);
+                        
+                    }
+                })
+
+            })
 
         });
-        
+
     </script>
 </body>
 

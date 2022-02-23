@@ -1,17 +1,26 @@
 let express = require('express');
 let productListRouter = express.Router();
 let multer = require('multer');
-let conn = require('./db');
-
-let admin = require('firebase-admin');
+let conn = require('../db');
 let uuid = require('uuid');
 let uuidv1 = uuid.v1();
-let serviceAccount = require('./sweetbakeryimg-firebase-adminsdk-4i2ot-d21b8fc5df.json');
+let bucket =require('./firebase');
 
 // 取得商品列表
-// productListRouter.get('/',function(){
 
-// });
+
+productListRouter.get('/',function(req,res){
+    
+    // conn.queryAsync('select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId limit 0,3')
+    conn.queryAsync('select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId')
+    .then(result=>{
+
+        res.send(result);
+    }).catch(err=>{
+        console.log(err);
+        res.send(err);
+    })
+});
 // 取得新增編輯商品視窗的選項
 productListRouter.get('/editOrAddOption', function (req, res) {
     let addProductOption = [];
@@ -33,11 +42,7 @@ productListRouter.get('/editOrAddOption', function (req, res) {
 // ===========================================================================
 // 新增產品
 // 新增產品(圖片處理)
-const defaultApp = admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "sweetbakeryimg.appspot.com",
-});
-const bucket = defaultApp.storage().bucket();
+
 
 let upload = multer({
     storage: multer.memoryStorage()
@@ -93,7 +98,7 @@ productListRouter.post('/addProduct', upload.array('files'), function (req, res)
 
                 });
                 imgUrl.push(fileProgress);
-                
+               
             }
             Promise.all(imgUrl).then((response) => {
                 response.forEach(file => {
@@ -102,10 +107,10 @@ productListRouter.post('/addProduct', upload.array('files'), function (req, res)
                         console.log(error);
                     })
                 })
-                res.send('ok');
+                res.send({success:'ok'});
             }).catch(error => {
                 res.send('file upload error:' + error);
-            })
+            });
         }).catch(error => {
             console.log(error);
         })
@@ -114,5 +119,14 @@ productListRouter.post('/addProduct', upload.array('files'), function (req, res)
     // console.log(req.body);
 
 
+});
+productListRouter.post('/changeProductStatus',function(req,res){
+    conn.queryAsync(`update product set productStatus='${req.body.productStatus}' where productId='${req.body.productId}'`)
+    .then(()=>{
+
+        res.send('ok');
+    }).catch(err=>{
+        res.send(err);
+    })
 })
 module.exports = productListRouter;
