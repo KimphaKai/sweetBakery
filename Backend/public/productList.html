@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="scss/style.css">
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="navWrapper">
+            <a href="backendHome.html">
+                <img id="logo" src="img/logo.svg" alt="">
+            </a>            
+            <ul id="navContent">
+                <li class="navItem ">
+                    <a class="" href="backendHome.html">
+                        <i class="fa fa-home" aria-hidden="true"></i>系統首頁
+                    </a>
+                </li>
+                <li class="navItem">
+                    <a href="order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
+                    </a>
+                </li>
+                <li class="navItem navActive">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
+                    <ul class="sub1">
+                        <li><a class="subActive" href="productList.html">商品列表</a></li>
+                        <li><a href="productCategory.html">種類管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
+                    <ul class="sub1">
+                        <li><a href="classList.html">課程列表</a></li>
+                        <li><a href="classTimeList.html">開課時間</a></li>
+                        <li><a href="classReservation.html">預約管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要資訊區塊 -->
+        <div id="mainWrapper">
+            <!-- 標題 -->
+            <h2 id="mainTitle">商品列表</h2>
+            <!-- 產品搜尋區 -->
+            <div id="productSearchArea">
+                <input type="text" placeholder="產品名稱查詢">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="productSortArea">
+                <div id="productEditArea">
+                    <button class="editAll">批次修改</button>
+                    <div>
+                        <select name="" id="">
+                            <option value="">商品批次上架</option>
+                            <option value="">商品批次下架</option>
+                        </select>
+                        <button class="editAreaSave">儲存</button>
+                        <button class="editAreaCancel">取消</button>
+                    </div>
+                </div>
+                <select name="#" id="">
+                    <option>全部種類商品</option>
+                    <option>杯子蛋糕</option>
+                    <option>圓形蛋糕</option>
+                    <option>餅乾</option>
+                </select>
+                <select name="#" id="">
+                    <option>預設排序</option>
+                    <option>單價由低到高排序</option>
+                    <option>單價由高到低排序</option>
+                    <option>商品上架排序</option>
+                    <option>商品下架排序</option>
+                </select>
+                <button class="newProduct">新增商品<i class="fa fa-plus"></i></button>
+            </div>
+
+            <table class="productList">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" disabled id="CBchecked"></th>
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品種類</th>
+                        <th>單價</th>
+                        <th>規格</th>
+                        <th>商品狀態</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled name="CBchecked"></td>
+                        <td>10001</td>
+                        <td><input class="productName" type="text" disabled></td>
+                        <td>杯子蛋糕</td>
+                        <td><input class="productPrice" type="number" disabled></td>
+                        <td>1盒(6入)</td>
+                        <td class="productStatus">上架中</td>
+                        <td><button class="btnStyle productStatusBtn">下架</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="paginationArea">
+                <a href="#" class="preNextPage">&lt;</a>
+                <a href="#" class="activePage">1</a>
+                <a href="#" class="nonActivePage">2</a>
+                <a href="#" class="nonActivePage">3</a>
+                <a href="#" class="preNextPage">&gt;</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="productCreateAndEditModal" class="bigModal">
+
+        <div class="modalWrap">
+
+
+            <span class="modalClose">&times;</span>
+
+            <div class="modalContent">
+
+                <p id="mainModalTitle">商品新增/編輯</p>
+
+                <div class="bigModalForm">
+
+                    <div id="uploadImg">
+                        <div id="uploadArea">
+                            <input hidden type="file" multiple id="fileUpload">
+                            <div><label for="fileUpload">+</label></div>
+                            <p>點擊或拖曳上傳</p>
+                        </div>
+                        <div id="showImgArea">
+
+                            <!-- <div class="imgItem">
+                                <div>&times;</div>
+                                <div>
+                                    <img src="./public/img/productDetailPic.jpg" alt="">
+                                </div>
+                            </div> -->
+
+
+                        </div>
+                    </div>
+
+                    <div class="formField">
+
+                        <div class="formGroup">
+                            <label for="productTitle">商品名稱:</label>
+                            <input id="productTitle" type="text">
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="categoryId">商品類別:</label>
+                            <select id="categoryId">
+
+                            </select>
+                        </div>
+                        <div class="formGroup">
+                            <label for="sizeId">商品規格:</label>
+                            <select id="sizeId">
+
+                            </select>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="productPrice">商品單價:</label>
+                            <input id="productPrice" type="number" >
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="productStatus">商品狀態:</label>
+                            <label class="toggleSwitch">
+                                <input id="productStatus" type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="formGroup">
+                            <label for="productInfo">商品簡介:</label><br>
+                            <textarea id="productInfo" cols="40"></textarea>
+                        </div>
+                        <div class="formGroup">
+                            <label for="ingredient">商品成份:</label><br>
+                            <textarea id="ingredient" cols="40"></textarea>
+                        </div>
+                        <div class="formGroup">
+                            <button id="sendProduct" type="button">確定</button>
+                            <button type="button" class="modalCancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script>
+        // $(".bigModal").hide();
+        $(document).ready(function () {
+            // 導覽列次項目展開
+            $('.navItem').on('click', function () {
+                $('.navItem').removeClass('navActive');
+                $(this).addClass('navActive');
+
+            });
+            // 被選取的次項目
+            $('.sub1>li').on('click', function () {
+                $('.sub1>li>a').removeClass('subActive');
+                $(this).find('a').addClass('subActive');
+            });
+
+            //新增/編輯商品跳出視窗
+
+            function openModal(_this, item){
+                //判斷是edit還是new modal
+                var modalTitle = $(_this).text().substr(0,2);
+                switch (modalTitle){
+                    case "新增":
+                        $('#mainModalTitle').text(`新增${item}`);
+                        break;
+                    case "編輯":
+                        $('#mainModalTitle').text(`編輯${item}`);
+                        break;
+                }
+                $(".bigModal").css("display","flex").show();
+            };
+
+            function closeModal(){
+                $(".bigModal").hide();
+            }
+            $(".newProduct").on("click", function(){
+                openModal(this,"商品");
+            })
+            
+            $(".editProduct").on("click", function(){
+                openModal(this,"商品");
+            })
+
+            //modalClose功能
+            $(".modalClose").on("click", function(){
+                closeModal();
+            })
+            $(".modalCancel").on("click", function(){
+                closeModal();
+            });
+
+            //price input 
+            $('.priceInput').on("input", function(){
+                console.log($(this).val());
+                if($(this).val()!=="/[0-9]/"){
+                    // alert('請輸入數字');
+                console.log('請輸入數字!');
+
+                }
+            })
+
+            // 取得新增編輯商品視窗的選項點增加商品button
+            $.get('/productList/editOrAddOption', function (option) {
+                // console.log(e[0][1]);
+                let category = option[0];
+                let size = option[1];
+                category.map(value => {
+                    // console.log(value)
+                    $("#categoryId").append($('<option>')
+                        .text(value.categoryName)
+                        .val(value.categoryId));
+                });
+                size.map(value => {
+                    // console.log(value)
+                    $("#sizeId").append($('<option>')
+                        .text(value.sizeName)
+                        .val(value.sizeId));
+                });
+
+                // console.log(typeof option[0]);
+
+            })
+
+            //textarea根據內容自動調整高度
+            $( "textarea" ).on( "input", function() {
+                $(this).css('height', 'auto');
+                var textareaHeight = $(this).prop('scrollHeight');
+                $(this).css('height', `${textareaHeight}px`);
+
+                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
+                if(modalWrapHeight > 610){
+                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                };
+            });
+
+            //productEditArea
+
+            function doEditArea(disabled, hideElm, showElm){
+                $(".productList input").prop("disabled", disabled);
+                $(hideElm).hide();
+                $(showElm).show();
+            }
+            //批次修改
+            $(".editAll").on("click", function(){
+                doEditArea(false,".editAll","#productEditArea > div");
+
+            })
+            //儲存+取消
+            $(".editAreaSave").on('click',function(){
+                doEditArea(true,"#productEditArea > div",".editAll");
+            })
+
+            $(".editAreaCancel").on('click',function(){
+                doEditArea(true,"#productEditArea > div",".editAll");
+            })
+
+            //productStatus
+            $(".productStatusBtn").on('click',function(){
+                var status = $(this).parent('td').prev('.productStatus').text();
+                $(this).text(status.substr(0,2));
+                status= status ==="上架中"?  "下架" : "上架";
+                $(this).parent('td').prev('.productStatus').text(status+"中");
+            })
+
+            //checkbox
+            $("input[ type = checkbox ]").change(function(){
+                $(`input[ name = '${this.id}' ]`).prop('checked',this.checked);
+                $(`input[ id = '${this.name}' ]`).prop('checked', function(){
+                    if ($(`input[ type = 'checkbox' ]:not(:first):checked`).length == $('tr').length){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            })
+
+
+            // 顯示上傳的圖片
+            function showUploadedImg() {
+                $('.imgItem').remove();
+                for (let i = 0; i < files.length; i++) {
+                    var reader = new FileReader();
+                    let file = files[i];
+                    reader.onload = function (readFile) {
+                        $("#showImgArea").append(`
+                            <div class="imgItem"> 
+                                <div class="deleteImg">&times;</div>
+                                <div>
+                                    <img src=${readFile.target.result}> 
+                                    <label hidden>${file.name}</label>
+                                </div>
+                            </div>
+                        `);
+                    }
+                    reader.readAsDataURL(file);
+
+                }
+            }
+            let files = [];
+            let productItem = {}
+
+            // 上傳區
+            $('#uploadArea').on('dragover', function (e) {
+                e.preventDefault();
+                // 檔案在上傳區上方加class樣式
+            }).on('dragleave', function () {
+                // 檔案離開上傳區上方移除class樣式
+            }).on('drop', function (e) {
+                e.preventDefault();
+                // 檔案放在上傳區時移除樣式
+                for (let i = 0; i < e.originalEvent.dataTransfer.files.length; i++) {
+                    files.push(e.originalEvent.dataTransfer.files[i]);
+
+                }
+                showUploadedImg();
+            });
+            // 點+增加檔案
+            $("#fileUpload").on('change', function (e) {
+                for (let i = 0; i < e.target.files.length; i++) {
+                    files.push(e.target.files[i]);
+
+                }
+                showUploadedImg();
+            });
+            // 按X刪除檔案
+            $("#showImgArea").on('click', '.deleteImg', function () {
+                let fileName = $(this).parent('div').find('label').text();
+                files.map((value, index) => {
+
+                    if (fileName == value.name) {
+                        files.splice(index, 1);
+                    }
+                });
+                showUploadedImg();
+            });
+            $("#sendProduct").on('click', function () {
+                // 確定input都有輸入值，才能送出
+                let productTitle = $("#productTitle").val();
+                let categoryId = $('#categoryId').val();
+                let sizeId = $('#sizeId').val();
+                let productPrice = $('#productPrice').val();
+                let productStatus = $('#productStatus').prop('checked');
+                let productInfo = $('#productInfo').val();
+                let ingredient = $('#ingredient').val();
+                
+
+                if (productTitle && productPrice && productInfo && ingredient && (files.length>0)) {
+
+                    // 可送出資料
+                    let formDataAdd = new FormData();
+                    // 檔案加入formData中
+                    files.forEach((value, index) => {
+
+                        var fileName = files[index].name;
+                        let dotPosition = fileName.lastIndexOf('.');
+                        let fileType = fileName.substr(dotPosition);
+                        // formDataAdd.append('files', value, `${index + 1}${fileType}`);
+                        formDataAdd.append('files', value);
+
+                    });
+                    if (productStatus) {
+                        productStatus = '上架中'
+                    } else {
+                        productStatus = '下架';
+                    }
+                    formDataAdd.append('productTitle', productTitle);
+                    formDataAdd.append('categoryId', categoryId);
+                    formDataAdd.append('sizeId', sizeId);
+                    formDataAdd.append('productPrice', productPrice);
+                    formDataAdd.append('productStatus', productStatus);
+                    formDataAdd.append('productInfo', productInfo);
+                    formDataAdd.append('ingredient', ingredient);
+                    $.ajax({
+                        url: '/productList/addProduct',
+                        type: 'post',
+                        data: formDataAdd,
+                        processData: false,
+                        contentType: false,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            // 清空存放陣列的檔案
+                            files=[];
+                        }
+                    });
+                    closeModal();
+
+                } else {
+                    alert('輸入框內容不可空白');
+                }
+
+            });
+
+
+        });
+        
+    </script>
+</body>
+
+</html>

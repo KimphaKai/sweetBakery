@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="scss/style.css">
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="navWrapper">
+            <a href="backendHome.html">
+                <img id="logo" src="img/logo.svg" alt="">
+            </a>
+            <ul id="navContent">
+                <li class="navItem ">
+                    <a class="" href="backendHome.html">
+                        <i class="fa fa-home" aria-hidden="true"></i>系統首頁
+                    </a>
+                </li>
+                <li class="navItem">
+                    <a href="order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
+                    </a>
+                </li>
+                <li class="navItem ">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
+                    <ul class="sub1">
+                        <li><a  href="productList.html">商品列表</a></li>
+                        <li><a href="productCategory.html">種類管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem navActive">
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
+                    <ul class="sub1">
+                        <li><a  href="classList.html">課程列表</a></li>
+                        <li><a class="subActive" href="classTimeList.html">開課時間</a></li>
+                        <li><a href="classReservation.html">預約管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要資訊區塊 -->
+        <div id="mainWrapper">
+            <!-- 標題 -->
+            <h2 id="mainTitle">開課時間</h2>
+            <!-- 產品搜尋區 -->
+            <div class="classTimeSearchArea">
+                <input type="text" placeholder="課程名稱查詢">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="classTimeEditArea">
+                <button class="classTimeEditAll">批次修改</button>
+                <div id="classTimeEdit">
+                    <button class="classTimeEditAreaSave">儲存</button>
+                    <button class="classTimeEditAreaCancel">取消</button>
+                </div>
+            </div>
+            <button class="newClassTime">新增課程時間<i class="fa fa-plus"></i></button>
+            
+            <table class="classTimeList">
+                <thead>
+                    <tr>
+                        <th>課程時間編號</th>
+                        <th>課程名稱</th>
+                        <th>開放時間</th>
+                        <th>開放人數</th>
+                        <th>剩餘人數</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>0001</td>
+                        <td>
+                            <select name="" id="" class="classNameInput" disabled>
+                                <option value="">日式布丁草莓蛋糕</option>
+                            </select>
+                        </td>
+                        <td><input type="date" name="#" id="" disabled><input type="time" name="#" id="" disabled></td>
+                        <td><input class="totalPeople" type="number" disabled></td>
+                        <td>5</td>
+                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td>0001</td>
+                        <td>
+                            <select name="" id="" class="classNameInput" disabled>
+                                <option value="">日式布丁草莓蛋糕</option>
+                            </select>
+                        </td>                        <td><input type="date" name="#" id="" disabled><input type="time" name="#" id="" disabled></td>
+                        <td><input class="totalPeople" type="number" disabled></td>
+                        <td>5</td>
+                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td>0001</td>
+                        <td>
+                            <select name="" id="" class="classNameInput" disabled>
+                                <option value="">日式布丁草莓蛋糕</option>
+                            </select>
+                        </td>                        <td><input type="date" name="#" id="" disabled><input type="time" name="#" id="" disabled></td>
+                        <td><input class="totalPeople" type="number" disabled></td>
+                        <td>5</td>
+                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td>0001</td>
+                        <td>
+                            <select name="" id="" class="classNameInput" disabled>
+                                <option value="">日式布丁草莓蛋糕</option>
+                            </select>
+                        </td>                        <td><input type="date" name="#" id="" disabled><input type="time" name="#" id="" disabled></td>
+                        <td><input class="totalPeople" type="number" disabled></td>
+                        <td>5</td>
+                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <div id="paginationArea">
+                <a href="#" class="preNextPage">&lt;</a>
+                <a href="#" class="activePage">1</a>
+                <a href="#" class="nonActivePage">2</a>
+                <a href="#" class="nonActivePage">3</a>
+                <a href="#" class="preNextPage">&gt;</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="classTimeModal" class="smallModal">
+
+        <div class="modalWrap">
+
+
+            <span class="modalClose">&times;</span>
+
+            <div class="modalContent">
+
+                <p id="mainModalTitle">課程時間編輯/新增</p>
+                <div class="smallModalForm">
+                    <p>課程名稱: 日式布丁草莓蛋糕</p>
+                    <div class="formGroup">
+                        <label for="">課程日期:</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="formGroup">
+                        <label for="">開課時間:</label>
+                        <input type="time">
+                    </div>
+
+                    <div class="formGroup">
+                        <label for="">開放人數:</label>
+                        <input type="number"> 人    
+                    </div>
+
+                    <div class="formGroup">
+                        <button type="button">儲存</button>
+                        <button type="button" class="modalCancel">取消</button>
+                    </div>
+
+                </div>
+                
+                    
+            </div>
+            
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            // 導覽列次項目展開
+            $('.navItem').on('click', function () {
+                $('.navItem').removeClass('navActive');
+                $(this).addClass('navActive');
+
+            });
+            // 被選取的次項目
+            $('.sub1>li').on('click', function () {
+                $('.sub1>li>a').removeClass('subActive');
+                $(this).find('a').addClass('subActive');
+            });
+
+
+            //新增/編輯課程時間彈跳視窗
+
+            function openModal(_this, item){
+                //判斷是edit還是new modal
+                var modalTitle = $(_this).text().substr(0,2);
+                switch (modalTitle){
+                    case "新增":
+                        $('#mainModalTitle').text(`新增${item}`);
+                        break;
+                    case "編輯":
+                        $('#mainModalTitle').text(`編輯${item}`);
+                        break;
+                }
+                $(".smallModal").css("display","flex").show();
+            };
+
+            function closeModal(){
+                $(".smallModal").hide();
+            }
+            $(".newClassTime").on("click", function(){
+                openModal(this,"課程時間")
+            })
+            $(".editClassTime").on("click", function(){
+                openModal(this,"課程時間")
+            })
+
+            //modalClose功能
+            $(".modalClose").on("click", function(){
+                closeModal()
+            })
+            $(".modalCancel").on("click", function(){
+                closeModal()
+            })
+
+            //classTimeEditArea
+
+            function doClassEditArea(disabled, hideElm, showElm){
+                $(".classTimeList input, select").prop("disabled", disabled);
+                $(hideElm).hide();
+                $(showElm).show();
+            }
+            //批次修改
+            $(".classTimeEditAll").on("click", function(){
+                doClassEditArea(false,".classTimeEditAll","#classTimeEdit");
+            })
+            //儲存+取消
+            $(".classTimeEditAreaSave").on('click',function(){
+                doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
+            })
+
+            $(".classTimeEditAreaCancel").on('click',function(){
+                doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
+            })
+
+
+            //接資料
+
+            var classTimeListTable = [
+                {classTimeId: 1, classTitle: "粉紅泡泡圓形蛋糕", startDate: "2022-03-05" , startTime: "08:00" ,totalPeople:15, remain: 5},
+                {classTimeId: 2, classTitle: "大坑9號步道蛋糕", startDate: "2022-03-28" , startTime: "13:30" ,totalPeople:20, remain:4},
+                {classTimeId: 3, classTitle: "別對我這樣餅乾", startDate: "2022-04-16" , startTime: "10:00" ,totalPeople:12, remain:12}
+            ];
+            $(".classTimeList tbody").empty();
+
+            
+
+            $.each(classTimeListTable, function (index, item) {
+                var trHtml = `
+                    <tr>
+                        <td>${item.classTimeId}</td>
+                        <td>
+                            <select name="" id="" class="classNameInput" disabled value=${index}>
+                                
+                            </select>
+                        </td>
+                        <td><input type="date" name="#" id="" value="${item.startDate}" disabled><input type="time" name="#" id="" value="${item.startTime}" disabled></td>
+                        <td><input class="totalPeople" type="number" value="${item.totalPeople}" disabled></td>
+                        <td>${item.remain}</td>
+                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                    </tr>            
+                `;
+                console.log(index);
+                $(".classTimeList tbody").append(trHtml);
+                
+            })
+
+            $.each(classTimeListTable, function (index, item){
+                $('tr select').append(`<option value=${item.classID}>${item.classTitle}</option>`);
+
+            });
+            console.log($('.classNameInput>option:checked').prop('value'));
+            // console.log("$('.classNameInput')");
+        });
+        
+    </script>
+</body>
+
+</html>

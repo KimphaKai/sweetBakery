@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="scss/style.css">
+    <script src="js/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="navWrapper">
+            <a href="backendHome.html">
+                <img id="logo" src="img/logo.svg" alt="">
+            </a>
+            <ul id="navContent">
+                <li class="navItem navActive">
+                    <a class="" href="backendHome.html">
+                        <i class="fa fa-home" aria-hidden="true"></i>系統首頁
+                    </a>
+                </li>
+                <li class="navItem">
+                    <a href="order.html">
+                        <i class="fas fa-file-alt" aria-hidden="true"></i>訂單管理
+                    </a>
+                </li>
+                <li class="navItem ">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
+                    <ul class="sub1">
+                        <li><a class="subActive" href="productList.html">商品列表</a></li>
+                        <li><a href="productCategory.html">種類管理</a></li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
+                    <ul class="sub1">
+                        <li><a class="subActive" href="classList.html">課程列表</a></li>
+                        <li><a href="classTimeList.html">開課時間</a></li>
+                        <li><a href="classReservation.html">預約管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 主要資訊區塊 -->
+        <div id="mainWrapper">
+            <!-- 標題 -->
+            <p id="mainTitle">系統首頁</p>
+            <!--三個資訊  -->
+            <div id="capsulesArea">
+                <div class="capsule">
+                    <p class="title">本週成長銷售額(這週-上週)</p>
+                    <i class="fa fa-shopping-cart icon"></i>
+                    <i class="fas fa-long-arrow-alt-up upIcon"></i>
+                    <i class="fas fa-long-arrow-alt-down downIcon"></i>
+                    <span class="dataNum">18,999</span>
+                    <span class="unit">TWD</span>
+                </div>
+                <div class="capsule">
+                    <p class="title">本週取消/已完成訂單</p>
+                    <i class="far fa-file-alt icon"></i>
+                    <span class="dataNum">
+                        <span>23</span> / 
+                        <span>780</span> 
+                    </span>
+                    <span class="unit">筆</span>
+                </div>
+                <div class="capsule">
+                    <p class="title">本月目前業績/目標業績</p>
+                    <i class="fa fa-users icon"></i>
+                    <i class="fas fa-pen editPerformance"></i>
+                    <span class="dataNum">
+                        <span class="hideData">1000000</span>
+                       <span>122</span> / 
+                       <span class="targetSales">100</span> 
+                    </span>
+                    <span class="unit">萬元</span>
+                </div>
+            </div>
+            <!-- 頁籤區 -->
+            <div id="tabWrapper">
+                <ul id="tabs">
+                    <li class="tabItem tabActive"><a href="#">銷售額</a></li>
+                    <li class="tabItem"><a href="#">商品排行</a></li>
+                </ul>
+                <div id="salesInfo">
+                    <div id="leftArea">
+                        <select name="salesYear" id="salesYear">
+                            <option value="2021">2021年</option>
+                            <option value="2022">2022年</option>
+                        </select>
+                        <select name="salesMonth" id="salesMonth">
+                            <option value="1">1月</option>
+                            <option value="2">2月</option>
+                            <option value="3">3月</option>
+                            <option value="4">4月</option>
+                            <option value="5">5月</option>
+                            <option value="6">6月</option>
+                            <option value="7">7月</option>
+                            <option value="8">8月</option>
+                            <option value="9">9月</option>
+                            <option value="10">10月</option>
+                            <option value="11">11月</option>
+                            <option value="12">12月</option>
+                        </select>
+                        <p>本月銷售額</p>
+                        <label id="sales">$1,223,222</label>
+                        <span>(TWD)</span>
+                    </div>
+                    <div id="rightArea">
+                        <canvas style="border: 1px solid #707070;" width="600px" height="350px"></canvas>
+                    </div>
+                </div>
+                <div id="rankInfo">
+                    <div class="selectArea">
+                        <select name="rankYear" id="salesYear">
+                            <option value="2021">2021年</option>
+                            <option value="2022">2022年</option>
+                        </select>
+                        <select name="rankMonth" id="salesMonth">
+                            <option value="1">1月</option>
+                            <option value="2">2月</option>
+                            <option value="3">3月</option>
+                            <option value="4">4月</option>
+                            <option value="5">5月</option>
+                            <option value="6">6月</option>
+                            <option value="7">7月</option>
+                            <option value="8">8月</option>
+                            <option value="9">9月</option>
+                            <option value="10">10月</option>
+                            <option value="11">11月</option>
+                            <option value="12">12月</option>
+                        </select>
+                        <select name="productType" id="productType">
+                            <option value="杯子蛋糕">杯子蛋糕</option>
+                            <option value="圓形蛋糕">圓形蛋糕</option>
+                            <option value="餅乾">餅乾</option>
+                        </select>
+                        <select name="#" id="productType">
+                            <option value="">銷售數量由高到低排序</option>
+                            <option value="">銷售數量由低到高排序</option>
+                        </select>
+                    </div>
+                    <table id="rankTable">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>商品名稱</th>
+                                <th>銷售數量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td>1</td>
+                                <td>櫻桃杯子蛋糕</td>
+                                <td>132</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>櫻桃杯子蛋糕</td>
+                                <td>132</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>櫻桃杯子蛋糕</td>
+                                <td>132</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>櫻桃杯子蛋糕</td>
+                                <td>132</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                    <div id="paginationArea">
+                        <a href="#" class="pages preNextPage">&lt;</a>
+                        <a href="#" class="pages activePage">1</a>
+                        <a href="#" class="pages nonActivePage">2</a>
+                        <a href="#" class="pages nonActivePage">3</a>
+                        <a href="#" class="pages preNextPage">&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="classTimeModal" class="miniModal">
+
+        <div class="modalWrap">
+
+
+            <span class="modalClose">&times;</span>
+
+            <div class="modalContent">
+
+                <p id="mainModalTitle">目標業績設定</p>
+                <div class="miniModalForm">
+                    <div class="formGroup">
+                        <p>本月目標業績金額</p>
+                        <input type="number" class="targetInput">元
+                    </div>
+
+                    <div class="formGroup">
+                        <button type="button" class="modalSave">儲存</button>
+                        <button type="button" class="modalCancel">取消</button>
+                    </div>
+
+                </div>
+                
+                    
+            </div>
+            
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            // 導覽列次項目展開
+            $('.navItem').on('click', function () {
+                $('.navItem').removeClass('navActive');
+                $(this).addClass('navActive');
+            });
+
+
+            // 被選取的次項目
+            $('.sub1>li').on('click', function () {
+                $('.sub1>li>a').removeClass('subActive');
+                $(this).find('a').addClass('subActive');
+            });
+
+            
+            
+            //新增/編輯課程時間彈跳視窗
+            function openModal(){
+                $(".miniModal").css("display","flex").show();
+            };
+
+            function closeModal(){
+                $(".miniModal").hide();
+            }
+            $(".editPerformance").on("click", function(){
+                var target = $('.hideData').text();
+                $('.targetInput').val(target);
+                openModal()
+            })
+
+            //modalSave
+            $('.modalSave').on('click',function(){
+                if($('.targetInput').val()!=0){
+                    $('.hideData').text($('.targetInput').val());
+                    var newTarget = Math.trunc($('.targetInput').val()/10000);
+                    $('.targetSales').text(newTarget);
+                }
+                closeModal();
+            })
+
+            //modalClose功能
+            $(".modalClose").on("click", function(){
+                closeModal()
+            })
+            $(".modalCancel").on("click", function(){
+                closeModal()
+            })
+
+
+            // 頁籤
+            $('.tabItem').on('click', function () {
+                $('.tabItem').removeClass('tabActive');
+                $(this).addClass('tabActive');
+                let showArea = $(this).text();
+                if (showArea === '商品排行') {
+                    $('#salesInfo').hide();
+                    $('#rankInfo').show();
+                } else {
+                    $('#salesInfo').show();
+                    $('#rankInfo').hide();
+                }
+            });
+
+
+
+            //分頁功能
+            //假資料
+            var data = [
+                { ranks: 1, productName: "櫻桃杯子蛋糕-1", sales: 132 },
+                { ranks: 2, productName: "櫻桃杯子蛋糕-2", sales: 124 },
+                { ranks: 3, productName: "櫻桃杯子蛋糕-3", sales: 118 },
+                { ranks: 4, productName: "櫻桃杯子蛋糕-4", sales: 116 },
+                { ranks: 5, productName: "櫻桃杯子蛋糕-5", sales: 109 },
+                { ranks: 6, productName: "櫻桃杯子蛋糕-6", sales: 105 },
+                { ranks: 7, productName: "櫻桃杯子蛋糕-7", sales: 102 },
+                { ranks: 8, productName: "櫻桃杯子蛋糕-8", sales: 97 },
+                { ranks: 9, productName: "櫻桃杯子蛋糕-9", sales: 94 },
+                { ranks: 10, productName: "櫻桃杯子蛋糕-10", sales: 93 },
+                { ranks: 11, productName: "櫻桃杯子蛋糕-11", sales: 91 },
+                { ranks: 12, productName: "櫻桃杯子蛋糕-12", sales: 90 },
+
+            ]
+
+            printData(0, 3);
+
+
+            var rowsNum = 4;//每頁顯示4筆資料
+            var pagesNum = Math.ceil(data.length / rowsNum); //算出總共有幾頁
+            var currentPage = 0;//當前所按的頁數
+
+            $('#paginationArea').text(''); //清空重新渲染
+
+            //把page的a渲染出來
+<<<<<<< HEAD:後台/backendHome.html
+            if (pagesNum > 1) {
+                console.log('im in!')
+=======
+            if(pagesNum>1){
+                // console.log('im in!')
+>>>>>>> ff08294dc8d6d9ff2cd33806e2f75837b094bb6b:Backend/public/index.html
+                $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
+                for (var i = 1; i <= pagesNum; i++) {
+                    $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                }
+                $('.nonActivePage:first').removeClass('nonActivePage').addClass('activePage');
+                $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>');
+            }
+
+
+            $('.pages').on('click', function (e) {
+                $('.activePage').addClass('nonActivePage').removeClass('activePage');
+                $(this).addClass('activePage').removeClass('nonActivePage');
+                e.preventDefault();
+                doPagination(this);
+
+            })
+
+
+
+            $('.preNextPage:first').on('click', function (e) {
+                doPreNextPage(e, $('.activePage').prev());
+            })
+
+            $('.preNextPage:last').on('click', function (e) {
+                doPreNextPage(e, $('.activePage').next());
+            })
+
+            function doPreNextPage(event, elm) {
+                event.preventDefault();
+                if (!isNaN(elm.text())) {
+                    $('.activePage').addClass('nonActivePage').removeClass('activePage');
+                    elm.addClass('activePage').removeClass('nonActivePage');
+                    doPagination(elm);
+                }
+            }
+
+            function doPagination(_this) {
+                currentPage = $(_this).text();
+<<<<<<< HEAD:後台/backendHome.html
+                var rowStart = (currentPage - 1) * 4;
+                var rowEnd = 0;
+                if (pagesNum < currentPage * 4) {  //10筆 1:0123 2:4567 3:8910
+                    rowEnd = rowStart + (pagesNum % 4);//start:8 end:10
+                } else {
+                    rowEnd = currentPage * 4 - 1;//12筆 1:0123  2:4567 3:891011
+=======
+                var rowStart = (currentPage-1)*4; 
+                var rowEnd=0;
+                if(pagesNum < currentPage*4){  //10筆 1:0123 2:4567 3:89
+                    rowEnd=rowStart+(pagesNum%4);//start:8 end:10
+                }else{
+                    rowEnd = currentPage*4-1;//12筆 1:0123  2:4567 3:891011
+>>>>>>> ff08294dc8d6d9ff2cd33806e2f75837b094bb6b:Backend/public/index.html
+                }
+                // console.log(rowEnd);
+                $("#rankTable tbody").text('');
+                printData(rowStart, rowEnd);
+            }
+
+            function printData(start, end) {
+                for (var i = start; i <= end; i++) {
+                    var str = `<tr>
+                                    <td>${data[i].ranks}</td>
+                                    <td>${data[i].productName}</td>
+                                    <td>${data[i].sales}</td>
+                                </tr>`;
+                    $("#rankTable tbody").append(str);
+                }
+            }
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
