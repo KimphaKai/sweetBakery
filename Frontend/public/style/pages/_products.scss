@@ -1,6 +1,6 @@
 .products{
   .heading{
-    @include page-heading(0); 
+    @include page-heading($pink); 
     width: 70%;
     margin: 1rem 24%;
   }
@@ -27,6 +27,7 @@
 
   .productCategories{
     margin-top: 5%;
+    position: relative;
     .menu{
       background-color: $pink;
       box-shadow: 5px 5px 5px $green;
@@ -52,34 +53,12 @@
     margin-top: 1rem;
   }
 
-    /* sort style in component/sort.scss */
-  
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width:416px) {
     .heading{
       @include page-heading(0); 
-      width: 80%;
-      margin-left: 15%;
-    }
-    .productCategories{
-      .menu{
-        display: none;
-        background-color: transparent;
-        box-shadow: 0.6rem 0.6rem 0 $green;
-        width: 10rem;
-        height: 18rem;
-        padding: 1rem;
-        line-height: 3.5rem;
-        margin-top: 10%;
-        a{
-          font-size: 1.3rem;
-          color: #fff;
-          margin-left: 1rem;
-          &:hover{
-            text-decoration: underline;
-          }
-        }
-      }
+      width: 95%;
+      margin-left: 5%;
     }
   }
 
