@@ -123,11 +123,11 @@
                 </tbody>
             </table>
             <div id="paginationArea">
-                <a href="#" class="preNextPage">&lt;</a>
-                <a href="#" class="activePage">1</a>
-                <a href="#" class="nonActivePage">2</a>
-                <a href="#" class="nonActivePage">3</a>
-                <a href="#" class="preNextPage">&gt;</a>
+                <!-- <a href="#" class="preNextPage">&lt;</a>
+                <a href="/classTimeList/1" class="pages activePage">1</a>
+                <a href="/classTimeList/2" class="pages nonActivePage">2</a>
+                <a href="/classTimeList/3" class="pages nonActivePage">3</a>
+                <a href="#" class="preNextPage">&gt;</a> -->
             </div>
 
         </div>
@@ -242,44 +242,84 @@
                 doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
             })
 
+            
+            $.get("/classTimeList/countRows", function(e){
+                var pagesNum = Math.ceil(JSON.parse(e)[0].COUNT/4);
+                
+                // 分頁
+                if(pagesNum>1){
+                    $('#paginationArea').text('');
+                    $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
+                    for(var i=1; i<=pagesNum; i++){
+                        $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                    }
+                    $('.nonActivePage:first').removeClass('nonActivePage').addClass('activePage');
+                    $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                }
+            })
 
-            //接資料
+            $('#paginationArea').on('click','.pages', function(e){
+                e.preventDefault();
+                $('.activePage').addClass('nonActivePage').removeClass('activePage');
+                $(this).addClass('activePage').removeClass('nonActivePage');
+                page = $(this).text();
+                getData(page);
 
-            var classTimeListTable = [
-                {classTimeId: 1, classTitle: "粉紅泡泡圓形蛋糕", startDate: "2022-03-05" , startTime: "08:00" ,totalPeople:15, remain: 5},
-                {classTimeId: 2, classTitle: "大坑9號步道蛋糕", startDate: "2022-03-28" , startTime: "13:30" ,totalPeople:20, remain:4},
-                {classTimeId: 3, classTitle: "別對我這樣餅乾", startDate: "2022-04-16" , startTime: "10:00" ,totalPeople:12, remain:12}
-            ];
-            $(".classTimeList tbody").empty();
+            })
 
             
 
-            $.each(classTimeListTable, function (index, item) {
-                var trHtml = `
-                    <tr>
-                        <td>${item.classTimeId}</td>
-                        <td>
-                            <select name="" id="" class="classNameInput" disabled value=${index}>
-                                
-                            </select>
-                        </td>
-                        <td><input type="date" name="#" id="" value="${item.startDate}" disabled><input type="time" name="#" id="" value="${item.startTime}" disabled></td>
-                        <td><input class="totalPeople" type="number" value="${item.totalPeople}" disabled></td>
-                        <td>${item.remain}</td>
-                        <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>            
-                `;
-                console.log(index);
-                $(".classTimeList tbody").append(trHtml);
-                
-            })
+            function getData(currentPage){
+                $.get(`/classTimeList/page/${currentPage}`, function(e){
+                    // console.log(e);
+                    var selectVal=[];
+                    let classTimeListTable =e[0];
+                    let classOpt = e[1]; 
+                    // console.log(pagesNum)
+                    
+                    
+                    //資料列印出
+                    $(".classTimeList tbody").empty();
+                    classTimeListTable.map(value =>{
+                        // console.log(value);
+                        var trHtml = `
+                        <tr>
+                            <td>${value.classTimeId}</td>
+                            <td>
+                                <select name="" id="" class="classNameInput" disabled >
+                                    
+                                </select>
+                                </td>
+                            <td><input type="date" name="#" id="" value="${value.startDate.substr(0,10)}" disabled><input type="time" name="#" id="" value="${value.startTime}" disabled></td>
+                            <td><input class="totalPeople" type="number" value="${value.totalPeople}" disabled></td>
+                            <td>${value.remain}</td>
+                            <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
+                        </tr>            
+                        `;
+                        $(".classTimeList tbody").append(trHtml);
+                        selectVal.push(value.classId);
+                    })
+                    //classTitle的select加上所有classTitle的option
+                    classOpt.map(option=>{
+                        var optionHtml = `<option value="${option.classId}">${option.classTitle}</option>`;
+                        $('tr select').append(optionHtml);
+                    })
+                    //設定select的value
+                    $('select').each(function(index,element){
+                        $(this).val(selectVal[index]);
+                    })
+                    
+                    
+                })
+            }
+            getData(1);
+                        
+            
+                        
+                        
 
-            $.each(classTimeListTable, function (index, item){
-                $('tr select').append(`<option value=${item.classID}>${item.classTitle}</option>`);
+            
 
-            });
-            console.log($('.classNameInput>option:checked').prop('value'));
-            // console.log("$('.classNameInput')");
         });
         
     </script>

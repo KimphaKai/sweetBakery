@@ -1,6 +1,6 @@
 let express = require('express');
 let homeRouter = express.Router();
-let conn = require('./db');
+let conn = require('../db');
 
 
 homeRouter.get('/rankList', function(req,res){
