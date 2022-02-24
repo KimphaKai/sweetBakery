@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <a href="backendHome.html">
+            <a href="/">
                 <img id="logo" src="img/logo.svg" alt="">
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="backendHome.html">
+                    <a class="" href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -237,51 +237,44 @@
             $(".classTimeEditAreaSave").on('click',function(){
                 doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
             })
-
+            
             $(".classTimeEditAreaCancel").on('click',function(){
                 doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
             })
-
             
-            $.get("/classTimeList/countRows", function(e){
-                var pagesNum = Math.ceil(JSON.parse(e)[0].COUNT/4);
-                
-                // 分頁
-                if(pagesNum>1){
-                    $('#paginationArea').text('');
-                    $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
-                    for(var i=1; i<=pagesNum; i++){
-                        $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
-                    }
-                    $('.nonActivePage:first').removeClass('nonActivePage').addClass('activePage');
-                    $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
-                }
-            })
-
-            $('#paginationArea').on('click','.pages', function(e){
-                e.preventDefault();
-                $('.activePage').addClass('nonActivePage').removeClass('activePage');
-                $(this).addClass('activePage').removeClass('nonActivePage');
-                page = $(this).text();
-                getData(page);
-
-            })
-
             
-
+            
+            
+            getData(1);
+            
             function getData(currentPage){
                 $.get(`/classTimeList/page/${currentPage}`, function(e){
                     // console.log(e);
                     var selectVal=[];
                     let classTimeListTable =e[0];
-                    let classOpt = e[1]; 
-                    // console.log(pagesNum)
+                    let pagesNum = Math.ceil(e[1][0].COUNT/4);
+                    let classOpt = e[2]; 
+                    let newPage = parseInt(currentPage)+1;
+                    // console.log(newPage);
                     
                     
+                    //分頁
+
+                        
+                    if(pagesNum>1){
+                        $('#paginationArea').text('');
+                        $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
+                        for(var i=1; i<=pagesNum; i++){
+                            $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                        }
+                        $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
+                        $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                    }
+
+
                     //資料列印出
                     $(".classTimeList tbody").empty();
                     classTimeListTable.map(value =>{
-                        // console.log(value);
                         var trHtml = `
                         <tr>
                             <td>${value.classTimeId}</td>
@@ -312,12 +305,33 @@
                     
                 })
             }
-            getData(1);
-                        
-            
-                        
-                        
 
+            $('#paginationArea').on('click','.pages', function(e){
+                e.preventDefault();
+                page = $(this).text();
+                // console.log(page);
+                getData(page);
+                
+            })
+            $('#paginationArea').on('click','.preNextPage:first', function(e){
+                e.preventDefault();
+                let prePage = $(this).parent('#paginationArea').find('.activePage').prev().text();
+                if(!isNaN(prePage)){
+                    getData(prePage)
+                }else{
+                    
+                }
+            })
+
+            $('#paginationArea').on('click','.preNextPage:last', function(e){
+                e.preventDefault();
+                let prePage = $(this).parent('#paginationArea').find('.activePage').next().text();
+                if(!isNaN(prePage)){
+                    getData(prePage);
+                }else{
+                    
+                };
+            })
             
 
         });

@@ -4,18 +4,24 @@ let multer = require('multer');
 let conn = require('../db');
 let uuid = require('uuid');
 let uuidv1 = uuid.v1();
-let bucket =require('./firebase');
+let bucket =require('../firebase');
 
 // 取得商品列表
 
 
-productListRouter.get('/',function(req,res){
-    
-    // conn.queryAsync('select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId limit 0,3')
-    conn.queryAsync('select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId')
-    .then(result=>{
-
-        res.send(result);
+productListRouter.get('/page/:id',function(req,res){
+    let productData=[]
+    let page = req.params.id;
+    let rowsPerPage =7; //實際是7筆
+    let rowStart = (page-1) * rowsPerPage;
+    conn.queryAsync(`select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId limit ${rowStart},${page*rowsPerPage}`)
+    // conn.queryAsync('select p.*, c.categoryName,s.sizeName from product p join productcategory c on(p.categoryId=c.categoryId) join productsize s on(p.sizeId=s.sizeId) order by p.productId')
+    .then(allCols=>{
+        productData.push(allCols);
+        return conn.queryAsync('SELECT COUNT(*) AS COUNT FROM product');
+    }).then(rowsCount=>{
+        productData.push(rowsCount);
+        res.send(productData);
     }).catch(err=>{
         console.log(err);
         res.send(err);
