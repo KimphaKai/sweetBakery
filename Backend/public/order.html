@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <a href="backendHome.html">
+            <a href="/">
                 <img id="logo" src="img/logo.svg" alt="">
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="backendHome.html">
+                    <a class="" href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -67,61 +67,18 @@
                                     <th>訂單編號</th>
                                     <th>訂購人姓名</th>
                                     <th>訂購人電話</th>
-                                    <th>下定日期</th>
+                                    <th>下訂日期</th>
                                     <th>取貨日期</th>
                                     <th>訂單金額</th>
                                     <th>訂單確認</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>202201190001</td>
-                                    <td>劉大偉</td>
-                                    <td>0954254855</td>
-                                    <td>2022-01-19</td>
-                                    <td>2022-01-30</td>
-                                    <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
-                                </tr>
-                                <tr>
-                                    <td>202201190002</td>
-                                    <td>劉大偉</td>
-                                    <td>0954254855</td>
-                                    <td>2022-01-19</td>
-                                    <td>2022-01-30</td>
-                                    <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
-                                </tr>
-                                <tr>
-                                    <td>202201190003</td>
-                                    <td>劉大偉</td>
-                                    <td>0954254855</td>
-                                    <td>2022-01-19</td>
-                                    <td>2022-01-30</td>
-                                    <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
-                                </tr>
-                                <tr>
-                                    <td>202201190004</td>
-                                    <td>劉大偉</td>
-                                    <td>0954254855</td>
-                                    <td>2022-01-19</td>
-                                    <td>2022-01-30</td>
-                                    <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
-                                </tr>
-                                <tr>
-                                    <td>202201190005</td>
-                                    <td>劉大偉</td>
-                                    <td>0954254855</td>
-                                    <td>2022-01-19</td>
-                                    <td>2022-01-30</td>
-                                    <td>2,222</td>
-                                    <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
-                                </tr>
+                                
+                                
                             </tbody>
                         </table>
-                        <div id="paginationArea">
+                        <div id="paginationArea" class="unCheckPagination">
                             <a href="#" class="preNextPage">&lt;</a>
                             <a href="#" class="activePage">1</a>
                             <a href="#" class="nonActivePage">2</a>
@@ -140,7 +97,7 @@
                                     <th>訂單編號</th>
                                     <th>訂購人姓名</th>
                                     <th>訂購人電話</th>
-                                    <th>下定日期</th>
+                                    <th>下訂日期</th>
                                     <th>取貨日期</th>
                                     <th>訂單金額</th>
                                     <th>付款狀態</th>
@@ -200,7 +157,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div id="paginationArea">
+                        <div id="paginationArea" class="notClaimedPagination">
                             <a href="#" class="preNextPage">&lt;</a>
                             <a href="#" class="activePage">1</a>
                             <a href="#" class="nonActivePage">2</a>
@@ -279,12 +236,12 @@
                                 
                             </tbody>
                         </table>
-                        <div id="paginationArea">
-                            <a href="#" class="preNextPage">&lt;</a>
+                        <div id="paginationArea" class="claimedPagination">
+                            <!-- <a href="#" class="preNextPage">&lt;</a>
                             <a href="#" class="activePage">1</a>
                             <a href="#" class="nonActivePage">2</a>
                             <a href="#" class="nonActivePage">3</a>
-                            <a href="#" class="preNextPage">&gt;</a>
+                            <a href="#" class="preNextPage">&gt;</a> -->
                         </div>
                     </div>
                 </div>
@@ -342,16 +299,16 @@
         </div>
 
     </div>
-
     
-
+    
+    
     <script>
         $(document).ready(function () {
             // 導覽列次項目展開
             $('.navItem').on('click', function () {
                 $('.navItem').removeClass('navActive');
                 $(this).addClass('navActive');
-
+                
             });
             // 被選取的次項目
             $('.sub1>li').on('click', function () {
@@ -367,10 +324,12 @@
                     $('#notClaimed').hide();
                     $('#unCheckList').show();
                     $('#claimed').hide();
+                    showOrderUncheckedTable(1);
                 }else if(showArea==='未取貨'){
                     $('#notClaimed').show();
                     $('#unCheckList').hide();
                     $('#claimed').hide();
+                    showOrderNotClaimedTable(1);
                 }else{
                     $('#notClaimed').hide();
                     $('#unCheckList').hide();
@@ -380,30 +339,197 @@
 
 
             //未確認訂單的取消Btn
-            $('.cancel').on('click', function(){
+            $('#unCheckList').on('click', function(){
                 $(this).closest('tr').remove();
             })
 
             //未取貨頁籤裡的已付款Btn
-            $('.paid').on('click', function(){
+            $('#notClaimed').on('click','.paid' ,function(){
                 $(this).closest('td').children('.paymentStatus').text('已付款');
                 $(this).remove();
             })
 
 
-            //訂單明細彈跳視窗
-            $("tbody>tr").on("click", function(){
-                $(".bigModal").css("display","flex").show();
-            })
-
+            
             //modalClose功能
             $(".modalClose").on("click", function(){
                 $(".bigModal").hide();
             })
-        });
 
-        var getState = sessionStorage.getItem('name');
-        console.log(getState);   // 1
+            //未確認的資料
+            showOrderUncheckedTable(1);
+            function showOrderUncheckedTable(currentPage){
+                //get data from database
+                $.get(`/order/unChecked/page/${currentPage}`,function(e){
+                    let orderUncheckTable = e[0];
+                    let pagesNum = Math.ceil(e[1][0].COUNT/5);
+                    let newPage = parseInt(currentPage)+1;
+                    // console.log(newPage);
+    
+    
+                    //分頁
+    
+                            
+                    if(pagesNum>1){
+                        $('.unCheckPagination').text('');
+                        $('.unCheckPagination').append('<a href="#" class="preNextPage">&lt;</a>');
+                        for(var i=1; i<=pagesNum; i++){
+                            $('.unCheckPagination').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                        }
+                        $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
+                        $('.unCheckPagination').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                    }
+    
+                    //print data
+                    $('#unCheckList tbody').empty();
+                    orderUncheckTable.map(value=>{
+                        var trHtml=`
+                        <tr>
+                            <td>${value.orderId}</td>
+                            <td>${value.buyerName}</td>
+                            <td>${value.buyerPhone}</td>
+                            <td>${value.orderDate.substr(0,10)}</td>
+                            <td>${value.pickupDate.substr(0,10)}</td>
+                            <td>${value.total}</td>
+                            <td><button class="btnStyle">確定</button><button class="btnStyle cancel">取消</button></td>
+                            </tr>
+                            `
+                            $('#unCheckList tbody').append(trHtml);
+                        })
+                    })
+                }
+                
+                $('.unCheckPagination').on('click','.pages', function(e){
+                    e.preventDefault();
+                    page = $(this).text();
+                    // console.log(this);
+                    showOrderUncheckedTable(page);
+                    
+                })
+                $('.unCheckPagination').on('click','.preNextPage:first', function(e){
+                    e.preventDefault();
+                    let prePage = $(this).parent('.unCheckPagination').find('.activePage').prev().text();
+                    if(!isNaN(prePage)){
+                        showOrderUncheckedTable(prePage)
+                    }else{
+                        
+                    }
+                })
+                
+                $('.unCheckPagination').on('click','.preNextPage:last', function(e){
+                    e.preventDefault();
+                    let prePage = $(this).parent('.unCheckPagination').find('.activePage').next().text();
+                    if(!isNaN(prePage)){
+                        showOrderUncheckedTable(prePage);
+                    }else{
+                        
+                    };
+                })
+                function getUnchkDetail(detailId, total){
+                    $.get(`/order/unChecked/orderDetail/${detailId}`,function(e){
+                        console.log(e);
+                        e.map(value=>{
+                            var trHtml = `
+                            <div class="orderItem">
+                                <p class="orderItemTitle">${value.productTitle}</p>
+                            <div>
+                                <span class="orderItemSize">規格:${value.sizeName}</span>
+                                <span>${value.productPrice}</span>
+                                </div>
+                                <p>x${value.productNum}</p>
+                                <hr>
+                                <span class="subTotal">
+                                <span>小計:</span>
+                                <span>${value.subTotal}</span>
+                                </span>
+                            </div>
+                            `;
+                            $('.orderContent').append(trHtml);
+                        })
+                        $('.orderContent').append(`<div class="oderTotal"><span>訂單金額: </span><span>$<span>${total}</span></span></div>`);
+                    })
+                }
+                //未確認訂單明細彈跳視窗
+                $("#unCheckList").on("click","tr", function(){
+                    $(".bigModal").css("display","flex").show();
+                    $('.orderContent').text('').append('<p id="mainModalTitle">訂單細項</p>');
+                    let detailId=$(this).children('td:first').text();
+                    let total = $(this).children('td:nth-of-type(6)').text();
+                    getUnchkDetail(detailId, total);
+                    
+                })
+
+                //未取貨
+
+                function showOrderNotClaimedTable(currentPage){
+
+                    $.get(`/order/notClaimed/page/${currentPage}`, function(e){
+                        let notClaimedTable = e[0];
+                        console.log(notClaimedTable);
+                        let pagesNum = Math.ceil(e[1][0].COUNT/5);
+                        let newPage = parseInt(currentPage)+1;
+                        
+                        //分頁         
+                        if(pagesNum>1){
+                            $('.notClaimedPagination').text('');
+                            $('.notClaimedPagination').append('<a href="#" class="preNextPage">&lt;</a>');
+                            for(var i=1; i<=pagesNum; i++){
+                                $('.notClaimedPagination').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                            }
+                            $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
+                            $('.notClaimedPagination').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                        }
+    
+                        //print data
+                        $('#notClaimed tbody').empty();
+                        notClaimedTable.map(value=>{
+                            var trHtml=`
+                            <tr>
+                                <td>${value.orderId}</td>
+                                <td>${value.buyerName}</td>
+                                <td>${value.buyerPhone}</td>
+                                <td>${value.orderDate.substr(0,10)}</td>
+                                <td>${value.pickupDate.substr(0,10)}</td>
+                                <td>${value.total}</td>
+                                <td><span class="paymentStatus">${value.paymementStatus}</span><button class="btnStyle paid">已付款</button></td>
+                                <td><button class="btnStyle cancel">取消</button></td>
+                            </tr>
+                            `
+                            $('#notClaimed tbody').append(trHtml);
+                        })
+                    })
+
+                }
+
+                $('.notClaimedPagination').on('click','.pages', function(e){
+                    e.preventDefault();
+                    page = $(this).text();
+                    // console.log(this);
+                    showOrderNotClaimedTable(page);
+                    
+                })
+
+                $('.notClaimedPagination').on('click','.preNextPage:first', function(e){
+                    e.preventDefault();
+                    let prePage = $(this).parent('.notClaimedPagination').find('.activePage').prev().text();
+                    if(!isNaN(prePage)){
+                        showOrderNotClaimedTable(prePage)
+                    }else{
+                        
+                    }
+                })
+
+                $('.notClaimedPagination').on('click','.preNextPage:last', function(e){
+                    e.preventDefault();
+                    let prePage = $(this).parent('.notClaimedPagination').find('.activePage').next().text();
+                    if(!isNaN(prePage)){
+                        showOrderNotClaimedTable(prePage);
+                    }else{
+                        
+                    };
+                })
+
+            });
     </script>
 </body>
 

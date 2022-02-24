@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <a href="backendHome.html">
+            <a href="/">
                 <img id="logo" src="img/logo.svg" alt="">
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="backendHome.html">
+                    <a class="" href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -74,48 +74,7 @@
                         <td>1.5</td>
                         <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>00001</td>
-                        <td>日式布丁草莓蛋糕</td>
-                        <td>2,200</td>
-                        <td>1.5</td>
-                        <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <div id="paginationArea">
@@ -129,7 +88,7 @@
         </div>
     </div>
 
-    <div id="productCreateAndEditModal" class="bigModal">
+    <div id="classCreateAndEditModal" class="bigModal">
 
         <div class="modalWrap">
 
@@ -144,70 +103,47 @@
 
                     <div id="uploadImg">
                         <div id="uploadArea">
-                            <div>+</div>
+                            <input hidden type="file" multiple id="fileUpload">
+                            <div><label for="fileUpload">+</label></div>
                             <p>點擊或拖曳上傳</p>
                         </div>
                         <div id="showImgArea">
 
-                            <div class="imgItem">
+                            <!-- <div class="imgItem">
                                 <div>&times;</div>
                                 <div>
                                     <img src="./public/img/productDetailPic.jpg" alt="">
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="imgItem">
-                                <div>&times;</div>
-                                <div>
-                                    <img src="./public/img/productDetailPic.jpg" alt="">
-                                </div>
-                            </div>
-
-                            <div class="imgItem">
-                                <div>&times;</div>
-                                <div>
-                                    <img src="./public/img/productDetailPic.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="imgItem">
-                                <div>&times;</div>
-                                <div>
-                                    <img src="./public/img/productDetailPic.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="imgItem">
-                                <div>&times;</div>
-                                <div>
-                                    <img src="./public/img/productDetailPic.jpg" alt="">
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     
                     <div class="formField">
 
                         <div class="formGroup">
-                            <label for="">課程名稱:</label>
-                            <input type="text">
+                            <label for="classTitle">課程名稱:</label>
+                            <input id="classTitle" type="text">
                         </div>
 
                         <div class="formGroup">
                             <label for="">課程價格:</label>
-                            <input type="number">
+                            <input id="classPrice" type="number">
                         </div>
 
                         <div class="formGroup">
-                            <label for="">課程時間長度:</label> 
-                            <input type="number"> 小時
+                            <label for="classDuration">課程時間長度:</label> 
+                            <input id="classDuration" type="number"> 小時
                         </div>
 
                         <div class="formGroup">
-                            <label for="">商品簡介:</label><br>
-                            <textarea name="" id="" cols="40"></textarea>
+                            <label for="classInfo">商品簡介:</label><br>
+                            <textarea id="classInfo" cols="40"></textarea>
                         </div>
                         <div class="formGroup">
-                            <button type="button">儲存</button>
-                            <button type="button" class="modalCancel">取消</button>
+                            <button id="sendClassInfo" type="button">確定</button>
+                            <button type="button">取消</button>
                         </div>
                     </div>
                 </div>
@@ -218,6 +154,7 @@
         </div>
 
     </div>
+
     <script>
         $(document).ready(function () {
             // 導覽列次項目展開
@@ -291,25 +228,126 @@
                 {classId: 3, classTitle: "別對我這樣餅乾", classPrice: 300 , classDuration:3}
             ];
 
+            // $.get("/classList", function (e) {
+            //     classListTable = JSON.parse(e);
+            //     $(".classList tbody").empty();
+            //     $.each(classListTable, function (index, item) {
+            //         var trHtml = `
+            //                 <tr>
+            //                     <td>${item.classId}</td>
+            //                     <td>${item.classTitle}</td>
+            //                     <td>${item.classPrice}</td>
+            //                     <td>${item.classDuration}</td>
+            //                     <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
+            //                 </tr>            
+            //         `;
+            //         $(".classList tbody").append(trHtml);
+            //     })
 
-            $.get("/classList", function (e) {
-                classListTable = JSON.parse(e);
-                $(".classList tbody").empty();
-                $.each(classListTable, function (index, item) {
-                    var trHtml = `
-                            <tr>
-                                <td>${item.classId}</td>
-                                <td>${item.classTitle}</td>
-                                <td>${item.classPrice}</td>
-                                <td>${item.classDuration}</td>
-                                <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-                            </tr>            
-                    `;
-                    $(".classList tbody").append(trHtml);
-                })
+            // })
+            // 新增課程
+            // 顯示以上傳的圖片
+            function showUploadedImg() {
+                $('.imgItem').remove();
+                for (let i = 0; i < files.length; i++) {
+                    var reader = new FileReader();
+                    let file = files[i];
+                    reader.onload = function (readFile) {
+                        $("#showImgArea").append(`
+                            <div class="imgItem"> 
+                                <div class="deleteImg">&times;</div>
+                                <div>
+                                    <img src=${readFile.target.result}> 
+                                    <label hidden>${file.name}</label>
+                                </div>
+                            </div>
+                        `);
+                    }
+                    reader.readAsDataURL(file);
 
+                }
+            }
+            let files = [];
+            // let productItem = {}
+
+            // 上傳區
+            $('#uploadArea').on('dragover', function (e) {
+                e.preventDefault();
+                // 檔案在上傳區上方加class樣式
+            }).on('dragleave', function () {
+                // 檔案離開上傳區上方移除class樣式
+            }).on('drop', function (e) {
+                e.preventDefault();
+                // 檔案放在上傳區時移除樣式
+                for (let i = 0; i < e.originalEvent.dataTransfer.files.length; i++) {
+                    files.push(e.originalEvent.dataTransfer.files[i]);
+
+                }
+                showUploadedImg();
+            });
+            // 點+增加檔案
+            $("#fileUpload").on('change', function (e) {
+                for (let i = 0; i < e.target.files.length; i++) {
+                    files.push(e.target.files[i]);
+
+                }
+                showUploadedImg();
+            });
+            // 按X刪除檔案
+            $("#showImgArea").on('click', '.deleteImg', function () {
+                let fileName = $(this).parent('div').find('label').text();
+                files.map((value, index) => {
+
+                    if (fileName == value.name) {
+                        files.splice(index, 1);
+                    }
+                });
+                showUploadedImg();
+            });
+            // 送出課程資訊
+            $('#sendClassInfo').on('click',function(){
+                let classTitle = $("#classTitle").val();
+                let classPrice = $('#classPrice').val();
+                let classDuration = $("#classDuration").val();
+                let classInfo = $('#classInfo').val();
+                if (classTitle && classPrice && classDuration && classInfo && files.length>0){
+                    // 可送出資料
+                    let formDataAdd = new FormData();
+                    // 檔案加入formData中
+                    files.forEach((value, index) => {
+
+                        var fileName = files[index].name;
+                        let dotPosition = fileName.lastIndexOf('.');
+                        let fileType = fileName.substr(dotPosition);
+                        // formDataAdd.append('files', value, `${index + 1}${fileType}`);
+                        formDataAdd.append('files', value);
+
+                    });
+                    formDataAdd.append('classTitle',classTitle);
+                    formDataAdd.append('classPrice',classPrice);
+                    formDataAdd.append('classDuration',classDuration);
+                    formDataAdd.append('classInfo',classInfo);
+                    $.ajax({
+                        url: '/classList/addClassInfo',
+                        type: 'post',
+                        data: formDataAdd,
+                        processData: false,
+                        contentType: false,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            // 清空存放陣列的檔案
+                            files=[];
+                            showUploadedImg();
+                            $('.bigModalForm').find('input').val('');
+                            $('.bigModalForm').find('textarea').val('');
+                            closeModal();
+                        }
+                    });
+                }else{
+                    alert('輸入框內容不可空白');
+                }
             })
-            
         });
 
         
