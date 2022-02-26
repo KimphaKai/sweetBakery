@@ -122,6 +122,44 @@ header{
        fill: $pink;
       }
      }
+     .userIcon{
+       position: relative;
+       &:hover{
+         .userDropdown{
+           display: flex;
+         }
+       }
+     }
+     .userDropdown{
+      display: flex;
+      flex-direction: column;
+      width: 6.5rem;
+      height: 6.5rem;
+      padding-left: 0.5rem;
+      margin-top: 0.8rem;
+      position: absolute;
+      top: 1.5rem ;
+      right: -2rem;
+      line-height: 2rem;
+      background-color: $gray;
+      border: 1px solid $gray;
+      display: none;
+      &:before{
+        content: "";
+        position: absolute; 
+        top: -0.5rem; 
+        right: 2rem;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $gray;
+        z-index: 1;
+      }
+      a:hover{
+        color:$pink;
+        font-weight: 700;
+      }
+     }
+
     .cartIcon{
       display: inline-block;
       position: relative;

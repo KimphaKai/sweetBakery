@@ -156,6 +156,53 @@ header .icons svg:hover {
   fill: #ffb7c2;
 }
 
+header .icons .userIcon {
+  position: relative;
+}
+
+header .icons .userIcon:hover .userDropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .icons .userDropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 6.5rem;
+  height: 6.5rem;
+  padding-left: 0.5rem;
+  margin-top: 0.8rem;
+  position: absolute;
+  top: 1.5rem;
+  right: -2rem;
+  line-height: 2rem;
+  background-color: #ececec;
+  border: 1px solid #ececec;
+  display: none;
+}
+
+header .icons .userDropdown:before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  right: 2rem;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ececec;
+  z-index: 1;
+}
+
+header .icons .userDropdown a:hover {
+  color: #ffb7c2;
+  font-weight: 700;
+}
+
 header .icons .cartIcon {
   display: inline-block;
   position: relative;
