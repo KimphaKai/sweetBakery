@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>呷甜甜 Sweet Bakery</title>
+
+  <!-- Font Awesome CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style/style.css">
+
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <%- include('partials/header') %>
+
+    <!-- HERO CAROUSEL SECTION -->
+    <section class="carousel">
+      <div class="heroSwiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide"><img src="img/banner-1.jpeg"></div>
+          <div class="swiper-slide"><img src="img/banner-2.jpeg"></div>
+          <div class="swiper-slide"><img src="img/banner-3.jpeg"></div>
+          <!-- <div class="swiper-slide"><img src="img/banner.jpg"></div> -->
+        </div>
+        <!-- pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- navigation arrows -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUCT CATEGORIES SECTION -->
+    <section class="categories">
+      <div class="container">
+        <a href="#" class="category-item item1">
+          <h1>餅乾</h1>
+          <div class="overlay"></div>
+        </a>
+        <a href="#" class="category-item item2">
+          <h1>蛋糕</h1>
+          <div class="overlay"></div>
+        </a>
+        <a href="#" class="category-item item3">
+          <h1>杯子蛋糕</h1>
+          <div class="overlay"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- BEST SELLER SECTION  -->
+    <section class="bestseller">
+      <h1 class="section-heading">熱銷商品</h1>
+      <div class="product-grid">
+        <div class="productCard">
+          <div class="card-image">
+            <a href="#"><img src="img/bestseller/best1.jpg"></a>
+          </div>
+          <div class="body-wrapper">
+            <div class="card-body">
+              <div class="productTitle"><a href="#">焦糖堅果巧克力</a></div>
+              <span class="productPrice">NT $500</span>
+            </div>
+            <div class="cartBtn">
+              <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
+            </div>
+          </div>
+        </div>
+        <div class="productCard">
+          <div class="card-image">
+            <a href="#"><img src="img/bestseller/best2.jpg"></a>
+          </div>
+          <div class="body-wrapper">
+            <div class="card-body">
+              <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
+              <span class="productPrice">NT $450</span>
+            </div>
+            <div class="cartBtn">
+              <button class="fas fa-shopping-cart"></button>
+            </div>
+          </div>
+        </div>
+        <div class="productCard">
+          <div class="card-image">
+            <a href="#"><img src="img/bestseller/best3.jpg"></a>
+          </div>
+          <div class="body-wrapper">
+            <div class="card-body">
+              <div class="productTitle"><a href="#">櫻桃杯子蛋糕</a></div>
+              <span class="productPrice">NT $500</span>
+            </div>
+            <div class="cartBtn">
+              <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
+            </div>
+          </div>
+        </div>
+        <div class="productCard">
+          <div class="card-image">
+            <a href="#"><img src="img/cupcake.jpg"></a>
+          </div>
+          <div class="body-wrapper">
+            <div class="card-body">
+              <div class="productTitle"><a href="#">香草杯子蛋糕</a></div>
+              <span class="productPrice">NT $500</span>
+            </div>
+            <div class="cartBtn">
+              <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal-container">
+      <div class="modal-wrapper">
+        <div class="closeModal">&times;</div>
+        <div class="modal-body">
+          <div class="productImg">
+            <img src="img/bestseller/best1.jpg">
+          </div>
+          <div class="productCheckout">
+            <h2 class="productTitle">焦糖堅果巧克力</h2>
+            <p class="price">NT $120</p>
+            <p class="productInfo">腰果、南瓜子、夏威夷豆、杏仁片等... <br>
+              各式堅果加上特製餅皮當襯底，
+              手工焦糖更增添甜蜜風味</p>
+            <div class="productQty">
+              <button class="minus btn fas fa-minus"></button>
+              <input id="productNum" class="inputNum" type="number" value="1">
+              <button class="plus btn fas fa-plus"></button>
+            </div>
+            <button class="addToCartBtn"><i class="fas fa-cart-plus"></i>加入購物車</button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-overlay"></div> -->
+    </div>
+
+    <!-- CLASS RECOMMENDATION SECTION -->
+    <section class="classRec">
+      <h1 class="section-heading">課程推薦</h1>
+      <div class="classCard">
+        <div class="classImg">
+          <a href="/classDetail"> <img src="img/class/class1.jpg"></a>
+        </div>
+        <div class="content">
+          <h2 class="classTitle"><a href="/classDetail">親手製作 - <span>日式布丁草莓蛋糕</span></a></h2>
+          <div class="classTime"> 時間: 2022/03/19 (六）14:00 ~ 16:30 </div>
+          <div class="divider"></div>
+          <h5 class="remain">剩餘名額: 5人</h5>
+          <div class="classInfo">
+            <h3 class="heading">課程簡介</h3>
+            <p class="desc">濕潤綿密不甜膩的 完美海綿蛋糕x萬人迷手工布丁夾餡
+              和冬季主角"草莓"的完美組合，擁有一人嗑光一整顆的美味魔力!
+              從最簡單的打發攪拌手法，到進階的配方比例探討包含在這堂課中
+              不管是初學者或有經驗的同學都能收穫滿滿喔！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASS GALLERY SECTION -->
+    <section class="gallery">
+      <h1 class="section-heading">課程作品</h1>
+      <div class="img-wrapper">
+        <div class="col">
+          <img src="img/gallery/img1.jpg" />
+          <img src="img/gallery/img2.jpg" />
+        </div>
+        <div class="col">
+          <img src="img/gallery/img3.jpg" />
+          <img src="img/gallery/img5.jpg" />
+        </div>
+        <div class="col">
+          <img src="img/gallery/img4.jpg" />
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+      <!-- Swiper JS -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+      <!-- Javascript -->
+
+      <%- include('javascript/script') %>
+        <%- include('javascript/slider') %>
+          <%- include('javascript/userLogin') %>
+            <%- include('javascript/user') %>
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>呷甜甜 Sweet Bakery 購物車</title>
+  <!-- Font Awesome CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- Swiper CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style/style.css" />
+
+</head>
+
+<body>
+  <%- include("partials/header") %>
+
+    <section class="cart">
+
+      <div class="container">
+        <!-- 我的購物清單title -->
+        <div class="heading">
+          <h1 class="page-heading">我的購物清單</h1>
+        </div>
+        <div class="divider"></div>
+
+        <!-- container -->
+        <table class="tab">
+          <thead class="head">
+            <th>
+              <input type="checkbox" class="selectAll">
+            </th>
+            <th class="thPic">商品照片</th>
+            <th class="thName">商品名稱</th>
+            <th class="thSize">規格</th>
+            <th class="thPrice">單價</th>
+            <th class="thNum">數量</th>
+            <th class="thSum">小計</th>
+            <th class="thAction">操作</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="chkbox" /></td>
+              <td><img src="img/Cakes/butterscotch 1-2.jpg" alt=""></td>
+              <td class="productName">黃色5號棒蛋糕</td>
+              <td class="productSize">8吋</td>
+              <td class="price">$200</td>
+              <td class="amount">
+                <button type="button" class="sub">&#8722;</button>
+                <input type="text" name="" value="1" class="num">
+                <button type="button" class="add">&#x2B;</button>
+              </td>
+              <td class="subtotal">$200</td>
+              <td class="delete"><i class="fas fa-times"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="chkbox" /></td>
+              <td><img src="img/Cakes/oreo 1-1.jpg" alt=""></td>
+              <td class="productName">歐瑞兒甜進你的心
+              </td>
+              <td class="productSize">6吋</td>
+              <td class="price">$100</td>
+              <td class="amount">
+                <button type="button" class="sub">&#8722;</button>
+                <input type="text" name="" value="1" class="num">
+                <button type="button" class="add">&#x2B;</button>
+              </td>
+              <td class="subtotal">$100</td>
+              <td class="delete"><i class="fas fa-times"></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="chkbox" /></td>
+              <td><img src="img/Cakes/redvelvet 1-1.jpg" alt=""></td>
+              <td class="productName">血腥瑪麗吼哩系</td>
+              <td class="productSize">8吋</td>
+              <td class="price">$1000</td>
+              <td class="amount">
+                <button type="button" class="sub">&#8722;</button>
+                <input type="text" value="1" class="num">
+                <button type="button" class="add">&#x2B;</button>
+              </td>
+              <td class="subtotal">$1000</td>
+              <td class="delete"><i class="fas fa-times"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 總計 -->
+        <div class="totalPrice">
+          <span>已選<span class="num_sum">1</span>件商品</span>
+          <span>總計:</span>
+          <span class="sum">0</span>
+          <div class="btn">
+            <span class="delSelected">刪除勾選商品</span>
+            <span class="delAll">清空購物車</span>
+            <span class="confirm">確認訂單</span>
+            <!-- <span><a class="confirm" href="/checkout">確認訂單</a></span> -->
+          </div>
+
+        </div>
+
+        <!-- 推薦商品 -->
+        <div class="recommendItems">
+          <h2 class="recHeading">推薦商品</h2>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <a href="#"><img src="img/cupcake.jpg" /></a>
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName"><a href="#">香草杯子蛋糕</a></div>
+                      <span class="productPrice">NT $500</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <a href="#"><img src="img/bestseller/best2.jpg" /></a>
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName"><a href="#">草莓果醬餅乾</a></div>
+                      <span class="productPrice">NT $450</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <a href="/productDetail"><img src="img/cookies/cookie1.jpeg" /></a>
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName">
+                        <a href="/productDetail">撒糖屑曲奇餅乾</a>
+                      </div>
+                      <span class="productPrice">NT $500</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <img src="img/cupcake.jpg" />
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName">香草杯子蛋糕</div>
+                      <span class="productPrice">NT $500</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <img src="img//cupcake.jpg" />
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName">香草杯子蛋糕</div>
+                      <span class="productPrice">NT $500</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="productCard">
+                  <div class="card-image">
+                    <img src="img/cupcake.jpg" />
+                  </div>
+                  <div class="body-wrapper">
+                    <div class="card-body">
+                      <div class="productName">香草杯子蛋糕</div>
+                      <span class="productPrice">NT $500</span>
+                    </div>
+                    <div class="cartBtn">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fas fa-angle-left"></div>
+            <div class="fas fa-angle-right"></div>
+            <!-- <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> -->
+          </div>
+        </div>
+    </section>
+
+
+    <%- include('partials/footer') %>
+
+
+      <!-- ------------------------------------------------ -->
+      <!-- Swiper JS -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+      <%- include('javascript/script') %>
+        <%- include('javascript/cartList') %>
+</body>
+
+</html>

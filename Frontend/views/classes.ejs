@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>呷甜甜 Sweet Bakery</title>
+  <!-- Font Awesome CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <section class="classes">
+
+      <div class="heading">
+        <h1 class="page-heading">烘焙小教室 <span><img src="img/baking.png" alt=""></span></h1>
+        <div class="divider"></div>
+      </div>
+
+      <div class="classes-wrapper">
+        <div class="search-container">
+          <div class="search">
+            <input class="search-input" type="search" name="classSearch" placeholder="搜尋課程...">
+            <button class="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="classSort">
+            <select name="classSort">
+              <option value="預設排序">預設排序</option>
+              <option value="最近開課日期">最近開課日期</option>
+              <option value="價格由低到高">價格由低到高</option>
+              <option value="價格由高到低">價格由高到低</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="classCard">
+          <div class="classImg">
+            <a href="/classDetail"> <img src="img/class/class1.jpg"></a>
+          </div>
+          <div class="content">
+            <h2 class="classTitle"><a href="/classDetail">親手製作 - <span>日式布丁草莓蛋糕</span></a></h2>
+            <div class="classTime"><i class="fas fa-calendar"></i>2022/03/19 (六）14:00 ~ 16:30 </div>
+            <div class="divider"></div>
+            <div class="remain">
+              <span>剩餘人數:</span><span id="remainNum">10</span><span>人</span>
+            </div>
+            <div class="classInfo">
+              <h3 class="heading">課程簡介</h3>
+              <p class="desc">濕潤綿密不甜膩的 完美海綿蛋糕x萬人迷手工布丁夾餡
+                和冬季主角"草莓"的完美組合，擁有一人嗑光一整顆的美味魔力!
+                從最簡單的打發攪拌手法，到進階的配方比例探討包含在這堂課中
+                不管是初學者或有經驗的同學都能收穫滿滿喔！</p>
+              <!-- <button onclick="location.href='/classForm'" class="signUpBtn">立即報名</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="classCard">
+          <div class="classImg">
+            <a href="#"> <img src="img/class/class1.jpg"></a>
+          </div>
+          <div class="content">
+            <h2 class="classTitle"><a href="#">親手製作 - <span>日式布丁草莓蛋糕</span></a></h2>
+            <div class="classTime"><i class="fas fa-calendar"></i>2022/03/20 (日）10:00 ~ 12:30 </div>
+            <div class="divider"></div>
+            <div class="remain">
+              <span>剩餘人數:</span><span id="remainNum">10</span><span>人</span>
+            </div>
+            <div class="classInfo">
+              <h3 class="heading">課程簡介</h3>
+              <p class="desc">濕潤綿密不甜膩的 完美海綿蛋糕x萬人迷手工布丁夾餡
+                和冬季主角"草莓"的完美組合，擁有一人嗑光一整顆的美味魔力!
+                從最簡單的打發攪拌手法，到進階的配方比例探討包含在這堂課中
+                不管是初學者或有經驗的同學都能收穫滿滿喔！</p>
+            </div>
+          </div>
+        </div>
+        <div class="classCard">
+          <div class="classImg">
+            <a href="#"> <img src="img/class/class1.jpg"></a>
+          </div>
+          <div class="content">
+            <h2 class="classTitle"><a href="/classDetail">親手製作 - <span>日式布丁草莓蛋糕</span></a></h2>
+            <div class="classTime"><i class="fas fa-calendar"></i>2022/03/19 (六）14:00 ~ 16:30 </div>
+            <div class="divider"></div>
+            <div class="remain">
+              <span>剩餘人數:</span><span id="remainNum">5</span><span>人</span>
+            </div>
+            <div class="classInfo">
+              <h3 class="heading">課程簡介</h3>
+              <p class="desc">濕潤綿密不甜膩的 完美海綿蛋糕x萬人迷手工布丁夾餡
+                和冬季主角"草莓"的完美組合，擁有一人嗑光一整顆的美味魔力!
+                從最簡單的打發攪拌手法，到進階的配方比例探討包含在這堂課中
+                不管是初學者或有經驗的同學都能收穫滿滿喔！</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <button class="paginationBtn prev-page" type="button">
+            <i class="fas fa-caret-left"></i>
+          </button>
+
+          <button class="pageNum" style="background-color: pink; color: white;">1</button>
+          <button class="pageNum">2</button>
+          <button class="pageNum">3</button>
+          <button class="pageNum">4</button>
+          <button class="pageNum">5</button>
+
+          <button class="paginationBtn next-page" type="button">
+            <i class="fas fa-caret-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+      <!-- Javascript -->
+      <%- include('javascript/script') %>
+
+</body>
+
+</html>

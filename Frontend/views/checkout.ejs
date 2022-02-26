@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>呷甜甜 Sweet Bakery 購物車</title>
+  <!-- Font Awesome CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet" />
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style/style.css" />
+
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <section class="checkout">
+      <div class="heading">
+        <h1 class="page-heading">購物結帳</h1>
+      </div>
+
+      <div class="checkoutContainer">
+        <div class="orderCard">
+          <div class="orderHeader">
+            <div class="col">商品名稱</div>
+            <div class="col">規格</div>
+            <div class="col">單價</div>
+            <div class="col">數量</div>
+            <div class="col">小計</div>
+          </div>
+          <div class="divider"></div>
+          <!-- -----會員訂單資訊-------- -->
+          <div class="orderItems">
+            <div class="orderThumbnail">
+              <a href="/productDetail"><img src="img/Cakes/oreo 1-1.jpg"></a>
+            </div>
+            <div class="detail-wrapper">
+              <div class="col itemTitle">
+                <span>Oreo巧克力蛋糕</span>
+              </div>
+              <div class="col itemSize">
+                <span>6吋</span>
+              </div>
+              <div class="col itemPrice">
+                <span>$600</span>
+              </div>
+              <div class="col itemQty">
+                <span>3</span>
+              </div>
+              <div class="col subtotal">
+                <span>$600</span>
+              </div>
+            </div>
+          </div>
+          <div class="totalPrice">
+            <span>總金額:</span>
+            <span>$</span><span>1800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------訂購人資訊------ -->
+      <div class="customerInfo">
+        <h4>訂購人資訊</h4>
+        <div class="row">
+          <div class="column">
+            <div class="guestData">
+              <label for="guestName">姓名</label>
+              <input class="formInput" type="text" id="guestName" name="guestName" placeholder="請輸入姓名" required>
+            </div>
+            <div class="guestData">
+              <label for="guestEmail">電子信箱</label>
+              <input class="formInput" type="email" id="guestEmail" name="guestEmail" placeholder="請輸入電子信箱" required>
+            </div>
+            <div class="guestData">
+              <label for="guestPhone">電話</label>
+              <input class="formInput" type="tel" id="guestPhone" name="guestPhone" placeholder="請輸入電話" required>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="guestData">
+              <label for="guestName">取貨日期</label>
+              <input class="formInputDate" type="date" id="bookdate" required>
+            </div>
+            <div class="guestData">
+              <span>付款方式</span>
+              <span class="storePay">到店付款</span>
+            </div>
+            <div class="buttons">
+              <button type="submit" value="確認" class="submitBtn">
+                <a href="/products">確認送出</a>
+              </button>
+              <button class="cancelBtn">
+                <a href="/cart">取消</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+      <!-- Javascript -->
+      <%- include('javascript/script') %>
+</body>
+
+</html>

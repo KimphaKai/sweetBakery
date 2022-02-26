@@ -1,0 +1,190 @@
+.cart{
+  .container{
+    margin: 0 2rem;
+
+    // ---------我的購物清單title------------
+    .heading {
+      font-size: 1.5rem;
+      color: $text-color;
+      width: 100%;
+      text-align: left;
+      margin: 1rem auto;
+      padding-left: 1rem;
+    }
+
+
+    // ----------------內容標題--------------------
+      
+    .tab{
+      width: 100%;
+      margin: 0 auto;
+      .head{
+        th {
+          border-top:1px solid $darker-gray;
+          border-bottom:1px solid $darker-gray;
+          padding: 1rem 2rem;
+          font-size: 1.5rem;
+          .selectAll{
+            width: 25px;
+            height: 25px;
+          }
+          &.thPic{
+            margin: 0;
+            padding: 0;
+          }
+
+          &.thSize{
+            width: 8rem;
+          }
+
+          &.thSum{
+            padding: 0;
+          }
+        }
+      }
+      td{
+        border-bottom:1px solid $darker-gray ;
+        font-size: 1.5rem;
+        text-align: center;
+        .chkbox{
+          width: 25px;
+          height: 25px;
+        }
+        &>img{
+          margin: 0.5rem auto;
+          width: 9rem;
+          border-radius: 0.2rem;
+        }
+        &.productName{
+          width: 15rem;
+          margin-right: 1.5rem;
+          text-align: center;
+        }
+        &.productSize{
+          text-align: center;
+          width: 2rem;
+        }
+        &.price{
+          text-align: center;
+        }
+
+        &.amount{
+          text-align: center;
+          width: 10rem;
+          font-size: 2rem;
+          .num {
+            margin-left: 0rem;
+            text-align: center;
+            width: 2rem;
+            height: 3rem;
+            font-size: 1.5rem;
+          }
+          .add,.sub {
+            border: 1px solid $text-color;
+            border-radius: 4px;
+            width: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            &:hover{
+              background-color: $text-color;
+              color: #fff;
+              border-color: $text-color;
+            }
+          }
+        }
+        &.subtotal{
+          text-align: center;
+        }
+        &.delete{
+          i{
+            text-align: center;
+            cursor: pointer;
+            &:hover{
+              color: $text-color;
+              opacity: 0.8;
+            }
+          }
+        }
+      } 
+
+    }
+      
+
+    // ---------總計------------
+    .totalPrice{
+      text-align: right;
+      font-size: 1.3rem;
+      &>span{
+        font-size: 1.3rem;
+      }
+     .sum, .num_sum{
+       color: $red;
+     }
+     .sum{
+       &::before{
+         content: "$";
+       }
+     }
+      .btn{
+        margin-top: 1rem;
+        cursor: pointer;
+        span, .confirm{
+          margin:0 0.3rem;
+          padding: 0.3rem 0.5rem;
+          color: #646464;
+          background-color: $gray;
+          border: 1px solid $gray;
+          border-radius: 0.3rem;
+          &:hover{
+            background: $text-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+
+
+
+    // ---------推薦商品------------
+    .recommendItems{
+      position: relative;
+      width: 70rem;
+      // text-align: center;
+      margin: 2rem auto;
+    }
+    .swiper{
+      padding: 2rem 4rem;
+      .swiper-wrapper{
+        .productCard{
+          width: 15rem;
+          height: 15rem;
+        }
+        img{
+          width: 100%;
+          height: 10rem;
+        }
+      }
+      .fa-angle-right, .fa-angle-left{
+        position: absolute;
+        top:35%; 
+        color: $text-color;
+        text-align: center;
+        vertical-align: middle;
+        font-size:3rem;
+        z-index: 1;
+        cursor: pointer;
+        &:hover{
+          color: $black;
+        }
+      }
+      .fa-angle-right{
+        right: 0;  
+      }
+      .fa-angle-left{
+        left: 0;  
+      }
+    }
+  
+  }
+}

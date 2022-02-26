@@ -1,0 +1,6 @@
+$(document).ready(function(){
+    var forgetUserEmail; //輸入信箱
+
+
+    //寄認證信 > 輸入認證密碼 > 寄密碼到信箱
+})
