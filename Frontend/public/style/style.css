@@ -1656,8 +1656,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form .buttons .submit, .form .buttons .cancel {
   border: 1px solid #ececec;
-  background-color: transparent;
-  color: #4d4d4d;
   border-radius: 0.5rem;
   margin-top: 1rem;
   font-size: 1.3rem;
@@ -1667,9 +1665,19 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .form .buttons .submit:hover, .form .buttons .cancel:hover {
-  background-color: #ffb7c2;
-  border-color: #ffb7c2;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.form .buttons .submit {
+  background-color: #8E4C4C;
   color: #fff;
+}
+
+.form .buttons .cancel {
+  background-color: #ececec;
 }
 
 @media screen and (max-width: 1150px) {
@@ -1804,7 +1812,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .heading .page-heading {
-  color: #ffb7c2;
+  color: #8E4C4C;
   font-size: 2rem;
 }
 
@@ -2288,21 +2296,21 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .user .userInfoContainer .buttons {
-  margin: 3rem 5rem;
+  margin: 3rem 4rem;
   text-align: end;
 }
 
 .user .userInfoContainer .buttons .submitBtn {
   cursor: pointer;
-  padding: 1rem 3rem;
+  padding: 0.8rem 2rem;
   border-radius: 0.3rem;
   border: 1px solid #4d4d4d;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .user .userInfoContainer .buttons .submitBtn:hover {
-  background: #ffb7c2;
-  border-color: #ffb7c2;
+  background: #8E4C4C;
+  border-color: #8E4C4C;
   color: #fff;
 }
 
@@ -2679,7 +2687,14 @@ input[type="search"]::-webkit-search-results-decoration {
   text-align: end;
   padding: 1rem 2rem;
   font-size: 1.3rem;
-  color: #8E4C4C;
+}
+
+.userOrders .content-wrapper .totalPrice span:not(:first-child) {
+  color: #D9534F;
+}
+
+.userOrders .content-wrapper .totalPrice span:not(:first-child)::before {
+  content: '$';
 }
 
 .registered {
@@ -2861,7 +2876,14 @@ input[type="search"]::-webkit-search-results-decoration {
   text-align: end;
   padding: 1rem 2rem;
   font-size: 1.3rem;
+}
+
+.registered .content-wrapper .totalPrice span:not(:first-child) {
   color: #D9534F;
+}
+
+.registered .content-wrapper .totalPrice span:not(:first-child)::before {
+  content: '$';
 }
 
 .userOrderHistory {
@@ -3068,7 +3090,14 @@ input[type="search"]::-webkit-search-results-decoration {
   text-align: end;
   padding: 1rem 2rem;
   font-size: 1.3rem;
+}
+
+.userOrderHistory .content-wrapper .totalPrice span:not(:first-child) {
   color: #D9534F;
+}
+
+.userOrderHistory .content-wrapper .totalPrice span:not(:first-child)::before {
+  content: '$';
 }
 
 .checkout {

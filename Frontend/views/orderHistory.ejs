@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <-% include('partials/footer') %>
+  <%- include('partials/header') %>
 
     <section class="userOrderHistory">
       <div class="sidebar">
@@ -111,7 +111,7 @@
           <div class="divider"></div>
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>$</span><span>600</span>
+            <span>600</span>
           </div>
         </div>
 
@@ -156,13 +156,15 @@
                 1盒8入
               </div>
               <div class="col itemPrice">
-                $300
+                <span>$</span>
+                <span>300</span>
               </div>
               <div class="col itemQty">
                 2
               </div>
               <div class="col subtotal">
-                $300
+                <span>$</span>
+                <span>300</span>
               </div>
             </div>
           </div>
@@ -179,13 +181,15 @@
                 6吋-圓形蛋糕
               </div>
               <div class="col itemPrice">
-                $600
+                <span>$</span>
+                <span>600</span>
               </div>
               <div class="col itemQty">
                 1
               </div>
               <div class="col subtotal">
-                $600
+                <span>$</span>
+                <span>600</span>
               </div>
             </div>
           </div>
@@ -194,7 +198,7 @@
 
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>$</span><span>900</span>
+            <span>900</span>
           </div>
         </div>
       </div>
@@ -219,7 +223,7 @@
     </section>
 
     <!-- Footer Section -->
-    <-% include('partials/footer') %>
+    <%- include('partials/footer') %>
 
       <!-- Javascript -->
       <%- include('javascript/script') %>

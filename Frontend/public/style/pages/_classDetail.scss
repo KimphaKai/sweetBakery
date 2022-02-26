@@ -7,7 +7,7 @@
   max-width: 100%;
 
   .heading{
-    @include page-heading($pink);
+    @include page-heading($text-color);
   }
   .divider{
     @include divider(100);

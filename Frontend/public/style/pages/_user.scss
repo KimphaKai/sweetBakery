@@ -94,17 +94,17 @@
         }
 
         .buttons {
-            margin: 3rem 5rem;
+            margin: 3rem 4rem;
             text-align: end;
             .submitBtn {
                 cursor: pointer;
-                padding: 1rem 3rem;
+                padding: 0.8rem 2rem;
                 border-radius: 0.3rem;
                 border: 1px solid $black;
-                font-size: 1rem;
+                font-size: 1.3rem;
                 &:hover {
-                    background: $pink;
-                    border-color: $pink ;    
+                    background: $text-color;
+                    border-color: $text-color;   
                     color:#fff;
                 }
             }

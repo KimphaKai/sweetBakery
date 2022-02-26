@@ -1,5 +1,5 @@
-let express = require("express");
-let app = express();
+const express = require("express");
+const app = express();
 app.listen(3000);
 
 app.use(express.static("public"));
@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get("/home", function (req, res) {
-  res.render("index.ejs", { test: "test" })
+  res.render("index.ejs")
 })
 
 app.get("/about", function (req, res) {

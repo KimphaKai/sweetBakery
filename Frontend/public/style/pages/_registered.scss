@@ -134,7 +134,12 @@
         text-align: end;
         padding: 1rem 2rem;
         font-size: 1.3rem;
-        color: $red;
+        span:not(:first-child){
+          color: $red;
+          &::before{
+            content: '$';
+          }
+        }
       }
 
   }
