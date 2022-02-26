@@ -16,6 +16,7 @@
 
   .product-content{
     width: 100%;
+    // border: 1px solid red;
   }
 
   .product-grid{
@@ -28,21 +29,23 @@
   .productCategories{
     margin-top: 5%;
     position: relative;
-    .menu{
+    .sideMenu{
       background-color: $pink;
-      box-shadow: 5px 5px 5px $green;
+      // box-shadow: 5px 5px 1px $green;
       width: 10rem;
-      height: 18rem;
+      // height: 530px;
       padding: 1rem;
       line-height: 3.5rem;
-      margin-top: 10%;
       a{
         font-size: 1.3rem;
         color: #fff;
         margin-left: 1rem;
         &:hover{
-          text-decoration: underline;
+          border-bottom: 2px solid $green;
         }
+      }
+      #all{
+        border-bottom: 2px solid $green;
       }
     }
   }
@@ -51,6 +54,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
+    margin-right: 2rem;
   }
 
 

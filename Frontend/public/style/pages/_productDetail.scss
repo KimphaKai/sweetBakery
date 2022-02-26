@@ -46,14 +46,16 @@
     }
   }
 
-  .productContent{
-    div{
-      line-height: 3.5rem;
-    }
-  }
+  // .productContent{
+  //   margin: 1rem 0;
+  // }
 
   .productTitle{
     font-size: 2rem;
+  }
+
+  .productSize{
+    font-size: 1.3rem;
   }
 
   .productPrice{
@@ -62,8 +64,13 @@
     color: $text-color;
   }
 
-  .productSize{
-    font-size: 1.5rem;
+
+  .desc{
+    margin-top: 1rem;
+    p{
+      padding: 2rem 0;
+      font-size: 1.1rem;
+    }
   }
   
   .qtyBtn {
@@ -72,9 +79,9 @@
     color: $text-color;
     font-size: 1rem;
     border-radius: 0.3rem;
-    width: 3rem;
-    height: 3rem;
-    margin-top: 4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
     cursor:pointer;
     i{

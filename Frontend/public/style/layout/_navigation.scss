@@ -55,6 +55,7 @@ header{
       margin: 0 1rem;
       font-weight: normal;
       position: relative;
+      font-size: 1.2rem;
       &.active{
         border-bottom: 3px solid $pink;
       }
@@ -95,7 +96,9 @@ header{
    .search-input{
     padding-left: 0.3rem;
     background: transparent;
+    width: 200px;
     border-bottom: 1px solid $black;
+    font-size: 1rem;
     &:focus{
       border-bottom: 2px solid $pink;
     }
@@ -144,25 +147,25 @@ header{
     }
     .nav-items{
       position: fixed;
-      top: 11%;
+      top: 11.5%;
       left: 0;
       opacity: 0;
       display: none;
       display: flex;
       width: 100vw;
       height: 100vh;
-      background: white;
+      background: #fff;
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      z-index: 3;
+      z-index: 10;
       transition: opacity 0.5s, clip-path 0.4s; 
       clip-path: circle(0px at top left);
     
     }
     .nav-link{
       color: $pink;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
     .nav-items.active{
      opacity: 1;

@@ -31,14 +31,14 @@
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a  href="productList.html">商品列表</a></li>
+                        <li><a href="productList.html">商品列表</a></li>
                         <li><a href="productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem navActive">
                     <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a  class="subActive" href="classList.html">課程列表</a></li>
+                        <li><a class="subActive" href="classList.html">課程列表</a></li>
                         <li><a href="classTimeList.html">開課時間</a></li>
                         <li><a href="classReservation.html">預約管理</a></li>
                     </ul>
@@ -74,7 +74,7 @@
                         <td>1.5</td>
                         <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
-                    
+
                 </tbody>
             </table>
             <div id="paginationArea">
@@ -98,7 +98,7 @@
             <div class="modalContent">
 
                 <p id="mainModalTitle">課程新增/編輯</p>
-                
+
                 <div class="bigModalForm">
 
                     <div id="uploadImg">
@@ -116,10 +116,10 @@
                                 </div>
                             </div> -->
 
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="formField">
 
                         <div class="formGroup">
@@ -133,7 +133,7 @@
                         </div>
 
                         <div class="formGroup">
-                            <label for="classDuration">課程時間長度:</label> 
+                            <label for="classDuration">課程時間長度:</label>
                             <input id="classDuration" type="number"> 小時
                         </div>
 
@@ -147,10 +147,10 @@
                         </div>
                     </div>
                 </div>
-                
-                    
+
+
             </div>
-            
+
         </div>
 
     </div>
@@ -171,10 +171,10 @@
 
             //新增/編輯課程彈跳視窗
 
-            function openModal(_this, item){
+            function openModal(_this, item) {
                 //判斷是edit還是new modal
-                var modalTitle = $(_this).text().substr(0,2);
-                switch (modalTitle){
+                var modalTitle = $(_this).text().substr(0, 2);
+                switch (modalTitle) {
                     case "新增":
                         $('#mainModalTitle').text(`新增${item}`);
                         break;
@@ -182,39 +182,39 @@
                         $('#mainModalTitle').text(`編輯${item}`);
                         break;
                 }
-                $(".bigModal").css("display","flex").show();
+                $(".bigModal").css("display", "flex").show();
             };
 
-            function closeModal(){
+            function closeModal() {
                 $(".bigModal").hide();
             };
 
-            $(".newClass").on("click", function(){
-                openModal(this,"課程")
+            $(".newClass").on("click", function () {
+                openModal(this, "課程")
             })
 
-            $(".editClass").on("click", function(){
-                
-                openModal(this,"課程")
+            $(".editClass").on("click", function () {
+
+                openModal(this, "課程")
             })
 
             //modalClose功能
-            $(".modalClose").on("click", function(){
+            $(".modalClose").on("click", function () {
                 closeModal()
             })
-            $(".modalCancel").on("click", function(){
+            $(".modalCancel").on("click", function () {
                 closeModal()
             })
 
             //textarea根據內容自動調整高度
-            $( "textarea" ).on( "input", function() {
+            $("textarea").on("input", function () {
                 $(this).css('height', 'auto');
                 var textareaHeight = $(this).prop('scrollHeight');
                 $(this).css('height', `${textareaHeight}px`);
 
-                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
-                if(modalWrapHeight > 610){
-                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                var modalWrapHeight = $('.modalWrap').prop('scrollHeight');
+                if (modalWrapHeight > 610) {
+                    $('.modalWrap').css('overflow-y', 'scroll');
                 };
             });
 
@@ -223,9 +223,9 @@
 
             //接資料
             var classListTable = [
-                {classId: 1, classTitle: "粉紅泡泡圓形蛋糕", classPrice: 360 , classDuration:1.5},
-                {classId: 2, classTitle: "大坑9號步道蛋糕", classPrice: 550 , classDuration:2},
-                {classId: 3, classTitle: "別對我這樣餅乾", classPrice: 300 , classDuration:3}
+                { classId: 1, classTitle: "粉紅泡泡圓形蛋糕", classPrice: 360, classDuration: 1.5 },
+                { classId: 2, classTitle: "大坑9號步道蛋糕", classPrice: 550, classDuration: 2 },
+                { classId: 3, classTitle: "別對我這樣餅乾", classPrice: 300, classDuration: 3 }
             ];
 
             // $.get("/classList", function (e) {
@@ -305,12 +305,12 @@
                 showUploadedImg();
             });
             // 送出課程資訊
-            $('#sendClassInfo').on('click',function(){
+            $('#sendClassInfo').on('click', function () {
                 let classTitle = $("#classTitle").val();
                 let classPrice = $('#classPrice').val();
                 let classDuration = $("#classDuration").val();
                 let classInfo = $('#classInfo').val();
-                if (classTitle && classPrice && classDuration && classInfo && files.length>0){
+                if (classTitle && classPrice && classDuration && classInfo && files.length > 0) {
                     // 可送出資料
                     let formDataAdd = new FormData();
                     // 檔案加入formData中
@@ -323,10 +323,10 @@
                         formDataAdd.append('files', value);
 
                     });
-                    formDataAdd.append('classTitle',classTitle);
-                    formDataAdd.append('classPrice',classPrice);
-                    formDataAdd.append('classDuration',classDuration);
-                    formDataAdd.append('classInfo',classInfo);
+                    formDataAdd.append('classTitle', classTitle);
+                    formDataAdd.append('classPrice', classPrice);
+                    formDataAdd.append('classDuration', classDuration);
+                    formDataAdd.append('classInfo', classInfo);
                     $.ajax({
                         url: '/classList/addClassInfo',
                         type: 'post',
@@ -337,20 +337,20 @@
                         success: function (data) {
                             console.log(data);
                             // 清空存放陣列的檔案
-                            files=[];
+                            files = [];
                             showUploadedImg();
                             $('.bigModalForm').find('input').val('');
                             $('.bigModalForm').find('textarea').val('');
                             closeModal();
                         }
                     });
-                }else{
+                } else {
                     alert('輸入框內容不可空白');
                 }
             })
         });
 
-        
+
     </script>
 </body>
 

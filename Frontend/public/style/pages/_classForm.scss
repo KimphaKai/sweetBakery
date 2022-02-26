@@ -82,13 +82,14 @@
 
   .buttons{
     margin-top: 2rem;
-    .submit{
+    .submit, .cancel{
       border: 1px solid $gray;
       background-color: transparent;
       color: $black;
       border-radius: 0.5rem;
       margin-top: 1rem;
       font-size: 1.3rem;
+      margin: 0 1rem;
       // width: 2rem;
       // height: 1rem;
       padding: 0.5rem 2rem;
@@ -99,18 +100,18 @@
         color: #fff;
       }
     }
-    .cancel{
-      margin-left: 1rem;
-      color: $black;
-      background-color: transparent;
-      border: 1px solid $gray;
-      border-radius: 0.5rem;
-      padding: 0.5rem 2rem;
-      &:hover{
-        background-color: $gray;
-        color: $text-color;
-      }
-    }
+    // .cancel{
+    //   margin-left: 1rem;
+    //   color: $black;
+    //   background-color: transparent;
+    //   border: 1px solid $gray;
+    //   border-radius: 0.5rem;
+    //   padding: 0.5rem 2rem;
+    //   &:hover{
+    //     background-color: $gray;
+    //     color: $text-color;
+    //   }
+    // }
    
   }
 

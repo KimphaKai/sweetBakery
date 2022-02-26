@@ -77,11 +77,11 @@
                 color: $black;
                 width: 100%;
                &:not([disabled]){
-                border: 1px solid $darker-gray;
+                border: 1px solid $gray;
                 border-radius: 0.3rem;
                 padding: 0.5rem 2rem 0.5rem 0.5rem;
                 &:focus{
-                    border-color: $black;
+                    border: 2px solid $text-color;
                 }
                }
             }
