@@ -53,6 +53,9 @@
         color: $text-color;
         font-weight: 700;
         font-size: 1.3rem;
+        &::before{
+          content: 'NT$ ';
+        }
       }
       .productInfo{
         background-color: $gray;

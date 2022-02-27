@@ -1,19 +1,19 @@
 var express = require("express");
 var app = express();
-var conn = require('./db');
 var homeRouter = require('./router/home');
 var checkoutRouter = require('./router/checkout');
 var cartRouter = require('./router/cart');
-var classDetailRouter = require('./router/classDetail');
 var classesRouter = require('./router/classes');
+var classDetailRouter = require('./router/classDetail');
 var classFormRouter = require('./router/classForm');
 var passwordUpdateRouter = require('./router/passwordUpdate');
-var productDetailRouter = require('./router/productDetail');
 var productsRouter = require('./router/products');
+var productDetailRouter = require('./router/productDetail');
 var registeredRouter = require('./router/registered');
-const userRouter = require("./router/user");
-const orderHistoryRouter = require("./router/orderHistory");
-const ordersRouter = require("./router/orders");
+var userRouter = require('./router/user');
+var orderHistoryRouter = require('./router/orderHistory');
+var ordersRouter = require('./router/orders');
+var aboutRouter = require('./router/about');
 app.listen(3000);
 
 app.use(express.static("public"));
@@ -22,18 +22,15 @@ app.set('view engine', 'ejs');
 app.use('/', homeRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/cart', cartRouter);
-app.use('/classDetail', classDetailRouter);
 app.use('/classes', classesRouter);
-app.use('/classForm', classFormRouter);
+app.use('/classDetail', classDetailRouter);
+app.use('/clasForm', classFormRouter);
 app.use('/passwordUpdate', passwordUpdateRouter);
-app.use('/productDetail', productDetailRouter);
 app.use('/products', productsRouter);
-app.use('/registered', registeredRouter);
+app.use('/productDetail', productDetailRouter);
+app.use('/registeredRouter', registeredRouter);
 app.use('/user', userRouter);
 app.use('/orderHistory', orderHistoryRouter);
 app.use('/orders', ordersRouter);
+app.use('/about', aboutRouter);
 
-
-app.get("/about", function (req, res) {
-  res.render("about")
-})
