@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var bluebird= require('bluebird');
 var conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -13,4 +14,5 @@ conn.connect(function (error) {
 
 })
 
+bluebird.promisifyAll(conn);
 module.exports = conn;

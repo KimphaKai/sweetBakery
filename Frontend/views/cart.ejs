@@ -48,49 +48,33 @@
             <th class="thAction">操作</th>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/butterscotch 1-2.jpg" alt=""></td>
-              <td class="productName">黃色5號棒蛋糕</td>
-              <td class="productSize">8吋</td>
-              <td class="price">$200</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" name="" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$200</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/oreo 1-1.jpg" alt=""></td>
-              <td class="productName">歐瑞兒甜進你的心
-              </td>
-              <td class="productSize">6吋</td>
-              <td class="price">$100</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" name="" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$100</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/redvelvet 1-1.jpg" alt=""></td>
-              <td class="productName">血腥瑪麗吼哩系</td>
-              <td class="productSize">8吋</td>
-              <td class="price">$1000</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$1000</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
+            <% productPic
+            .forEach,productInformation
+            .forEach(proInform=>
+            { %>
+              <tr>
+                <td><input type="checkbox" class="chkbox" /></td>
+                <td><img src="<%= proInform.imgPath %>" alt="">
+                </td>
+                  <td class="productName">
+                    <%= proInform.productTitle %>
+                  </td>
+                  <td class="productSize">
+                    <%= proInform.sizeName %>
+                  </td>
+                  <td class="price">
+                    <%= proInform.productPrice %>
+                  </td>
+                  <td class="amount">
+                    <button type="button" class="sub">&#8722;</button>
+                    <input type="text" name="" value="<%= proInform.productNum %>" class="num">
+                    <button type="button" class="add">&#x2B;</button>
+                  </td>
+                  <td class="subtotal"><%= proInform.subTotal %>
+                  </td>
+                  <td class="delete"><i class="fas fa-times"></td>
+              </tr>
+            <% }) %>
           </tbody>
         </table>
 
