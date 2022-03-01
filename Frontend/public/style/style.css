@@ -3437,10 +3437,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .cart .container .totalPrice .btn {
   margin-top: 1rem;
-  cursor: pointer;
 }
 
-.cart .container .totalPrice .btn span, .cart .container .totalPrice .btn .confirm {
+.cart .container .totalPrice .btn span {
+  cursor: pointer;
   margin: 0 0.3rem;
   padding: 0.3rem 0.5rem;
   color: #646464;
@@ -3449,7 +3449,12 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 0.3rem;
 }
 
-.cart .container .totalPrice .btn span:hover, .cart .container .totalPrice .btn .confirm:hover {
+.cart .container .totalPrice .btn span:hover {
+  background: #8E4C4C;
+  color: #fff;
+}
+
+.cart .container .totalPrice .btn span .confirm:hover {
   background: #8E4C4C;
   color: #fff;
 }

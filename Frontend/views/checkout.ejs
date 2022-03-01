@@ -40,7 +40,7 @@
           </div>
           <div class="divider"></div>
           <!-- -----會員訂單資訊-------- -->
-          <div class="orderItems">
+          <!-- <div class="orderItems">
             <div class="orderThumbnail">
               <a href="/productDetail"><img src="img/Cakes/oreo 1-1.jpg"></a>
             </div>
@@ -61,7 +61,7 @@
                 <span>$600</span>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="totalPrice">
             <span>總金額:</span>
             <span>$</span><span>1800</span>
@@ -110,11 +110,18 @@
       </div>
     </section>
 
+    
+
     <!-- Footer Section -->
     <%- include('partials/footer') %>
 
       <!-- Javascript -->
       <%- include('javascript/script') %>
+      <script>
+        var data = sessionStorage.getItem('data');
+        console.log(typeof data);
+        $('.divider').text();
+      </script>
 </body>
 
 </html>

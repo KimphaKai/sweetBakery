@@ -48,13 +48,12 @@
             <th class="thAction">操作</th>
           </thead>
           <tbody>
-            <% productPic
-            .forEach,productInformation
-            .forEach(proInform=>
-            { %>
+            <% productInformation
+            .forEach(proInform=> { %>
               <tr>
                 <td><input type="checkbox" class="chkbox" /></td>
                 <td><img src="<%= proInform.imgPath %>" alt="">
+                  
                 </td>
                   <td class="productName">
                     <%= proInform.productTitle %>
@@ -67,7 +66,7 @@
                   </td>
                   <td class="amount">
                     <button type="button" class="sub">&#8722;</button>
-                    <input type="text" name="" value="<%= proInform.productNum %>" class="num">
+                    <input type="number" name="" value="<%= proInform.productNum %>" class="num" id="<%=proInform.productId%>">
                     <button type="button" class="add">&#x2B;</button>
                   </td>
                   <td class="subtotal"><%= proInform.subTotal %>
@@ -86,8 +85,8 @@
           <div class="btn">
             <span class="delSelected">刪除勾選商品</span>
             <span class="delAll">清空購物車</span>
-            <span class="confirm">確認訂單</span>
-            <!-- <span><a class="confirm" href="/checkout">確認訂單</a></span> -->
+            <!-- <span class="confirm">確認訂單</span> -->
+            <span><a class="confirm" href="/checkout">確認訂單</a></span>
           </div>
 
         </div>
@@ -214,6 +213,56 @@
 
       <%- include('javascript/script') %>
         <%- include('javascript/cartList') %>
+
+        <script>
+          // var data ='<%=productInformation%>';
+          // // console.log($('.tab').find('.productName').text());
+          // sessionStorage.setItem('data',data);
+          
+
+
+          // input更改數量的值可以儲存進資料庫
+          $('.num').on('blur',function(){
+            if($(this).val() == ''){
+            }else{
+              let data = { 
+                inputVal: $(this).val(),
+                pId:$(this).attr('id')
+              };
+              $.ajax({
+                url:'/cart/updateNum/input',
+                  type: 'put',
+                  data: data,
+                  success:function(data){
+                    console.log(data);
+                  }
+                })
+              }
+            
+          })
+
+          // 加,減 更改數量的值可以儲存進資料庫
+          $('.amount button').on('click',function(){
+            let data = { 
+              inputVal: parseInt( $(this).parent('.amount').find('input').val())+1,
+              pId:$(this).parent('.amount').find('input').attr('id')
+            };
+            
+            console.log(data);
+              $.ajax({
+                  url:'/cart/updateNum/button',
+                  type: 'put',
+                  data: data,
+                  success:function(data){
+                    console.log(data);
+                  }
+                })
+              
+            
+          })
+          
+
+        </script>
 </body>
 
 </html>

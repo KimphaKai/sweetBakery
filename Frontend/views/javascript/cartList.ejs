@@ -74,7 +74,7 @@
       $(".num").each(function (index) {
         if ($(".chkbox").eq(index).prop("checked") == true) {
           count += parseInt($(".num").eq(index).val());
-          money += parseFloat($(".subtotal").eq(index).text().substr(1));
+          money += parseFloat($(".subtotal").eq(index).text().substr(0));
         }
       })
       $(".num_sum").text(count);

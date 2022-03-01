@@ -26,34 +26,6 @@ $(".productQty").on("click", '.minus', function () {
   return inputNum;
 })
 
-// --------------------------
-
-// function nameqqqq(名稱,規格){
-//     $('.divider2').().val(`<div class="item">
-//     <input class="chkBox" type="checkbox" name="" id="" />
-//     <img src=" img/Cakes/butterscotch 1-2.jpg" alt="" />
-//     <div class="productName">${名稱}</div>
-//     <select name="" id="" class="productSize">
-//       <option value="尺寸" disabled selected>尺寸</option>
-//       <option value="cakeSize-6吋">${規格}</option>
-//       <option value="cakeSize-8吋">${規格}</option>
-//     </select>
-//     <div class="productPrice">$<span>${單價}</span></div>
-//     <div class="amount">
-//       <div class="productQty">
-//         <button class="minus btn fas fa-minus"></button>
-//         <input id="productNum" class="inputNum" type="number" value="1" >
-//         <button class="plus btn fas fa-plus" id="btn1"></button>
-//       </div>
-//     </div>
-//     <div class="priceTotal">$<span>${總價}</span></span></div>
-//     <button>刪除</button>
-//   </div>`);
-
-// }
-
-
-
 // ---------Swiper JS------
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 4,
