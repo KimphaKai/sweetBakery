@@ -158,8 +158,10 @@
 
     refreshproductTitleLength();
 
+  
+
     // keyDown search btn  
-    $(".searchBtn, .search-input").on("click keyup", function (e) {
+    $(".searchBtn, .search-input").on("click change", function (e) {
       $(".search-input").toggleClass("active");
       $(`.productTitle`).parents(".productCard").css("display", "none");
       var val = $.trim($('.search-input').val()); //copy search inputContent    "trim" > remove space 
@@ -174,12 +176,9 @@
       } else {
         $(`.productTitle`).parents(".productCard").css("display", "");
       }
-
       // refresh again
       refreshproductTitleLength();
     })
-
-
   });
 
 

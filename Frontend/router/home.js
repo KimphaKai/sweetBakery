@@ -10,7 +10,7 @@ homeRouter.get("/", function (req, res) {
       productTitle: "title",
       data: data
     });
-    console.log(data)
+    // console.log(data)
   });
 });
 
