@@ -8,12 +8,6 @@
       // console.log($(this).prop("checked"));//全選按鈕的狀態
       $(".chkbox,.selectAll").prop("checked", $(this).prop("checked"));
       getSum();
-      if ($(".chkbox,.selectAll").prop("checked")) {
-        //如果全選，讓所有商品新增類名（背景顏色）
-        $(".tab tbody").children().addClass("current");
-      } else {
-        $(".tab tbody").children().removeClass("current");
-      }
     })
     //如果所有小按鈕的個數都被選了，全選按鈕就選上，如果小按鈕沒有被選上，則全選按鈕就不選上
     //：checked選擇器，查詢本選中的表單元素
@@ -39,10 +33,10 @@
       //console.log(n);
       n++;
       $(this).siblings(".num").val(n);
-      let price = $(this).parent().siblings(".price").html();
-      price = price.substr(1);
+      let price = parseInt($(this).parent().siblings(".price").text());
+      // price = price.substr(1);
       //console.log(price);
-      $(this).parent().siblings(".subtotal").text("$" + (n * price));
+      $(this).parent().siblings(".subtotal").text(n * price);
       getSum();
     })
     $(".sub").click(function () {
@@ -53,19 +47,20 @@
       }
       n--;
       $(this).siblings(".num").val(n);
-      let price = $(this).parent().siblings(".price").html();
-      price = price.substr(1);
+      let price = parseInt($(this).parent().siblings(".price").text());
+      // price = price.substr(1);
       //console.log(price);
-      $(this).parent().siblings(".subtotal").text("$" + (n * price));
+      $(this).parent().siblings(".subtotal").text(n * price);
       getSum();
     })
     //使用者也可以直接修改表單num裡面的值（小bug），同樣計算小計
     $(".num").change(function () {
       let n = $(this).val();
-      let price = $(this).parent().siblings(".price").html();
-      price = price.substr(1);
-      $(this).parent().siblings(".subtotal").text("$" + (n * price));
+      let price = parseInt($(this).parent().siblings(".price").text());
+      // console.log(price);
+      $(this).parent().siblings(".subtotal").text(n * price);
       getSum();
+      // console.log("測試:"+ price)
     })
 
     function getSum() {
@@ -74,7 +69,8 @@
       $(".num").each(function (index) {
         if ($(".chkbox").eq(index).prop("checked") == true) {
           count += parseInt($(".num").eq(index).val());
-          money += parseFloat($(".subtotal").eq(index).text().substr(0));
+          money += parseInt($(".subtotal").eq(index).text().substr(0));
+          // console.log(money);
         }
       })
       $(".num_sum").text(count);

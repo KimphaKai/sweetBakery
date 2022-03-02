@@ -25,7 +25,7 @@ cartRouter.get("/", function (req, res) {
     })
 })
 
-
+//-------------------------------------------------------
 // input更改數量的值可以儲存進資料庫
 cartRouter.put('/updateNum/input',function(req,res){
   // console.log(req.body.pId);
