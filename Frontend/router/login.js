@@ -44,34 +44,30 @@ loginRouter.post('/memberRegister', function (req, res) {
 loginRouter.post('/memberLogin', function (req, res) {
     if (req.session.username) {  //判斷session暫存資料有無
         db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-            res.render('user', { 
-                userAcount: req.session.username,
-                userName: rows.userName,
-                userEmail: rows.email,
-                userPhone: rows.userPhone,
-                userBirthday: rows.userBtirhday
+            res.render('user', {
+                userAcount: rows,
+                userName: rows,
+                userEmail: rows,
+                userPhone: rows,
+                userBirthday: rows
             });
         });
     } else {
-        compareEmail = 0; //狀態初始
         db.query(`SELECT * FROM member`, function (err, rows) {  //抓資料
             rows.forEach(item => {
                 if (req.body.memberLoginEmail == item.email && req.body.memberLoginPassword == item.userPassword) {
                     req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
-                    req.session.password = req.body.memberLoginPassword; 
-                    
-                    res.render('user', { 
-                        userAcount: req.session.username,
-                        userName: item.userName,
-                        userEmail: item.email,
-                        userPhone: item.userPhone,
-                        userBirthday: item.userBtirhday
+                    req.session.password = req.body.memberLoginPassword;
+                    console.log(req.session);
+                    console.log(item);
+                    res.render('user', {
+                        userAcount: item,
+                        userName: item,
+                        userEmail: item,
+                        userPhone: item,
+                        userBirthday: item
                     });
                     console.log('登入成功');
-                    compareEmail = 1;
-                }else if (compareEmail == 0) {
-                    console.log('error');
-                    // res.render('/');
                 }
             })
         });
@@ -83,14 +79,13 @@ loginRouter.post('/memberLogin', function (req, res) {
 loginRouter.post('/memberForgetPassword'), function (req, res) {
     console.log(req.session['username']);
     db.query(`SELECT * FROM member`, function (err, rows) {
-        databaseUserInformation = rows;
-    }); //抓資料
-    databaseUserInformation.forEach(item => {
-        if (req.body.memberForgetEmail == item.useremail) {
-            let forgetuserpassword = item.userpassword;
-            res.render('/login', userpassword = forgetuserpassword);
-        }
-    });
+        rows.forEach(item => {
+            if (req.body.memberForgetEmail == item.useremail) {
+                let forgetuserpassword = item.userpassword;
+                res.render('/login', userpassword = forgetuserpassword);
+            }
+        });
+    }); 
 }
 
 // 獲取主頁

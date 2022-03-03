@@ -5,29 +5,29 @@ var db = require("../db");
 var session = require('express-session');
 var bodyparser = require('body-parser');
 
-var databaseUserInformation = []; //資料庫資料
-var compareEmail = 0; // 比對email狀態 1 = true
-var userCorrent;
 
 passwordUpdateRouter.use(bodyparser.json()); // 使用bodyparder中介軟體，
 passwordUpdateRouter.use(bodyparser.urlencoded({ extended: true }));
-
-// 使用 session 中介軟體
-passwordUpdateRouter.use(session({
-  secret: 'secret', // 對session id 相關的cookie 進行簽名
-  resave: true,
-  saveUninitialized: false, // 是否儲存未初始化的會話
-  cookie: {
-    maxAge: 1000 * 60 * 3, // 設定 session 的有效時間，單位毫秒
-  },
-}));
 
 passwordUpdateRouter.get("/", function (req, res) {
   res.render("passwordUpdate");
 })
 
 
-passwordUpdateRouter.post('/', function(req, res){
-  res.redirect('user');
-})
+passwordUpdateRouter.post('/passwordUpdate', function (req, res) {
+  db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    if (currentPassword == rows[0].userPassword) { //比對目前密碼
+      if (req.body.newPassword == req.body.confirmPassword) { //比對密碼驗證
+        db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
+          if (error) {
+            console.log(error);
+          } else {
+            res.render('passwordUpdate');
+          }
+        });
+      };
+    }
+    res.redirect('user');
+  });
+});
 module.exports = passwordUpdateRouter;

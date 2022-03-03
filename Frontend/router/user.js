@@ -15,33 +15,52 @@ userRouter.use(bodyparser.urlencoded({ extended: true }));
 
 
 userRouter.get("/", function (req, res) {
-
-  // db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     if (item.email == req.session.username) {
-  //       res.render("user", {
-  //         // 會員帳號
-  //         userAcount: item.email,
-  //         // 會員姓名
-  //         userName: item.userName,
-  //         // 信箱
-  //         userEmail: item.email,
-  //         // 電話
-  //         userPhone: item.userPhone,
-  //         // 生日
-  //         userBirthday: item.userBirthday
-  //       });
-  //     };
-  //   }
-  // })
+  console.log(req.session); // = 'hark521632@yahoo.com.tw';
+  db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.render("user", {
+        // 會員帳號
+        userAcount: rows,
+        // 會員姓名
+        userName: rows,
+        // 信箱
+        userEmail: rows,
+        // 電話
+        userPhone: rows,
+        // 生日
+        userBirthday: rows
+      });
+    };
+  })
 })
 
-// userRouter.post('/changeUserInfoContainer', function (req, res) {
-//   // 姓名 req.body.userName
-//   // 電話 req.body.userPhone
-
-//   res.render('/user');
-// })
+ userRouter.post('/changeUserInfoContainer', function (req, res){
+  //  console.log(req.body.userPhone);
+  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    if(error){
+      throw error;
+    }else{
+      db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+        if (error) {
+          throw error;
+        } else {
+          res.render("user", {
+            // 會員帳號
+            userAcount: rows,
+            // 會員姓名
+            userName: rows,
+            // 信箱
+            userEmail: rows,
+            // 電話
+            userPhone: rows,
+            // 生日
+            userBirthday: rows
+          });
+        };
+      })
+    };
+  });
+ });
 module.exports = userRouter;
