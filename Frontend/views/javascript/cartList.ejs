@@ -86,25 +86,25 @@
       getSum();
       clearselectAll();
     })
-    //刪除選定的商品:小的複選框如果選中就刪除對應的商品
-    $(".delSelected").click(function () {
-      //刪除的是選中的商品
-      $(".chkbox:checked").parent().parent().remove();
-      getSum();
-      clearselectAll();
-    })
-    //清空購物車
-    $(".delAll").click(function () {
-      $(".tab tbody").empty();
-      getSum();
-      clearselectAll();
-    })
+    // //刪除選定的商品:小的複選框如果選中就刪除對應的商品
+    // $(".delSelected").click(function () {
+    //   //刪除的是選中的商品
+    //   $(".chkbox:checked").parent().parent().remove();
+    //   getSum();
+    //   clearselectAll();
+    // })
+    // //清空購物車
+    // $(".delAll").click(function () {
+    //   $(".tab tbody").empty();
+    //   getSum();
+    //   clearselectAll();
+    // })
 
-    function clearselectAll() {
-      if ($(".tab tbody")[0].innerText == '') {
-        $(".selectAll").prop("checked", false);
-      }
-    }
+    // function clearselectAll() {
+    //   if ($(".tab tbody")[0].innerText == '') {
+    //     $(".selectAll").prop("checked", false);
+    //   }
+    // }
   })
 
 

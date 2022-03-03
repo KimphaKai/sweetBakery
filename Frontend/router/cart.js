@@ -55,8 +55,8 @@ cartRouter.put('/updateNum/button',function(req,res){
 // 刪除訂單可以刪除資料庫資料
 cartRouter.post('/updateNum/delete',function(req,res){
   console.log(req.body.pId);
-  db.query("DELETE FROM cartlist WHERE memberId=? AND productId=?",
-  ["handsome",req.body.pId],function(err, result){
+  db.query("DELETE FROM cartlist WHERE memberId=? AND productId=?",["handsome",req.body.pId],
+  function(err, result){
     if(err){
       console.log(err);
     }else{

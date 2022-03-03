@@ -82,10 +82,9 @@
           <span>總計:</span>
           <span class="sum">0</span>
           <div class="btn">
-            <span class="delSelected">刪除勾選商品</span>
-            <span class="delAll">清空購物車</span>
-            <!-- <span class="confirm">確認訂單</span> -->
-            <span><a class="confirm" href="/checkout">確認訂單</a></span>
+            <!-- <span class="delSelected">刪除勾選商品</span>
+            <span class="delAll">清空購物車</span> -->
+            <span class="listCheckout"><a class="confirm" href="/checkout">確認訂單</a></span>
           </div>
 
         </div>
@@ -161,38 +160,6 @@
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <img src="img//cupcake.jpg" />
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">香草杯子蛋糕</div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <img src="img/cupcake.jpg" />
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">香草杯子蛋糕</div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="fas fa-angle-left"></div>
             <div class="fas fa-angle-right"></div>
@@ -214,11 +181,6 @@
         <%- include('javascript/cartList') %>
 
         <script>
-          // var data ='<%=productInformation%>';
-          // // console.log($('.tab').find('.productName').text());
-          // sessionStorage.setItem('data',data);
-
-          
 
           //-------------更改數量可以同時存進資料庫------------- 
           
@@ -232,13 +194,13 @@
               };
               $.ajax({
                 url:'/cart/updateNum/input',
-                  type: 'put',
-                  data: data,
-                  success:function(data){
-                    console.log(data);
-                  }
-                })
-              }
+                type: 'put',
+                data: data,
+                success:function(data){
+                  console.log(data);
+                }
+              })
+            }
             
           })
 
@@ -250,52 +212,64 @@
               inputVal= parseInt( $(this).parent('.amount').find('input').val())-1
             }
             let data ={inputVal,
-                pId:$(this).parent('.amount').find('input').attr('id')
+              pId:$(this).parent('.amount').find('input').attr('id')
             };
             // console.log(data);
 
-              $.ajax({
-                  url:'/cart/updateNum/button',
-                  type: 'put',
-                  data: data,
-                  success:function(data){
-                    console.log(data);
-                  }
-                })
-          })
-
-          // 可以將勾選的"checkbox Box" 紀錄進資料庫
-          // let idArray=[]
-          $(".selectAll").click(function(){
-              let y= $(this).closest('.tab').find('tbody').find('.num');
-              y.each(function(){
-                  console.log($(this).prop('id'));
-              });
-              // console.log(idArray)
-          });
-          $(".chkbox").click(function () {
-            //選中的商品
-            if($(this).prop('checked') == true){
-              let x = $(this).closest('tr').find('.amount').find('input').attr('id');
-              console.log("x:"+x);
-            }
+            $.ajax({
+              url:'/cart/updateNum/button',
+              type: 'put',
+              data: data,
+              success:function(data){
+                console.log (data);
+              }
+            })
           })
           
            // 刪除訂單可以刪除資料庫資料
            $('.delete').click(function(){
-              let data = { 
-                pId:$(this).parent('tr').find('.amount').find('input').attr('id')
+             let data = { 
+               pId:$(this).parent('tr').find('.amount').find('input').attr('id')
               };
-              console.log(data)
+              // console.log(data)
               $.ajax({
                 url:'/cart/updateNum/delete',
-                  type: 'post',
-                  data: data,
-                  success:function(data){
-                    console.log(data);
-                  }
-                })
+                type: 'post',
+                data: data,
+                success:function(data){
+                  // console.log(data);
+                }
+              })
+            });
+            
+
+
+
+            
+          //-------------確認訂單-----------------
+
+              // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
+          $(".selectAll").click(function(){
+            let y= $(this).closest('.tab').find('tbody').find('.num');
+            y.each(function(){
+                  console.log($(this).prop('id'));
+              });
+              // console.log(idArray)
+          });
+          
+          // 可以將勾選的"checkbox Box" 紀錄進資料庫
+          $(".chkbox").click(function () {
+            //選中的商品
+            if($(this).prop('checked') == true){
+              let x = $(this).closest('tr').find('.amount').find('input').attr('id');
+              // console.log("x:"+x);
+            }
           })
+
+
+          $('.listCheckout').click(function(){
+          
+          });
 
           
         </script>
