@@ -284,12 +284,12 @@
            // 刪除訂單可以刪除資料庫資料
            $('.delete').click(function(){
               let data = { 
-                inputVal: $(this).val(),
-                pId:$(this).attr('id')
+                pId:$(this).parent('tr').find('.amount').find('input').attr('id')
               };
+              console.log(data)
               $.ajax({
-                url:'/cart/updateNum/input',
-                  type: 'put',
+                url:'/cart/updateNum/delete',
+                  type: 'post',
                   data: data,
                   success:function(data){
                     console.log(data);
