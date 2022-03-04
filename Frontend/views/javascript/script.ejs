@@ -142,8 +142,6 @@
       console.log("ok")
     })
 
-
-
     /* Product Search Function */
     var productTitleArray = [];
 
@@ -159,7 +157,7 @@
     refreshproductTitleLength();
 
     // keyDown search btn  
-    $(".searchBtn, .search-input").on("click keyup", function (e) {
+    $(".searchBtn").on("click", function (e) {
       $(".search-input").toggleClass("active");
       $(`.productTitle`).parents(".productCard").css("display", "none");
       var val = $.trim($('.search-input').val()); //copy search inputContent    "trim" > remove space 
@@ -181,10 +179,6 @@
 
 
   });
-
-
-
-
 
 
 

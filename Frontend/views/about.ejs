@@ -2,21 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>呷甜甜 Sweet Bakery</title>
-  <!-- Font Awesome CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
-  <!-- JQUERY -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style/style.css">
+  <%- include('partials/head') %>
 </head>
 
 <body>
@@ -25,28 +11,43 @@
     <!-- ABOUT -->
     <section class="about">
       <div class="heading">
-        <h1 class="page-heading">品牌形象</h1>
-        <div class="divider"></div>
+        <h1 class="page-heading">
+          <span>品牌形象</span>
+        </h1>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
+            <li><a href="">
+                品牌形象
+              </a></li>
+          </ul>
+        </div>
       </div>
-
       <div class="about-wrapper">
 
-
-        <div class="content">
-          <img src="https://source.unsplash.com/sxIVqaksdfE">
+        <div class="content" data-aos="fade-right">
+          <img src="https://cdn.pixabay.com/photo/2016/03/27/22/38/cake-1284548_1280.jpg">
           <p>
-            蛋糕的發生，到底需要如何實現，不蛋糕的發生，又會如何產生。老聃曾提出，知者不言，言者不知。這段話可說是震撼了我。如果仔細思考蛋糕，會發現其中蘊含的深遠意義。每個人都不得不面對這些問題。在面對這種問題時，務必詳細考慮蛋糕的各種可能。笛卡兒曾講過，讀一切好書，就是和許多高尚的人談話。這激勵了我。總結來說，愛默生講過一句值得人反覆尋思的話，我們想的是如何養生，如何聚財，如何加固屋頂，如何備齊衣衫;
-            而聰明人考慮的卻是怎樣選擇最寶貴的東西——朋友！
+            「呷甜甜」是位於台中南屯區公益路上的甜點名店，好吃的甜點不用華麗鋪張，純粹美味的內在就能療癒心靈。用好蛋糕，記憶美好生活蛋糕，擄獲全台灣許許多多熱愛甜點的朋友的心！
+
+            而呷甜甜的美味秘訣，除了將「簡單不膩」貫徹到底以外，更有著使用好食材的堅持。即使是最常見的巧克力甜點，在呷甜甜也有著不同凡響的食材選用堅持。
           </p>
         </div>
-        <div class="content odd">
-          <img src="https://source.unsplash.com/pGM4sjt_BdQ">
+        <div class="content odd" data-aos="fade-left" data-aos-delay="1000">
+          <img src="https://cdn.pixabay.com/photo/2018/10/29/12/47/suites-3781071_1280.jpg">
+          <!-- <p>
+            好吃的甜點不用華麗鋪張，純粹美味的內在就能療癒心靈，用好蛋糕，記憶美好生活
+          </p> -->
           <p>
-            現在，正視蛋糕的問題，是非常非常重要的。因為，儘管蛋糕看似不顯眼，卻佔據了我的腦海。由於，問題的關鍵究竟為何？荀子曾經認為，伯樂不可欺馬，君子不可以欺人。帶著這句話，我們還要更加慎重的審視這個問題。經過上述討論，泰戈爾講過一段深奧的話，你若愛她，讓你的愛像陽光一樣包圍她，並且給她自由。希望大家實際感受一下這段話。貝多芬在不經意間這樣說過，把“德性”教給你們的孩子：使人幸福的是德性而非金錢。這是我的經驗之談。在患難中支持我的是道德，使我不曾自殺的，除了藝術以外也是道德。這句話決定了一切！
+            <span>Sweet Bakery嚴選優質食材，簡單純粹的自然美味</span>
+            <span>使用日本海藻糖-低糖度、低熱量，爽口不膩的清爽新選擇</span>
+            <span>日本菓子粉-純小麥製作，100%純天然、無人工添加物</span>
+            <span>法國發酵奶油-濃郁奶香，柔順絲滑的頂級奶油</span>
+
           </p>
         </div>
 
-        <div class="info-cards">
+        <!-- <div class="info-cards">
           <div class="store-info">
             <h2 class="card-heading">店家資訊</h2>
             <ul>
@@ -72,9 +73,10 @@
               <li><span>星期日</span><span>10:00 ~ 20:00</span></li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
 
+      <%- include('partials/footer') %>
     </section>
 
     <!-- Javascript -->

@@ -15,7 +15,9 @@
     display: flex;
     width: 100%; 
     margin: 1rem auto;
-    border: 1px solid $black;
+    border: 1px solid $pink;
+    border-radius: 1rem;
+    overflow: hidden;
   }
 
   .orderCard{
@@ -30,7 +32,9 @@
     font-size: 1.3rem;
     padding:1rem 0;
     padding-left: 15%;
-    background: $background-color;
+    // background: $background-color;
+    background-color: $pink;
+    color: #fff;
   }
 
   .orderItems{
@@ -73,18 +77,23 @@
       font-size: 1.3rem;
       color: $text-color; 
       font-weight: 700;
-      border-top: 1px solid $darker-gray;
+      border-top: 1px solid $pink;
     }
     
     .customerInfo{
       font-size: 1.3rem;
       margin-top: 2rem;
-      border: 1px solid $black;
+      border: 1px solid $pink;
+      border-radius: 1rem;
+      overflow: hidden;
       h4{
-        background-color: $background-color;
-        color: $darker-gray;
+        background-color: $pink;
+        border-bottom: 1px solid $pink;
+        color: #fff;
         padding: 0.5rem 1rem;
         margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: 3px;
       }
 
       .row{
@@ -114,11 +123,29 @@
         border: 1px solid $gray;
         padding: 0.5rem 1rem;
         border-radius: 0.3rem;
-        width: 50%;
+        // max-width: 50%;
+        width: 15rem;
         &:focus{
           border-color: $black;
         }
       }
+      .pickupDate{
+        position: relative;
+        width: 20rem;
+        // width: 50%;
+        #datepicker{
+          cursor: pointer;
+        }
+        .fa-calendar-day{
+          position: absolute;
+          top: 20%;
+          right: 30%;
+          cursor: pointer;
+        }
+      }
+    
+
+
       .storePay{
         font-size: 1.1rem;
       }

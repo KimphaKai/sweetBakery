@@ -1,6 +1,6 @@
 @mixin section-heading{
   color: $text-color;
-  margin: 5rem 5rem 3rem 5rem ;
+  margin: 8rem 5rem 3rem 5rem ;
   padding: 0 2rem;
   border-left: 10px solid $text-color;
   height: 3rem;
@@ -10,7 +10,8 @@
 @mixin page-heading($color){
   .page-heading{
       color: $color;
-      font-size: 2rem;
+      font-size: 2.3rem;
+      margin-top: 2rem;
     }
 }
 
@@ -22,13 +23,31 @@
 
 @mixin closeModal{
   position: absolute;
-  top: 0;
-  right: 5px;
-  font-size: 2rem;
+  top: -5px;
+  right: 6px;
+  font-size: 2.1rem;
   text-align: center;
-  color: $pink;
+  color: $darker-pink;
   cursor: pointer;
   &:hover{
     opacity: 0.5;
+  }
+}
+
+@mixin breadCrumbs{
+  .breadcrumb{
+    display: flex;
+    align-items: end;
+    margin: 0.3rem 3rem;
+    font-size: 0.8rem;
+    ul{
+      display: flex;
+      li{
+        &:not(:first-child)::before{
+          content: '\203A';
+          margin: 0 5px;
+        }
+      }
+    }
   }
 }

@@ -2,25 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>呷甜甜 Sweet Bakery</title>
-
-  <!-- Font Awesome CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Swiper CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- JQUERY -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style/style.css">
+  <%- include('partials/head') %>
 
 </head>
 
@@ -53,16 +35,18 @@
     <!-- PRODUCT CATEGORIES SECTION -->
     <section class="categories">
       <div class="container">
-        <a href="#" class="category-item item1">
-          <h1>餅乾</h1>
-          <div class="overlay"></div>
-        </a>
-        <a href="#" class="category-item item2">
-          <h1>蛋糕</h1>
-          <div class="overlay"></div>
-        </a>
-        <a href="#" class="category-item item3">
+        <div class="category-item item2">
+          <a href="/products/1">
+            <h1>蛋糕</h1>
+            <div class="overlay"></div>
+          </a>
+        </div>
+        <a href="/products/2" class="category-item item3">
           <h1>杯子蛋糕</h1>
+          <div class="overlay"></div>
+        </a>
+        <a href="/products/3" class="category-item item1">
+          <h1>餅乾</h1>
           <div class="overlay"></div>
         </a>
       </div>
@@ -79,7 +63,9 @@
           <div class="body-wrapper">
             <div class="card-body">
               <div class="productTitle"><a href="#">焦糖堅果巧克力</a></div>
-              <span class="productPrice">NT $500</span>
+              <div class="productPrice">$500/6入
+              </div>
+
             </div>
             <div class="cartBtn">
               <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
@@ -93,7 +79,7 @@
           <div class="body-wrapper">
             <div class="card-body">
               <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
-              <span class="productPrice">NT $450</span>
+              <div class="productPrice">$450/6入</div>
             </div>
             <div class="cartBtn">
               <button class="fas fa-shopping-cart"></button>
@@ -107,7 +93,7 @@
           <div class="body-wrapper">
             <div class="card-body">
               <div class="productTitle"><a href="#">櫻桃杯子蛋糕</a></div>
-              <span class="productPrice">NT $500</span>
+              <div class="productPrice">$500/6入</div>
             </div>
             <div class="cartBtn">
               <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
@@ -121,7 +107,7 @@
           <div class="body-wrapper">
             <div class="card-body">
               <div class="productTitle"><a href="#">香草杯子蛋糕</a></div>
-              <span class="productPrice">NT $500</span>
+              <div class="productPrice">$500/6入</div>
             </div>
             <div class="cartBtn">
               <button data-modal-target="#modal" class="fas fa-shopping-cart"></button>
@@ -140,7 +126,7 @@
           </div>
           <div class="productCheckout">
             <h2 class="productTitle">焦糖堅果巧克力</h2>
-            <p class="price">120</p>
+            <p class="price">NT$ 120</p>
             <p class="productInfo">腰果、南瓜子、夏威夷豆、杏仁片等... <br>
               各式堅果加上特製餅皮當襯底，
               手工焦糖更增添甜蜜風味</p>

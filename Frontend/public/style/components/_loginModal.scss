@@ -36,7 +36,7 @@
       align-items: center;
       text-align: center;
       h1 {
-        margin: 0.5rem 0;
+        margin: 2.5rem;
       }
       span{
         font-size: 0.8rem;
@@ -74,9 +74,9 @@
       width: 3rem;
       font-size: 1.2rem;
       &:hover{
-        background: $pink;
+        background: $darker-pink;
         color: #fff;
-        border-color: $pink;
+        border-color: $darker-pink;
       }
     }
   }

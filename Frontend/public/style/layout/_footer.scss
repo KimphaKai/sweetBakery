@@ -12,7 +12,7 @@ footer{
   .logo{
     img{
       margin: 1rem;
-      max-width: 8rem;
+      max-width: 10rem;
     }
   }
    
@@ -20,9 +20,10 @@ footer{
     display: flex;
     flex-direction: column;
     margin-top: 0.8rem;
-    h4{
-      font-weight: 700;
+    h4{ 
+      border-bottom: 1px solid $gray;
       letter-spacing: 3px;
+      color: $darker-gray;
     }
   }
   .aboutInfo{
@@ -47,7 +48,7 @@ footer{
       cursor: pointer;
     }
     .fa-facebook{
-      color: #3b5998;
+      color: #4b6db4;
     }
     .fa-instagram{
       color: #C13584;

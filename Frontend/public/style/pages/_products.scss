@@ -1,17 +1,24 @@
 .products{
   .heading{
-    @include page-heading($pink); 
-    width: 70%;
-    margin: 1rem 24%;
-  }
-  .divider{
-    @include divider(100);
+    @include page-heading($text-color); 
+    display: flex;
+    justify-content: space-between;
+    // width: 90%;
+    width: 100%;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 1rem;
+    h1{
+      span{
+        margin-left: 5rem;
+      }
+    }
+    @include breadCrumbs;
   }
 
   .products-container{
     margin: 0 5%;
     display: flex;
-    // position: relative;
+    margin-bottom: 2rem;
   }
 
   .product-content{
@@ -21,7 +28,7 @@
 
   .product-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-left: 10%;
   }
@@ -30,23 +37,24 @@
     margin-top: 5%;
     position: relative;
     .sideMenu{
-      background-color: $pink;
-      // box-shadow: 5px 5px 1px $green;
+      // background-color: $pink;
+      background-color: $background-color;
       width: 10rem;
+      height: 400px;
       // height: 530px;
       padding: 1rem;
-      line-height: 3.5rem;
+      line-height: 5rem;
       a{
-        font-size: 1.3rem;
-        color: #fff;
+        font-size: 1.5rem;
+        // color: #fff;
+        color: $text-color;
         margin-left: 1rem;
         &:hover{
-          border-bottom: 2px solid $green;
+          // border-bottom: 2px solid $pink;
+          font-weight: 700;
         }
       }
-      #all{
-        border-bottom: 2px solid $green;
-      }
+     
     }
   }
 

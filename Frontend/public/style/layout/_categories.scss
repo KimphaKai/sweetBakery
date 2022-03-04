@@ -1,8 +1,9 @@
 .categories{
-  margin: 2.5rem;
-
+  // margin: 2.5rem;
+  margin: 4rem;
   .container{
     display: flex;
+    justify-content: space-around;
     width: 100%;
   }
 
@@ -13,9 +14,12 @@
     min-width: 33.33%;
     height: 15.5rem;
     border-radius: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
     position: relative;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    a{
+      z-index: 1;
+    }
     h1{
       font-size: 3vw;
       font-weight: 500;
@@ -57,7 +61,7 @@
       width: 100%;
     }
     .category-item{
-      height: 10rem;
+      height: 20rem;
       h1{
         font-size: 1.5rem;
       }

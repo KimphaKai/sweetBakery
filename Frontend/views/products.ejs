@@ -2,21 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>呷甜甜 Sweet Bakery</title>
-  <!-- Font Awesome CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
-  <!-- JQUERY -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style/style.css">
+  <%- include('partials/head') %>
 </head>
 
 <body>
@@ -28,7 +14,7 @@
     </div>
     <nav class="navbar">
       <div class="logo">
-        <a href="/home"><img src="img/logo.svg" alt="呷甜甜"></a>
+        <a href="/"><img src="/img/logo.svg" alt="呷甜甜"></a>
       </div>
       <div class="menu">
         <ul class="nav-items">
@@ -37,7 +23,7 @@
           <li><a href="/classes" class="nav-link">課程活動</a></li>
         </ul>
         <div class="search-wrapper">
-          <form class="searchForm" action="/">
+          <div class="searchForm" action="/">
             <input class="search-input" type="search" name="productSearch" placeholder="搜尋商品...">
             <button type="button" class="searchBtn">
               <svg width="1.3rem" height="1.3rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#4d4d4d">
@@ -50,7 +36,7 @@
                 </g>
               </svg>
             </button>
-          </form>
+          </div>
         </div>
 
         <div class="icons">
@@ -86,118 +72,152 @@
 
   <section class="products">
     <div class="heading">
-      <h1 class="page-heading">所有商品</h1>
-      <div class="divider"></div>
+      <h1 class="page-heading">
+        <span>
+
+          <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
+
+        </span>
+      </h1>
+      <div class="breadcrumb">
+        <ul>
+          <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
+          <li><a href="">
+              <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
+            </a></li>
+        </ul>
+      </div>
+
+      <!-- <div class="divider"></div> -->
     </div>
 
     <div class="products-container">
       <div class="productCategories">
         <ul class="sideMenu">
-          <li><a id="all" href="#">所有商品</a></li>
-          <!-- remove cookies after presentation -->
-          <li><a id="cookies" href="#">餅乾</a></li>
-          <li><a id="cakes" href="#">圓形蛋糕</a></li>
-          <li><a id="cupcakes" href="#">杯子蛋糕</a></li>
+          <li><a class="category" href="/products">所有商品</a></li>
+          <% productCategory.forEach((category, index)=> { %>
+            <li><a href="/products/<%= index+1 %>" class="category">
+                <%= category.categoryName %>
+              </a></li>
+            <% }) %>
         </ul>
       </div>
 
       <div class="product-content">
         <div class="sort-container">
           <div class="productSort">
-            <select name="productSort" onchange="location=this.value">
+            <select name="productSort" onchange="location = this.value;">
               <option value="預設排序">預設排序</option>
-              <option value="最近開課日期">熱銷商品</option>
-              <option value="價格由低到高">價格由低到高</option>
-              <option value="價格由高到低">價格由高到低</option>
+              <!-- <option value="最近開課日期">熱銷商品</option> -->
+              <option value="/products/sortASC">價格由低到高</option>
+              <a href="/products/sortDESC">
+                <option value="價格由高到低">價格由高到低</option>
+              </a>
             </select>
           </div>
         </div>
 
         <div class="product-grid">
-          <div class="productCard">
-            <div class="card-image">
-              <a href="#"><img src="img/cupcake.jpg"></a>
+          <% productInformation.forEach(product=> { %>
+            <div class="productCard">
+              <% try { %>
+                <% productPic.forEach(images=> { %>
+                  <% if(product.productId==images.productId) { %>
+                    <div class="card-image">
+                      <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
+                    </div>
+                    <% throw 'Break' %>
+                      <% } %>
+                        <% }) %>
+                          <% } catch (e) { if(e !=='Break' ) throw e } %>
+                            <div class="body-wrapper">
+                              <div class="card-body">
+                                <div class="productTitle"><a href="/productDetail">
+                                    <%= product.productTitle %>
+                                  </a>
+                                </div>
+                                <div class="productPrice">NT$<%= product.productPrice %> / <%= product.sizeName %>
+                                </div>
+                              </div>
+                              <div class="cartBtn">
+                                <a type="button" href=""><i class="fas fa-shopping-cart"
+                                    data-pid="<%= product.productId %>"
+                                    data-cid="<%= (categoryId[0].categoryId)?categoryId[0].categoryId: product.categoryId%>"></i></a>
+                              </div>
+                            </div>
             </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle"><a href="#">香草杯子蛋糕</a></div>
-                <span class="productPrice">NT $350</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-          <div class="productCard">
-            <div class="card-image">
-              <a href="#"><img src="img/bestseller/best2.jpg"></a>
-            </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
-                <span class="productPrice">NT $450</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-          <div class="productCard">
-            <div class="card-image">
-              <a href="/productDetail"><img src="img/cookies/cookie1.jpeg"></a>
-            </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle"><a href="/productDetail">撒糖屑曲奇餅乾</a></div>
-                <span class="productPrice"><span>NT $</span>300</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-          <div class="productCard">
-            <div class="card-image">
-              <img src="img/Cakes/butterscotch 1-1.jpg">
-            </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle">香橙奶油蛋糕</div>
-                <span class="productPrice"><span>NT $</span>500</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-          <div class="productCard">
-            <div class="card-image">
-              <img src="img/Cakes/choco-fruit 1-1.jpg">
-            </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle">水果巧克力蛋糕</div>
-                <span class="productPrice"><span>NT $</span>500</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-          <div class="productCard">
-            <div class="card-image">
-              <img src="img/Cupcakes/chocolate 1-1.jpg">
-            </div>
-            <div class="body-wrapper">
-              <div class="card-body">
-                <div class="productTitle">巧克力杯子蛋糕</div>
-                <span class="productPrice"><span>NT $</span>350</span>
-              </div>
-              <div class="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
+            <% }) %>
+
+              <!-- <div class=" productCard">
+                                  <div class="card-image">
+                                    <a href="#"><img src="img/bestseller/best2.jpg"></a>
+                                  </div>
+                                  <div class="body-wrapper">
+                                    <div class="card-body">
+                                      <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
+                                      <span class="productPrice">NT $450</span>
+                                    </div>
+                                    <div class="cartBtn">
+                                      <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="productCard">
+                                <div class="card-image">
+                                  <a href="/productDetail"><img src="img/cookies/cookie1.jpeg"></a>
+                                </div>
+                                <div class="body-wrapper">
+                                  <div class="card-body">
+                                    <div class="productTitle"><a href="/productDetail">撒糖屑曲奇餅乾</a></div>
+                                    <span class="productPrice"><span>NT $</span>300</span>
+                                  </div>
+                                  <div class="cartBtn">
+                                    <i class="fas fa-shopping-cart"></i>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="productCard">
+                                <div class="card-image">
+                                  <img src="img/Cakes/butterscotch 1-1.jpg">
+                                </div>
+                                <div class="body-wrapper">
+                                  <div class="card-body">
+                                    <div class="productTitle">香橙奶油蛋糕</div>
+                                    <span class="productPrice"><span>NT $</span>500</span>
+                                  </div>
+                                  <div class="cartBtn">
+                                    <i class="fas fa-shopping-cart"></i>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="productCard">
+                                <div class="card-image">
+                                  <img src="img/Cakes/choco-fruit 1-1.jpg">
+                                </div>
+                                <div class="body-wrapper">
+                                  <div class="card-body">
+                                    <div class="productTitle">水果巧克力蛋糕</div>
+                                    <span class="productPrice"><span>NT $</span>500</span>
+                                  </div>
+                                  <div class="cartBtn">
+                                    <i class="fas fa-shopping-cart"></i>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="productCard">
+                                <div class="card-image">
+                                  <img src="img/Cupcakes/chocolate 1-1.jpg">
+                                </div>
+                                <div class="body-wrapper">
+                                  <div class="card-body">
+                                    <div class="productTitle">巧克力杯子蛋糕</div>
+                                    <span class="productPrice"><span>NT $</span>350</span>
+                                  </div>
+                                  <div class="cartBtn">
+                                    <i class="fas fa-shopping-cart"></i>
+                                  </div>
+                                </div>
+                              </div> -->
 
         </div>
       </div>
@@ -209,14 +229,17 @@
         <button class="closeModal">&times;</button>
         <div class="modal-body">
           <div class="productImg">
-            <img src="img/cupcake.jpg">
+            <a href="/productDetail"><img src="/img/Cakes/choco-fruit 1-1.jpg"></a>
           </div>
           <div class="productCheckout">
-            <h2 class="productTitle">香草杯子蛋糕</h2>
-            <p class="price">NT $220</p>
-            <p class="productInfo">腰果、南瓜子、夏威夷豆、杏仁片等... <br>
-              各式堅果加上特製餅皮當襯底，
-              手工焦糖更增添甜蜜風味</p>
+            <h2 class="productName">
+              <a href="/productDetail">水果巧克力蛋糕</a>
+            </h2>
+            <div class="priceAndSize">NT$350 / 6吋
+            </div>
+            <div class="productInfo">台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕
+              入口前味微苦的巧克力，
+              中段帶有濃郁的咖啡香</div>
             <div class="productQty">
               <button class="minus btn fas fa-minus"></button>
               <input id="productNum" class="inputNum" type="number" value="1">
@@ -228,21 +251,6 @@
       </div>
     </div>
 
-    <div class="pagination">
-      <button class="paginationBtn prev-page" type="button">
-        <i class="fas fa-caret-left"></i>
-      </button>
-
-      <button class="pageNum" style="background-color: pink; color: white;">1</button>
-      <button class="pageNum">2</button>
-      <button class="pageNum">3</button>
-      <button class="pageNum">4</button>
-      <button class="pageNum">5</button>
-
-      <button class="paginationBtn next-page" type="button">
-        <i class="fas fa-caret-right"></i>
-      </button>
-    </div>
 
 
   </section>
@@ -252,6 +260,35 @@
 
     <!-- Javascript -->
     <%- include('javascript/script') %>
+      <script>
+
+        $('.fa-shopping-cart').click(function (e) {
+          e.preventDefault();
+          $(this).data("pid")
+          // console.log($(this).data("pid"))
+          // console.log($(this).data("cid"))
+          $.ajax({
+            url: `/products/productInfo/${$(this).data("cid")}/${$(this).data("pid")}`,
+            type: 'get',
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (data) {
+              console.log(data);
+              $('.productImg').find('a').find("img").attr("src", data.productPic[0].imgPath)
+              $('.productName').find('a').text(data.productInformation[0].productTitle);
+              $('.priceAndSize').text("NT$" + data.productInformation[0].productPrice + " / " + data.productInformation[0].sizeName);
+              $('.productInfo').text(data.productInformation[0].productInfo);
+            }
+          })
+
+
+        });
+
+        $(".addToCartBtn").on("click", function () {
+          $(".modal-container").hide("200ms")
+        })
+
+      </script>
 
 </body>
 

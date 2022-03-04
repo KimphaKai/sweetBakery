@@ -53,7 +53,8 @@
         &>img{
           margin: 0.5rem auto;
           width: 9rem;
-          border-radius: 0.2rem;
+          border-radius: 1rem;
+          padding: 3px;
         }
         &.productName{
           width: 15rem;
@@ -80,15 +81,15 @@
             font-size: 1.5rem;
           }
           .add,.sub {
-            border: 1px solid $text-color;
+            border: 1px solid $pink;
             border-radius: 4px;
             width: 1.5rem;
             font-size: 1.5rem;
             cursor: pointer;
             &:hover{
-              background-color: $text-color;
+              background-color: $pink;
               color: #fff;
-              border-color: $text-color;
+              border-color: $pink;
             }
           }
         }
@@ -100,7 +101,7 @@
             text-align: center;
             cursor: pointer;
             &:hover{
-              color: $text-color;
+              color: $darker-pink;
               opacity: 0.8;
             }
           }
@@ -128,16 +129,14 @@
       .btn{
         margin-top: 1rem;
         cursor: pointer;
-        span, .confirm{
+        .confirmBtn{
           margin:0 0.3rem;
-          padding: 0.3rem 0.5rem;
-          color: #646464;
-          background-color: $gray;
-          border: 1px solid $gray;
-          border-radius: 0.3rem;
+          padding: 0.6rem 1rem;
+          color: #fff;
+          background-color: $darker-pink;
+          border-radius: 4px;
           &:hover{
-            background: $text-color;
-            color: #fff;
+            background: $pink;
           }
         }
       }
@@ -150,39 +149,26 @@
     .recommendItems{
       position: relative;
       width: 70rem;
-      // text-align: center;
-      margin: 2rem auto;
+      margin: 3rem auto;
     }
-    .swiper{
-      padding: 2rem 4rem;
-      .swiper-wrapper{
-        .productCard{
-          width: 15rem;
-          height: 15rem;
-        }
-        img{
-          width: 100%;
-          height: 10rem;
-        }
-      }
-      .fa-angle-right, .fa-angle-left{
-        position: absolute;
-        top:35%; 
-        color: $text-color;
-        text-align: center;
-        vertical-align: middle;
-        font-size:3rem;
-        z-index: 1;
-        cursor: pointer;
+    .productRec{
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .card-image{
+      width: 250px;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      img{
+        width: 100%;
+        height: 200px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: center;
         &:hover{
-          color: $black;
+          transform: scale(1.025);
+          transition: 300ms ease-in-out;
         }
-      }
-      .fa-angle-right{
-        right: 0;  
-      }
-      .fa-angle-left{
-        left: 0;  
       }
     }
   

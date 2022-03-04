@@ -1,11 +1,23 @@
 .about{
   .heading{
-    @include page-heading($pink);
-    width: 76%;
-    margin: 2rem 12%;
-    .divider{
-      @include divider(100);
+    @include page-heading($text-color);
+    // width: 76%;
+    width: 100%;
+    // background-color: $background-color;
+    // margin: 2rem 12%;
+
+    // .divider{
+    //   @include divider(100);
+    // }
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $gray;
+    h1{
+      span{
+        margin-left: 5rem;
+      }
     }
+    @include breadCrumbs;
   }
 
   .about-wrapper{
@@ -19,6 +31,8 @@
   .content{
     display: flex;
     padding: 1.5rem 2rem;
+    justify-content: center;
+    align-items: center;
     &.odd{
       flex-direction: row-reverse;
     }
@@ -36,61 +50,61 @@
     }
   }
 
-  .info-cards{
-    display: flex;
-    justify-content: space-around;
-    margin: 10rem 0;
-    color: #fff;
-  }
-    .store-info{
-      background-color: $pink;
-      box-shadow: 1rem 1rem 0 $green;
-      font-size: 1.3rem;
-      ul{
-        margin: 3rem;
-        li{
-          line-height: 4rem;
-          a{
-            color: #fff;
-            &:hover{
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-      .social{
-        font-size: 3rem;
-        text-align: center;
-        i{
-          margin: 3rem 0.5rem;
-          cursor: pointer;
-        }
-      }
-    }
-    .store-hour{
-      background-color: $pink;
-      box-shadow: 1rem 1rem 0 $green;
-      font-size: 1.5rem;
-      ul{
-        margin: 2rem;
-        li{
-          display: flex;
-          justify-content: space-between;
-          line-height: 2rem;
-          span{
-            margin: 0 3rem;
-            line-height: 3rem;
-          }
-        }
-      }
-    }
-    .card-heading{
-      text-align: center;
-      margin-top: 1rem;
-      letter-spacing: 5px;
-      font-weight: normal;
-      font-size: 2rem;
-    }
+  // .info-cards{
+  //   display: flex;
+  //   justify-content: space-around;
+  //   margin: 10rem 0;
+  //   color: #fff;
+  // }
+  //   .store-info{
+  //     background-color: $pink;
+  //     box-shadow: 1rem 1rem 0 $green;
+  //     font-size: 1.3rem;
+  //     ul{
+  //       margin: 3rem;
+  //       li{
+  //         line-height: 4rem;
+  //         a{
+  //           color: #fff;
+  //           &:hover{
+  //             text-decoration: underline;
+  //           }
+  //         }
+  //       }
+  //     }
+  //     .social{
+  //       font-size: 3rem;
+  //       text-align: center;
+  //       i{
+  //         margin: 3rem 0.5rem;
+  //         cursor: pointer;
+  //       }
+  //     }
+  //   }
+  //   .store-hour{
+  //     background-color: $pink;
+  //     box-shadow: 1rem 1rem 0 $green;
+  //     font-size: 1.5rem;
+  //     ul{
+  //       margin: 2rem;
+  //       li{
+  //         display: flex;
+  //         justify-content: space-between;
+  //         line-height: 2rem;
+  //         span{
+  //           margin: 0 3rem;
+  //           line-height: 3rem;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   .card-heading{
+  //     text-align: center;
+  //     margin-top: 1rem;
+  //     letter-spacing: 5px;
+  //     font-weight: normal;
+  //     font-size: 2rem;
+  //   }
   
 
 

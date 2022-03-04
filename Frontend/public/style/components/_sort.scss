@@ -4,8 +4,10 @@
     cursor: pointer;
     border-radius: 0.2rem;
     padding: 0.5rem 0.1rem;
-    background-color: $pink;
-    color: #fff;
+    // background-color: $background-color;
+    border: 1px solid $gray;
+    // color: #fff;
+    // color: $text-color;
     letter-spacing: 2px;
   }
 }

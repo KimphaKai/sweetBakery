@@ -1,13 +1,26 @@
 .classes{
   overflow: hidden;
   .heading{
-    @include page-heading($pink);
-    width: 82%;
-    margin: 2rem 10%;
-    img{
-      display: inline-block;
-      width: 3rem;
+    @include page-heading($text-color);
+    // width: 85%;
+    // margin: 2rem 10%;
+    margin-top: 1rem;
+    // margin: 1rem auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $gray;
+    h1{
+      span:first-child{
+        margin-left: 5rem;
+      }
+      img{
+        display: inline-block;
+        width: 3rem;
+      }
     }
+    @include breadCrumbs;
+    
     .divider{
       @include divider(100);
     }

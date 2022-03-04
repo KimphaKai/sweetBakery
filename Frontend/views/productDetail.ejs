@@ -2,27 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>呷甜甜 Sweet Bakery</title>
-  <!-- Font Awesome CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Swiper CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- JQUERY -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style/style.css">
-
+  <%- include('partials/head') %>
 
 </head>
 
@@ -31,23 +11,51 @@
 
     <section class="productDetail">
       <div class="heading">
-        <h1 class="page-heading">商品介紹</h1>
-        <div class="divider"></div>
+        <h1 class="page-heading"><span>商品介紹</span></h1>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
+            <li><a href="">
+                品牌形象
+              </a></li>
+          </ul>
+        </div>
       </div>
 
       <div class="product-body">
         <div class="productInfo">
           <div class="productSlider">
-            <img id="featured" class="productImg" src="img/cookies/cookie1.jpeg">
+            <img id="featured" class="productImg" src="/img/Cakes/choco-fruit 1-1.jpg">
 
             <div class="slides">
-              <img class="thumbnail active" src="img/cookies/cookie1.jpeg">
-              <img class="thumbnail" src="img/cookies/cookie2.jpeg">
-              <img class="thumbnail" src="img/cookies/cookie3.jpeg">
+              <img class="thumbnail active" src="img/Cakes/choco-fruit 1-1.jpg">
+              <img class="thumbnail" src="img/Cakes/choco-fruit 1-2.jpg">
+              <img class="thumbnail" src="img/Cakes/choco-fruit 1-3.jpg">
             </div>
           </div>
 
           <div class="productContent">
+            <h2 class="productTitle">水果巧克力蛋糕</h2>
+            <!-- <div class="productSize">規格：6吋</div> -->
+            <div class="productPrice">NT $350 / <span class="productSize">6吋</span></div>
+            <div class="desc">
+              <p>台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕<br>
+                入口前味微苦的巧克力，
+                中段帶有濃郁的咖啡香，
+                尾韻則為淡淡的水果香！
+              </p>
+            </div>
+            <div class="productQty">
+              <button class="minus qtyBtn"><i class="fas fa-minus"></i></button>
+              <input id="productNum" class="inputNum" type="number" min="1" value="1">
+              <button class="plus qtyBtn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="buttons">
+              <button class="addToCartBtn"><i class="fas fa-cart-plus"></i>加入購物車</button>
+              <button class="buyBtn">直接購買</button>
+            </div>
+          </div>
+          <!-- <div class="productContent">
             <h2 class="productTitle">撒糖屑曲奇餅乾</h2>
             <div class="productSize"><span>1盒8入</span></div>
             <div class="productPrice"><span>NT $</span><span>300</span></div>
@@ -63,7 +71,7 @@
               <button class="addToCartBtn"><i class="fas fa-cart-plus"></i>加入購物車</button>
               <button class="buyBtn">立即購買</button>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="productDesc">
@@ -86,14 +94,14 @@
 
 
     <!-- Footer Section -->
-    <%- include('partials/footer') %>
+    <!-- <%- include('partials/footer') %> -->
 
-      <!-- Swiper JS -->
-      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-      <!-- Javascript -->
-      <%- include('javascript/script') %>
-        <%- include('javascript/slider') %>
+    <!-- Javascript -->
+    <%- include('javascript/script') %>
+      <%- include('javascript/slider') %>
 
 </body>
 

@@ -16,6 +16,7 @@ var ordersRouter = require('./router/orders');
 var aboutRouter = require('./router/about');
 app.listen(3000);
 
+app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -24,13 +25,16 @@ app.use('/checkout', checkoutRouter);
 app.use('/cart', cartRouter);
 app.use('/classes', classesRouter);
 app.use('/classDetail', classDetailRouter);
-app.use('/clasForm', classFormRouter);
+app.use('/classForm', classFormRouter);
 app.use('/passwordUpdate', passwordUpdateRouter);
 app.use('/products', productsRouter);
 app.use('/productDetail', productDetailRouter);
-app.use('/registeredRouter', registeredRouter);
+app.use('/registered', registeredRouter);
 app.use('/user', userRouter);
 app.use('/orderHistory', orderHistoryRouter);
 app.use('/orders', ordersRouter);
 app.use('/about', aboutRouter);
 
+app.get('/sort', function (req, res) {
+  res.render('sort');
+});

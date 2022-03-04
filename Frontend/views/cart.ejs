@@ -2,22 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>呷甜甜 Sweet Bakery 購物車</title>
-  <!-- Font Awesome CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <!-- Swiper CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- JQUERY -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style/style.css" />
+  <%- include('partials/head') %>
 
 </head>
 
@@ -100,10 +85,7 @@
           <span>總計:</span>
           <span class="sum">0</span>
           <div class="btn">
-            <span class="delSelected">刪除勾選商品</span>
-            <span class="delAll">清空購物車</span>
-            <span class="confirm">確認訂單</span>
-            <!-- <span><a class="confirm" href="/checkout">確認訂單</a></span> -->
+            <a href="/checkout" class="confirmBtn">確認訂單</a>
           </div>
 
         </div>
@@ -111,112 +93,74 @@
         <!-- 推薦商品 -->
         <div class="recommendItems">
           <h2 class="recHeading">推薦商品</h2>
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <a href="#"><img src="img/cupcake.jpg" /></a>
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName"><a href="#">香草杯子蛋糕</a></div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
+          <!-- <div class="swiper-slide"> -->
+          <div class="productRec">
+            <div class="productCard">
+              <div class="card-image">
+                <a href="#"><img src="img/cupcake.jpg" /></a>
               </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <a href="#"><img src="img/bestseller/best2.jpg" /></a>
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName"><a href="#">草莓果醬餅乾</a></div>
-                      <span class="productPrice">NT $450</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
+              <div class="body-wrapper">
+                <div class="card-body">
+                  <div class="productName"><a href="#">香草杯子蛋糕</a></div>
+                  <span class="productPrice">NT $500</span>
                 </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <a href="/productDetail"><img src="img/cookies/cookie1.jpeg" /></a>
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">
-                        <a href="/productDetail">撒糖屑曲奇餅乾</a>
-                      </div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <img src="img/cupcake.jpg" />
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">香草杯子蛋糕</div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <img src="img//cupcake.jpg" />
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">香草杯子蛋糕</div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="productCard">
-                  <div class="card-image">
-                    <img src="img/cupcake.jpg" />
-                  </div>
-                  <div class="body-wrapper">
-                    <div class="card-body">
-                      <div class="productName">香草杯子蛋糕</div>
-                      <span class="productPrice">NT $500</span>
-                    </div>
-                    <div class="cartBtn">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-                  </div>
+                <div class="cartBtn">
+                  <i class="fas fa-shopping-cart"></i>
                 </div>
               </div>
             </div>
-            <div class="fas fa-angle-left"></div>
-            <div class="fas fa-angle-right"></div>
-            <!-- <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div> -->
+            <!-- </div> -->
+            <!-- <div class="swiper-slide"> -->
+            <div class="productCard">
+              <div class="card-image">
+                <a href="#"><img src="img/bestseller/best2.jpg" /></a>
+              </div>
+              <div class="body-wrapper">
+                <div class="card-body">
+                  <div class="productName"><a href="#">草莓果醬餅乾</a></div>
+                  <span class="productPrice">NT $450</span>
+                </div>
+                <div class="cartBtn">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="swiper-slide"> -->
+            <div class="productCard">
+              <div class="card-image">
+                <a href="/productDetail"><img src="img/cookies/cookie1.jpeg" /></a>
+              </div>
+              <div class="body-wrapper">
+                <div class="card-body">
+                  <div class="productName">
+                    <a href="/productDetail">撒糖屑曲奇餅乾</a>
+                  </div>
+                  <span class="productPrice">NT $500</span>
+                </div>
+                <div class="cartBtn">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="swiper-slide"> -->
+            <div class="productCard">
+              <div class="card-image">
+                <img src="img/cupcake.jpg" />
+              </div>
+              <div class="body-wrapper">
+                <div class="card-body">
+                  <div class="productName">香草杯子蛋糕</div>
+                  <span class="productPrice">NT $500</span>
+                </div>
+                <div class="cartBtn">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- </div> -->
         </div>
     </section>
 

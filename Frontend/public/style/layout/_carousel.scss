@@ -5,12 +5,17 @@
     img{
       width: 100%;
     }
+    .swiper-pagination-bullet{
+      width: 0.7rem;
+      height: 0.7rem;
+    }
     .swiper-pagination-bullet-active{
-      background-color: $pink;
+      background-color: $darker-pink;
     }
     .swiper-button-prev, .swiper-button-next{
-      color: $pink;
+      color: $darker-pink;
       font-weight: 700;
     }
+    
   }
 }

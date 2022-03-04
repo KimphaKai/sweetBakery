@@ -5,6 +5,7 @@ header{
   z-index: 2;
   background: #fff;
   width: 100%;
+  // border-bottom: 1px solid $gray;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   .burgerMenu{
     position: absolute;
@@ -13,7 +14,7 @@ header{
     z-index: 10;
     .bar{
       position: absolute;
-      top: 1.2rem;
+      top: 1.5rem;
       left: -3rem;
       width: 1.8rem;
       height: 0.2rem;
@@ -22,10 +23,10 @@ header{
       margin: 0.3rem 0;
       opacity: 1;
       &:nth-child(1){
-        top: 0.7rem;
+        top: 1rem;
       }
       &:nth-child(3){
-        top: 1.7rem;
+        top: 2rem;
       }
     }
   }
@@ -55,28 +56,30 @@ header{
       margin: 0 1rem;
       font-weight: normal;
       position: relative;
-      font-size: 1.2rem;
-      &.active{
-        border-bottom: 3px solid $pink;
-      }
-      &::after{
-        content: "";
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        bottom: -3px;
-        left: 0;
-        background: $pink;
-        border-radius: 1rem;
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease-in;
-      }
-      &:hover:not(.active){
-        &:after{
-        transform: scaleX(1);
-        transform-origin: bottom left;
-        }
+      // font-size: 1.2rem;
+      font-size: 1.2vw;
+      // &.active{
+      //   border-bottom: 3px solid $pink;
+      // }
+      // &::after{
+      //   content: "";
+      //   position: absolute;
+      //   height: 3px;
+      //   width: 100%;
+      //   bottom: -3px;
+      //   left: 0;
+      //   background: $pink;
+      //   border-radius: 1rem;
+      //   // transform: scaleX(0);
+      //   // transform-origin: bottom right;
+      //   // transition: transform 0.3s ease-in;
+      // }
+      &:hover{
+        // &:after{
+        // transform: scaleX(1);
+        // transform-origin: bottom left;
+        // }
+        color: $text-color;
       }
     }
   }
@@ -98,7 +101,7 @@ header{
     background: transparent;
     width: 200px;
     border-bottom: 1px solid $black;
-    font-size: 1rem;
+    font-size: 1vw;
     &:focus{
       border-bottom: 2px solid $pink;
     }
@@ -122,6 +125,47 @@ header{
        fill: $pink;
       }
      }
+     .userIcon{
+       position: relative;
+       &:hover{
+         display: block;
+       }
+     }
+     .dropdown{
+      //  position: absolute;
+      display: none;
+      .arrow-up {
+        position: absolute;
+        top: 61%;
+        right: 7.8%;
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $gray;
+      }
+      ul{
+        position: absolute;
+        top: 70%;
+        right: 3%;
+        background-color: $gray;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        right: 5%;
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+        width: 7rem;
+        height: 8rem;
+        line-height: 2.5rem;
+        border-radius: 0.5rem;
+        a{
+          color: $text-color;
+          &:hover{
+            font-weight: bold;
+          }
+        }
+      }
+  
+    }
     .cartIcon{
       display: inline-block;
       position: relative;
@@ -133,14 +177,14 @@ header{
         color: #fff;
         font-size: 0.75rem;
         border-radius: 100vw;
-        width: 1.3rem;
-        height: 1.3rem;
+        width: 1.2rem;
+        height: 1.2rem;
         text-align: center;
       }
     }
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 950px) {
     padding: 1rem 2rem 1rem 5rem;
     .burgerMenu{
       display: block;
@@ -164,8 +208,8 @@ header{
     
     }
     .nav-link{
-      color: $pink;
-      font-size: 1.3rem;
+      color: $darker-pink;
+      font-size: 1.5rem;
     }
     .nav-items.active{
      opacity: 1;

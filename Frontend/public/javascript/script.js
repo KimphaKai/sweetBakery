@@ -85,7 +85,6 @@ $(document).ready(function () {
   //   $(".modal-container").hide()
   // })
 
-
   //toggle burger menu on click
   $(".burgerMenu").on("click", function (e) {
     $(".nav-items").toggleClass("active")
