@@ -201,16 +201,17 @@
                 url: '/cart/updateNum/button',
                 type: 'put',
                 data: data,
-                success: function (data) {
-                  console.log(data);
+                success:function(data){
+                  // console.log(data);
                 }
               })
             })
-
-            // 刪除訂單可以刪除資料庫資料
-            $('.delete').click(function () {
-              let data = {
-                pId: $(this).parent('tr').find('.amount').find('input').attr('id')
+          
+          
+           // 刪除訂單可以刪除資料庫資料
+           $('.delete').click(function(){
+              let data = { 
+               pId:$(this).parent('tr').find('.amount').find('input').attr('id')
               };
               // console.log(data)
               $.ajax({
@@ -222,38 +223,45 @@
                 }
               })
             });
+            
+            
+          //-------------確認訂單-----------------
 
+              // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
+          // $(".selectAll").click(function(){
+          //   let y= $(this).closest('.tab').find('tbody').find('.num');
+          //   y.each(function(){
+          //         console.log($(this).prop('id'));
+          //   });
+          //   // console.log(idArray)
+          // });
+          
+          // // 可以將勾選的"checkbox Box" 紀錄進資料庫
+          // $(".chkbox").click(function () {
+          //   //選中的商品
+          //   if($(this).prop('checked') == true){
+          //     let x = $(this).closest('tr').find('.amount').find('input').attr('id');
+          //     // console.log("商品ID:"+x);
+          //   }
+          // })
 
+          
+          var arr=[];
 
+          $('.confirm').on('click',function(){
+            $('tr').each(function(){
+               let z = $(this).find('.chkbox').prop('checked');
+               if(z==true){
+                 arr.push($(this).find('.num').attr('id'));
+                 }
 
-
-            //-------------確認訂單-----------------
-
-            // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
-            $(".selectAll").click(function () {
-              let y = $(this).closest('.tab').find('tbody').find('.num');
-              y.each(function () {
-                console.log($(this).prop('id'));
-              });
-              // console.log(idArray)
-            });
-
-            // 可以將勾選的"checkbox Box" 紀錄進資料庫
-            $(".chkbox").click(function () {
-              //選中的商品
-              if ($(this).prop('checked') == true) {
-                let x = $(this).closest('tr').find('.amount').find('input').attr('id');
-                // console.log("x:"+x);
-              }
             })
-
-
-            $('.listCheckout').click(function () {
-
-            });
-
-
-          </script>
+            sessionStorage.setItem('pid',JSON.stringify({id: arr}));
+            arr=[];
+          })
+          
+          
+        </script>
 </body>
 
 </html>

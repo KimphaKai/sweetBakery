@@ -24,28 +24,31 @@
           </div>
           <div class="divider"></div>
           <!-- -----會員訂單資訊-------- -->
-          <!-- <div class="orderItems">
+          <% productInformation
+            .forEach(proInform=> { %>
+          <div class="orderItems">
             <div class="orderThumbnail">
-              <a href="/productDetail"><img src="img/Cakes/oreo 1-1.jpg"></a>
+              <a href="/productDetail"><img src="<%= proInform.imgPath %>"></a>
             </div>
             <div class="detail-wrapper">
               <div class="col itemTitle">
-                <span>Oreo巧克力蛋糕</span>
+                <span> <%= proInform.productTitle %></span>
               </div>
               <div class="col itemSize">
-                <span>6吋</span>
+                <span><%= proInform.sizeName %></span>
               </div>
               <div class="col itemPrice">
-                <span>$600</span>
+                <span><%= proInform.productPrice %></span>
               </div>
               <div class="col itemQty">
-                <span>3</span>
+                <span><%= proInform.productNum %></span>
               </div>
               <div class="col subtotal">
-                <span>$600</span>
+                <span><%= proInform.subTotal %></span>
               </div>
             </div>
-          </div> -->
+          </div>
+          <% }) %>
           <div class="totalPrice">
             <span>總金額:</span>
             <span>$</span><span>1800</span>
@@ -123,11 +126,14 @@
           })
 
         </script>
-        <script>
-          var data = sessionStorage.getItem('data');
-          console.log(typeof data);
-          $('.divider').text();
-        </script>
+       
+      <script>
+        var data = sessionStorage.getItem('data');
+        console.log(typeof data);
+        $('.divider').text();
+
+       console.log( sessionStorage.getItem('pid'));
+      </script>
 </body>
 
 </html>
