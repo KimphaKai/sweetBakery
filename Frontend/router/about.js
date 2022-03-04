@@ -4,7 +4,7 @@ var db = require("../db");
 
 
 aboutRouter.get('/', function (req, res) {
-  res.render("about")
+  res.render("about");
 })
 
 module.exports = aboutRouter; 

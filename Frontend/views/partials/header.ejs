@@ -5,7 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
+  <!-- Font Awesome CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -64,7 +78,7 @@
                 <circle cx="25" cy="27" r="2" />
                 <circle cx="12" cy="27" r="2" />
               </svg>
-              <div class="cartItems">0</div>
+              <div class="cartItems">3</div>
             </a>
           </div>
         </div>
@@ -76,7 +90,7 @@
       <div class="container">
         <div class="closeModal">&times;</div>
         <div class="form-container sign-up-container">
-          <form action="#">
+          <form action="/login/memberRegister" method="post">
             <h1>會員註冊</h1>
             <div class="social-container">
               <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -84,17 +98,17 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input class="signupEmail" type="email" placeholder="電子信箱" required />
-            <input class="signupPassword" type="password" placeholder="密碼" required />
+            <input class="signupEmail" type="email" placeholder="電子信箱" name="memberRegisterEmail" required />
+            <input class="signupPassword" type="password" placeholder="密碼" name="memberRegisterPassword" required />
             <input class="signupCheckPassword" type="password" placeholder="確認密碼" requried />
-            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼"
+            <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼"    name="memberRegisterPhone"
               requried />
-            <input class="signupDate" type="date">
-            <button class="signupBtn">註冊</button>
+            <input class="signupDate" type="date" name="memberRegisterBirthday">
+            <button class="signupBtn" type="submit">註冊</button>
           </form>
         </div>
         <div class="form-container sign-in-container">
-          <form action="#">
+          <form action="/login/memberLogin" method="post">
             <h1>會員登入</h1>
             <div class="social-container">
               <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -102,10 +116,11 @@
               <a href="#" class="social"><i class="fab fa-line"></i></a>
             </div>
             <span>&mdash;或&mdash;</span>
-            <input class="loginEmail" type="email" placeholder="Email" required />
-            <input class="loginPassword" type="password" placeholder="Password" required />
+            <input class="loginEmail" type="email" placeholder="Email" name="memberLoginEmail" required />
+            <input class="loginPassword" type="password" placeholder="Password"
+            name="memberLoginPassword" required />
             <a class="forgetPwBtn" href="#">忘記密碼?</a>
-            <button class="loginBtn">登入</button>
+            <button class="loginBtn" type="submit">登入</button>
           </form>
         </div>
         <div class="overlay-container">
@@ -128,10 +143,10 @@
         <div class="closeModal">&times;</div>
         <div class="form-container">
           <img src="img/Image 2.png" alt="">
-          <form action="#">
+          <form action="/login/memberForgetPassword" method="post">
             <h1>忘記密碼</h1>
-            <input type="email" placeholder="電子信箱" required />
-            <button class="sendBtn">送出</button>
+            <input type="email" name="memberForgetEmail" placeholder="電子信箱" required />
+            <button class="sendBtn" type="submit">送出</button>
             <br>
             <div class="login">
               <a class="loginBtn" href="#">登入</a>
