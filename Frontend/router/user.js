@@ -15,7 +15,9 @@ userRouter.use(bodyparser.urlencoded({ extended: true }));
 
 
 userRouter.get("/", function (req, res) {
-  console.log(req.session); // = 'hark521632@yahoo.com.tw';
+  console.log('------------');
+  console.log(req.sessionID);
+  console.log(req.session); 
   db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       console.log(error);

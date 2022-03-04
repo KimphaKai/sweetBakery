@@ -22,7 +22,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     cookie:{
-      maxAge: 1000 * 60 * 3 //100秒後過期
+      //maxAge: true//1000 * 60 * 3 //100秒後過期
     }
   }))
 app.use(express.static("public"));

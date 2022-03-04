@@ -29,7 +29,7 @@ loginRouter.post('/memberRegister', function (req, res) {
     //將資料存入資料庫
     if (compareEmail == 0) {
         //可以註冊帳號
-        db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.body.memberRegisterEmail}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
+        db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.sessionID}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
             if (error) {
                 console.log(error);
             }
@@ -58,8 +58,6 @@ loginRouter.post('/memberLogin', function (req, res) {
                 if (req.body.memberLoginEmail == item.email && req.body.memberLoginPassword == item.userPassword) {
                     req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
                     req.session.password = req.body.memberLoginPassword;
-                    console.log(req.session);
-                    console.log(item);
                     res.render('user', {
                         userAcount: item,
                         userName: item,
@@ -68,6 +66,7 @@ loginRouter.post('/memberLogin', function (req, res) {
                         userBirthday: item
                     });
                     console.log('登入成功');
+                    console.log(req.sessionID);
                 }
             })
         });
