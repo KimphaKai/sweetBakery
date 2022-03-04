@@ -2,22 +2,14 @@ var express = require("express");
 var userRouter = express.Router();
 var db = require('../db');
 
-
-var session = require('express-session');
 var bodyparser = require('body-parser');
-
-var databaseUserInformation = []; //資料庫資料
-var compareEmail = 0; // 比對email狀態 1 = true
-var userCorrent;
 
 userRouter.use(bodyparser.json()); // 使用bodyparder中介軟體，
 userRouter.use(bodyparser.urlencoded({ extended: true }));
 
 
 userRouter.get("/", function (req, res) {
-  console.log('------------');
-  console.log(req.sessionID);
-  console.log(req.session); 
+  console.log(req.session.username); 
   db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       console.log(error);
