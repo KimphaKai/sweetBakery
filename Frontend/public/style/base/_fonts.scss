@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Mukasi Mukasi';
+  src: url('Mukasi-Mukasi.woff2') format('woff2'),
+      url('Mukasi-Mukasi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rounded-X M+ 1c';
+  src: url('../fonts/rounded-x-mplus-1c-bold.woff2') format('woff2'),
+      url('../fonts/rounded-x-mplus-1c-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rounded-X M+ 1m';
+  src: url('../fonts/rounded-x-mplus-1m-medium.woff2') format('woff2'),
+      url('../fonts/rounded-x-mplus-1m-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+

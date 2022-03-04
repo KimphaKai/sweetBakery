@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Mukasi Mukasi';
+    src: url('Mukasi-Mukasi.woff2') format('woff2'),
+        url('Mukasi-Mukasi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gen Jyuu GothicX';
+    src: url('GenJyuuGothicX-Medium.woff2') format('woff2'),
+        url('GenJyuuGothicX-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gen Jyuu GothicX';
+    src: url('GenJyuuGothicX-Bold.woff2') format('woff2'),
+        url('GenJyuuGothicX-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
