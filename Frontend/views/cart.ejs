@@ -33,49 +33,32 @@
             <th class="thAction">操作</th>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/butterscotch 1-2.jpg" alt=""></td>
-              <td class="productName">黃色5號棒蛋糕</td>
-              <td class="productSize">8吋</td>
-              <td class="price">$200</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" name="" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$200</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/oreo 1-1.jpg" alt=""></td>
-              <td class="productName">歐瑞兒甜進你的心
-              </td>
-              <td class="productSize">6吋</td>
-              <td class="price">$100</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" name="" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$100</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" class="chkbox" /></td>
-              <td><img src="img/Cakes/redvelvet 1-1.jpg" alt=""></td>
-              <td class="productName">血腥瑪麗吼哩系</td>
-              <td class="productSize">8吋</td>
-              <td class="price">$1000</td>
-              <td class="amount">
-                <button type="button" class="sub">&#8722;</button>
-                <input type="text" value="1" class="num">
-                <button type="button" class="add">&#x2B;</button>
-              </td>
-              <td class="subtotal">$1000</td>
-              <td class="delete"><i class="fas fa-times"></td>
-            </tr>
+            <% productInformation .forEach(proInform=> { %>
+              <tr>
+                <td><input type="checkbox" class="chkbox" /></td>
+                <td><img src="<%= proInform.imgPath %>" alt="">
+                </td>
+                <td class="productName">
+                  <%= proInform.productTitle %>
+                </td>
+                <td class="productSize">
+                  <%= proInform.sizeName %>
+                </td>
+                <td class="price">
+                  <%= proInform.productPrice %>
+                </td>
+                <td class="amount">
+                  <button type="button" class="sub">&#8722;</button>
+                  <input type="number" name="" value="<%= proInform.productNum %>" class="num"
+                    id="<%=proInform.productId%>">
+                  <button type="button" class="add">&#x2B;</button>
+                </td>
+                <td class="subtotal">
+                  <%= proInform.subTotal %>
+                </td>
+                <td class="delete"><i class="fas fa-times"></td>
+              </tr>
+              <% }) %>
           </tbody>
         </table>
 
@@ -85,7 +68,9 @@
           <span>總計:</span>
           <span class="sum">0</span>
           <div class="btn">
-            <a href="/checkout" class="confirmBtn">確認訂單</a>
+            <!-- <span class="delSelected">刪除勾選商品</span>
+            <span class="delAll">清空購物車</span> -->
+            <span class="listCheckout"><a class="confirm" href="/checkout">確認訂單</a></span>
           </div>
 
         </div>
@@ -174,6 +159,101 @@
 
       <%- include('javascript/script') %>
         <%- include('javascript/cartList') %>
+
+          <script>
+
+            //-------------更改數量可以同時存進資料庫------------- 
+
+            // input更改數量的值可以儲存進資料庫
+            $('.num').on('blur', function () {
+              if ($(this).val() == '') {
+              } else {
+                let data = {
+                  inputVal: $(this).val(),
+                  pId: $(this).attr('id')
+                };
+                $.ajax({
+                  url: '/cart/updateNum/input',
+                  type: 'put',
+                  data: data,
+                  success: function (data) {
+                    console.log(data);
+                  }
+                })
+              }
+
+            })
+
+            // 加,減 更改數量的值可以儲存進資料庫
+            $('.amount button').on('click', function () {
+              if ($(this).attr('class') == "add") {
+                inputVal = parseInt($(this).parent('.amount').find('input').val()) + 1
+              } else {
+                inputVal = parseInt($(this).parent('.amount').find('input').val()) - 1
+              }
+              let data = {
+                inputVal,
+                pId: $(this).parent('.amount').find('input').attr('id')
+              };
+              // console.log(data);
+
+              $.ajax({
+                url: '/cart/updateNum/button',
+                type: 'put',
+                data: data,
+                success: function (data) {
+                  console.log(data);
+                }
+              })
+            })
+
+            // 刪除訂單可以刪除資料庫資料
+            $('.delete').click(function () {
+              let data = {
+                pId: $(this).parent('tr').find('.amount').find('input').attr('id')
+              };
+              // console.log(data)
+              $.ajax({
+                url: '/cart/updateNum/delete',
+                type: 'post',
+                data: data,
+                success: function (data) {
+                  // console.log(data);
+                }
+              })
+            });
+
+
+
+
+
+            //-------------確認訂單-----------------
+
+            // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
+            $(".selectAll").click(function () {
+              let y = $(this).closest('.tab').find('tbody').find('.num');
+              y.each(function () {
+                console.log($(this).prop('id'));
+              });
+              // console.log(idArray)
+            });
+
+            // 可以將勾選的"checkbox Box" 紀錄進資料庫
+            $(".chkbox").click(function () {
+              //選中的商品
+              if ($(this).prop('checked') == true) {
+                let x = $(this).closest('tr').find('.amount').find('input').attr('id');
+                // console.log("x:"+x);
+              }
+            })
+
+
+            $('.listCheckout').click(function () {
+
+            });
+
+
+          </script>
 </body>
 
 </html>

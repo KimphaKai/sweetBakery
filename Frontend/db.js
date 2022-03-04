@@ -1,12 +1,11 @@
-var mysql = require("mysql");
-var bluebird = require("bluebird");
+var mysql = require('mysql');
+var bluebird = require('bluebird');
 var conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
   port: 3306,
-  database: 'sweetBakery'
-
+  database: 'sweetbakery'
 })
 
 conn.connect(function (error) {

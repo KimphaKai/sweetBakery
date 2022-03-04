@@ -3666,6 +3666,11 @@ input[type="search"]::-webkit-search-results-decoration {
   background: #fdafbb;
 }
 
+.cart .container .totalPrice .btn .confirmBtn .confirm:hover {
+  background: #a54c4c;
+  color: #fff;
+}
+
 .cart .container .recommendItems {
   position: relative;
   width: 70rem;

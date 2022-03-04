@@ -138,6 +138,10 @@
           &:hover{
             background: $pink;
           }
+          .confirm:hover{
+            background: $text-color;
+            color: #fff;
+          }
         }
       }
     }
