@@ -177,85 +177,49 @@ productsRouter.get("/productInfo/:categories/:id", function (req, res) {
     })
 })
 
-productsRouter.post("/sortASC", function (req, res) {
+productsRouter.get("/sortProduct/:sortVal", function (req, res) {
   let productInformation = {};
   let productCategory = {};
   let productPic = {};
   let categoryId = {};
   let priceSort = {};
+  let order = '';
+  // console.log(req.pa)
   // res.send({message:'123'})
-  res.json({ message: '123' })
-  // db.queryAsync(`SELECT p.productId, p.productTitle, p.productPrice, p.productInfo, c.categoryName, size.sizeName FROM product p JOIN productcategory c ON(c.categoryId = p.categoryId) JOIN productsize size ON(size.sizeId = p.sizeId) WHERE p.productStatus ='上架中' ORDER BY p.productPrice ASC`)
-  //   .then(category => {
-  //     productInformation = category;
-  //     return db.queryAsync('SELECT * FROM productCategory');
-  //   })
-  //   .then(productCat => {
-  //     productCategory = productCat;
-  //     return db.queryAsync('SELECT * FROM productimg');
-  //   })
-  //   .then(productImage => {
-  //     productPic = productImage
-  //     return db.queryAsync(`SELECT * FROM productcategory`);
-  //   })
-  //   .then(id => {
-  //     categoryId = id
-  //     return db.queryAsync(`SELECT * FROM product ORDER BY productPrice ASC`)
-  //   })
-  //   .then(productPrice => {
-  //     priceSort = productPrice
-  //     res.json( {
-  //       productInformation: productInformation,
-  //       productCategory: productCategory,
-  //       productPic: productPic,
-  //       priceSort: priceSort,
-  //       categoryId: "所有商品"
-  //     })
-  //     console.log(priceSort)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
+  // res.json({message:req.params.sortVal})
+  if (req.params.sortVal == 0) {
+    order = "";
+  } else {
+    order = ` order by p.productPrice ${req.params.sortVal}`
+
+  }
+  db.queryAsync(`SELECT p.productId, p.productTitle, p.productPrice, p.productInfo, c.categoryName, size.sizeName FROM product p JOIN productcategory c ON(c.categoryId = p.categoryId) JOIN productsize size ON(size.sizeId = p.sizeId) WHERE p.productStatus ='上架中' ${order}`)
+    .then(category => {
+      productInformation = category;
+      return db.queryAsync('SELECT * FROM productCategory');
+    })
+    .then(productCat => {
+      productCategory = productCat;
+      return db.queryAsync(`SELECT img.* FROM productimg img JOIN product p ON(img.productId = p.productId) JOIN productcategory c ON(p.categoryId = c.categoryId) ${order}`);
+    })
+    .then(productImage => {
+      productPic = productImage
+      return db.queryAsync(`SELECT * FROM productcategory`);
+    })
+    .then(id => {
+      categoryId = id
+      res.json({
+        productInformation: productInformation,
+        productCategory: productCategory,
+        productPic: productPic,
+        categoryId: "所有商品"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
 })
 
-// productsRouter.get("/sortDESC", function (req, res) {
-//   let productInformation = {};
-//   let productCategory = {};
-//   let productPic = {};
-//   let categoryId = {};
-//   let priceSortDESC = {};
-//   db.queryAsync(`SELECT p.productId, p.productTitle, p.productPrice, c.categoryName, size.sizeName FROM product p JOIN productSize size ON(size.sizeId = p.sizeId) JOIN productcategory c ON(c.categoryId = p.categoryId) WHERE c.categoryId = '${req.params.sort}'`)
-//     .then(category => {
-//       productInformation = category;
-//       return db.queryAsync('SELECT * FROM productCategory');
-//     })
-//     .then(productCat => {
-//       productCategory = productCat;
-//       return db.queryAsync(`SELECT img.* FROM productimg img JOIN product p ON(img.productId = p.productId) JOIN productcategory c ON(p.categoryId = c.categoryId) WHERE c.categoryId = '${req.params.sort}'`);
-//     })
-//     .then(productImage => {
-//       productPic = productImage
-//       return db.queryAsync(`SELECT * FROM productcategory WHERE categoryId = '${req.params.sort}'`);
-//     })
-//     .then(id => {
-//       categoryId = id
-//       return db.queryAsync(`SELECT * FROM product ORDER BY productPrice DESC`)
-//     })
-//     .then(productPrice => {
-//       priceSortDESC = productPrice
-//       res.render("products", {
-//         productInformation: productInformation,
-//         productCategory: productCategory,
-//         productPic: productPic,
-//         categoryId: categoryId,
-//         priceSortDESC: priceSortDESC
-//       })
 
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-
-// })
 
 module.exports = productsRouter;

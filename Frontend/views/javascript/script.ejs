@@ -27,9 +27,6 @@
         $(".signUpBtn").prop("disabled", false);
       }
 
-      // sessionStorage.setItem("key", value)
-      // var data = sessionStorage.getItem("key")
-
     })
 
     $(".inputNum").on("keyup", function () {
@@ -42,10 +39,6 @@
         $(".errorMsg").css("display", "none");
         $(".signUpBtn").prop("disabled", false);
       }
-
-      // sessionStorage.setItem("key", value)
-      // var data = sessionStorage.getItem("key")
-      // console.log(`storage ${data}`)
 
     })
 
@@ -68,9 +61,6 @@
         $(".signUpBtn").prop("disabled", true)
       }
 
-      // sessionStorage.setItem("key", value)
-      // var data = sessionStorage.getItem("key")
-      // console.log(`session storage ${data}`)
     })
 
     $(".signUpBtn").on("click", function () {
@@ -90,11 +80,6 @@
     $(".closeModal").on("click", function () {
       $(".modal-container").hide()
     })
-
-    //close product modal when click outside of modal (NEED TO BE FIXED)
-    // $(".modal-container").on("click", function () {
-    //   $(".modal-container").hide()
-    // })
 
 
     //toggle burger menu on click

@@ -1666,6 +1666,14 @@ input[type="search"]::-webkit-search-results-decoration {
   color: #a54c4c;
 }
 
+.form .classTotal {
+  margin-top: 6rem;
+  border-top: 1px solid #8d8d8d;
+  color: #a54c4c;
+  font-weight: 700;
+  text-align: end;
+}
+
 .form .guest-info {
   font-size: 1.3rem;
 }
@@ -2390,7 +2398,6 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
   padding: 2rem 0;
 }
 
