@@ -3338,8 +3338,8 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   padding: 1rem 0;
   padding-left: 15%;
-  background-color: #fdafbb;
-  color: #fff;
+  background: #ffefc2;
+  color: #8d8d8d;
 }
 
 .checkout .orderItems {
@@ -3654,20 +3654,20 @@ input[type="search"]::-webkit-search-results-decoration {
   cursor: pointer;
 }
 
-.cart .container .totalPrice .btn .confirmBtn {
+.cart .container .totalPrice .btn .confirm {
   margin: 0 0.3rem;
   padding: 0.6rem 1rem;
-  color: #fff;
   background-color: #ff90a0;
   border-radius: 4px;
 }
 
-.cart .container .totalPrice .btn .confirmBtn:hover {
-  background: #fdafbb;
+.cart .container .totalPrice .btn .confirm a {
+  color: #fff;
+  font-size: 1.2rem;
 }
 
-.cart .container .totalPrice .btn .confirmBtn .confirm:hover {
-  background: #a54c4c;
+.cart .container .totalPrice .btn .confirm:hover {
+  background: #fdafbb;
   color: #fff;
 }
 

@@ -129,17 +129,17 @@
       .btn{
         margin-top: 1rem;
         cursor: pointer;
-        .confirmBtn{
+        .confirm{
           margin:0 0.3rem;
           padding: 0.6rem 1rem;
-          color: #fff;
           background-color: $darker-pink;
           border-radius: 4px;
+          a{
+            color: #fff;
+            font-size: 1.2rem;
+          }
           &:hover{
             background: $pink;
-          }
-          .confirm:hover{
-            background: $text-color;
             color: #fff;
           }
         }

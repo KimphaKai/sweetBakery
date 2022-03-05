@@ -68,9 +68,7 @@
           <span>總計:</span>
           <span class="sum">0</span>
           <div class="btn">
-            <!-- <span class="delSelected">刪除勾選商品</span>
-            <span class="delAll">清空購物車</span> -->
-            <span class="listCheckout"><a class="confirm" href="/checkout">確認訂單</a></span>
+            <span class="confirm"><a href="/checkout">確認訂單</a></span>
           </div>
 
         </div>
@@ -201,17 +199,17 @@
                 url: '/cart/updateNum/button',
                 type: 'put',
                 data: data,
-                success:function(data){
+                success: function (data) {
                   // console.log(data);
                 }
               })
             })
-          
-          
-           // 刪除訂單可以刪除資料庫資料
-           $('.delete').click(function(){
-              let data = { 
-               pId:$(this).parent('tr').find('.amount').find('input').attr('id')
+
+
+            // 刪除訂單可以刪除資料庫資料
+            $('.delete').click(function () {
+              let data = {
+                pId: $(this).parent('tr').find('.amount').find('input').attr('id')
               };
               // console.log(data)
               $.ajax({
@@ -223,45 +221,45 @@
                 }
               })
             });
-            
-            
-          //-------------確認訂單-----------------
 
-              // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
-          // $(".selectAll").click(function(){
-          //   let y= $(this).closest('.tab').find('tbody').find('.num');
-          //   y.each(function(){
-          //         console.log($(this).prop('id'));
-          //   });
-          //   // console.log(idArray)
-          // });
-          
-          // // 可以將勾選的"checkbox Box" 紀錄進資料庫
-          // $(".chkbox").click(function () {
-          //   //選中的商品
-          //   if($(this).prop('checked') == true){
-          //     let x = $(this).closest('tr').find('.amount').find('input').attr('id');
-          //     // console.log("商品ID:"+x);
-          //   }
-          // })
 
-          
-          var arr=[];
+            //-------------確認訂單-----------------
 
-          $('.confirm').on('click',function(){
-            $('tr').each(function(){
-               let z = $(this).find('.chkbox').prop('checked');
-               if(z==true){
-                 arr.push($(this).find('.num').attr('id'));
-                 }
+            // 全選後，可以將勾選的"checkbox Box" 紀錄進資料庫
+            // $(".selectAll").click(function(){
+            //   let y= $(this).closest('.tab').find('tbody').find('.num');
+            //   y.each(function(){
+            //         console.log($(this).prop('id'));
+            //   });
+            //   // console.log(idArray)
+            // });
 
+            // // 可以將勾選的"checkbox Box" 紀錄進資料庫
+            // $(".chkbox").click(function () {
+            //   //選中的商品
+            //   if($(this).prop('checked') == true){
+            //     let x = $(this).closest('tr').find('.amount').find('input').attr('id');
+            //     // console.log("商品ID:"+x);
+            //   }
+            // })
+
+
+            var arr = [];
+
+            $('.confirm').on('click', function () {
+              $('tr').each(function () {
+                let z = $(this).find('.chkbox').prop('checked');
+                if (z == true) {
+                  arr.push($(this).find('.num').attr('id'));
+                }
+
+              })
+              sessionStorage.setItem('pid', JSON.stringify({ id: arr }));
+              arr = [];
             })
-            sessionStorage.setItem('pid',JSON.stringify({id: arr}));
-            arr=[];
-          })
-          
-          
-        </script>
+
+
+          </script>
 </body>
 
 </html>

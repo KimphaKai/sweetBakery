@@ -32,9 +32,10 @@
     font-size: 1.3rem;
     padding:1rem 0;
     padding-left: 15%;
-    // background: $background-color;
-    background-color: $pink;
-    color: #fff;
+    background: $background-color;
+    // background-color: $pink;
+    // color: #fff;
+    color: $darker-gray;
   }
 
   .orderItems{
