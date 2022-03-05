@@ -129,10 +129,13 @@
        
       <script>
         var data = sessionStorage.getItem('data');
-        console.log(typeof data);
         $('.divider').text();
+        console.log(typeof data);
 
-       console.log( sessionStorage.getItem('pid'));
+
+      // 取得cart.js勾選的商品
+      let d= sessionStorage.getItem('pid')
+      console.log( sessionStorage.getItem('pid'));
       </script>
 </body>
 
