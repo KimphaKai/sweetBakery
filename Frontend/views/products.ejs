@@ -320,10 +320,12 @@
             })
           })
 
-          $("#count").text(sessionStorage.getItem("cartKey"))
-          var count = 0
+          if (!sessionStorage.getItem("cartKey")) {
+            $("#count").text(0)
+          } else {
+            $("#count").text(sessionStorage.getItem("cartKey"))
+          }
           $(".addToCartBtn").on("click", function () {
-            // count += parseInt($("#productNum").val())
             console.log($("#count").text(count))
             $(".modal-container").hide()
 
