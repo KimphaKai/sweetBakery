@@ -13,32 +13,34 @@ loginRouter.use(bodyparser.urlencoded({ extended: true }));
 
 //會員註冊
 loginRouter.post('/memberRegister', function (req, res) {
-    compareEmail = 0; //狀態初始
-    db.query(`SELECT * FROM member`, function (err, rows) {
-        databaseUserInformation = rows;
-    }); //抓資料
-
-    databaseUserInformation.forEach(item => {
-        if (item.email == req.body.memberRegisterEmail) {
-            //帳號已存在
-            compareEmail = 1;
-            return false;
-        }
-    })
-
-    //將資料存入資料庫
-    if (compareEmail == 0) {
-        //可以註冊帳號
-        db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.sessionID}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '${req.body.memberRegisterName}','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
-            if (error) {
-                ``
-                console.log(error);
+    compareEmail = 0; //初始
+    db.query(`SELECT * FROM member`, function (err, rows) {  //抓資料
+        rows.forEach(item => {
+            if (item.email == req.body.memberRegisterEmail) {
+                //帳號已存在
+                compareEmail = 1; //存在
             }
         })
-    } else {
-        console.log('帳號已存在');
-    };
-    res.redirect('/'); //跳轉頁面
+        //將資料存入資料庫
+        if (compareEmail == 0) {
+            //可以註冊帳號
+            db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.sessionID}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '${req.body.memberRegisterName}','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
+                if (error) {
+                    console.log(error);
+                }
+                //如何alert 帳號註冊成功
+                //
+                //
+                console.log('帳號註冊成功');
+            })
+        } else {
+            //如何alert 出畫面顯示已存在
+            //
+            //
+            console.log('帳號已存在');
+        };
+        res.redirect('/'); //跳轉頁面
+    });
 })
 
 //會員登入
