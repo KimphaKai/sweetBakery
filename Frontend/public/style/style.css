@@ -184,14 +184,14 @@ header .icons .cartIcon {
 
 header .icons .cartIcon .cartItems {
   position: absolute;
-  top: -30%;
+  top: -35%;
   right: -40%;
   background-color: #fdafbb;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   border-radius: 100vw;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
   text-align: center;
 }
 
@@ -259,17 +259,29 @@ header .icons .cartIcon .cartItems {
 }
 
 .carousel .heroSwiper .swiper-pagination-bullet {
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 1vw;
+  height: 1vw;
 }
 
 .carousel .heroSwiper .swiper-pagination-bullet-active {
   background-color: #ff90a0;
 }
 
-.carousel .heroSwiper .swiper-button-prev, .carousel .heroSwiper .swiper-button-next {
+.carousel .heroSwiper .prev-arrow, .carousel .heroSwiper .next-arrow {
+  position: absolute;
+  top: 45%;
+  font-size: 2.3rem;
   color: #ff90a0;
-  font-weight: 700;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.carousel .heroSwiper .prev-arrow {
+  left: 15px;
+}
+
+.carousel .heroSwiper .next-arrow {
+  right: 15px;
 }
 
 .categories {

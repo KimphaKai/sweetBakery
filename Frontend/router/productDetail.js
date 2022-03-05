@@ -4,11 +4,11 @@ var db = require("../db");
 
 productDetailRouter.get("/", function (req, res) {
   let productInformation = {};
-  let productName = $('').val();
+  // let productName = $('').val();
   // console.log(productName)
-  db.queryAsync(`SELECT productInfo FROM product WHERE productTitle ="test2"`, function(error,rows){
-    res.render("productDetail",{
-      productInformation : rows[0]
+  db.queryAsync(`SELECT productInfo FROM product WHERE productTitle ="test2"`, function (error, rows) {
+    res.render("productDetail", {
+      productInformation: rows[0]
     })
   })
     .then(category => {

@@ -27,8 +27,8 @@
         $(".signUpBtn").prop("disabled", false);
       }
 
-      sessionStorage.setItem("key", value)
-      var data = sessionStorage.getItem("key")
+      // sessionStorage.setItem("key", value)
+      // var data = sessionStorage.getItem("key")
 
     })
 
@@ -43,9 +43,9 @@
         $(".signUpBtn").prop("disabled", false);
       }
 
-      sessionStorage.setItem("key", value)
-      var data = sessionStorage.getItem("key")
-      console.log(`storage ${data}`)
+      // sessionStorage.setItem("key", value)
+      // var data = sessionStorage.getItem("key")
+      // console.log(`storage ${data}`)
 
     })
 
@@ -53,10 +53,12 @@
 
       var inputNum = $(".inputNum");
       var value = $(".inputNum").val();
+
       if (value > 1) {
-        value--;
+        --value;
         inputNum.val(value);
       }
+      console.log(value)
 
       if (value <= remain) {
         $(".errorMsg").css("display", "none");
@@ -66,10 +68,18 @@
         $(".signUpBtn").prop("disabled", true)
       }
 
-      sessionStorage.setItem("key", value)
-      var data = sessionStorage.getItem("key")
+      // sessionStorage.setItem("key", value)
+      // var data = sessionStorage.getItem("key")
+      // console.log(`session storage ${data}`)
+    })
+
+    $(".signUpBtn").on("click", function () {
+      var value = $(".inputNum").val();
+      sessionStorage.setItem("guestKey", value)
+      var data = sessionStorage.getItem("guestKey")
       console.log(`session storage ${data}`)
     })
+
 
     //open product modal when click on product cart
     $(".fa-shopping-cart").on("click", () => {
@@ -190,26 +200,28 @@
       })
     }
 
+    $('#signupBtn').on('click', function () {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: '帳號登入成功',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+    $('#loginBtn').on('click', function () {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: '帳號登入成功',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+
+
   });
 
 
-  $('#signupBtn').on('click', function () {
-    Swal.fire({
-      position: 'top',
-      icon: 'success',
-      title: '帳號登入成功',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  })
-  $('#loginBtn').on('click', function () {
-    Swal.fire({
-      position: 'top',
-      icon: 'success',
-      title: '帳號登入成功',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  })
 
 </script>

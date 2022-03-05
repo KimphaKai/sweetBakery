@@ -6,16 +6,27 @@
       width: 100%;
     }
     .swiper-pagination-bullet{
-      width: 0.7rem;
-      height: 0.7rem;
+      width: 1vw;
+      height: 1vw;
     }
     .swiper-pagination-bullet-active{
       background-color: $darker-pink;
     }
-    .swiper-button-prev, .swiper-button-next{
+    .prev-arrow, .next-arrow{
+      position: absolute;
+      top: 45%;
+      font-size: 2.3rem;
       color: $darker-pink;
-      font-weight: 700;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .prev-arrow{
+      left: 15px;
+    }
+    .next-arrow{
+      right: 15px;
     }
     
   }
+
 }

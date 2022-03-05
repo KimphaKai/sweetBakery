@@ -13,8 +13,8 @@ const swiper = new Swiper('.heroSwiper', {
 
   // Navigation arrows
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.next-arrow',
+    prevEl: '.prev-arrow',
   }
 
 });

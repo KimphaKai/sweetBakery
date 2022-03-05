@@ -26,8 +26,8 @@ $(document).ready(function () {
       $(".signUpBtn").prop("disabled", false);
     }
 
-    sessionStorage.setItem("key", value)
-    var data = sessionStorage.getItem("key")
+    // sessionStorage.setItem("key", value)
+    // var data = sessionStorage.getItem("key")
 
   })
 
@@ -41,10 +41,6 @@ $(document).ready(function () {
       $(".errorMsg").css("display", "none");
       $(".signUpBtn").prop("disabled", false);
     }
-
-    sessionStorage.setItem("key", value)
-    var data = sessionStorage.getItem("key")
-    console.log(`storage ${data}`)
 
   })
 
@@ -64,11 +60,24 @@ $(document).ready(function () {
       $(".errorMsg").css("display", "inline-block");
       $(".signUpBtn").prop("disabled", true)
     }
+  })
+
+
+  $(".signupBtn").on("click", function () {
 
     sessionStorage.setItem("key", value)
     var data = sessionStorage.getItem("key")
-    console.log(`session storage ${data}`)
+    // console.log(`storage ${data}`)
   })
+
+  $(".addToCartBtnBtn").on("click", function () {
+
+    sessionStorage.setItem("cartKey", value)
+    var data = sessionStorage.getItem("cartKey")
+    // console.log(`storage ${data}`)
+  })
+
+
 
   //open product modal when click on product cart
   $(".fa-shopping-cart").on("click", () => {
@@ -185,20 +194,20 @@ $(document).ready(function () {
 
 
 
-//change images when click on thumbnail
-let thumbnails = document.getElementsByClassName('thumbnail')
+// //change images when click on thumbnail
+// let thumbnails = document.getElementsByClassName('thumbnail')
 
-let activeImages = document.getElementsByClassName('active')
+// let activeImages = document.getElementsByClassName('active')
 
-for (var i = 0; i < thumbnails.length; i++) {
+// for (var i = 0; i < thumbnails.length; i++) {
 
-  thumbnails[i].addEventListener('click', function () {
+//   thumbnails[i].addEventListener('click', function () {
 
-    if (activeImages.length > 0) {
-      activeImages[0].classList.remove('active')
-    }
+//     if (activeImages.length > 0) {
+//       activeImages[0].classList.remove('active')
+//     }
 
-    this.classList.add('active')
-    document.getElementById('featured').src = this.src
-  })
-}
+//     this.classList.add('active')
+//     document.getElementById('featured').src = this.src
+//   })
+// }
