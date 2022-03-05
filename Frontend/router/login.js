@@ -24,7 +24,7 @@ loginRouter.post('/memberRegister', function (req, res) {
         //將資料存入資料庫
         if (compareEmail == 0) {
             //可以註冊帳號
-            db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.sessionID}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '${req.body.memberRegisterName}','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
+            db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.body.memberRegisterEmail}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '${req.body.memberRegisterName}','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
                 if (error) {
                     console.log(error);
                 }
@@ -32,6 +32,7 @@ loginRouter.post('/memberRegister', function (req, res) {
                 //
                 //
                 console.log('帳號註冊成功');
+                req.session.username = req.body.memberRegisterEmail;  //存在session.username
             })
         } else {
             //如何alert 出畫面顯示已存在
@@ -72,6 +73,12 @@ loginRouter.post('/memberLogin', function (req, res) {
 
                     console.log('登入成功');
                     console.log(req.session.username);
+                }else {
+                    //alert 帳號不存在 
+                    //
+                    //
+                    console.log('帳號不存在，請註冊');
+                    res.render('/');
                 }
             })
         });
