@@ -177,27 +177,21 @@
       // refresh again
       refreshproductTitleLength();
     })
+
+
+    //change images when click on thumbnail
+    for (var i = 0; i < $(".thumbnail").length; i++) {
+      $(".thumbnail").on("click", function () {
+        if ($(".active").length > 0) {
+          $(".active").removeClass("active")
+        }
+        $(this).addClass("active")
+        $("#featured").attr("src", $(this).attr("src"))
+      })
+    }
+
   });
 
-
-
-  //change images when click on thumbnail
-  let thumbnails = document.getElementsByClassName('thumbnail')
-
-  let activeImages = document.getElementsByClassName('active')
-
-  for (var i = 0; i < thumbnails.length; i++) {
-
-    thumbnails[i].addEventListener('click', function () {
-
-      if (activeImages.length > 0) {
-        activeImages[0].classList.remove('active')
-      }
-
-      this.classList.add('active')
-      document.getElementById('featured').src = this.src
-    })
-  }
 
   $('.signupBtn').on('click', function () {
     alert('註冊成功');
