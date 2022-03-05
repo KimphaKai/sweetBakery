@@ -44,6 +44,114 @@
         </div>
 
         <!-- -----會員訂單-------- -->
+        <div class="class-wrapper">
+          <div class="myClass">
+            <div class="divider"></div>
+            <div class="classHeader">
+              <div class="col">課程名稱</div>
+              <div class="col">時間</div>
+              <div class="col">單價</div>
+              <div class="col">人數</div>
+              <div class="col">小計</div>
+            </div>
+            <div class="divider"></div>
+            <!-- -----會員訂單資訊-------- -->
+            <div class="classItems">
+              <div class="classThumbnail">
+                <img src="img/class/class1.jpg">
+              </div>
+              <div class="detail-wrapper">
+                <div class="col classTitle">
+                  <span>親手製作 - 日式布丁草莓蛋糕</span>
+                </div>
+                <div class="col classTime">
+                  <span>2022-01-15</span>
+                  <br>
+                  <span>13:30-17:30</span>
+                </div>
+                <div class="col classPrice">
+                  <span>$</span>
+                  <span>1000</span>
+                </div>
+                <div class="col guestNum">
+                  <span>2</span>
+                </div>
+                <div class="col subtotal">
+                  <span>$</span>
+                  <span>2000</span>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="totalPrice">
+              <span>總金額:</span>
+              <span>2000</span>
+            </div>
+          </div>
+
+          <div class="myClass">
+            <div class="divider"></div>
+            <div class="classHeader">
+              <p class="col">課程名稱</p>
+              <p class="col">時間</p>
+              <p class="col">單價</p>
+              <p class="col">人數</p>
+              <p class="col">小計</p>
+            </div>
+            <div class="divider"></div>
+            <!-- -----會員訂單資訊-------- -->
+            <div class="classItems">
+              <div class="classThumbnail">
+                <img src="img/class/bear 1-1.jpg">
+              </div>
+              <div class="detail-wrapper">
+                <div class="col classTitle">
+                  <span>親手製作 - 奶油北極熊蛋糕</span>
+                </div>
+                <div class="col classTime">
+                  <span>2022-01-15</span>
+                  <br>
+                  <span>13:30-17:30</span>
+                </div>
+                <div class="col classPrice">
+                  <span>$</span>
+                  <span>1000</span>
+                </div>
+                <div class="col guestNum">
+                  <span>2</span>
+                </div>
+                <div class="col subtotal">
+                  <span>$</span>
+                  <span>2000</span>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="totalPrice">
+              <span>總金額:</span>
+              <span>2000</span>
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+      <!-- Javascript -->
+      <%- include('javascript/script') %>
+
+
+        <script>
+          var classData = JSON.parse(sessionStorage.getItem('classData'));
+          console.log(classData);
+          var classDate = (classData.classTime.substr(0, 11)).split('/');
+          var cDate = classDate.join('-');
+          console.log(cDate);
+
+
+          var cardHtml = `  
         <div class="myClass">
           <div class="divider"></div>
           <div class="classHeader">
@@ -57,106 +165,40 @@
           <!-- -----會員訂單資訊-------- -->
           <div class="classItems">
             <div class="classThumbnail">
-              <img src="img/class/class1.jpg">
+              <img src="${classData.classPic}">
             </div>
             <div class="detail-wrapper">
               <div class="col classTitle">
-                <span>親手製作 - 日式布丁草莓蛋糕</span>
+                <span>${classData.classTitle}</span>
               </div>
               <div class="col classTime">
-                <span>2022-01-15</span>
+                <span>${cDate}</span>
                 <br>
-                <span>13:30-17:30</span>
+                <span>${classData.classTime.substr(15)}</span>
               </div>
               <div class="col classPrice">
                 <span>$</span>
-                <span>1000</span>
+                <span>${classData.classPrice}</span>
               </div>
               <div class="col guestNum">
-                <span>2</span>
+                <span>${classData.guestNum}</span>
               </div>
               <div class="col subtotal">
                 <span>$</span>
-                <span>2000</span>
+                <span>${classData.classtotal}</span>
               </div>
             </div>
           </div>
           <div class="divider"></div>
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>2000</span>
+            <span>${classData.classtotal}</span>
           </div>
         </div>
-
-        <div class="myClass">
-          <div class="divider"></div>
-          <div class="classHeader">
-            <p class="col">課程名稱</p>
-            <p class="col">時間</p>
-            <p class="col">單價</p>
-            <p class="col">人數</p>
-            <p class="col">小計</p>
-          </div>
-          <div class="divider"></div>
-          <!-- -----會員訂單資訊-------- -->
-          <div class="classItems">
-            <div class="classThumbnail">
-              <img src="img/class/bear 1-1.jpg">
-            </div>
-            <div class="detail-wrapper">
-              <div class="col classTitle">
-                <span>親手製作 - 奶油北極熊蛋糕</span>
-              </div>
-              <div class="col classTime">
-                <span>2022-01-15</span>
-                <br>
-                <span>13:30-17:30</span>
-              </div>
-              <div class="col classPrice">
-                <span>$</span>
-                <span>1000</span>
-              </div>
-              <div class="col guestNum">
-                <span>2</span>
-              </div>
-              <div class="col subtotal">
-                <span>$</span>
-                <span>2000</span>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="totalPrice">
-            <span>總金額:</span>
-            <span>2000</span>
-          </div>
-        </div>
-
-        <!--------分業選單-------- -->
-        <!-- <div class="pagination">
-          <button class="paginationBtn prev-page" type="button">
-            <i class="fas fa-caret-left"></i>
-          </button>
-          <button class="pageNum" style="background-color: pink; color: white">
-            1
-          </button>
-          <button class="pageNum">2</button>
-          <button class="pageNum">3</button>
-          <button class="pageNum">4</button>
-          <button class="pageNum">5</button>
-          <button class="paginationBtn next-page" type="button">
-            <i class="fas fa-caret-right"></i>
-          </button>
-        </div> 
-    </div>-->
-    </section>
-
-    <!-- Footer Section -->
-    <%- include('partials/footer') %>
-
-      <!-- Javascript -->
-      <%- include('javascript/script') %>
-
+        `
+          // $(cardHtml).appendTo(".navBar, .myClass");
+          $(".class-wrapper").prepend(cardHtml);
+        </script>
 </body>
 
 </html>
