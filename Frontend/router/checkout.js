@@ -9,7 +9,7 @@ checkoutRouter.get('/', function (req, res) {
   db.queryAsync('SELECT c.*, p.*,s.sizeName,(p.productPrice*c.productNum) AS subTotal FROM cartlist c JOIN product p ON(c.productId=p.productId) JOIN productsize s ON(p.sizeId=s.sizeId) WHERE c.memberId="handsome"')
     .then(category =>{
       productInformation = category;
-      console.log(category);
+      // console.log(category);
       return db.queryAsync('SELECT * FROM productimg');
     }).then(productImage=>{
       productPic = productImage
