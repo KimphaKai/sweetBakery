@@ -66,6 +66,14 @@
     color: $text-color;
   }
 
+  .classTotal{
+    margin-top: 6rem;
+    border-top: 1px solid $darker-gray;
+    color: $text-color;
+    font-weight: 700;
+    text-align: end;
+  }
+
   .guest-info{
     font-size: 1.3rem;
     .divider{
