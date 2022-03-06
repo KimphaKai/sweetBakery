@@ -2073,7 +2073,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 0.8rem;
   color: #D9534F;
   margin-left: 1rem;
-  text-align: end;
   display: none;
 }
 
