@@ -152,7 +152,6 @@ productsRouter.get("/productInfo/:categories/:id", function (req, res) {
   db.queryAsync(`SELECT p.productId, p.productTitle, p.productPrice,p.categoryId, p.productInfo, c.categoryName, size.sizeName FROM product p JOIN productcategory c ON(c.categoryId = p.categoryId) JOIN productsize size ON(size.sizeId = p.sizeId) WHERE p.productId = ${req.params.id} AND c.categoryId = ${req.params.categories} `)
     .then(category => {
       productInformation = category;
-      console.log("req.params.categories: " + req.params.categories)
       return db.queryAsync('SELECT * FROM productCategory');
     })
     .then(productCount => {
@@ -194,7 +193,7 @@ productsRouter.get("/sortProduct/:sortVal", function (req, res) {
     order = ` order by p.productPrice ${req.params.sortVal}`
 
   }
-  db.queryAsync(`SELECT p.productId, p.categoryId, p.productTitle, p.productPrice, p.productInfo, c.categoryName, size.sizeName FROM product p JOIN productcategory c ON(c.categoryId = p.categoryId) JOIN productsize size ON(size.sizeId = p.sizeId) WHERE p.productStatus ='上架中' ${order}`)
+  db.queryAsync(`SELECT p.productId, p.productTitle, p.productPrice, p.productInfo, c.categoryName, size.sizeName FROM product p JOIN productcategory c ON(c.categoryId = p.categoryId) JOIN productsize size ON(size.sizeId = p.sizeId) WHERE p.productStatus ='上架中' ${order}`)
     .then(category => {
       productInformation = category;
       return db.queryAsync('SELECT * FROM productCategory');
