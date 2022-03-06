@@ -570,6 +570,13 @@ footer .social .fa-line {
   color: #00B900;
 }
 
+footer .copyright {
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+}
+
 @media screen and (max-width: 600px) {
   footer .footer-container {
     -webkit-box-orient: vertical;
