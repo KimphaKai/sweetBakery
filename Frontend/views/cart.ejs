@@ -34,38 +34,38 @@
           </thead>
           <tbody>
             <% productInformation .forEach(proInform=> { %>
-                <tr>
-                  <td><input type="checkbox" class="chkbox" /></td>
-                  <td>
-                    <% productPic .forEach(images=> { %>
-                      <% if(proInform.productId==images.productId){ %>
-                        <% if ((images.productImgId % 3) == 1) {  %>
-                          <img src="<%= images.imgPath %>" alt="">
+              <tr>
+                <td><input type="checkbox" class="chkbox" /></td>
+                <td>
+                  <% productPic .forEach(images=> { %>
+                    <% if(proInform.productId==images.productId){ %>
+                      <% if ((images.productImgId % 3)==1) { %>
+                        <img src="<%= images.imgPath %>" alt="">
+                        <% } %>
                           <% } %>
-                      <% } %>
-                    <% }) %>
-                  </td>
-                  <td class="productName">
-                    <%= proInform.productTitle %>
-                  </td>
-                  <td class="productSize">
-                    <%= proInform.sizeName %>
-                  </td>
-                  <td class="price">
-                    <%= proInform.productPrice %>
-                  </td>
-                  <td class="amount">
-                    <button type="button" class="sub">&#8722;</button>
-                    <input type="number" name="" value="<%= proInform.productNum %>" class="num"
-                      id="<%=proInform.productId%>">
-                    <button type="button" class="add">&#x2B;</button>
-                  </td>
-                  <td class="subtotal">
-                    <%= proInform.subTotal %>
-                  </td>
-                  <td class="delete"><i class="fas fa-times"></td>
-                </tr>
-            <% }) %>
+                            <% }) %>
+                </td>
+                <td class="productName">
+                  <%= proInform.productTitle %>
+                </td>
+                <td class="productSize">
+                  <%= proInform.sizeName %>
+                </td>
+                <td class="price">
+                  <%= proInform.productPrice %>
+                </td>
+                <td class="amount">
+                  <button type="button" class="sub">&#8722;</button>
+                  <input type="number" name="" value="<%= proInform.productNum %>" class="num"
+                    id="<%=proInform.productId%>">
+                  <button type="button" class="add">&#x2B;</button>
+                </td>
+                <td class="subtotal">
+                  <%= proInform.subTotal %>
+                </td>
+                <td class="delete"><i class="fas fa-times"></td>
+              </tr>
+              <% }) %>
           </tbody>
         </table>
 
@@ -75,7 +75,7 @@
           <span>總計:</span>
           <span class="sum">0</span>
           <div class="btn">
-            <span class="confirm">確認訂單</span> 
+            <span class="confirm">確認訂單</span>
           </div>
 
         </div>
@@ -256,24 +256,24 @@
             $('.confirm').on('click', function () {
               $('tr').each(function () {
                 let z = $(this).find('.chkbox').prop('checked');
-              if (z == true) {
+                if (z == true) {
                   arr.push($(this).find('.num').attr('id'));
-              }
+                }
               })
-              if(arr.length !=0){
+              if (arr.length != 0) {
                 sessionStorage.setItem('pid', JSON.stringify({ id: arr }));
-                window.location="/checkout";
+                window.location = "/checkout";
                 arr = [];
-              }else{
+              } else {
                 $('.confirm').prop('disable');
                 Swal.fire({
                   icon: 'warning',
                   title: '忘記勾選商品囉!',
-                  text: '選越多，賺越多!',
-                  footer: '<a href="">Why do I have this issue?</a>'
+                  text: '選越多，賺越多!'
+                  // footer: '<a href="">Why do I have this issue?</a>'
                 })
               }
-              
+
             })
 
           </script>
