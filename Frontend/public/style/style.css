@@ -2405,6 +2405,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #ffefc2;
   padding: 2rem 0;
 }
 
