@@ -857,7 +857,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .signUpBtn {
   background: #a54c4c;
-  min-width: 80%;
+  width: 500px;
   padding: 0.8rem 0;
   border-radius: 8px;
   color: #fff;
@@ -1993,7 +1993,6 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .classContent {
-  line-height: 3rem;
   font-size: 1.2rem;
   margin-left: 1rem;
 }
@@ -2003,14 +2002,20 @@ input[type="search"]::-webkit-search-results-decoration {
   font-weight: 700;
 }
 
-.classDetail .classTitle span, .classDetail .classTitle .remain {
+.classDetail .remain, .classDetail .remainNum {
   font-size: 1.3rem;
   color: #a54c4c;
   white-space: nowrap;
+  font-weight: 700;
+}
+
+.classDetail .inputPrice {
+  margin-top: 5rem;
 }
 
 .classDetail .classTime {
   font-size: 1.3rem;
+  line-height: 2rem;
 }
 
 .classDetail .classTime i {
@@ -2018,8 +2023,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .classPrice {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 700;
+  margin-right: 11rem;
   color: #a54c4c;
 }
 
@@ -2028,10 +2034,10 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .guest-input #guestNum {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-align: center;
-  max-width: 5rem;
-  margin-bottom: 2rem;
+  max-width: 3rem;
+  margin-bottom: 1rem;
 }
 
 .classDetail .guest-input .guestBtn {
@@ -2063,10 +2069,11 @@ input[type="search"]::-webkit-search-results-decoration {
   border: none;
 }
 
-.classDetail .guest-input .errorMsg {
+.classDetail .errorMsg {
   font-size: 0.8rem;
   color: #D9534F;
   margin-left: 1rem;
+  text-align: end;
   display: none;
 }
 

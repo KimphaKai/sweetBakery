@@ -26,6 +26,8 @@
         $(".errorMsg").css("display", "none");
         $(".signUpBtn").prop("disabled", false);
       }
+      console.log("value: " + value);
+      console.log("remain: " + remain)
 
     })
 
@@ -60,7 +62,8 @@
         $(".errorMsg").css("display", "inline-block");
         $(".signUpBtn").prop("disabled", true)
       }
-
+      console.log("value: " + value);
+      console.log("remain: " + remain)
     })
 
     $(".signUpBtn").on("click", function () {

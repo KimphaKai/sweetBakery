@@ -41,7 +41,6 @@
   }
 
   .classContent{
-    line-height: 3rem;
     font-size: 1.2rem;
     margin-left: 1rem;
   }
@@ -49,23 +48,31 @@
   .classTitle{
     font-size: 2rem;
     font-weight: 700;
-    span, .remain{
-      font-size: 1.3rem;
-      color: $text-color;
-      white-space: nowrap;
-    }
+  }
+
+  .remain, .remainNum{
+    font-size: 1.3rem;
+    color: $text-color;
+    white-space: nowrap;
+    font-weight: 700;
+  } 
+
+  .inputPrice{
+    margin-top: 5rem;
   }
 
   .classTime{
     font-size:1.3rem;
+    line-height: 2rem;
     i{
       margin-right: 0.5rem;
     }
   }
 
   .classPrice{
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     font-weight: 700;
+    margin-right: 11rem;
     color: $text-color;
   }
 
@@ -74,10 +81,10 @@
       font-size: 1.2rem;
     }
     #guestNum{
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       text-align: center;
-      max-width: 5rem;
-      margin-bottom: 2rem;
+      max-width: 3rem;
+      margin-bottom: 1rem;
     }
     .guestBtn {
       border: 2px solid $text-color;
@@ -100,13 +107,15 @@
       }
 
     }
-    .errorMsg{
-      font-size: 0.8rem;
-      color: $red;
-      margin-left: 1rem;
-      // white-space: nowrap;
-      display: none;
-    }
+  }
+
+  .errorMsg{
+    font-size: 0.8rem;
+    color: $red;
+    margin-left: 1rem;
+    text-align: end;
+    display: none;
+
   }
 
   .classDesc{
