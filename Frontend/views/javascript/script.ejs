@@ -184,28 +184,54 @@
       })
     }
 
-    $('#signupBtn').on('click', function () {
+    $('.signupBtn').on('click', function () {
       Swal.fire({
         position: 'top',
         icon: 'success',
-        title: '帳號登入成功',
+        title: '帳號註冊成功',
         showConfirmButton: false,
         timer: 1500
       })
     })
+
     $('#loginBtn').on('click', function () {
+      if ($('.loginEmail').val() == "sweetbakery@gmail.com") {
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: '帳號登入成功',
+          showConfirmButton: false,
+          timer: 1700
+        })
+      } else {
+        Swal.fire({
+          position: 'top',
+          icon: 'warning',
+          title: '帳號不存在，或是密碼錯誤',
+          showConfirmButton: false,
+          timer: 1700
+        });
+      };
+    });
+
+    $('#changePasswordBtn').on('click', function(){
       Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: '帳號登入成功',
-        showConfirmButton: false,
-        timer: 1500
-      })
+          position: 'top',
+          icon: 'success',
+          title: '密碼修改完成',
+          showConfirmButton: false,
+          timer: 1700
+        });
     })
 
-
-  });
-
-
-
+    $('#changeUserInfo').on('click', function(){
+      Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: '會員基本資料修改完成',
+          showConfirmButton: false,
+          timer: 1700
+        });
+    })
+  })
 </script>

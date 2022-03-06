@@ -40,27 +40,29 @@ loginRouter.post('/memberRegister', function (req, res) {
             //
             console.log('帳號已存在');
         };
-        res.redirect('/'); //跳轉頁面
+        setTimeout(() => {
+            res.redirect('/'); //跳轉頁面
+        }, 2000);
     });
 })
 
 //會員登入
 loginRouter.post('/memberLogin', function (req, res) {
-    if (req.session.username) {  //判斷session暫存資料有無
-        db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-            if (error) {
-                console.log(error);
-            } else {
-                res.render('user', {
-                    userAcount: rows,
-                    userName: rows,
-                    userEmail: rows,
-                    userPhone: rows,
-                    userBirthday: rows
-                });
-            }
-        });
-    } else {
+    // if (req.session.username) {  //判斷session暫存資料有無
+    //     db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    //         if (error) {
+    //             console.log(error);
+    //         } else {
+    //             res.render('user', {
+    //                 userAcount: rows,
+    //                 userName: rows,
+    //                 userEmail: rows,
+    //                 userPhone: rows,
+    //                 userBirthday: rows
+    //             });
+    //         }
+    //     });
+    // } else {
         db.query(`SELECT * FROM member`, function (error, rows) {  //抓資料
             // console.log(rows);
             let user;
@@ -79,19 +81,23 @@ loginRouter.post('/memberLogin', function (req, res) {
             })
             if(userCondition == 1){
                 console.log('登入成功');
-                res.render('user', {
-                    userAcount: user,
-                    userName: user,
-                    userEmail: user,
-                    userPhone: user,
-                    userBirthday: user
-                });
+                setTimeout(() => {
+                    res.render('user', {
+                        userAcount: user,
+                        userName: user,
+                        userEmail: user,
+                        userPhone: user,
+                        userBirthday: user
+                    });
+                }, 2000);
             }else{
                 console.log('帳號不存在，請註冊');
-                res.redirect('/');
+                setTimeout(() => {
+                    res.redirect('/');
+                }, 2000);
             }
         });
-    }
+    // }
 })
 
 
