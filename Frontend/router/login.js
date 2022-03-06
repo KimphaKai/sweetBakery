@@ -48,9 +48,9 @@ loginRouter.post('/memberRegister', function (req, res) {
 loginRouter.post('/memberLogin', function (req, res) {
     if (req.session.username) {  //判斷session暫存資料有無
         db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-            if(error){
+            if (error) {
                 console.log(error);
-            }else{
+            } else {
                 res.render('user', {
                     userAcount: rows,
                     userName: rows,
@@ -63,31 +63,33 @@ loginRouter.post('/memberLogin', function (req, res) {
     } else {
         db.query(`SELECT * FROM member`, function (error, rows) {  //抓資料
             // console.log(rows);
-            
-
-                rows.forEach(item => {
-                    if (req.body.memberLoginEmail == item.email && 
-                        req.body.memberLoginPassword == item.userPassword) {
-                        req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
-    
-                        console.log('登入成功');
-                        console.log(req.session.username);
-
-                        res.render('user', {
-                            userAcount: item,
-                            userName: item,
-                            userEmail: item,
-                            userPhone: item,
-                            userBirthday: item
-                        });
-                    }else {
-                        //alert 帳號不存在 
-                        //
-                        //
-                        console.log('帳號不存在，請註冊');
-                    }
-                })
-            
+            let user;
+            let userCondition;
+            rows.forEach(item => {
+                if (req.body.memberLoginEmail == item.email &&
+                    req.body.memberLoginPassword == item.userPassword) {
+                    user = item;
+                    req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
+                    userCondition = 1;  //可登入   
+                } else {
+                    //alert 帳號不存在 
+                    //
+                    //
+                }
+            })
+            if(userCondition == 1){
+                console.log('登入成功');
+                res.render('user', {
+                    userAcount: user,
+                    userName: user,
+                    userEmail: user,
+                    userPhone: user,
+                    userBirthday: user
+                });
+            }else{
+                console.log('帳號不存在，請註冊');
+                res.redirect('/');
+            }
         });
     }
 })
@@ -96,7 +98,7 @@ loginRouter.post('/memberLogin', function (req, res) {
 //忘記密碼
 loginRouter.post('/memberForgetPassword'), function (req, res) {
     console.log(req.session.username);
-    if(req.session.username){
+    if (req.session.username) {
         db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
             console.log(rows);
         });
