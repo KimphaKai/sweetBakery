@@ -9,88 +9,85 @@ userRouter.use(bodyparser.urlencoded({ extended: true }));
 
 
 userRouter.get("/", function (req, res) {
-  console.log(req.session.username);
-  if (req.session.username) { //如果是登入的狀態的話
-    db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
-      if (error) {
-        console.log(error);
-      } else {
-        res.render("user", {
-          // 會員帳號
-          userAcount: rows,
-          // 會員姓名
-          userName: rows,
-          // 信箱
-          userEmail: rows,
-          // 電話
-          userPhone: rows,
-          // 生日
-          userBirthday: rows
-        });
-      };
-    })
-  } else {
-    res.redirect('/');
-  }
+  // console.log(req.session.username);
+  // if (req.session.username) { //如果是登入的狀態的話
+  db.query(`SELECT * FROM member WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.render("user", {
+        // 會員帳號
+        userAcount: rows,
+        // 會員姓名
+        userName: rows,
+        // 信箱
+        userEmail: rows,
+        // 電話
+        userPhone: rows,
+        // 生日
+        userBirthday: rows
+      });
+    };
+  })
+  // } else {
+  //   res.redirect('/');
+  // }
 })
 
 userRouter.post('/changeUserInfoContainer', function (req, res) {
-  //  console.log(req.body.userPhone);
-  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
+  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+    if (error) {
+      throw error;
+    }
+  });
+  db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
     if (error) {
       throw error;
     } else {
-      db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-        if (error) {
-          throw error;
-        } else {
-          res.render("user", {
-            // 會員帳號
-            userAcount: rows,
-            // 會員姓名
-            userName: rows,
-            // 信箱
-            userEmail: rows,
-            // 電話
-            userPhone: rows,
-            // 生日
-            userBirthday: rows
-          });
-        };
-      })
+      let user = rows[0];
+      setTimeout(() => {
+        res.render("user", {
+          // 會員帳號
+          userAcount: user,
+          // 會員姓名
+          userName: user,
+          // 信箱
+          userEmail: user,
+          // 電話
+          userPhone: user,
+          // 生日
+          userBirthday: user
+        });
+      }, 2000);
     };
-  });
+  })
+
+
 });
 
 userRouter.post('/passwordUpdate', function (req, res) {
-  console.log(req.session.username);
-  if (req.session.username) {
-    db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
-      let currentusername = rows[0].email;
-      let changePassword = req.body.newPassword;
-      db.query(`UPDATE member SET userPassword="${changePassword}" WHERE email = "${currentusername}"`, function (error, rows) {
-        if(error){
-          console.log(error);
-        }else{
-          console.log(rows);
-          res.render('user', {
-            // 會員帳號
-            userAcount: rows,
-            // 會員姓名
-            userName: rows,
-            // 信箱
-            userEmail: rows,
-            // 電話
-            userPhone: rows,
-            // 生日
-            userBirthday: rows
-          })
-        }
+  db.query(`SELECT * FROM member WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
+    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
+      db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+        let user = rows[0];
+        setTimeout(() => {
+          // res.render('user', {
+          //   // 會員帳號
+          //   userAcount: user,
+          //   // 會員姓名
+          //   userName: user,
+          //   // 信箱
+          //   userEmail: user,
+          //   // 電話
+          //   userPhone: user,
+          //   // 生日
+          //   userBirthday: user
+          // })
+          res.render('index');
+        }, 2000);
       })
     })
-  }else{
-
-  }
+  })
 })
 
 

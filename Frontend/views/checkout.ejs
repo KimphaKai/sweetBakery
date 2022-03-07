@@ -24,30 +24,35 @@
           </div>
           <div class="divider"></div>
           <!-- -----會員訂單資訊-------- -->
-          <% productInformation
-            .forEach(proInform=> { %>
-          <div class="orderItems">
-            <div class="orderThumbnail">
-              <a href="/productDetail"><img src="<%= proInform.imgPath %>"></a>
-            </div>
-            <div class="detail-wrapper">
-              <div class="col itemTitle">
-                <span> <%= proInform.productTitle %></span>
+          <% productInformation.forEach(proInform=> { %>
+              <div class="orderItems">
+                <div class="orderThumbnail">
+                  <% productPic .forEach(images=> { %>
+                    <% if(proInform.productId==images.productId){ %>
+                      <% if ((images.productImgId % 3)==1) { %>
+                        <img src="<%= images.imgPath %>">
+                        <% } %>
+                          <% } %>
+                            <% }) %>
+                </div>
+                <div class="detail-wrapper">
+                  <div class="col itemTitle">
+                    <span> <%= proInform.productTitle %></span>
+                  </div>
+                  <div class="col itemSize">
+                    <span><%= proInform.sizeName %></span>
+                  </div>
+                  <div class="col itemPrice">
+                    <span><%= proInform.productPrice %></span>
+                  </div>
+                  <div class="col itemQty">
+                    <span><%= proInform.productNum %></span>
+                  </div>
+                  <div class="col subtotal">
+                    <span><%= proInform.subTotal %></span>
+                  </div>
+                </div>
               </div>
-              <div class="col itemSize">
-                <span><%= proInform.sizeName %></span>
-              </div>
-              <div class="col itemPrice">
-                <span><%= proInform.productPrice %></span>
-              </div>
-              <div class="col itemQty">
-                <span><%= proInform.productNum %></span>
-              </div>
-              <div class="col subtotal">
-                <span><%= proInform.subTotal %></span>
-              </div>
-            </div>
-          </div>
           <% }) %>
           <div class="totalPrice">
             <span>總金額:</span>
@@ -135,9 +140,20 @@
 
       // 取得cart.js勾選的商品
       console.log( sessionStorage.getItem('pid'));
-      let d = sessionStorage.getItem('pid');
-      console.log(JSON.parse(d).id);
+      var checkoutProduct = 
+              parseInt(
+                JSON.parse(sessionStorage.getItem('pid')).id
+              )
+      console.log( checkoutProduct);
+    
 
+      $('.submitBtn').on('click',function(){
+        Swal.fire({
+                  icon: 'warning',
+                  title: '忘記勾選商品囉!',
+                  text: '選越多，賺越多!'
+                })
+      })
       </script>
 </body>
 
