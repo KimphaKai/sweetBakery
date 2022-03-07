@@ -10,6 +10,20 @@
         font-size: 15pt;
         color: $brown;
     }
+    .fa-times{
+        z-index: 1;
+        right:2.5rem;
+        font-size: 14pt;
+        width: 25px;
+        height: 25px;
+        padding: 3px 6px;
+        border-radius: 30px;
+        visibility: hidden;
+        &:hover{
+            color: rgba($brown, 0.7);
+            background-color: rgba($secondary, 0.3);
+        }
+    }
 }
 #productSortArea{
     margin-top: 45px;
@@ -24,7 +38,7 @@
     }
     select{
         @include selectStyle;
-        margin: 10px 5px 0 0;
+        margin: 20px 5px 0 0;
     }
     // .search{
     //     color: $brown;

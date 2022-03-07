@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <a href="/">
+            <a href="index.html">
                 <img id="logo" src="img/logo.svg" alt="">
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="/">
+                    <a class="" href="index.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -52,7 +52,7 @@
             <!-- 新增種類區 -->
             <div id="addCategoryArea">
                 <h2>新增種類</h2>
-                <label>種類名稱: <input type="text" name="" id="" class="newPCategoryInput"></label>
+                <label>種類名稱: <input type="text" class="newPCategoryInput"></label>
                 <button class="newProductCategory">新增 <i class="fa fa-plus"></i></button>
                 <span class="warningTxt"></span>
             </div>
@@ -66,24 +66,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td>01</td>
                         <td><input type="text" value="杯子蛋糕" disabled></td>
-                        <td><button class="btnStyle pCategoryEdit">編輯</button><button class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
+                        <td><button class="btnStyle pCategoryEdit">編輯</button><button
+                                class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
                                 class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td><input type="text" value="圓形蛋糕" disabled></td>
-                        <td><button class="btnStyle pCategoryEdit">編輯</button><button class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
-                            class="btnStyle">刪除</button></td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td><input type="text" value="餅乾" disabled></td>
-                        <td><button class="btnStyle pCategoryEdit">編輯</button><button class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
-                            class="btnStyle">刪除</button></td>
-                    </tr>
+                    </tr> -->
+                    
                 </tbody>
             </table>
 
@@ -103,49 +93,146 @@
                 $(this).find('a').addClass('subActive');
             });
 
-            //操作功能
+            //操作功能前端展示
+            // function doPCategoryEdit(_this, item) {
+            //     if (item === "edit") {
+            //         $(_this).closest('td').children('button:nth-child(2)').show();
+            //         $(_this).closest('td').children('button:nth-child(3)').show();
+            //         $(_this).closest('td').children('.pCategoryEdit').hide();
+            //         $(_this).closest('td').siblings('td').children('input').prop('disabled', false);
+            //     } else {
+            //         $(_this).closest('td').children('button:nth-child(2)').hide();
+            //         $(_this).closest('td').children('button:nth-child(3)').hide();
+            //         $(_this).closest('td').children('.pCategoryEdit').show();
+            //         $(_this).closest('td').siblings('td').children('input').prop('disabled', true);
+            //     }
+            // }
+            // $('.pCategoryEdit').on('click', function () {
+            //     doPCategoryEdit($(this), "edit");
+            // })
+            // $('td>button:nth-child(2)').on('click', function () {
+            //     doPCategoryEdit($(this), "saveAndCancel");
+            // })
 
-            function doPCategoryEdit(_this , item){
-                if(item === "edit"){
-                    $(_this).closest('td').children('button:nth-child(2)').show();
-                    $(_this).closest('td').children('button:nth-child(3)').show();
-                    $(_this).closest('td').children('.pCategoryEdit').hide();
-                    $(_this).closest('td').siblings('td').children('input').prop('disabled', false);
-                }else{
-                    $(_this).closest('td').children('button:nth-child(2)').hide();
-                    $(_this).closest('td').children('button:nth-child(3)').hide();
-                    $(_this).closest('td').children('.pCategoryEdit').show();
-                    $(_this).closest('td').siblings('td').children('input').prop('disabled', true);
+            // $('td>button:nth-child(3)').on('click', function () {
+            //     doPCategoryEdit($(this), "saveAndCancel");
+            // })
+
+            // //newProductCategory
+            // $('.newProductCategory').on('click', function () {
+            //     var cateName = $(".newPCategoryInput").val();
+            //     if (cateName !== "") {
+            //         var newTr = `<tr>
+            //                 <td>03</td>
+            //                 <td><input type="text" value=${cateName} disabled></td>
+            //                 <td><button class="btnStyle pCategoryEdit">編輯</button><button class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
+            //                     class="btnStyle">刪除</button></td>
+            //                 </tr>`
+            //         $('tbody').append(newTr);
+            //         $('.warningTxt').text('');
+            //     } else {
+            //         $('.warningTxt').text('種類名稱不可空白');
+            //     }
+            // });
+            // 編輯按鈕反應
+            $('.categoryList').on('click','.pCategoryEdit',function(){
+                $(this).hide();
+                $(this).siblings().show();
+                $(this).parent('td').prev('td').children('input').prop('disabled',false);
+                
+            });
+            // 儲存/取消/刪除按鈕反應
+            $('.categoryList').on('click','.btnStyle',function(){
+                let $btnStyle=$(this);
+                let categoryId=parseInt($btnStyle.parents('tr').find('td:first-child').text());
+                if($btnStyle.text()=='取消'){
+                    $btnStyle.hide();
+                    $btnStyle.prev().hide();
+                    $btnStyle.parent('td').prev('td').children('input').prop('disabled',true);
+                    $btnStyle.parent('td').find('.pCategoryEdit').show();
+                }else if($btnStyle.text()=='儲存'){
+                    // console.log('儲存')
+                    let category= {};
+                    category.name=$btnStyle.parent('td').prev('td').children('input').val();
+                    category.id= categoryId;
+                    $.ajax({
+                        url:'/productCategory/editCategory',
+                        data:category,
+                        type:'post',
+                        success:function(){
+                           
+                            showCategory();
+                        },
+                        error:function(e){
+                            console.log(err);
+                        }
+                    })        
+                }else if($btnStyle.text()=="刪除"){
+                    let category={id:categoryId}
+                    $.ajax({
+                        url:'/productCategory/deleteCategory',
+                        type:'post',
+                        data:category,
+                        success:function(e){
+                            if(e=='have product'){
+                                alert('該種類有多個商品因此無法刪除');
+                            }else{
+
+                                showCategory();
+                            }
+                        },
+                        error:function(e){
+                            console.log(e);
+                        }
+                    })
                 }
+                
+            });
+            // 取得種類
+            showCategory();
+            function showCategory(){
+
+                $.get('/productCategory', function (result) {
+                    console.log(result);
+                    let tbody=$('.categoryList>tbody');
+                    tbody.find('tr').remove();
+                    result.map((v,index) => {
+                        v.categoryId=v.categoryId.toString().padStart(2,0);
+                        
+                        let categoryHtml = `
+                        <tr>
+                            <td>${v.categoryId}</td>
+                            <td><input type="text" value="${v.categoryName}" disabled></td>
+                            <td><button class="btnStyle pCategoryEdit">編輯</button>
+                                <button class="btnStyle">儲存</button><button class="btnStyle">取消</button>
+                                <button class="btnStyle">刪除</button>
+                            </td>
+                        </tr>`;
+                        tbody.append(categoryHtml);
+                    });
+                })
             }
-            $('.pCategoryEdit').on('click',function(){
-                doPCategoryEdit($(this), "edit");
-            })
-            $('td>button:nth-child(2)').on('click',function(){
-                doPCategoryEdit($(this), "saveAndCancel");
-            })
-
-            $('td>button:nth-child(3)').on('click',function(){
-                doPCategoryEdit($(this), "saveAndCancel");
-            })
-
-            //newProductCategory
+            // 新增種類
             $('.newProductCategory').on('click',function(){
-                var cateName = $(".newPCategoryInput").val();
-                if(cateName !== ""){
-                    var newTr=`<tr>
-                            <td>03</td>
-                            <td><input type="text" value=${cateName} disabled></td>
-                            <td><button class="btnStyle pCategoryEdit">編輯</button><button class="btnStyle">儲存</button><button class="btnStyle">取消</button><button
-                                class="btnStyle">刪除</button></td>
-                            </tr>`
-                    $('tbody').append(newTr);
-                    $('.warningTxt').text('');
+                let categoryValue= $('.newPCategoryInput').val();
+                if(categoryValue){
+                    let categoryItem={};
+                    categoryItem.categoryName=categoryValue;
+                    $.ajax({
+                        url:'/productCategory/addCategory',
+                        data:categoryItem,
+                        type:'post',
+                        success:function(e){
+                            showCategory();
+                            $('.newPCategoryInput').val('');
+                        }
+                    })
                 }else{
-                    $('.warningTxt').text('種類名稱不可空白');
+                    alert('請輸入種類名稱');
                 }
-            })
-            
+            });
+            // 編輯種類
+
 
         });
     </script>

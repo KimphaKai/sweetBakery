@@ -1,72 +1,115 @@
-#orderWrapper{
-    // border: 1px solid black;
-    margin-top: 20px ;
-    #buttonWrapper{
-        list-style: none;
-        display: flex;
-        text-align: center;
+#orderWrapper {
+    height: 37rem;
+    margin-top: 20px;
+
+    #buttonWrapper {
+        list-style   : none;
+        display      : flex;
+        text-align   : center;
         margin-bottom: 35px;
-        .tabButton{
-            line-height: 45pt;
-            font-size: 18pt;
-            width: 33.3%;
-            height: 70px;
-            line-height: 70px;
+
+        .tabButton {
+            line-height  : 45pt;
+            font-size    : 18pt;
+            width        : 33.3%;
+            height       : 70px;
+            line-height  : 70px;
             border-radius: 10px;
-            box-shadow: 0 5px 2px $lightBrown;
-            cursor: pointer;
-            
-            a{
-                color: $brown; 
+            box-shadow   : 0 5px 2px $lightBrown;
+            cursor       : pointer;
+
+            a {
+                color          : $brown;
                 text-decoration: none;
             }
-            &:hover{
+
+            &:hover {
                 background-color: rgba($lightBrown, 0.3);
             }
         }
-        .tabBtnActive{
-            box-shadow: 0 5px 2px $brown;
-            font-weight: bold;
+
+        .tabBtnActive {
+            box-shadow    : 0 5px 2px $brown;
+            font-weight   : bold;
             pointer-events: none;
         }
     }
-    #orderArea{
-        .orderList{
+
+    #orderArea {
+        .orderList {
             @include tableStyle;
-            tr{
-                cursor: pointer;
+
+            tbody {
+                tr {
+                    cursor: pointer;
+                }
             }
-            
-            .btnStyle{
-                
+
+            .btnStyle {
+
                 @include btnStyle;
             }
         }
-        #unCheckList{
+
+        #unCheckList {
             padding-top: 10px;
-            text-align: right; 
-        }
-        #notClaimed{
-            display: none;
-            padding-top: 10px;
-            text-align: right;
-            
+            text-align : right;
+            // border     : 1px solid black;
         }
 
-        label{
+        #notClaimed {
+            display    : none;
+            padding-top: 10px;
+            text-align : right;
+
+        }
+
+        label {
             font-size: 14pt;
-            color: $brown;
-            input{
-                font-size: 15pt;
-                height: 35px;
-                border: 1px solid $brown;
+            color    : $brown;
+            position : relative;
+
+            input {
+                z-index      : -1;
+                font-size    : 15pt;
+                height       : 35px;
+                border       : 1px solid $brown;
                 border-radius: 5px;
-                padding: 0 5px;
+                padding      : 0 5px;
+            }
+
+            .fa-times {
+                visibility   : hidden;
+                font-size    : 14pt;
+                position     : absolute;
+                z-index      : 0;
+                right        : 2.5rem;
+                width        : 25px;
+                height       : 25px;
+                margin-top   : 7px;
+                padding      : 3px 6px;
+                border-radius: 30px;
+
+                &:hover {
+                    color           : rgba($brown, 0.7);
+                    background-color: rgba($secondary, 0.3);
+                }
+            }
+
+            i {
+                font-size: 18pt;
+                cursor   : pointer;
+
+                &:last-child {
+                    margin-left: 5px;
+                }
             }
         }
-        #claimed{
+
+        #claimed {
             display: none;
-            .orderList{
+
+            .orderList {
                 @include tableStyle;
             }
         }

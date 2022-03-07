@@ -6,9 +6,33 @@ let uuid = require('uuid');
 let uuidv1 = uuid.v1();
 let bucket = require('../firebase');
 // 課程資訊的List
-// classListRouter.get('/',function(){
-
-// })
+classListRouter.get('/',function(req,res){
+    // res.send('ok');
+    conn.query('select * from classlist',function(err,result){
+        if(err){
+            console.log(err);
+        }
+        res.send(result);
+    })
+})
+// 取得該編輯商品
+classListRouter.get('/editClassInfo',function(req,res){
+    let classItem={};
+    conn.queryAsync(`select *from classlist where classId=${req.query.classId}`)
+    .then(result=>{
+        classItem={...result[0]};
+        return conn.queryAsync('select * from classimg where classId=?',[req.query.classId]) ;
+    }).then(imgUrl=>{
+        classItem={...classItem,imgUrl};
+        res.send(classItem);
+    })
+    .catch(err=>{
+        if(err){
+            console.log(err);
+        }
+    })
+    // res.send(req.query.classId);
+});
 
 // 新增課程資訊
 
@@ -80,4 +104,59 @@ classListRouter.post('/addClassInfo',upload.array('files'),function(req,res){
     })
     
 });
+
+// 課程資訊編輯
+classListRouter.post('/classInfoEdited',function(req,res){
+    
+    res.send('ok');
+    // console.log(req.body);
+    conn.query('update classlist set classTitle=?,classInfo=?,classPrice=?,classDuration=? where classId=?'
+    ,[req.body.classTitle,req.body.classInfo,req.body.classPrice,req.body.classDuration,req.body.classId]
+    ,function(err){
+        if(err){
+            console.log(err);
+        }
+    })
+});
+// 刪除課程資訊
+classListRouter.post('/deleteClass',function(req,res){
+    conn.queryAsync(`select * from classtime where classId=${req.body.classId}`)
+    .then(classTimeResult=>{
+        if(classTimeResult.length>0){
+            res.send('have data');
+        }else{
+            conn.queryAsync(`delete from classimg where classId='${req.body.classId}'`)
+            .then(()=>{
+                conn.query('delete from classlist where classId=?',[req.body.classId],function(err){
+                    if(err){
+                        console.log(err);
+                    }
+                });
+                res.send('無資料')
+            }).catch(err=>{
+                if(err){
+                    console.log(err);
+                }
+            })
+        }
+    }).catch(err=>{
+        if(err){
+            console.log(err);
+        }
+    })
+
+    // res.send(req.body);
+
+
+});
+
+// 課程資訊查詢
+classListRouter.get('/:classTitle',function(req,res){
+    conn.query(`select classId,classTitle,classPrice,classDuration  from classList where classTitle like "%${req.params.classTitle}%" `
+    ,function(err,result){
+        res.send(result);
+
+    })
+})
+
 module.exports=classListRouter;
