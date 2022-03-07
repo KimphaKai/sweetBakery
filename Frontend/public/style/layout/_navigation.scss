@@ -57,28 +57,8 @@ header{
       font-weight: normal;
       position: relative;
       // font-size: 1.2rem;
-      font-size: 1.2vw;
-      // &.active{
-      //   border-bottom: 3px solid $pink;
-      // }
-      // &::after{
-      //   content: "";
-      //   position: absolute;
-      //   height: 3px;
-      //   width: 100%;
-      //   bottom: -3px;
-      //   left: 0;
-      //   background: $pink;
-      //   border-radius: 1rem;
-      //   // transform: scaleX(0);
-      //   // transform-origin: bottom right;
-      //   // transition: transform 0.3s ease-in;
-      // }
+      font-size: 1.5vw;
       &:hover{
-        // &:after{
-        // transform: scaleX(1);
-        // transform-origin: bottom left;
-        // }
         color: $darker-pink;
       }
     }
@@ -101,7 +81,7 @@ header{
     background: transparent;
     width: 200px;
     border-bottom: 1px solid $black;
-    font-size: 1vw;
+    font-size: 1.3vw;
     &:focus{
       border-bottom: 2px solid $pink;
     }

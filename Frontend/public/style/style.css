@@ -76,7 +76,7 @@ header .nav-items .nav-link {
   margin: 0 1rem;
   font-weight: normal;
   position: relative;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 
 header .nav-items .nav-link:hover {
@@ -103,7 +103,7 @@ header .search-input {
   background: transparent;
   width: 200px;
   border-bottom: 1px solid #4d4d4d;
-  font-size: 1vw;
+  font-size: 1.3vw;
 }
 
 header .search-input:focus {
@@ -720,7 +720,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .body-wrapper .card-body .productTitle {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   white-space: nowrap;
 }
 
