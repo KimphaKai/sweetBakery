@@ -13,8 +13,8 @@ productsRouter.get("/", function (req, res) {
       productInformation = category;
       return db.queryAsync('SELECT * FROM productCategory');
     })
-    .then(productCount => { // 接SELECT * FROM productCategory資料
-      productCategory = productCount;
+    .then(productCat => { // 接SELECT * FROM productCategory資料
+      productCategory = productCat;
       return db.queryAsync('SELECT * FROM productimg');
     })
     .then(productImage => {
