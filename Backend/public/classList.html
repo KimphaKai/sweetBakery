@@ -31,14 +31,14 @@
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a  href="productList.html">商品列表</a></li>
+                        <li><a href="productList.html">商品列表</a></li>
                         <li><a href="productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem navActive">
                     <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a  class="subActive" href="classList.html">課程列表</a></li>
+                        <li><a class="subActive" href="classList.html">課程列表</a></li>
                         <li><a href="classTimeList.html">開課時間</a></li>
                         <li><a href="classReservation.html">預約管理</a></li>
                     </ul>
@@ -51,8 +51,9 @@
             <h2 id="mainTitle">課程列表</h2>
             <!-- 產品搜尋區 -->
             <div class="classSearchArea">
-                <input type="text" placeholder="課程名稱查詢">
-                <i class="fas fa-search"></i>
+                <i id="eraseValue" class="fas fa-times" style="position: relation; top:-15px; visibility: hidden;"></i>
+                <input id="classListSearchInput" type="text" placeholder="課程名稱查詢">
+                <i id="classListSearch" class="fas fa-search"></i>
             </div>
             <button class="newClass">新增課程<i class="fa fa-plus"></i></button>
 
@@ -74,16 +75,16 @@
                         <td>1.5</td>
                         <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
                     </tr>
-                    
+
                 </tbody>
             </table>
-            <div id="paginationArea">
+            <!-- <div id="paginationArea">
                 <a href="#" class="preNextPage">&lt;</a>
                 <a href="#" class="activePage">1</a>
                 <a href="#" class="nonActivePage">2</a>
                 <a href="#" class="nonActivePage">3</a>
                 <a href="#" class="preNextPage">&gt;</a>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -98,13 +99,13 @@
             <div class="modalContent">
 
                 <p id="mainModalTitle">課程新增/編輯</p>
-                
+
                 <div class="bigModalForm">
 
                     <div id="uploadImg">
                         <div id="uploadArea">
                             <input hidden type="file" multiple id="fileUpload">
-                            <div><label for="fileUpload">+</label></div>
+                            <label for="fileUpload"><div>+</label></div></label>
                             <p>點擊或拖曳上傳</p>
                         </div>
                         <div id="showImgArea">
@@ -116,15 +117,16 @@
                                 </div>
                             </div> -->
 
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="formField">
 
                         <div class="formGroup">
                             <label for="classTitle">課程名稱:</label>
                             <input id="classTitle" type="text">
+                            <input type="text" id="classId" hidden>
                         </div>
 
                         <div class="formGroup">
@@ -133,7 +135,7 @@
                         </div>
 
                         <div class="formGroup">
-                            <label for="classDuration">課程時間長度:</label> 
+                            <label for="classDuration">課程時間長度:</label>
                             <input id="classDuration" type="number"> 小時
                         </div>
 
@@ -143,14 +145,14 @@
                         </div>
                         <div class="formGroup">
                             <button id="sendClassInfo" type="button">確定</button>
-                            <button type="button">取消</button>
+                            <button class="modalCancel" type="button">取消</button>
                         </div>
                     </div>
                 </div>
-                
-                    
+
+
             </div>
-            
+
         </div>
 
     </div>
@@ -171,10 +173,10 @@
 
             //新增/編輯課程彈跳視窗
 
-            function openModal(_this, item){
+            function openModal(_this, item) {
                 //判斷是edit還是new modal
-                var modalTitle = $(_this).text().substr(0,2);
-                switch (modalTitle){
+                var modalTitle = $(_this).text().substr(0, 2);
+                switch (modalTitle) {
                     case "新增":
                         $('#mainModalTitle').text(`新增${item}`);
                         break;
@@ -182,39 +184,67 @@
                         $('#mainModalTitle').text(`編輯${item}`);
                         break;
                 }
-                $(".bigModal").css("display","flex").show();
+                $(".bigModal").css("display", "flex").show();
             };
 
-            function closeModal(){
+            function closeModal() {
                 $(".bigModal").hide();
             };
 
-            $(".newClass").on("click", function(){
-                openModal(this,"課程")
+            $(".newClass").on("click", function () {
+                openModal(this, "課程")
             })
+            // 取得要編輯的該課程
+            $(".classList").on("click", '.editClass', function () {
+                openModal(this, "課程");
+                let classItem = { classId: $(this).parents('tr').find('td:first').text() }
+                $.ajax({
+                    url: '/classList/editClassInfo',
+                    type: 'get',
+                    data: classItem,
+                    success: function (e) {
+                        let classItem = e;
+                        // console.log(classItem);
+                        $('#classTitle').val(classItem.classTitle);
+                        $('#classPrice').val(classItem.classPrice);
+                        $('#classDuration').val(classItem.classDuration);
+                        $('#classInfo').val(classItem.classInfo);
+                        $('#classId').val(classItem.classId);
+                        // 顯示產品圖
+                        classItem.imgUrl.map(v => {
+                            $("#showImgArea").append(`
+                                <div class="imgItem"> 
+                                    <div>&times;</div>
+                                    <div>
+                                        <img src=${v.imgPath}> 
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    }
+                })
 
-            $(".editClass").on("click", function(){
-                
-                openModal(this,"課程")
             })
 
             //modalClose功能
-            $(".modalClose").on("click", function(){
-                closeModal()
+            $(".modalClose").on("click", function () {
+                closeModal();
+                eraseClassModalInput();
             })
-            $(".modalCancel").on("click", function(){
-                closeModal()
+            $(".modalCancel").on("click", function () {
+                closeModal();
+                eraseClassModalInput();
             })
 
             //textarea根據內容自動調整高度
-            $( "textarea" ).on( "input", function() {
+            $("textarea").on("input", function () {
                 $(this).css('height', 'auto');
                 var textareaHeight = $(this).prop('scrollHeight');
                 $(this).css('height', `${textareaHeight}px`);
 
-                var modalWrapHeight = $( '.modalWrap' ).prop('scrollHeight');
-                if(modalWrapHeight > 610){
-                    $( '.modalWrap' ).css('overflow-y' , 'scroll');
+                var modalWrapHeight = $('.modalWrap').prop('scrollHeight');
+                if (modalWrapHeight > 610) {
+                    $('.modalWrap').css('overflow-y', 'scroll');
                 };
             });
 
@@ -223,28 +253,34 @@
 
             //接資料
             var classListTable = [
-                {classId: 1, classTitle: "粉紅泡泡圓形蛋糕", classPrice: 360 , classDuration:1.5},
-                {classId: 2, classTitle: "大坑9號步道蛋糕", classPrice: 550 , classDuration:2},
-                {classId: 3, classTitle: "別對我這樣餅乾", classPrice: 300 , classDuration:3}
+                { classId: 1, classTitle: "粉紅泡泡圓形蛋糕", classPrice: 360, classDuration: 1.5 },
+                { classId: 2, classTitle: "大坑9號步道蛋糕", classPrice: 550, classDuration: 2 },
+                { classId: 3, classTitle: "別對我這樣餅乾", classPrice: 300, classDuration: 3 }
             ];
+            showClassTimeList();
+            function showClassTimeList(){
+                $.get("/classList", function (e) {
+                    // console.log(e);
+                    renderClassList(e);
+                    
+                })
+            }
+            function renderClassList(classListTable){
+                $(".classList tbody").empty();
+                    $.each(classListTable, function (index, item) {
+                        var trHtml = `
+                                <tr>
+                                    <td>${item.classId}</td>
+                                    <td>${item.classTitle}</td>
+                                    <td>${item.classPrice}</td>
+                                    <td>${item.classDuration}</td>
+                                    <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
+                                </tr>            
+                        `;
+                        $(".classList tbody").append(trHtml);
+                    })
 
-            // $.get("/classList", function (e) {
-            //     classListTable = JSON.parse(e);
-            //     $(".classList tbody").empty();
-            //     $.each(classListTable, function (index, item) {
-            //         var trHtml = `
-            //                 <tr>
-            //                     <td>${item.classId}</td>
-            //                     <td>${item.classTitle}</td>
-            //                     <td>${item.classPrice}</td>
-            //                     <td>${item.classDuration}</td>
-            //                     <td><button class="btnStyle editClass">編輯</button><button class="btnStyle">刪除</button></td>
-            //                 </tr>            
-            //         `;
-            //         $(".classList tbody").append(trHtml);
-            //     })
-
-            // })
+            }
             // 新增課程
             // 顯示以上傳的圖片
             function showUploadedImg() {
@@ -304,53 +340,145 @@
                 });
                 showUploadedImg();
             });
-            // 送出課程資訊
-            $('#sendClassInfo').on('click',function(){
+            // 清空對話盒內容
+            function eraseClassModalInput() {
+                files = [];
+                showUploadedImg();
+                $('.bigModalForm').find('input').val('');
+                $('.bigModalForm').find('textarea').val('');
+            }
+
+            // 送出課程資訊 新增與編輯
+            $('#sendClassInfo').on('click', function () {
                 let classTitle = $("#classTitle").val();
                 let classPrice = $('#classPrice').val();
                 let classDuration = $("#classDuration").val();
                 let classInfo = $('#classInfo').val();
-                if (classTitle && classPrice && classDuration && classInfo && files.length>0){
-                    // 可送出資料
-                    let formDataAdd = new FormData();
-                    // 檔案加入formData中
-                    files.forEach((value, index) => {
+                let classId = $('#classId').val();
+                if ($('#mainModalTitle').text() == '新增課程') {
+                    // console.log('新增');
+                    if (classTitle && classPrice && classDuration && classInfo && files.length > 0) {
+                        // 可送出資料
+                        let formDataAdd = new FormData();
+                        // 檔案加入formData中
+                        files.forEach((value, index) => {
 
-                        var fileName = files[index].name;
-                        let dotPosition = fileName.lastIndexOf('.');
-                        let fileType = fileName.substr(dotPosition);
-                        // formDataAdd.append('files', value, `${index + 1}${fileType}`);
-                        formDataAdd.append('files', value);
+                            var fileName = files[index].name;
+                            let dotPosition = fileName.lastIndexOf('.');
+                            let fileType = fileName.substr(dotPosition);
+                            formDataAdd.append('files', value);
 
-                    });
-                    formDataAdd.append('classTitle',classTitle);
-                    formDataAdd.append('classPrice',classPrice);
-                    formDataAdd.append('classDuration',classDuration);
-                    formDataAdd.append('classInfo',classInfo);
+                        });
+                        formDataAdd.append('classTitle', classTitle);
+                        formDataAdd.append('classPrice', classPrice);
+                        formDataAdd.append('classDuration', classDuration);
+                        formDataAdd.append('classInfo', classInfo);
+                        $.ajax({
+                            url: '/classList/addClassInfo',
+                            type: 'post',
+                            data: formDataAdd,
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function (data) {
+                                // console.log(data);
+                                // 清空存放陣列的檔案
+                                eraseClassModalInput();
+                            }
+                        });
+                    } else {
+                        alert('輸入框內容不可空白');
+                    }
+
+                } else {
+                    if (classTitle && classPrice && classDuration && classInfo) {
+                        let classInfoEdited = {
+                            classTitle: classTitle,
+                            classPrice: classPrice,
+                            classDuration: classDuration,
+                            classInfo: classInfo,
+                            classId: classId,
+                        };
+
+                        $.ajax({
+                            url: '/classList/classInfoEdited',
+                            data: classInfoEdited,
+                            type: 'post',
+                            success: function (e) {
+                                eraseClassModalInput();
+                                // console.log(e);
+                            }
+                        });
+                    } else {
+                        alert('輸入框內容不可空白');
+                    }
+
+                }
+                closeModal();
+                showClassTimeList();
+            })
+
+            // 刪除課程資訊
+            $('.classList').on('click', '.btnStyle', function () {
+                if ($(this).text() == '刪除') {
+
                     $.ajax({
-                        url: '/classList/addClassInfo',
+                        url: '/classList/deleteClass',
+                        data: { classId: $(this).parents('tr').find('td:first').text() },
                         type: 'post',
-                        data: formDataAdd,
-                        processData: false,
-                        contentType: false,
-                        dataType: "json",
-                        success: function (data) {
-                            console.log(data);
-                            // 清空存放陣列的檔案
-                            files=[];
-                            showUploadedImg();
-                            $('.bigModalForm').find('input').val('');
-                            $('.bigModalForm').find('textarea').val('');
-                            closeModal();
+                        success: function (e) {
+                            // let pageNum = parseInt($('#paginationArea').find('.activePage').text());
+                            // showProductList(pageNum);
+                           if(e=='have data'){
+                               alert('此課程有開放課程時段，因此無法刪除');
+                           }else{
+                                //畫面更新   
+                               showClassTimeList();
+                           }
                         }
-                    });
-                }else{
-                    alert('輸入框內容不可空白');
+                    })
+                }
+            });
+
+            // 課程資訊搜尋
+
+            $('#classListSearchInput').keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#classListSearch").click();
+                }
+            });
+            $('#classListSearch').on('click', function () {
+                if ($('#classListSearchInput').val()) {
+
+                    $.get(`/classList/${$('#classListSearchInput').val()}`,
+                        function (e) {
+                            
+                            renderClassList(e);
+                        });
+
+                } else {
+                    alert('請輸入關鍵字');
                 }
             })
+            // 顯示刪除X
+            $('#classListSearchInput').on('input', function () {
+                if ($('#classListSearchInput').val()) {
+                    $('#eraseValue').css('visibility', 'visible');
+                } else {
+                    // $('#eraseValue').css('visibility', 'hidden');
+                }
+            });
+            // 刪除內容
+            $('#eraseValue').on('click', function () {
+                $('#classListSearchInput').val("");
+                $('#eraseValue').css('visibility', 'hidden');
+                showClassTimeList();
+            });
+
+
         });
 
-        
+
     </script>
 </body>
 

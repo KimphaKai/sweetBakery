@@ -1,170 +1,191 @@
 #capsulesArea{
+    margin: 0 auto;
+    width: 88%;
+    justify-content: space-around;
+    display: flex;
     
-    width: 100%;
-    justify-content: center;
-    display: inline-flex;
-   
     .capsule{
         text-align: center;
-        border:  1px solid $gray;
+        color: $brown;
+        // border:  1px solid $gray;
         border-radius: 50px;
-        margin: 0 35px 15px 0;
-        padding: 0 20px 5px 20px;
         height:90px;
-        width: 310px;
-        line-height: 30pt;
-        position: relative;
-        box-shadow:3px 3px 8px $secondary;
-        .title{
-            font-size: 10pt;
-            color: $brown;
-            margin-left: 50px;
-        }
-        .dataNum{
-            font-size: 33pt;
-            font-weight: 500;
-            color: $brown;
-            margin-left: 60px;
-            .hideData{
-                display: none;
+        width: 340px;
+        display: flex;
+        align-items: center;
+        // flex-direction: column;
+        // line-height: 30pt;
+        // position: relative;
+        box-shadow: 8px 8px 20px rgba($gray, .4);
+
+        .cLeft{
+            width: 23%;
+            .icon{
+                margin: 0 auto;
+                color: $lightBrown;
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50px;
+                background-color: $brown;
+                font-size: 24pt;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
-        .unit{
-            color: $brown;
-            font-size: 10pt;
-            margin-left: 3px;
-        }
-        .icon{
-            position: absolute;
-            color: $lightBrown;
-            width: 50px;
-            height: 50px;
-            left: 20px;
-            top: 24%;
-            border-radius: 50px;
-            background-color: $brown;
-            font-size: 22pt;
-            line-height: 25pt;
-            padding-top: 6px;
-            
-        }
-        .upIcon{
-            color: #90d571;
-            font-size: 14pt;
-            position: absolute;
-            left: 85px;
-            bottom: 14%;
-            // display: none;
-        }
-        .downIcon{
-            color: #F5B5BF;
-            font-size: 14pt;
-            position: absolute;
-            left: 85px;
-            bottom: 14%;
-            display: none;
-        }
-        .editPerformance{
-            position: absolute;
-            top: 13px;
-            right: 27px;
-            font-size: 10pt;
-            color: $brown;
-            cursor: pointer;
-            &:hover{
-                color: $secondary;
+
+        .cRight{
+            width: 70%;
+            height: 85%;
+            flex-direction: column;
+            .cTop{
+                display: flex;
+                justify-content: flex-start;
+                margin-left: 15px;
+                .title{
+                    font-size: 12pt;
+                }
+                .editPerformance{
+                    margin: 3px 0 0 20px;
+                    font-size: 12pt;
+                    cursor: pointer;
+                    &:hover{
+                        color: $secondary;
+                    }
+                }
+            }
+            .cBottom{
+                margin-top: 5px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 55%;
+                .dataNum{
+                    font-weight: bold;
+                    font-size: 35pt;
+                    .hideData{
+                        display: none;
+                    }
+                }
+                .unit{
+                    margin-top: 20px;
+                    font-size: 12pt;
+                }
             }
         }
     }
 }
 #tabWrapper{
-    margin-top: 15px;
+    margin-top: 25px;
+    width: 100%;
+    // z-index: 0;
+    color: $brown;
     #tabs{
         list-style: none;
         display: inline-flex;
         width: 100%;
-        margin-left: 20px;
+        margin-left: 15px;
         .tabItem{
             text-align: center;
             font-size: 16pt;
             width: 130px;
             padding: 11px 20px;
             background-color: white;
-            border: 1px solid $gray;
+            // border: 1px solid $gray;
             border-bottom: white;
             border-top-right-radius: 15px;
             border-top-left-radius: 15px;
             background-color: $lightBrown;
-            a{
-                color: $brown;
-                text-decoration: none;
+            cursor: pointer;
+            &:hover{
+                background-color: #d6cdb4;
             }
         }
         .tabActive{
+            z-index: 1;
             background-color: white;
             border-bottom: white;
             font-weight: bolder;
             position: relative;
+            box-shadow: 10px 0px 20px  rgba($gray, .5);
+            cursor: default;
             &:after{
                 content: '';
                 position: absolute;
-                width: 129px;
-                height: 2px;
+                width: 155px;
+                height: 20px;
                 background:white;
-                bottom: -1px;
+                bottom: -20px;
                 left: 0;
+            }
+            &:hover{
+                background-color: white;
             }
         }
     }
     #salesInfo{
-       
-        border: 1px solid $gray;
-        border-top-right-radius: 15px;
-        margin: 0 20px ;
-        padding-top: 25px;
+       z-index: -1;
+        // border: 1px solid $gray;
+        border-radius: 15px;
+        border-top-left-radius: 0;
+        box-shadow: 5px 0px 25px rgba($gray, .5);
+        margin: 0 15px ;
+        padding-top: 10px;
         display: flex;
-        justify-content:space-between ;
+        justify-content:space-around;
         height: 425px;
+        color: $brown;
         #leftArea{
-            padding-left: 20px;
+            // border: 1px solid red;
+            padding-left: 10px;
             line-height: 60pt;
+            width: 37%;
             select{
-                color: $brown;
                 font-size: 16pt;
                 height: 40px;
                 padding: 0 5px;
                 border: 1px solid $brown;
                 border-radius: 5px;
-                margin-right: 10px;
+                margin:40px 10px 0 0;
+                cursor: pointer;
             } 
             p{
-                color: $brown;
                 font-size: 18pt;
-                margin-bottom: 10px;
+                margin: 5px 0 10px 0;
             }  
-            #sales{
-                margin-left: 45px;
+            .salesContainer{
+                width: 100%;
+                text-align: center;
+            }
+            #sales, .sales{
+                text-align: center;
                 font-size: 60pt;
-                color: $brown;
                 font-weight: bolder;
                 
             }
             span{
                 text-align: right;
                 font-size: 16pt;
-                color: $brown;
             }
         }
         #rightArea{
-            padding-right: 20px;
-            margin-bottom: 10px;
+            // border: 1px solid red;
+            margin: 0 10px 10px 0;
+            width: 60%;
+            height: 97%;
+            border-radius: 50px;
+            // box-shadow: 1px 1px 10px rgba($gray, .3);
+            // background-color: rgba($lightBrown,.2);
         }
     }
     #rankInfo{
+        // z-index: -1;
         display: none;
-        border: 1px solid $gray;
-        border-top-right-radius: 15px;
-        margin: 0 20px ;
+        // border: 1px solid $gray;
+        border-radius: 15px;
+        box-shadow: 5px 0px 25px rgba($gray, .5);
+        border-top-left-radius: 0;
+        margin: 0 15px ;
         padding: 0 20px;
         padding-top: 35px;
         height: 425px;
@@ -185,6 +206,13 @@
         }
         #rankTable{
             @include tableStyle;
+        }
+        #paginationArea{
+            // width: max-content;
+            // margin: 0 auto;
+            // position: absolute;
+            // bottom: 10px;
+            margin-top: 20px;
         }
     }
 }

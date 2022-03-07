@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Bakery</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="scss/style.css">
     <script src="js/jquery-3.6.0.js"></script>
@@ -19,7 +20,7 @@
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="/">
+                    <a class="" href="index.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -50,34 +51,37 @@
             <!-- 標題 -->
             <h2 id="mainTitle">商品列表</h2>
             <!-- 產品搜尋區 -->
-            <div id="productSearchArea">
-                <input type="text" placeholder="產品名稱查詢">
-                <i class="fas fa-search"></i>
+            <div class="topWrapper">
+                <div id="productSearchArea">
+                    <i id="eraseValue" class="fas fa-times"></i><!-- style="position: relation; top:-15px; visibility: hidden;"-->
+                    <input id="productSearchInput" type="text" placeholder="產品名稱查詢">
+                    <i id="prouctSearch" class="fas fa-search"></i>
+                </div>
             </div>
             <div id="productSortArea">
                 <div id="productEditArea">
                     <button class="editAll">批次修改</button>
                     <div>
-                        <select name="" id="">
+                        <!-- <select id="changeStatus" disabled>
                             <option value="">商品批次上架</option>
                             <option value="">商品批次下架</option>
-                        </select>
+                        </select> -->
                         <button class="editAreaSave">儲存</button>
                         <button class="editAreaCancel">取消</button>
                     </div>
                 </div>
-                <select name="#" id="">
-                    <option>全部種類商品</option>
-                    <option>杯子蛋糕</option>
+                <select class="sortSelect" id="sortbyCategory">
+                    <option value="0">全部種類商品</option>
+                    <!-- <option>杯子蛋糕</option>
                     <option>圓形蛋糕</option>
-                    <option>餅乾</option>
+                    <option>餅乾</option> -->
                 </select>
-                <select name="#" id="">
-                    <option>預設排序</option>
-                    <option>單價由低到高排序</option>
-                    <option>單價由高到低排序</option>
-                    <option>商品上架排序</option>
-                    <option>商品下架排序</option>
+                <select class="sortSelect" id="sortbyOthers">
+                    <option value="0">預設排序</option>
+                    <option value="priceAsc">單價由低到高排序</option>
+                    <option value="priceDesc">單價由高到低排序</option>
+                    <option value="onMarket">商品上架排序</option>
+                    <option value="productRecall">商品下架排序</option>
                 </select>
                 <button class="newProduct">新增商品<i class="fa fa-plus"></i></button>
             </div>
@@ -138,7 +142,7 @@
                     <div id="uploadImg">
                         <div id="uploadArea">
                             <input hidden type="file" multiple id="fileUpload">
-                            <div><label for="fileUpload">+</label></div>
+                            <label for="fileUpload"><div>+</div></label>
                             <p>點擊或拖曳上傳</p>
                         </div>
                         <div id="showImgArea">
@@ -159,6 +163,7 @@
                         <div class="formGroup">
                             <label for="productTitle">商品名稱:</label>
                             <input id="productTitle" type="text">
+                            <input type="number" hidden id="productId">
                         </div>
 
                         <div class="formGroup">
@@ -245,23 +250,67 @@
             }
             $(".newProduct").on("click", function () {
                 openModal(this, "商品");
+                $('#categoryId').attr('disabled', false);
             })
-
-            $(".editProduct").on("click", function () {
+            // 開啟編輯視窗
+            $(".productList").on("click", '.editProduct', function () {
                 openModal(this, "商品");
+                let productItem = {};
+                productItem.productId = $(this).parents('tr').find('td:nth-child(2)').text();
+                // console.log(productId);
+                $.ajax({
+                    url: '/productList/showEditProduct',
+                    data: productItem,
+                    type: 'get',
+                    success: function (e) {
+                        $('#categoryId').attr('disabled', true);
+                        // console.log(e);
+                        // 產品資訊
+                        let productItem = e;
+                        $('#productTitle').val(productItem.productTitle);
+                        $('#categoryId').val(productItem.categoryId);
+                        $('#sizeId').val(productItem.sizeId);
+                        $('#productId').val(productItem.productId);
+                        $('#productPrice').val(productItem.productPrice);
+                        if (productItem.productStatus == '上架中') {
+                            $('#productStatus').prop('checked', true);
+                        } else {
+                            $('#productStatus').prop('checked', false);
+
+                        }
+                        $('#productInfo').val(productItem.productInfo);
+                        $('#ingredient').val(productItem.ingredient);
+                        // 顯示產品圖
+
+                        productItem.imgUrl.map(v => {
+                            $("#showImgArea").append(`
+                            <div class="imgItem"> 
+                                <div>&times;</div>
+                                <div>
+                                    <img src=${v.imgPath}> 
+                                </div>
+                            </div>
+                        `);
+
+                        })
+                    }
+
+                })
             })
 
             //modalClose功能
             $(".modalClose").on("click", function () {
                 closeModal();
+                eraseInputValue();
             })
             $(".modalCancel").on("click", function () {
                 closeModal();
+                eraseInputValue();
             });
 
             //price input 
             $('.priceInput').on("input", function () {
-                console.log($(this).val());
+                // console.log($(this).val());
                 if ($(this).val() !== "/[0-9]/") {
                     // alert('請輸入數字');
                     console.log('請輸入數字!');
@@ -279,10 +328,28 @@
             $(".editAll").on("click", function () {
                 doEditArea(false, ".editAll", "#productEditArea > div");
 
+
             })
             //儲存+取消
+            let productNameandPrice = [];
             $(".editAreaSave").on('click', function () {
                 doEditArea(true, "#productEditArea > div", ".editAll");
+                $('.productList>tbody>tr').each(function () {
+                    let productChangeItem = { productId: '', productTitle: '', productPrice: '' };
+                    productChangeItem.productId = $(this).find('td:nth-of-type(2)').text();
+                    productChangeItem.productTitle = $(this).find('td:nth-of-type(3)').children('input').val();
+                    productChangeItem.productPrice = $(this).find('td:nth-of-type(5)').children('input').val();
+                    productNameandPrice.push(productChangeItem);
+                })
+                // console.log(productNameandPrice);
+                $.ajax({
+                    url: '/productList/editMultipleProduct',
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify(productNameandPrice),
+
+                })
+
             })
 
             $(".editAreaCancel").on('click', function () {
@@ -307,17 +374,25 @@
 
 
             //checkbox
-            $("input[ type = checkbox ]").change(function () {
+            $('.productList').on('change', 'input[ type = checkbox ]', function () {
                 $(`input[ name = '${this.id}' ]`).prop('checked', this.checked);
-                $(`input[ id = '${this.name}' ]`).prop('checked', function () {
-                    if ($(`input[ type = 'checkbox' ]:not(:first):checked`).length == $('tr').length) {
+                $(this).closest('.productList').find('thead').find(`input[ id = '${this.name}' ]`).prop('checked', function () {
+                    // console.log(this);
+                    if ($('tbody').find(`input[ type = 'checkbox' ]:checked`).length == $('tbody tr').length) {
                         return true;
                     } else {
                         return false;
                     }
-                })
-            })
+                });
+            });
 
+            function eraseInputValue() {
+                files = [];
+                showUploadedImg();
+                $('.bigModalForm').find('input').val('');
+                $('.bigModalForm').find('textarea').val('');
+
+            }
 
             // 顯示上傳的圖片
             function showUploadedImg() {
@@ -377,6 +452,8 @@
                 });
                 showUploadedImg();
             });
+
+            // 送出新增和編輯資料
             $("#sendProduct").on('click', function () {
                 // 確定input都有輸入值，才能送出
                 let productTitle = $("#productTitle").val();
@@ -386,54 +463,116 @@
                 let productStatus = $('#productStatus').prop('checked');
                 let productInfo = $('#productInfo').val();
                 let ingredient = $('#ingredient').val();
+                let productId = $('#productId').val();
+                // 編輯or新增
+                if ($('#mainModalTitle').text() == '新增商品') {
 
+                    if (productTitle && productPrice && productInfo && ingredient) {
 
-                if (productTitle && productPrice && productInfo && ingredient && (files.length > 0)) {
+                        // 可送出資料
+                        let formDataAdd = new FormData();
+                        // 檔案加入formData中
+                        files.forEach((value, index) => {
 
-                    // 可送出資料
-                    let formDataAdd = new FormData();
-                    // 檔案加入formData中
-                    files.forEach((value, index) => {
+                            var fileName = files[index].name;
+                            let dotPosition = fileName.lastIndexOf('.');
+                            let fileType = fileName.substr(dotPosition);
+                            // formDataAdd.append('files', value, `${index + 1}${fileType}`);
+                            formDataAdd.append('files', value);
 
-                        var fileName = files[index].name;
-                        let dotPosition = fileName.lastIndexOf('.');
-                        let fileType = fileName.substr(dotPosition);
-                        // formDataAdd.append('files', value, `${index + 1}${fileType}`);
-                        formDataAdd.append('files', value);
+                        });
+                        if (productStatus) {
+                            productStatus = '上架中'
+                        } else {
+                            productStatus = '下架中';
+                        }
+                        formDataAdd.append('productTitle', productTitle);
+                        formDataAdd.append('categoryId', categoryId);
+                        formDataAdd.append('sizeId', sizeId);
+                        formDataAdd.append('productPrice', productPrice);
+                        formDataAdd.append('productStatus', productStatus);
+                        formDataAdd.append('productInfo', productInfo);
+                        formDataAdd.append('ingredient', ingredient);
+                        $.ajax({
+                            url: '/productList/addProduct',
+                            type: 'post',
+                            data: formDataAdd,
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function (data) {
+                                // console.log(data);
+                                // 清空存放陣列的檔案
+                                eraseInputValue();
+                                let pageNum = parseInt($('#paginationArea').find('.activePage').text());
+                                showProductList(pageNum);
 
-                    });
+                            }
+                        });
+                    } else {
+                        alert('輸入框內容不可空白');
+                    }
+                } else {
+                    // 送出編輯後的商品
+
                     if (productStatus) {
                         productStatus = '上架中'
                     } else {
                         productStatus = '下架中';
                     }
-                    formDataAdd.append('productTitle', productTitle);
-                    formDataAdd.append('categoryId', categoryId);
-                    formDataAdd.append('sizeId', sizeId);
-                    formDataAdd.append('productPrice', productPrice);
-                    formDataAdd.append('productStatus', productStatus);
-                    formDataAdd.append('productInfo', productInfo);
-                    formDataAdd.append('ingredient', ingredient);
-                    $.ajax({
-                        url: '/productList/addProduct',
-                        type: 'post',
-                        data: formDataAdd,
-                        processData: false,
-                        contentType: false,
-                        dataType: "json",
-                        success: function (data) {
-                            console.log(data);
-                            // 清空存放陣列的檔案
-                            files = [];
-                            showUploadedImg();
-                            $('.bigModalForm').find('input').val('');
-                            $('.bigModalForm').find('textarea').val('');
-                        }
-                    });
-                    closeModal();
+                    let productEdited = {
+                        productId: productId,
+                        sizeId: sizeId,
+                        productTitle: productTitle,
+                        productPrice: productPrice,
+                        productStatus: productStatus,
+                        productInfo: productInfo,
+                        ingredient: ingredient,
+                    }
+                    if (productTitle && productPrice && productInfo && ingredient) {
 
-                } else {
-                    alert('輸入框內容不可空白');
+                        $.ajax({
+                            url: '/productList/editProduct',
+                            data: productEdited,
+                            type: 'post',
+                            success: function (e) {
+                                // console.log(e);
+                                eraseInputValue();
+                                let pageNum = parseInt($('#paginationArea').find('.activePage').text());
+                                showProductList(pageNum);
+
+                            }
+                        })
+
+                    } else {
+                        alert('輸入框內容不可空白');
+                    }
+                }
+                closeModal();
+                showProductList(1);
+                $('.sortSelect').val('0');
+
+            });
+            // 刪除商品
+            $('.productList').on('click', '.btnStyle', function () {
+                if ($(this).text() == '刪除') {
+
+                    $.ajax({
+                        url: '/productList/deleteProduct',
+                        data: { productId: $(this).parents('tr').find('td:nth-of-type(2)').text() },
+                        type: 'post',
+                        success: function (e) {
+                            // let pageNum = parseInt($('#paginationArea').find('.activePage').text());
+                            // showProductList(pageNum);
+                            if (e == 'have data') {
+                                alert('訂單紀錄中有此商品，因此無法刪除');
+                            } else {
+                                showProductList(1);
+                                $('.sortSelect').val('0');
+                            }
+
+                        }
+                    })
                 }
 
             });
@@ -447,82 +586,86 @@
             showProductList(1);
 
             function showProductList(currentPage) {
-                $('.productList>tbody').find('tr').remove();
                 $.get(`/productList/page/${currentPage}`, function (e) {
                     let productList = e[0];
-                    let pagesNum = Math.ceil(e[1][0].COUNT/7); //實際7筆
-                    let newPage = parseInt(currentPage)+1;
+                    let pagesNum = Math.ceil(e[1][0].COUNT / e[2]); //實際7筆
+                    let newPage = parseInt(currentPage) + 1;
 
-                    
                     // 分頁
-                    if(pagesNum>1){
+                    if (pagesNum > 1) {
                         $('#paginationArea').text('');
                         $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
-                        for(var i=1; i<=pagesNum; i++){
+                        for (var i = 1; i <= pagesNum; i++) {
                             $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
                         }
                         $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
-                        $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                        $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>');
                     }
+                    renderProduct(productList);
+                    $('#paginationArea').show();
 
-                    //上下架
-                    $.each(productList, function (index, value) {
-                        // console.log(value);
-                        let status = "";
-                        if (value.productStatus == '上架中') {
-                            status = '下架';
-                        } else {
-                            status = "上架";
-                        }
-                        let listHtml = `
-                    <tr>
-                        <td><input type="checkbox" disabled name="CBchecked"></td>
-                        <td>${value.productId}</td>
-                        <td><input class="productName" type="text" value='${value.productTitle}' disabled></td>
-                        <td>${value.categoryName}</td>
-                        <td><input class="productPrice" type="number" value="${value.productPrice}" disabled></td>
-                        <td>${value.sizeName}</td>
-                        <td class="productStatus">${value.productStatus}</td>
-                        <td><button class="btnStyle productStatusBtn">${status}</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
-                    </tr>
-                    `;
-                        $('.productList>tbody').append(listHtml);
-                        // console.log($('.productList')) ;
-                    });
                 });
             }
+            function renderProduct(productList) {
+                //上下架
+                $('.productList>tbody').find('tr').remove();
+                $.each(productList, function (index, value) {
+                    // console.log(value);
+                    let status = "";
+                    if (value.productStatus == '上架中') {
+                        status = '下架';
+                    } else {
+                        status = "上架";
+                    }
+                    let listHtml = `
+                <tr>
+                    <td><input type="checkbox" disabled name="CBchecked"></td>
+                    <td>${value.productId}</td>
+                    <td><input class="productName" type="text" value='${value.productTitle}' disabled></td>
+                    <td>${value.categoryName}</td>
+                    <td><input class="productPrice" type="number" value="${value.productPrice}" disabled></td>
+                    <td>${value.sizeName}</td>
+                    <td class="productStatus">${value.productStatus}</td>
+                    <td><button class="btnStyle productStatusBtn">${status}</button><button class="btnStyle editProduct">編輯</button><button class="btnStyle">刪除</button></td>
+                </tr>
+                `;
+                    $('.productList>tbody').append(listHtml);
+                    // console.log($('.productList')) ;
+                });
 
-            $('#paginationArea').on('click','.pages', function(e){
+            }
+
+            $('#paginationArea').on('click', '.pages', function (e) {
                 e.preventDefault();
                 page = $(this).text();
                 showProductList(page);
 
             })
 
-            $('#paginationArea').on('click','.preNextPage:first', function(e){
+            $('#paginationArea').on('click', '.preNextPage:first', function (e) {
                 e.preventDefault();
                 let prePage = $(this).parent('#paginationArea').find('.activePage').prev().text();
-                if(!isNaN(prePage)){
+                if (!isNaN(prePage)) {
                     showProductList(prePage)
-                }else{
-                    
+                } else {
+
                 }
             })
 
-            $('#paginationArea').on('click','.preNextPage:last', function(e){
+            $('#paginationArea').on('click', '.preNextPage:last', function (e) {
                 e.preventDefault();
                 let prePage = $(this).parent('#paginationArea').find('.activePage').next().text();
-                if(!isNaN(prePage)){
+                if (!isNaN(prePage)) {
                     showProductList(prePage);
-                }else{
-                    
+                } else {
+
                 };
             })
 
 
 
 
-            // 取得新增編輯商品視窗的選項點增加商品button
+            // 取得新增編輯商品視窗的選項
             $.get('/productList/editOrAddOption', function (option) {
                 // console.log(e[0][1]);
                 let category = option[0];
@@ -532,6 +675,11 @@
                     $("#categoryId").append($('<option>')
                         .text(value.categoryName)
                         .val(value.categoryId));
+                    // 種類篩選
+                    $("#sortbyCategory").append($('<option>')
+                        .text(value.categoryName)
+                        .val(value.categoryId));
+
                 });
                 size.map(value => {
                     // console.log(value)
@@ -544,39 +692,94 @@
 
             });
             //productStatus修改上架下架
-            // let tableTr=$('.productList').find('tbody').find("tr");
             $('.productList').on('click', ".productStatusBtn", function () {
                 let productId = $(this).parents('tr').find('td:nth-of-type(2)').text();
                 let productStatus = "";
                 if ($(this).text() == '上架') {
                     productStatus = '上架中';
                     $(this).text('下架');
-                    
+
                 } else {
                     $(this).text('上架');
                     productStatus = '下架中';
-                    
+
                 }
                 $(this).parent('td').prev('td').text(productStatus);
                 let changeStatus = {};
                 changeStatus.productId = productId;
                 changeStatus.productStatus = productStatus;
                 // console.log(changeStatus);
-                
+
                 $.ajax({
                     url: '/productList/changeProductStatus',
                     data: changeStatus,
                     type: 'post',
-                    success: function (e) {
-                        console.log(e);
-                        
-                    }
+
                 })
+               
+            });
 
+            // 產品搜尋
+            $('#productSearchInput').keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#prouctSearch").click();
+                }
+            });
+            $('#prouctSearch').on('click', function () {
+                if ($('#productSearchInput').val()) {
+
+                    $.get(`/productList/${$('#productSearchInput').val()}`,
+                        function (e) {
+                            $('.sortSelect').val('0');
+                            renderProduct(e);
+                            $('#paginationArea').hide();
+                        });
+
+                } else {
+                    alert('請輸入關鍵字');
+                }
             })
+            // 顯示刪除X
+            $('#productSearchInput').on('input', function () {
+                if ($('#productSearchInput').val()) {
+                    $('#eraseValue').css('visibility', 'visible');
+                } else {
+                    $('#eraseValue').css('visibility', 'hidden');
+                }
+            });
+            // 刪除內容
+            $('#eraseValue').on('click', function () {
+                $('#productSearchInput').val("");
+                $('#eraseValue').css('visibility', 'hidden');
+                showProductList(1);
+                $('.sortSelect').val('0');
+                $('#paginationArea').show();
+            });
+            // select排序
+           
+            $('.sortSelect').on('change',function(){
+                let selectData={
+                    searchInputVal:$("#productSearchInput").val(),
+                    sortbyCategory:$('#sortbyCategory').val(),
+                    sortbyOthers:$('#sortbyOthers').val()
+                }
+                if(selectData.sortbyOthers==0 && selectData.sortbyCategory==0){
+                    showProductList(1);
+                    $('#paginationArea').show();
+                }else{
 
-            
+                    $.ajax({
+                        url:'/productList/sortProduct',
+                        data:selectData,
+                        type:'post',
+                        success:function(e){
+                            renderProduct(e);
+                            $('#paginationArea').hide();
+                        }
+                    })
+                }
 
+            })            
         });
 
     </script>

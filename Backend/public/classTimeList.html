@@ -31,14 +31,14 @@
                 <li class="navItem ">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>商品管理
                     <ul class="sub1">
-                        <li><a  href="productList.html">商品列表</a></li>
+                        <li><a href="productList.html">商品列表</a></li>
                         <li><a href="productCategory.html">種類管理</a></li>
                     </ul>
                 </li>
                 <li class="navItem navActive">
                     <i class="fas fa-calendar" aria-hidden="true"></i>課程管理
                     <ul class="sub1">
-                        <li><a  href="classList.html">課程列表</a></li>
+                        <li><a href="classList.html">課程列表</a></li>
                         <li><a class="subActive" href="classTimeList.html">開課時間</a></li>
                         <li><a href="classReservation.html">預約管理</a></li>
                     </ul>
@@ -51,18 +51,19 @@
             <h2 id="mainTitle">開課時間</h2>
             <!-- 產品搜尋區 -->
             <div class="classTimeSearchArea">
-                <input type="text" placeholder="課程名稱查詢">
-                <i class="fas fa-search"></i>
+                <i id="eraseValue" class="fas fa-times" style="position: relation; top:-15px; visibility: hidden;"></i>
+                <input id="classTimeSearchInput" type="text" placeholder="課程名稱查詢">
+                <i id="classTimeSearch" class="fas fa-search"></i>
             </div>
             <div id="classTimeEditArea">
-                <button class="classTimeEditAll">批次修改</button>
+                <!-- <button class="classTimeEditAll">批次修改</button>
                 <div id="classTimeEdit">
                     <button class="classTimeEditAreaSave">儲存</button>
                     <button class="classTimeEditAreaCancel">取消</button>
-                </div>
+                </div> -->
             </div>
             <button class="newClassTime">新增課程時間<i class="fa fa-plus"></i></button>
-            
+
             <table class="classTimeList">
                 <thead>
                     <tr>
@@ -144,37 +145,44 @@
 
                 <p id="mainModalTitle">課程時間編輯/新增</p>
                 <div class="smallModalForm">
-                    <p>課程名稱: 日式布丁草莓蛋糕</p>
                     <div class="formGroup">
-                        <label for="">課程日期:</label>
-                        <input type="date">
+                        <label for="classId">課程名稱:</label>
+                        <select id="classId">
+                        </select>
+                        <input type="text" id="classTimeId" hidden>
+                    </div>
+                    <div class="formGroup">
+                        <label for="startDate">課程日期:</label>
+                        <input type="date" id="startDate">
                     </div>
 
                     <div class="formGroup">
-                        <label for="">開課時間:</label>
-                        <input type="time">
+                        <label for="startTime">開課時間:</label>
+                        <input id="startTime" type="time">
                     </div>
 
                     <div class="formGroup">
-                        <label for="">開放人數:</label>
-                        <input type="number"> 人    
+                        <label for="totalPeople">開放人數:</label>
+                        <input type="number" min="1" id="totalPeople"> 人
                     </div>
 
                     <div class="formGroup">
-                        <button type="button">儲存</button>
+                        <button type="button" id="sendClassTime">確認</button>
                         <button type="button" class="modalCancel">取消</button>
                     </div>
 
                 </div>
-                
-                    
+
+
             </div>
-            
+
         </div>
 
     </div>
     <script>
         $(document).ready(function () {
+            // 開課時間最小日期為今天
+            startDate.min = new Date().toISOString().split("T")[0];
             // 導覽列次項目展開
             $('.navItem').on('click', function () {
                 $('.navItem').removeClass('navActive');
@@ -190,10 +198,10 @@
 
             //新增/編輯課程時間彈跳視窗
 
-            function openModal(_this, item){
+            function openModal(_this, item) {
                 //判斷是edit還是new modal
-                var modalTitle = $(_this).text().substr(0,2);
-                switch (modalTitle){
+                var modalTitle = $(_this).text().substr(0, 2);
+                switch (modalTitle) {
                     case "新增":
                         $('#mainModalTitle').text(`新增${item}`);
                         break;
@@ -201,81 +209,192 @@
                         $('#mainModalTitle').text(`編輯${item}`);
                         break;
                 }
-                $(".smallModal").css("display","flex").show();
+                $(".smallModal").css("display", "flex").show();
             };
 
-            function closeModal(){
+            function closeModal() {
                 $(".smallModal").hide();
+                $("#classTimeModal input").prop("disabled", false);
+                $("#classTimeModal select").prop("disabled", false);
+
             }
-            $(".newClassTime").on("click", function(){
-                openModal(this,"課程時間")
+            $(".newClassTime").on("click", function () {
+                openModal(this, "課程時間")
             })
-            $(".editClassTime").on("click", function(){
-                openModal(this,"課程時間")
+            // 取得開課程時間並編輯
+            $('.classTimeList').on("click", ".editClassTime", function () {
+                openModal(this, "課程時間");
+                let classTimeItem = { classTimeId: $(this).parents('tr').find('td:first').text() };
+                $.ajax({
+                    url: 'classTimeList/showEditClassTime',
+                    data: classTimeItem,
+                    type: 'get',
+                    success: function (e) {
+                        // console.log(e[0]);
+
+                        let classTime = e[1];
+                        let date = new Date(classTime.startDate).toLocaleDateString("sq-AL", { year: 'numeric', month: '2-digit', day: '2-digit' });
+                        $('#classId').val(classTime.classId);
+                        $('#classTimeId').val(classTime.classTimeId);
+                        $('#startDate').val(date.replaceAll("/", "-"));
+                        $('#startTime').val(classTime.startTime);
+                        $('#totalPeople').val(classTime.totalPeople);
+                        if (parseInt(e[0]) > 0) {
+                            // console.log($('#classTimeModal').find('input'));
+                            $("#classTimeModal input").prop("disabled", true);
+                            $("#classTimeModal select").prop("disabled", true);
+                            $('#totalPeople').prop('disabled', false);
+                        }
+
+
+                    }
+                })
+            });
+            // 刪除開課時間
+            $('.classTimeList').on('click', '.btnStyle', function () {
+
+                if ($(this).text() == '刪除') {
+                    let deleteClassTime = { timeId: $(this).parents('tr').find('td:first').text() };
+                    $.ajax({
+                        url: '/classTimeList/deleteClassTime',
+                        data: deleteClassTime,
+                        type: 'post',
+                        success: function (e) {
+                            if (e.length > 0) {
+                                alert('顧客有預約此課程時段，因此無法刪除');
+                            } else {
+                                getData(1);
+                            }
+                        }
+                    })
+                }
             })
 
             //modalClose功能
-            $(".modalClose").on("click", function(){
-                closeModal()
+            $(".modalClose").on("click", function () {
+                closeModal();
+                eraseModalInputVal();
             })
-            $(".modalCancel").on("click", function(){
-                closeModal()
+            $(".modalCancel").on("click", function () {
+                closeModal();
+                eraseModalInputVal();
             })
-
+            function eraseModalInputVal() {
+                $(".smallModalForm").find('input').val('');
+                $(".smallModalForm").find('select').val('');
+            }
+            // 新增開課時間modal開課的選項
             //classTimeEditArea
-
-            function doClassEditArea(disabled, hideElm, showElm){
+            $.get('/classTimeList/classIdOption', function (e) {
+                // console.log(e);
+                e.map(v => {
+                    $('#classId').append($('<option>').text(v.classTitle).val(v.classId));
+                })
+            });
+            function doClassEditArea(disabled, hideElm, showElm) {
                 $(".classTimeList input, select").prop("disabled", disabled);
                 $(hideElm).hide();
                 $(showElm).show();
             }
-            //批次修改
-            $(".classTimeEditAll").on("click", function(){
-                doClassEditArea(false,".classTimeEditAll","#classTimeEdit");
-            })
-            //儲存+取消
-            $(".classTimeEditAreaSave").on('click',function(){
-                doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
-            })
-            
-            $(".classTimeEditAreaCancel").on('click',function(){
-                doClassEditArea(true,"#classTimeEdit",".classTimeEditAll");
-            })
-            
-            
-            
-            
-            getData(1);
-            
-            function getData(currentPage){
-                $.get(`/classTimeList/page/${currentPage}`, function(e){
-                    // console.log(e);
-                    var selectVal=[];
-                    let classTimeListTable =e[0];
-                    let pagesNum = Math.ceil(e[1][0].COUNT/4);
-                    let classOpt = e[2]; 
-                    let newPage = parseInt(currentPage)+1;
-                    // console.log(newPage);
-                    
-                    
-                    //分頁
 
-                        
-                    if(pagesNum>1){
-                        $('#paginationArea').text('');
-                        $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
-                        for(var i=1; i<=pagesNum; i++){
-                            $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+            // 新增開課時間
+            $('#sendClassTime').on('click', function () {
+                let classId = $('#classId').val();
+                let startDate = $('#startDate').val();
+                let startTime = $('#startTime').val();
+                let totalPeople = $('#totalPeople').val();
+                let classTimeId = $('#classTimeId').val();
+                if (classId && startDate && startTime && totalPeople) {
+
+                    if ($('#mainModalTitle').text() == '新增課程時間') {
+                        let classTimeItem = {
+                            classId: classId,
+                            startDate: startDate,
+                            startTime: startTime,
+                            totalPeople: totalPeople
                         }
-                        $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
-                        $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>'); 
+                        $.ajax({
+                            url: '/classTimeList/addClassTime',
+                            data: classTimeItem,
+                            type: 'post',
+                            success: function (e) {
+                                eraseClassTimeInput();
+                                closeModal();
+                                getData(1);
+                            }
+                        })
+                    } else {
+                        // 編輯
+                        // let classTimeId= ; 
+
+                        let classTimeItem = {
+                            classTimeId: classTimeId,
+                            classId: classId,
+                            startDate: startDate,
+                            startTime: startTime,
+                            totalPeople: totalPeople,
+                        }
+                        $.ajax({
+                            url: '/classTimeList/editClassTime',
+                            data: classTimeItem,
+                            type: 'post',
+                            success: function (e) {
+
+                                if (e != 'success') {
+
+                                    alert(`開放人數勿低於已預約人數:${e.guestNum}人`);
+                                } else {
+                                    closeModal();
+                                    eraseModalInputVal();
+                                    getData(1);
+                                }
+                            }
+                        })
                     }
 
+                } else {
+                    alert('輸入框內容不可空白')
+                }
+            });
 
-                    //資料列印出
-                    $(".classTimeList tbody").empty();
-                    classTimeListTable.map(value =>{
-                        var trHtml = `
+            //批次修改
+            $(".classTimeEditAll").on("click", function () {
+                doClassEditArea(false, ".classTimeEditAll", "#classTimeEdit");
+            })
+            //儲存+取消
+            $(".classTimeEditAreaSave").on('click', function () {
+                doClassEditArea(true, "#classTimeEdit", ".classTimeEditAll");
+                eraseClassTimeInput();
+            })
+
+            $(".classTimeEditAreaCancel").on('click', function () {
+                doClassEditArea(true, "#classTimeEdit", ".classTimeEditAll");
+                eraseClassTimeInput();
+            });
+
+            function eraseClassTimeInput() {
+                $('.formGroup').find('input').val('');
+            }
+
+            getData(1);
+
+
+            function renderTimeList(e) {
+                //資料列印出
+                var selectVal = [];
+                let classTimeListTable = e[0];
+                let classOpt = "";
+                if (e.length > 2) {
+                    classOpt = e[2];
+                } else {
+                    classOpt = e[1];
+
+                }
+                // console.log(newPage);
+                $(".classTimeList tbody").empty();
+                classTimeListTable.map(value => {
+                    let date = new Date(value.startDate).toLocaleDateString("sq-AL", { year: 'numeric', month: '2-digit', day: '2-digit' });
+                    var trHtml = `
                         <tr>
                             <td>${value.classTimeId}</td>
                             <td>
@@ -283,59 +402,118 @@
                                     
                                 </select>
                                 </td>
-                            <td><input type="date" name="#" id="" value="${value.startDate.substr(0,10)}" disabled><input type="time" name="#" id="" value="${value.startTime}" disabled></td>
+                            <td><input type="date" name="#" id="" value="${date.replaceAll("/", "-")}" disabled><input type="time" name="#" id="" value="${value.startTime}" disabled></td>
                             <td><input class="totalPeople" type="number" value="${value.totalPeople}" disabled></td>
                             <td>${value.remain}</td>
                             <td><button class="btnStyle editClassTime">編輯</button><button class="btnStyle">刪除</button></td>
                         </tr>            
                         `;
-                        $(".classTimeList tbody").append(trHtml);
-                        selectVal.push(value.classId);
-                    })
-                    //classTitle的select加上所有classTitle的option
-                    classOpt.map(option=>{
-                        var optionHtml = `<option value="${option.classId}">${option.classTitle}</option>`;
-                        $('tr select').append(optionHtml);
-                    })
-                    //設定select的value
-                    $('select').each(function(index,element){
-                        $(this).val(selectVal[index]);
-                    })
-                    
-                    
+                    $(".classTimeList tbody").append(trHtml);
+                    selectVal.push(value.classId);
+                })
+                //classTitle的select加上所有classTitle的option
+                classOpt.map(option => {
+                    var optionHtml = `<option value="${option.classId}">${option.classTitle}</option>`;
+                    $('tr select').append(optionHtml);
+                })
+                //設定select的value
+                $('select').each(function (index, element) {
+                    $(this).val(selectVal[index]);
+                })
+            }
+            function getData(currentPage) {
+                $.get(`/classTimeList/page/${currentPage}`, function (e) {
+                    // console.log(e);
+                    let pagesNum = Math.ceil(e[1][0].COUNT / 4); //
+                    let newPage = parseInt(currentPage) + 1; //
+
+
+                    //分頁
+
+
+                    if (pagesNum > 1) {
+                        $('#paginationArea').text('');
+                        $('#paginationArea').append('<a href="#" class="preNextPage">&lt;</a>');
+                        for (var i = 1; i <= pagesNum; i++) {
+                            $('#paginationArea').append(`<a href="#" class="pages nonActivePage">${i}</a>`);
+                        }
+                        $(`.pages:nth-child(${newPage})`).removeClass('nonActivePage').addClass('activePage');
+                        $('#paginationArea').append('<a href="#" class="preNextPage">&gt;</a>');
+                    }
+
+
+                    renderTimeList(e);
+                    $('#paginationArea').show();
+
+
                 })
             }
 
-            $('#paginationArea').on('click','.pages', function(e){
+            $('#paginationArea').on('click', '.pages', function (e) {
                 e.preventDefault();
                 page = $(this).text();
                 // console.log(page);
                 getData(page);
-                
+
             })
-            $('#paginationArea').on('click','.preNextPage:first', function(e){
+            $('#paginationArea').on('click', '.preNextPage:first', function (e) {
                 e.preventDefault();
                 let prePage = $(this).parent('#paginationArea').find('.activePage').prev().text();
-                if(!isNaN(prePage)){
+                if (!isNaN(prePage)) {
                     getData(prePage)
-                }else{
-                    
+                } else {
+
                 }
             })
 
-            $('#paginationArea').on('click','.preNextPage:last', function(e){
+            $('#paginationArea').on('click', '.preNextPage:last', function (e) {
                 e.preventDefault();
                 let prePage = $(this).parent('#paginationArea').find('.activePage').next().text();
-                if(!isNaN(prePage)){
+                if (!isNaN(prePage)) {
                     getData(prePage);
-                }else{
-                    
+                } else {
+
                 };
+            });
+
+            // 課程時間查詢
+            $('#classTimeSearchInput').keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#classTimeSearch").click();
+                }
+            });
+            $('#classTimeSearch').on('click', function () {
+                if ($('#classTimeSearchInput').val()) {
+
+                    $.get(`/classTimeList/${$('#classTimeSearchInput').val()}`,
+                        function (e) {
+
+                            renderTimeList(e);
+                            $('#paginationArea').hide();
+                        });
+
+                } else {
+                    alert('請輸入關鍵字');
+                }
             })
-            
+            // 搜尋顯示刪除X
+            $('#classTimeSearchInput').on('input', function () {
+                if ($('#classTimeSearchInput').val()) {
+                    $('#eraseValue').css('visibility', 'visible');
+                } else {
+                    $('#eraseValue').css('visibility', 'hidden');
+                }
+            });
+            //搜尋 刪除內容
+            $('#eraseValue').on('click', function () {
+                $('#classTimeSearchInput').val("");
+                $('#eraseValue').css('visibility', 'hidden');
+                getData(1);
+            });
+
 
         });
-        
+
     </script>
 </body>
 

@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <div id="navWrapper">
-            <a href="/">
+            <a href="backendHome.html">
                 <img id="logo" src="img/logo.svg" alt="">
             </a>
             <ul id="navContent">
                 <li class="navItem ">
-                    <a class="" href="/">
+                    <a class="" href="index.html">
                         <i class="fa fa-home" aria-hidden="true"></i>系統首頁
                     </a>
                 </li>
@@ -51,10 +51,11 @@
             <h2 id="mainTitle">預約管理</h2>
             <!-- 課程搜尋區 -->
             <div class="classReservationSearchArea">
-                <input type="text" placeholder="課程名稱查詢">
-                <i class="fas fa-search"></i>
+                <i id="eraseValue" class="fas fa-times" style="position: relation; top:-15px; visibility: hidden;"></i>
+                <input id="reserveSearchInput" type="text" placeholder="預約人姓名/電話查詢">
+                <i id="reserveDataSearch" class="fas fa-search"></i>
             </div>
-            
+
             <table class="classReservationList">
                 <thead>
                     <tr>
@@ -77,7 +78,7 @@
                         <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>00001</td>
                         <td>王小霉</td>
                         <td>0954254847</td>
@@ -112,16 +113,16 @@
                         <td>日式布丁草莓蛋糕</td>
                         <td>2022/01/22 14:00</td>
                         <td><button class="btnStyle">取消預約</button></td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
-            <div id="paginationArea">
+            <!-- <div id="paginationArea">
                 <a href="#" class="preNextPage">&lt;</a>
                 <a href="#" class="activePage">1</a>
                 <a href="#" class="nonActivePage">2</a>
                 <a href="#" class="nonActivePage">3</a>
                 <a href="#" class="preNextPage">&gt;</a>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -138,9 +139,99 @@
                 $('.sub1>li>a').removeClass('subActive');
                 $(this).find('a').addClass('subActive');
             });
+            showReservationData();
+            // 印出資料
+            function renderData(e) {
+                $('.classReservationList>tbody>tr').remove();
+                // console.log(e);
+                e.forEach(data => {
+                    let date = new Date(data.startDate).toLocaleDateString("sq-AL", { year: 'numeric', month: '2-digit', day: '2-digit' });
+                    // console.log(data);
+                    let trHtml = `
+                        <tr>
+                            <td>${data.reservationId}</td>
+                            <td>${data.guestName}</td>
+                            <td >${data.guestPhone}</td>
+                            <td>${data.guestNum}</td>
+                            <td data-classtimeid='${data.classTimeId}'>${data.classTitle}</td>
+                            <td>${date + " " + data.startTime.substr(0, 5)}</td>
+                            <td><button class="btnStyle">取消預約</button></td>
+                        </tr>
+                    `;
+                    $('.classReservationList>tbody').append(trHtml);
+                });
+            }
+            // 預約首頁請求
+            function showReservationData() {
 
+                $.get('/classReservation', function (e) {
+                    renderData(e);
+
+                })
+            }
+            // 取消預約
+            $('.classReservationList').on('click', '.btnStyle', function () {
+                let cancelOrNot= confirm('確認取消預約?');
+                if(cancelOrNot){
+
+                    if ($(this).text() == '取消預約') {
+    
+                        let guestReserveData = {
+                            reservationId: $(this).parents('tr').find('td:first').text(),
+                            peopleNum: $(this).parents('tr').find('td').eq(3).text(),
+                            classTimeId: $(this).parents('tr').find('td').eq(4).data('classtimeid')
+    
+                        }
+                        //    console.log(guestReserveData);
+                        $.ajax({
+                            url: '/classReservation/cancel',
+                            type: 'post',
+                            data: guestReserveData,
+                            success: function () {
+                                showReservationData();
+                            }
+                        })
+                    }
+                }
+            });
+            // 顯示刪除X
+            $('#reserveSearchInput').on('input',function(){
+                if($('#reserveSearchInput').val()){
+                    $('#eraseValue').css('visibility','visible');
+                }else{
+                    $('#eraseValue').css('visibility','hidden');
+                }
+            });
+            // 刪除內容
+            $('#eraseValue').on('click',function(){
+                $('#reserveSearchInput').val("");
+                $('#eraseValue').css('visibility','hidden');
+                showReservationData();
+            })
+            // 預約人搜尋
+            $("#reserveSearchInput").keyup(function (event) {
+                if (event.keyCode === 13) {
+                    $("#reserveDataSearch").click();
+                }
+            });
+            $('#reserveDataSearch').on('click', function () {
+                let searchVal = $('#reserveSearchInput').val();
+                if (searchVal) {
+                    $.ajax({
+                        url: `/classReservation/search/${searchVal}`,
+                        type: 'get',
+                        success: function (e) {
+                            renderData(e);
+                            // console.log(e);
+                        }
+                    })
+                } else {
+                    alert('請輸入關鍵字')
+                }
+
+            })
         });
-        
+
     </script>
 </body>
 
