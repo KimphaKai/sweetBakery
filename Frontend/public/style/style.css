@@ -3373,8 +3373,12 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   padding: 1rem 0;
   padding-left: 15%;
-  background: #ffefc2;
+  background-color: #fdafbb;
   color: #8d8d8d;
+}
+
+.checkout .orderHeader > div {
+  color: #fff;
 }
 
 .checkout .orderItems {
