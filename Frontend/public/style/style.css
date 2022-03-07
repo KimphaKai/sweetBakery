@@ -314,6 +314,7 @@ header .icons .cartIcon .cartItems {
   position: relative;
   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .categories .category-item a {
