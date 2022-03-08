@@ -1548,10 +1548,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .about .content p {
   padding: 0 1rem;
-  line-height: 2rem;
-  font-size: 1.5vmax;
+  font-size: 1.2rem;
   letter-spacing: 3px;
-  width: 80%;
+  line-height: 2.3rem;
   margin: 0 2rem;
 }
 
