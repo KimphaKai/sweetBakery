@@ -4,7 +4,6 @@ var db = require("../db");
 
 var bodyparser = require('body-parser');
 
-var databaseUserInformation = []; //資料庫資料
 var compareEmail = 0; // 比對email狀態 1 = true
 
 loginRouter.use(bodyparser.json()); // 使用bodyparder中介軟體，
@@ -14,6 +13,10 @@ loginRouter.use(bodyparser.urlencoded({ extended: true }));
 //會員註冊
 loginRouter.post('/memberRegister', function (req, res) {
     compareEmail = 0; //初始
+    console.log(req.body.name);
+    res.json({
+        valueTest: req.body.name,
+    });
     db.query(`SELECT * FROM member`, function (err, rows) {  //抓資料
         rows.forEach(item => {
             if (item.email == req.body.memberRegisterEmail) {

@@ -185,34 +185,63 @@
     }
 
     // 會員註冊
-    $('.signupBtn').on('click', function () {
-      let registerName = $("input [ name = memberRegisterName]");
-      let registerEmail = $("input [ name = memberRegisterEmail]");
-      let registerPassword = $("input [ name = memberRegisterPassword]");
-      let registerPhone = $("input [ name = memberRegisterPhone]");
-      let registerBirthday = $("input [ name = memberRegisterBirthday]");
-      // $.ajax({
-      //   url : "/login/memberLogin",
-      //   data : {
-      //     name : registerName,
-      //     email : registerEmail,
-      //     password : registerPassword,
-      //     phone : registerphon,
-      //     birthday : registerBirthday
-      //   },
-      //     type : "post",
-      //     success: function () {
-
-      //     } 
-      //   }
-      // })
-      // Swal.fire({
-      //   position: 'top',
-      //   icon: 'success',
-      //   title: '帳號註冊成功',
-      //   showConfirmButton: false,
-      //   timer: 1500
-      // })
+    $('#signupBtn').on('click', function () {
+      console.log('ok');
+      let registerName = $("input[ name = memberRegisterName]").val();
+      let registerEmail = $("input[ name = memberRegisterEmail]").val();
+      let registerPassword = $("input[ name = memberRegisterPassword]").val();
+      let registerPhone = $("input[ name = memberRegisterPhone]").val();
+      let registerBirthday = $("input[ name = memberRegisterBirthday]").val();
+      $.ajax({
+        url : "/login/memberRegister",
+        data : {
+          name : registerName,
+          email : registerEmail,
+          password : registerPassword,
+          phone : registerPhone,
+          birthday : registerBirthday
+        },
+          type : "post",
+          success: function (jsonData) {
+            switch (jsonData.data) {
+            case 0: //帳號不存在
+              Swal.fire({
+                position: 'top',
+                icon: 'info',
+                title: '帳號已存在，請登入',
+                showConfirmButton: false,
+                timer: 1700
+              });
+              break;
+            case 1: //密碼錯誤
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: '密碼錯誤，請再次輸入',
+                showConfirmButton: false,
+                timer: 1700
+              });
+              break;
+            case 2: //登入成功
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: '帳號登入成功',
+                showConfirmButton: false,
+                timer: 1700
+              })
+              setTimeout(() => {
+                window.location.href = "/user";
+                console.log(jsonData.user.email);
+                $('#userName').val(jsonData.user.email);
+              }, 2000);
+              break;
+            default:
+              console.log("狀態錯誤");
+              break;
+          }
+          } 
+        })
     })
 
     //會員登入
