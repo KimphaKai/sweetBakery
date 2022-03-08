@@ -5,8 +5,9 @@ var db = require("../db");
 checkoutRouter.get('/', function (req, res) {
   let productInformation = {};
   let productPic = {};
+  req.session.username = 'dede';   //測試用
 // req.session.username
-  db.queryAsync('SELECT c.*, p.*,s.sizeName,(p.productPrice*c.productNum) AS subTotal FROM cartlist c JOIN product p ON(c.productId=p.productId) JOIN productsize s ON(p.sizeId=s.sizeId) WHERE c.memberId="dede"')
+  db.queryAsync(`SELECT c.*, p.*,s.sizeName,(p.productPrice*c.productNum) AS subTotal FROM cartlist c JOIN product p ON(c.productId=p.productId) JOIN productsize s ON(p.sizeId=s.sizeId) WHERE c.memberId="${req.session.username}"`)
     .then(category =>{
       productInformation = category;
       // console.log(category);
