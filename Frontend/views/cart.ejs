@@ -200,14 +200,14 @@
                 inputVal,
                 pId: $(this).parent('.amount').find('input').attr('id')
               };
-              // console.log(data);
+              console.log(inputVal);
 
               $.ajax({
-                url: '/cart/updateNum/button',
+                url: '/cart/updateNum/input',
                 type: 'put',
                 data: data,
                 success: function (data) {
-                  // console.log(data);
+                  console.log(data);
                 }
               })
             })

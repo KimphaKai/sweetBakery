@@ -31,7 +31,7 @@ cartRouter.get("/", function (req, res) {
 cartRouter.put('/updateNum/input',function(req,res){
   // console.log(req.body.pId);
   db.query("UPDATE cartlist SET productNum = ? WHERE memberId=? AND productId=?",
-  [req.body.inputVal, "handsome", req.body.pId],function(err, result){
+  [req.body.inputVal, req.session.username, req.body.pId],function(err, result){
     if(err){
       console.log(err);
     }else{
@@ -44,7 +44,7 @@ cartRouter.put('/updateNum/input',function(req,res){
 cartRouter.put('/updateNum/button',function(req,res){
   // console.log(req.body.pId);
   db.query("UPDATE cartlist SET productNum = ? WHERE memberId=? AND productId=?",
-  [req.body.inputVal, "handsome", req.body.pId],function(err, result){
+  [req.body.inputVal,req.session.username, req.body.pId],function(err, result){
     if(err){
       console.log(err);
     }else{
@@ -56,7 +56,7 @@ cartRouter.put('/updateNum/button',function(req,res){
 // 刪除訂單可以刪除資料庫資料
 cartRouter.post('/updateNum/delete',function(req,res){
   console.log(req.body.pId);
-  db.query("DELETE FROM cartlist WHERE memberId=? AND productId=?",["handsome",req.body.pId],
+  db.query("DELETE FROM cartlist WHERE memberId=? AND productId=?",[req.session.username,req.body.pId],
   function(err, result){
     if(err){
       console.log(err);
