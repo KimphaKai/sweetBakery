@@ -2941,7 +2941,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .registered {
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3130,7 +3132,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .userOrderHistory {
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

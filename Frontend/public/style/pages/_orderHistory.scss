@@ -1,5 +1,8 @@
 .userOrderHistory {
-  background-color: $background-color;
+  // background-color: $background-color;
+  background: url('/img/bg2.jpeg');
+  background-size: 100%;
+  background-position: left;
   display: flex;
   .sidebar {
     margin: 2rem 0 5rem 3rem;
