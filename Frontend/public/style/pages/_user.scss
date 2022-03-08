@@ -1,6 +1,9 @@
 .user {
     display: flex;
-    background-color: $background-color;
+    // background-color: $background-color;
+    background: url('/img/bg2.jpeg');
+    background-size: 100%;
+    background-position: left;
     padding: 2rem 0;
     .sidebar {
         margin: 2rem 0 5rem 3rem;
@@ -21,18 +24,18 @@
             }
       
           a {
-              font-size: 1.3rem;
-              color: $darker-gray;
-              margin: 0 auto;
-              position: relative;
-      
-              &:hover {
-                  color: $text-color;
-              }
-              &#user{
-                  color: $text-color;
-                  font-weight: 700;
-              }
+            font-size: 1.3rem;
+            color: $darker-gray;
+            margin: 0 auto;
+            position: relative;
+
+            &:hover {
+                color: $text-color;
+            }
+            &#user{
+                color: $text-color;
+                font-weight: 700;
+            }
           }
         }
       }

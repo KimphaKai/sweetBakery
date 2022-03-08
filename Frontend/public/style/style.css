@@ -24,7 +24,7 @@ header .burgerMenu .bar {
   left: -3rem;
   width: 1.8rem;
   height: 0.2rem;
-  background: #fdafbb;
+  background: #FF91AF;
   border-radius: 1rem;
   margin: 0.3rem 0;
   opacity: 1;
@@ -107,7 +107,7 @@ header .search-input {
 }
 
 header .search-input:focus {
-  border-bottom: 2px solid #fdafbb;
+  border-bottom: 2px solid #FF91AF;
 }
 
 header .searchBtn {
@@ -116,7 +116,7 @@ header .searchBtn {
 }
 
 header .searchBtn svg:hover {
-  fill: #fdafbb;
+  fill: #FF91AF;
 }
 
 header .icons {
@@ -126,8 +126,8 @@ header .icons {
 }
 
 header .icons svg:hover {
-  stroke: #fdafbb;
-  fill: #fdafbb;
+  stroke: #FF91AF;
+  fill: #FF91AF;
 }
 
 header .icons .userIcon {
@@ -186,7 +186,7 @@ header .icons .cartIcon .cartItems {
   position: absolute;
   top: -35%;
   right: -40%;
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   font-size: 0.8rem;
   border-radius: 100vw;
@@ -538,7 +538,7 @@ footer .aboutInfo {
 }
 
 footer .aboutInfo i {
-  color: #fdafbb;
+  color: #FF91AF;
   margin-right: 1rem;
 }
 
@@ -599,7 +599,7 @@ footer .copyright {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Rounded-X M+ 1c", sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   outline: none;
   border: 0;
 }
@@ -840,7 +840,7 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 2rem;
   height: 2rem;
   margin: 0 0.1rem;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 0.5rem;
   cursor: pointer;
 }
@@ -897,7 +897,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .addToCartBtn {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   background-color: transparent;
   color: #ff90a0;
   cursor: pointer;
@@ -916,7 +916,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .buyBtn {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
 }
 
@@ -1052,7 +1052,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .modal-container .modal-body .productCheckout .productQty .btn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -1219,7 +1219,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .loginModal button:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
   -webkit-transition: 0.2s ease-in;
@@ -1381,7 +1381,7 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 2rem;
   font-size: 2rem;
   text-align: center;
-  color: #fdafbb;
+  color: #FF91AF;
   cursor: pointer;
 }
 
@@ -1434,9 +1434,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .forgetPwModal button:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
-  border-color: #fdafbb;
+  border-color: #FF91AF;
 }
 
 .forgetPwModal .login {
@@ -1731,7 +1731,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .form .formInput:focus {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
 }
 
 .form .buttons {
@@ -1862,7 +1862,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .search .search-input:focus {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
 }
 
 .classes .search .searchBtn {
@@ -1874,7 +1874,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .search .searchBtn:hover {
-  color: #fdafbb;
+  color: #FF91AF;
 }
 
 @media screen and (max-width: 750px) {
@@ -2067,7 +2067,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .guest-input .guestBtn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -2282,7 +2282,7 @@ input[type="search"]::-webkit-search-results-decoration {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   padding: 0.3rem;
   border-radius: 0.8rem;
 }
@@ -2303,7 +2303,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .thumbnail {
   max-width: 80px;
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   margin-top: 0.5rem;
   padding: 0.2rem;
   opacity: 0.5;
@@ -2312,6 +2312,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .thumbnail:hover, .productDetail .thumbnail.active {
   opacity: 1;
+}
+
+.productDetail .productContent {
+  margin: 1rem 0;
 }
 
 .productDetail .productTitle {
@@ -2338,7 +2342,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .qtyBtn {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   background-color: transparent;
   color: #a54c4c;
   font-size: 1rem;
@@ -2363,7 +2367,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .qtyBtn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -2377,7 +2381,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .productDesc {
   margin: 3rem 0;
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   border-radius: 0.5rem;
   min-height: 300px;
   margin-right: 20%;
@@ -2387,7 +2391,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .product-heading {
-  border-left: 4px solid #fdafbb;
+  border-left: 4px solid #FF91AF;
   margin-top: 1rem;
   padding: 0 1rem;
 }
@@ -2419,7 +2423,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   padding: 2rem 0;
 }
 
@@ -2567,9 +2573,10 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   padding: 2rem 0;
-  height: 100vh;
 }
 
 .userPasswordUpdate .sidebar {
@@ -2578,7 +2585,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .userPasswordUpdate .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
   background-color: #fff;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -2722,7 +2729,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
 }
 
 .userOrders .sidebar {
@@ -2731,7 +2740,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .userOrders .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
   background-color: #fff;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -3356,7 +3365,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   width: 100%;
   margin: 1rem auto;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -3379,7 +3388,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   padding: 1rem 0;
   padding-left: 15%;
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #8d8d8d;
 }
 
@@ -3444,20 +3453,20 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   color: #a54c4c;
   font-weight: 700;
-  border-top: 1px solid #fdafbb;
+  border-top: 1px solid #FF91AF;
 }
 
 .checkout .customerInfo {
   font-size: 1.3rem;
   margin-top: 2rem;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 1rem;
   overflow: hidden;
 }
 
 .checkout .customerInfo h4 {
-  background-color: #fdafbb;
-  border-bottom: 1px solid #fdafbb;
+  background-color: #FF91AF;
+  border-bottom: 1px solid #FF91AF;
   color: #fff;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
@@ -3650,7 +3659,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .tab td.amount .add, .cart .container .tab td.amount .sub {
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 4px;
   width: 1.5rem;
   font-size: 1.5rem;
@@ -3658,9 +3667,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .tab td.amount .add:hover, .cart .container .tab td.amount .sub:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
-  border-color: #fdafbb;
+  border-color: #FF91AF;
 }
 
 .cart .container .tab td.subtotal {
@@ -3709,7 +3718,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .totalPrice .btn .confirm:hover {
-  background: #fdafbb;
+  background: #FF91AF;
   color: #fff;
 }
 
