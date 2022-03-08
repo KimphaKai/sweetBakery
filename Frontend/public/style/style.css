@@ -1134,7 +1134,7 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 50px;
+  padding: 0 2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1145,7 +1145,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .loginModal .form-container form h1 {
-  margin: 2.5rem;
+  margin: 2rem 2.5rem;
 }
 
 .loginModal .form-container form span {
@@ -1162,6 +1162,22 @@ input[type="search"]::-webkit-search-results-decoration {
   margin: 0.5rem;
 }
 
+.loginModal .form-container form input::-webkit-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input:-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input::-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input::placeholder {
+  font-size: 1.1rem;
+}
+
 .loginModal .form-container form .forgetPwBtn {
   font-size: 0.8rem;
   margin: 1rem 0;
@@ -1169,6 +1185,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal .form-container form .forgetPwBtn:hover {
   text-decoration: underline;
+}
+
+.loginModal #signUp, .loginModal #signIn {
+  font-size: 1.1rem;
 }
 
 .loginModal .social-container {
@@ -1925,6 +1945,22 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-pack: center;
           justify-content: center;
   max-width: 100%;
+  position: relative;
+}
+
+.classDetail::before {
+  content: "";
+  background-image: url("/img/bg2.jpeg");
+  background-size: 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .classDetail .heading {
@@ -2177,7 +2213,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .products .productCategories .sideMenu {
   background-color: #ffefc2;
-  width: 10rem;
+  width: 11rem;
   height: 400px;
   padding: 1rem;
   line-height: 5rem;
@@ -2727,12 +2763,24 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .userOrders {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: url("/img/bg2.jpeg");
+}
+
+.userOrders::before {
+  content: "";
+  background-image: url("/img/bg2.jpeg");
   background-size: 100%;
   background-position: left;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .userOrders .sidebar {
@@ -2813,7 +2861,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
 }
 
 .userOrders .content-wrapper .navBar .nav-link a:hover {
@@ -3214,7 +3261,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
 }
 
 .userOrderHistory .content-wrapper .navBar .nav-link a:hover {
