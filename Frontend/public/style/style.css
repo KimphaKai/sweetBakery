@@ -2013,7 +2013,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .inputPrice {
-  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .classDetail .classTime {
@@ -2030,6 +2032,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-weight: 700;
   margin-right: 11rem;
   color: #a54c4c;
+  vertical-align: baseline;
 }
 
 .classDetail .guest-input label {
@@ -2075,12 +2078,10 @@ input[type="search"]::-webkit-search-results-decoration {
 .classDetail .errorMsg {
   font-size: 0.8rem;
   color: #D9534F;
-  margin-left: 1rem;
+  margin-right: 6rem;
+  margin-top: 3rem;
   text-align: end;
-  position: absolute;
-  right: 23.5rem;
-  bottom: 38%;
-  display: none;
+  visibility: hidden;
 }
 
 .classDetail .classDesc h3 {

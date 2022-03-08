@@ -58,7 +58,8 @@
   } 
 
   .inputPrice{
-    margin-top: 5rem;
+    // margin-top: 5rem;
+    display: flex;
   }
 
   .classTime{
@@ -74,6 +75,7 @@
     font-weight: 700;
     margin-right: 11rem;
     color: $text-color;
+    vertical-align: baseline;
   }
 
   .guest-input{
@@ -112,12 +114,10 @@
   .errorMsg{
     font-size: 0.8rem;
     color: $red;
-    margin-left: 1rem;
+    margin-right: 6rem;
+    margin-top: 3rem;
     text-align: end;
-    position: absolute;
-    right: 23.5rem;
-    bottom: 38%;
-    display: none;
+    visibility: hidden;
   }
 
   .classDesc{
