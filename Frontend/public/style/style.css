@@ -1119,6 +1119,68 @@ input[type="search"]::-webkit-search-results-decoration {
   opacity: 0.5;
 }
 
+.loginModal .divShit {
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.loginModal .divShit h1 {
+  margin: 2rem 2.5rem;
+}
+
+.loginModal .divShit span {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.loginModal .divShit input {
+  background: #ececec;
+  border: 1px solid #ececec;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  width: 100%;
+  margin: 0.5rem;
+}
+
+.loginModal .divShit input::-webkit-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input:-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input::-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input::placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit .forgetPwBtn {
+  font-size: 0.8rem;
+  margin: 1rem 0;
+}
+
+.loginModal .divShit .forgetPwBtn:hover {
+  text-decoration: underline;
+}
+
 .loginModal .form-container {
   position: absolute;
   top: 0;
@@ -1187,7 +1249,8 @@ input[type="search"]::-webkit-search-results-decoration {
   text-decoration: underline;
 }
 
-.loginModal #signUp, .loginModal #signIn {
+.loginModal #signUp,
+.loginModal #signIn {
   font-size: 1.1rem;
 }
 

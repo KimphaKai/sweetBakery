@@ -79,6 +79,13 @@ loginRouter.post('/memberLogin', function (req, res) {
             });
             if (userCondition == 2) { //登入成功
                 console.log('登入成功');
+                // res.render('user', {
+                //     userAcount: user,
+                //     userName: user,
+                //     userEmail: user,
+                //     userPhone: user,
+                //     userBirthday: user
+                // })
                 res.json({
                     user: user,
                     data: userCondition //帳號登入
