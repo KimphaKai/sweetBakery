@@ -152,6 +152,7 @@
       .storePay{
         font-size: 1.1rem;
       }
+    
       
       .submitBtn, .cancelBtn{
         margin-top: 1rem;
@@ -159,7 +160,9 @@
         border-radius: 0.2rem;
         margin-right: 1rem;
         cursor: pointer;
-        a{
+        color: #fff;
+        font-size: 1rem;
+        a {
           color: #fff;
           font-size: 1rem;
         }
