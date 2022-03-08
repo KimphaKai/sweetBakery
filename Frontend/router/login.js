@@ -48,56 +48,54 @@ loginRouter.post('/memberRegister', function (req, res) {
 
 //會員登入
 loginRouter.post('/memberLogin', function (req, res) {
-    // if (req.session.username) {  //判斷session暫存資料有無
-    //     db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
-    //         if (error) {
-    //             console.log(error);
-    //         } else {
-    //             res.render('user', {
-    //                 userAcount: rows,
-    //                 userName: rows,
-    //                 userEmail: rows,
-    //                 userPhone: rows,
-    //                 userBirthday: rows
-    //             });
-    //         }
-    //     });
-    // } else {
-        db.query(`SELECT * FROM member`, function (error, rows) {  //抓資料
-            // console.log(rows);
-            let user;
-            let userCondition;
-            rows.forEach(item => {
-                if (req.body.memberLoginEmail == item.email &&
-                    req.body.memberLoginPassword == item.userPassword) {
-                    user = item;
-                    req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
-                    userCondition = 1;  //可登入   
-                } else {
-                    //alert 帳號不存在 
-                    //
-                    //
-                }
-            })
-            if(userCondition == 1){
-                console.log('登入成功');
-                setTimeout(() => {
-                    res.render('user', {
-                        userAcount: user,
-                        userName: user,
-                        userEmail: user,
-                        userPhone: user,
-                        userBirthday: user
-                    });
-                }, 2000);
-            }else{
-                console.log('帳號不存在，請註冊');
-                setTimeout(() => {
-                    res.redirect('/');
-                }, 2000);
+    if (req.session.username) {  //判斷session暫存資料有無
+        db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+            if (error) {
+                console.log(error);
+            } else {
+                res.render('user', {
+                    userAcount: rows,
+                    userName: rows,
+                    userEmail: rows,
+                    userPhone: rows,
+                    userBirthday: rows
+                });
             }
         });
-    // }
+    } else {
+        db.query(`SELECT * FROM member`, function (error, rows) {  //抓資料
+            let user;  //使用者資訊
+            let userCondition = 0;  //登入狀態
+            rows.forEach(item => {
+                if (req.body.email == item.email) {
+                    if (req.body.password == item.userPassword) {
+                        user = item;
+                        req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
+                        userCondition = 2;  //可登入   
+                    } else {
+                        userCondition = 1; //密碼錯誤
+                    };
+                };
+            });
+            if (userCondition == 2) { //登入成功
+                console.log('登入成功');
+                res.json({
+                    user: user,
+                    data: userCondition //帳號登入
+                })
+            } else if (userCondition == 1) {
+                console.log('密碼錯誤')
+                res.json({
+                    data: userCondition //密碼錯誤
+                });
+            } else if (userCondition == 0) {
+                console.log('帳號不存在')
+                res.json({
+                    data: userCondition //帳號不存在
+                })
+            }
+        });
+    }
 })
 
 

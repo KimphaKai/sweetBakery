@@ -184,6 +184,7 @@
       })
     }
 
+    // 會員註冊
     $('.signupBtn').on('click', function () {
       Swal.fire({
         position: 'top',
@@ -194,44 +195,78 @@
       })
     })
 
+    //會員登入
     $('#loginBtn').on('click', function () {
-      if ($('.loginEmail').val() == "sweetbakery@gmail.com") {
-        Swal.fire({
-          position: 'top',
-          icon: 'success',
-          title: '帳號登入成功',
-          showConfirmButton: false,
-          timer: 1700
-        })
-      } else {
-        Swal.fire({
-          position: 'top',
-          icon: 'warning',
-          title: '帳號不存在，或是密碼錯誤',
-          showConfirmButton: false,
-          timer: 1700
-        });
-      };
+      var loginEmail = $("input[ name=memberLoginEmail ]").val();
+      var loginPassword = $("input[ name=memberLoginPassword ]").val();
+      $.ajax({
+        url: "/login/memberLogin",
+        data: { email: loginEmail, password: loginPassword },
+        type: "post",
+        success: function (jsonData) {
+          console.log(jsonData.user);
+          console.log(jsonData.data);
+          switch (jsonData.data) {
+            case 0: //帳號不存在
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: '帳號不存在，請註冊帳號',
+                showConfirmButton: false,
+                timer: 1700
+              });
+              break;
+            case 1: //密碼錯誤
+              Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: '密碼錯誤，請再次輸入',
+                showConfirmButton: false,
+                timer: 1700
+              });
+              break;
+            case 2: //登入成功
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: '帳號登入成功',
+                showConfirmButton: false,
+                timer: 1700
+              })
+              setTimeout(() => {
+                window.location.href = "/user";
+                console.log(jsonData.user.email);
+                $('#userName').val(jsonData.user.email);
+              }, 2000);
+              break;
+            default:
+              console.log("狀態錯誤");
+              break;
+          }
+        }
+      })
     });
 
-    $('#changePasswordBtn').on('click', function(){
+    //變更密碼
+    $('#changePasswordBtn').on('click', function () {
       Swal.fire({
-          position: 'top',
-          icon: 'success',
-          title: '密碼修改完成',
-          showConfirmButton: false,
-          timer: 1700
-        });
+        position: 'top',
+        icon: 'success',
+        title: '密碼修改完成',
+        showConfirmButton: false,
+        timer: 1700
+      });
     })
 
-    $('#changeUserInfo').on('click', function(){
+    // 會員資料變更
+    $('#changeUserInfo').on('click', function () {
       Swal.fire({
-          position: 'top',
-          icon: 'success',
-          title: '會員基本資料修改完成',
-          showConfirmButton: false,
-          timer: 1700
-        });
+        position: 'top',
+        icon: 'success',
+        title: '會員基本資料修改完成',
+        showConfirmButton: false,
+        timer: 1700
+      });
     })
   })
 </script>
