@@ -893,7 +893,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin: 1rem 1rem 0 0;
   font-size: 1rem;
   border-radius: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn {
@@ -905,7 +905,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .addToCartBtn .fa-cart-plus {
   margin-right: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn:hover {
@@ -2080,6 +2080,7 @@ input[type="search"]::-webkit-search-results-decoration {
   position: absolute;
   right: 23.5rem;
   bottom: 38%;
+  display: none;
 }
 
 .classDetail .classDesc h3 {
@@ -2264,7 +2265,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .product-body {
-  margin: 0 15%;
+  margin: 0 8%;
 }
 
 .productDetail .productInfo {
