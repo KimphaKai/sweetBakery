@@ -2076,7 +2076,10 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 0.8rem;
   color: #D9534F;
   margin-left: 1rem;
-  display: none;
+  text-align: end;
+  position: absolute;
+  right: 23.5rem;
+  bottom: 38%;
 }
 
 .classDetail .classDesc h3 {

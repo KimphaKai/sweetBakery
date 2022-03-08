@@ -6,421 +6,190 @@
 </head>
 
 <body>
-  <header>
-    <div class="burgerMenu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="/"><img src="/img/logo.svg" alt="呷甜甜"></a>
-      </div>
-      <div class="menu">
-        <ul class="nav-items">
-          <li><a href="/about" class="nav-link">品牌形象</a></li>
-          <li><a href="/products" class="nav-link">商品總覽</a></li>
-          <li><a href="/classes" class="nav-link">課程活動</a></li>
-        </ul>
-        <div class="search-wrapper">
-          <div class="searchForm" action="/">
-            <input class="search-input" type="search" name="productSearch" placeholder="搜尋商品...">
-            <button type="button" class="searchBtn">
-              <svg width="1.3rem" height="1.3rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#4d4d4d">
-                <title>Asset 19</title>
-                <g id="Layer_2" data-name="Layer 2">
-                  <g id="Layer_1-2" data-name="Layer 1">
-                    <path class="cls-1"
-                      d="M63.22,59.45,47.3,43.53a26.7,26.7,0,1,0-3.77,3.77L59.45,63.22a2.67,2.67,0,0,0,3.77-3.77ZM26.67,48A21.34,21.34,0,1,1,48,26.67,21.36,21.36,0,0,1,26.67,48Z" />
-                  </g>
-                </g>
-              </svg>
-            </button>
-          </div>
-        </div>
+  <%- include('partials/header') %>
 
-        <div class="icons">
-          <div class="userIcon">
-            <a href="/user">
-              <svg width="1.5rem" height="1.5rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#4d4d4d">
-                <title />
-                <g id="about">
-                  <path d="M16,16A7,7,0,1,0,9,9,7,7,0,0,0,16,16ZM16,4a5,5,0,1,1-5,5A5,5,0,0,1,16,4Z" />
-                  <path
-                    d="M17,18H15A11,11,0,0,0,4,29a1,1,0,0,0,1,1H27a1,1,0,0,0,1-1A11,11,0,0,0,17,18ZM6.06,28A9,9,0,0,1,15,20h2a9,9,0,0,1,8.94,8Z" />
-                </g>
-              </svg>
-            </a>
-          </div>
-          &nbsp;
-          <div class="cartIcon">
-            <a href="/cart">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 32 32" fill="none"
-                stroke="#4d4d4d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
-                <circle cx="25" cy="27" r="2" />
-                <circle cx="12" cy="27" r="2" />
-              </svg>
-              <div class="cartItems">0</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-  </header>
-
-  <section class="products">
-    <div class="heading">
-      <h1 class="page-heading">
-        <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
-          <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
-        </span>
-      </h1>
-      <div class="breadcrumb">
-        <ul>
-          <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
-          <li><a href="">
+    <section class="products">
+      <div class="heading">
+        <h1 class="page-heading">
+          <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
             <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
-            </a></li>
-        </ul>
-      </div>
-
-      <!-- <div class="divider"></div> -->
-    </div>
-
-    <div class="products-container">
-      <div class="productCategories">
-        <ul class="sideMenu">
-          <li><a class="category" href="/products">所有商品</a></li>
-          <% productCategory.forEach((category, index)=> { %>
-            <li><a href="/products/<%= index+1 %>" class="category">
-                <%= category.categoryName %>
+          </span>
+        </h1>
+        <div class="breadcrumb">
+          <ul>
+            <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
+            <li><a href="">
+                <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
               </a></li>
-            <% }) %>
-        </ul>
-        </div>
-      <div class="product-content">
-        <div class="sort-container">
-          <div class="productSort">
-            <form id="sortData" action="#" method="get">
-
-              <select name="sortVal" id="sortOption" >
-                <option value="0">預設排序</option>
-                <!-- <option value="最近開課日期">熱銷商品</option> -->
-                <option  value="ASC">價格由低到高</option>
-  
-                <option value="DESC">價格由高到低</option>
-  
-              </select>
-            </form>
-          </div>
-        </div>
-        <div class="product-grid">
-          <% productInformation.forEach(product=> { %>
-            <div class="productCard">
-              <% try { %>
-                <% productPic.forEach(images=> { %>
-                  <% if(product.productId==images.productId) { %>
-                    <div class="card-image">
-                      <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
-                    </div>
-                    <% throw 'Break' %>
-                      <% } %>
-                        <% }) %>
-                          <% } catch (e) { if(e !=='Break' ) throw e } %>
-                            <div class="body-wrapper">
-                              <div class="card-body">
-                                <div class="productTitle"><a href="/productDetail">
-                                    <%= product.productTitle %>
-                                  </a>
-                                </div>
-                                <div class="productPrice">NT$<%= product.productPrice %> / <%= product.sizeName %>
-                                </div>
-                              </div>
-                              <div class="cartBtn">
-                                <a type="button" href=""><i class="fas fa-shopping-cart"
-                                    data-pid="<%= product.productId %>"
-                                    data-cid="<%= (categoryId[0].categoryId)?categoryId[0].categoryId: product.categoryId%>"></i></a>
-                              </div>
-                            </div>
-            </div>
-            <% }) %>
-        </div>
-        
-
-              <!-- <div class=" productCard">
-                                  <div class="card-image">
-                                    <a href="#"><img src="img/bestseller/best2.jpg"></a>
-                                  </div>
-                                  <div class="body-wrapper">
-                                    <div class="card-body">
-                                      <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
-                                      <span class="productPrice">NT $450</span>
-                                    </div>
-                                    <div class="cartBtn">
-                                      <i class="fas fa-shopping-cart"></i>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <a href="/productDetail"><img src="img/cookies/cookie1.jpeg"></a>
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle"><a href="/productDetail">撒糖屑曲奇餅乾</a></div>
-                                    <span class="productPrice"><span>NT $</span>300</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cakes/butterscotch 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">香橙奶油蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>500</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cakes/choco-fruit 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">水果巧克力蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>500</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cupcakes/chocolate 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">巧克力杯子蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>350</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div> -->
-
+          </ul>
         </div>
       </div>
-    </div>
 
-    <!-- Product Modal -->
-    <div class="modal-container">
-      <div class="modal-wrapper">
-        <button class="closeModal">&times;</button>
-        <div class="modal-body">
-          <div class="productImg">
-            <a href="/productDetail"><img src="/img/Cakes/choco-fruit 1-1.jpg"></a>
+      <div class="products-container">
+        <div class="productCategories">
+          <ul class="sideMenu">
+            <li><a class="category" href="/products">所有商品</a></li>
+            <% productCategory.forEach((category, index)=> { %>
+              <li><a href="/products/<%= index+1 %>" class="category">
+                  <%= category.categoryName %>
+                </a></li>
+              <% }) %>
+          </ul>
+        </div>
+        <div class="product-content">
+          <div class="sort-container">
+            <div class="productSort">
+              <form id="sortData" action="#" method="get">
+
+                <select name="sortVal" id="sortOption">
+                  <option value="0">預設排序</option>
+                  <option value="ASC">價格由低到高</option>
+
+                  <option value="DESC">價格由高到低</option>
+
+                </select>
+              </form>
+            </div>
           </div>
-          <div class="productCheckout">
-            <h2 class="productName">
-              <a href="/productDetail">水果巧克力蛋糕</a>
-            </h2>
-            <div class="priceAndSize">NT$350 / 6吋
-            </div>
-            <div class="productInfo">台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕
-              入口前味微苦的巧克力，
-              中段帶有濃郁的咖啡香</div>
-            <div class="productQty">
-              <button class="minus btn fas fa-minus"></button>
-              <input id="productNum" class="inputNum" type="number" value="1">
-              <button class="plus btn fas fa-plus"></button>
-            </div>
-            <button class="addToCartBtn"><i class="fas fa-cart-plus"></i>加入購物車</button>
+          <div class="product-grid">
+            <% productInformation.forEach(product=> { %>
+              <div class="productCard">
+                <% try { %>
+                  <% productPic.forEach(images=> { %>
+                    <% if(product.productId==images.productId) { %>
+                      <div class="card-image">
+                        <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
+                      </div>
+                      <% throw 'Break' %>
+                        <% } %>
+                          <% }) %>
+                            <% } catch (e) { if(e !=='Break' ) throw e } %>
+                              <div class="body-wrapper">
+                                <div class="card-body">
+                                  <div class="productTitle"><a href="/productDetail">
+                                      <%= product.productTitle %>
+                                    </a>
+                                  </div>
+                                  <div class="productPrice">NT$<%= product.productPrice %> / <%= product.sizeName %>
+                                  </div>
+                                </div>
+                                <div class="cartBtn">
+                                  <a type="button" href=""><i class="fas fa-shopping-cart"
+                                      data-pid="<%= product.productId %>"
+                                      data-cid="<%= (categoryId[0].categoryId)?categoryId[0].categoryId: product.categoryId%>"></i></a>
+                                </div>
+                              </div>
+              </div>
+              <% }) %>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+
+      <!-- Product Modal -->
+      <div class="modal-container">
+        <div class="modal-wrapper">
+          <button class="closeModal">&times;</button>
+          <div class="modal-body">
+            <div class="productImg">
+              <a href="/productDetail"><img src="/img/Cakes/choco-fruit 1-1.jpg"></a>
+            </div>
+            <div class="productCheckout">
+              <h2 class="productName">
+                <a href="/productDetail">水果巧克力蛋糕</a>
+              </h2>
+              <div class="priceAndSize">NT$350 / 6吋
+              </div>
+              <div class="productInfo">台灣第一款 如香水般有豐富層次的頂級巧克力蛋糕
+                入口前味微苦的巧克力，
+                中段帶有濃郁的咖啡香</div>
+              <div class="productQty">
+                <button class="minus btn fas fa-minus"></button>
+                <input id="productNum" class="inputNum" type="number" value="1">
+                <button class="plus btn fas fa-plus"></button>
+              </div>
+              <button class="addToCartBtn"><i class="fas fa-cart-plus"></i>加入購物車</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
-  </section>
+    </section>
 
-  <!-- Footer Section -->
-  <%- include('partials/footer') %>
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
 
-    <!-- Javascript -->
-    <%- include('javascript/script') %>
-      <script>
-        // $.get('/products/productList',function(e){
-          
-        //   e.productInformation.forEach(product => {
-        //     e.productPic.forEach(images=>{
-        //       if(product.productId==images.productId){
-        //         product.imgPath=images.imgPath
-        //       }
-        //     })
-        //   });
-        //   e.productInformation.forEach(product=>{
-        //     let cardHtml=`
-        //         <div class="productCard">
-        //         <div class="card-image">
-        //           <a href="#"><img src="${product.imgPath}"></a>
-        //         </div>
-        //         <div class="body-wrapper">
-        //           <div class="card-body">
-        //             <div class="productTitle"><a href="#">${product.productTitle}</a></div>
-        //             <span class="productPrice">NT$ ${product.productPrice}</span>
-        //           </div>
-        //           <div class="cartBtn">
-        //             <i class="fas fa-shopping-cart"></i>
-        //           </div>
-        //         </div>
-        //         </div>`;
-        //         $('.product-grid').append(cardHtml);
-        //   })
-        //   console.log(e);
+      <!-- Javascript -->
+      <%- include('javascript/script') %>
+        <script>
 
-        // })
-          
-        $('.product-grid').on('click','.fa-shopping-cart',function (e) {
-          e.preventDefault();
-          $(this).data("pid");
-          $('.modal-container').show();
-          // console.log($(this).data("pid"))
-          // console.log($(this).data("cid"))
-          // console.log(e);
-          $.ajax({
-            url: `/products/productInfo/${$(this).data("cid")}/${$(this).data("pid")}`,
-            type: 'get',
-            contentType: 'application/json',
-            // dataType: "json",
-            success: function (data) {
-              // console.log(data);
-              $('.productImg').find('a').find("img").attr("src", data.productPic[0].imgPath)
-              $('.productName').find('a').text(data.productInformation[0].productTitle);
-              $('.priceAndSize').text("NT$" + data.productInformation[0].productPrice + " / " + data.productInformation[0].sizeName);
-              $('.productInfo').text(data.productInformation[0].productInfo);
-            }
+          $('.product-grid').on('click', '.fa-shopping-cart', function (e) {
+            $("#productNum").val(1)
+            e.preventDefault();
+            $(this).data("pid");
+            $('.modal-container').show();
+            // console.log($(this).data("pid"))
+            // console.log($(this).data("cid"))
+            // console.log(e);
+            $.ajax({
+              url: `/products/productInfo/${$(this).data("cid")}/${$(this).data("pid")}`,
+              type: 'get',
+              contentType: 'application/json',
+              // dataType: "json",
+              success: function (data) {
+                // console.log(data);
+                $('.productImg').find('a').find("img").attr("src", data.productPic[0].imgPath)
+                $('.productName').find('a').text(data.productInformation[0].productTitle);
+                $('.priceAndSize').text("NT$" + data.productInformation[0].productPrice + " / " + data.productInformation[0].sizeName);
+                $('.productInfo').text(data.productInformation[0].productInfo);
+              }
+            })
+
+
+          });
+
+          // select篩選
+          $('#sortOption').on('change', function () {
+            let categoryId = $('.page-heading>span').data('categoryid');
+            let url = `/products/sortProduct/${categoryId}`;
+            $('#sortData').prop('action', url)
+            // console.log(categoryId)
+            $('#sortData').submit();
+            sessionStorage.setItem('selectOption', $('#sortOption').val());
+
+          })
+          let optionVal = sessionStorage.getItem('selectOption');
+          $('#sortOption').val(optionVal);
+          $('.sideMenu>li').on('click', function () {
+            sessionStorage.setItem('selectOption', 0);
+            $('#sortOption').val(sessionStorage.getItem('selectOption'));
           })
 
 
-        });
+          if (!sessionStorage.getItem("cartKey")) {
+            $("#count").text(0)
+          } else {
+            $("#count").text(sessionStorage.getItem("cartKey"))
+          }
+          // var count = 0
+          $(".addToCartBtn").on("click", function () {
+            // console.log($("#count").text(count))
+            $(".modal-container").hide("fade")
+            var value = parseInt($("#productNum").val());
+            if (sessionStorage.getItem("cartKey") == null) {
+              sessionStorage.setItem("cartKey", value)
+            } else {
+              var data = parseInt(sessionStorage.getItem("cartKey"))
+              data += value;
+              sessionStorage.setItem("cartKey", data)
+            }
+            $("#count").text(sessionStorage.getItem("cartKey"))
+          });
+          console.log(sessionStorage.getItem("cartKey"))
 
-        $(".addToCartBtn").on("click", function () {
-          $(".modal-container").hide("200ms")
-        });
-        // select篩選
-
-        $('#sortOption').on('change',function(){
-          let categoryId=$('.page-heading>span').data('categoryid');
-          let url = `/products/sortProduct/${categoryId}`;
-          $('#sortData').prop('action',url)
-          // console.log(categoryId)
-          $('#sortData').submit();
-          sessionStorage.setItem('selectOption', $('#sortOption').val());
-          
-        })
-        let optionVal= sessionStorage.getItem('selectOption');
-        $('#sortOption').val(optionVal);
-        $('.sideMenu>li').on('click',function(){
-          sessionStorage.setItem('selectOption',0);
-          $('#sortOption').val(sessionStorage.getItem('selectOption'));
-        })
-        // if(sessionStorage.getItem('selectOption')==null){
-        //   $('#sortOption').val("0");
-        // }else{
-        //   let selectOption = sessionStorage.getItem('selectOption');
-        //   $('#sortOption').val(selectOption);
-        // }
-        
-        // let selectVal =$('#sortOption').val();
-        // sessionStorage.setItem('selectOption',selectVal);
-        // $('#sortOption').val(getSelectVal);
-        
-
-        // $('#sortOption').on('change', function () {
-        //   // console.log($('#sortOption').val())
-        //   let categoryId=$('.page-heading>span').data('categoryid');
-        //   let sortVal=$('#sortOption').val();
-        //   $.ajax({
-        //     url:`/products/sortProduct/${sortVal}`,
-        //     // data: ({data:'1'}),
-        //     // data:JSON.stringify({data:'1'}),
-        //     // type:'post', //res.send
-        //     type:'get',
-        //     // dataType: 'json',
-        //     contentType:'application/json',
-            
-        //     success:function(e){
-        //       // $('.productCard').remove();
-        //       // $('.product-grid').text(e.message);
-        //       $('.productCard').remove();
-              
-        //       renderProductCard(e);
-        //     }
-        //   })
-        // });
-        // function renderProductCard(e){
-        //   // console.log(e);
-        //   e.productInformation.forEach(product => {
-        //         e.productPic.forEach(images=>{
-        //           if(product.productId==images.productId){
-        //             product.imgPath=images.imgPath
-        //           }
-        //         })
-        //       });
-        //       e.productInformation.forEach(product=>{
-        //         let cardHtml=`
-        //             <div class="productCard">
-        //             <div class="card-image">
-        //               <a href="/productDetail"><img src="${product.imgPath}"></a>
-        //             </div>
-        //             <div class="body-wrapper">
-        //               <div class="card-body">
-        //                 <div class="productTitle"><a href="/productDetail">${product.productTitle}</a></div>
-        //                 <span class="productPrice">NT$ ${product.productPrice}</span>
-        //               </div>
-        //               <div class="cartBtn">
-        //                 <a type="button" href="">
-        //                   <i class="fas fa-shopping-cart"
-        //                     data-pid="${product.productId}"
-        //                     data-cid="${product.categoryId}"></i>
-        //                 </a>
-        //               </div>
-        //             </div>
-        //             </div>`;
-        //             $('.product-grid').append(cardHtml);
-        //       });
-        // }
-        // $('.category:not(:first)').on('click',function(e){
-        //   e.preventDefault();
-        //   let aLinkText=$.trim($(this).text());
-        //   // $.trim($(this).text())
-        //   // console.log($('.page-heading>span').text());
-        //   $.ajax({
-        //     url:$(this).prop('href'),
-            
-        //     dataType:'json',
-        //     success:function(e){
-        //       $('.page-heading>span').text(aLinkText);
-        //       $('.productCard').remove();
-        //       renderProductCard(e);
-
-        //     }
-        //   })
-        // })
-      </script>
+        </script>
 
 </body>
 

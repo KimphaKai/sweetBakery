@@ -113,8 +113,11 @@
     font-size: 0.8rem;
     color: $red;
     margin-left: 1rem;
-    display: none;
-
+    text-align: end;
+    position: absolute;
+    right: 23.5rem;
+    bottom: 38%;
+    // display: none;
   }
 
   .classDesc{
