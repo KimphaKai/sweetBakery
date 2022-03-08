@@ -893,7 +893,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin: 1rem 1rem 0 0;
   font-size: 1rem;
   border-radius: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn {
@@ -905,7 +905,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .addToCartBtn .fa-cart-plus {
   margin-right: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn:hover {
@@ -1548,10 +1548,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .about .content p {
   padding: 0 1rem;
-  line-height: 2rem;
-  font-size: 1.5vmax;
+  font-size: 1.2rem;
   letter-spacing: 3px;
-  width: 80%;
+  line-height: 2.3rem;
   margin: 0 2rem;
 }
 
@@ -2077,6 +2076,10 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 0.8rem;
   color: #D9534F;
   margin-left: 1rem;
+  text-align: end;
+  position: absolute;
+  right: 23.5rem;
+  bottom: 38%;
   display: none;
 }
 
@@ -2262,7 +2265,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .product-body {
-  margin: 0 15%;
+  margin: 0 8%;
 }
 
 .productDetail .productInfo {

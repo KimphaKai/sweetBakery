@@ -11,10 +11,8 @@
     <section class="products">
       <div class="heading">
         <h1 class="page-heading">
-          <span>
+          <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
             <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
-
-
           </span>
         </h1>
         <div class="breadcrumb">
@@ -25,8 +23,6 @@
               </a></li>
           </ul>
         </div>
-
-        <!-- <div class="divider"></div> -->
       </div>
 
       <div class="products-container">
@@ -43,14 +39,16 @@
         <div class="product-content">
           <div class="sort-container">
             <div class="productSort">
-              <select id="sortOption" name="productSort">
-                <option value="0">預設排序</option>
-                <!-- <option value="最近開課日期">熱銷商品</option> -->
-                <option value="ASC">價格由低到高</option>
+              <form id="sortData" action="#" method="get">
 
-                <option value="DESC">價格由高到低</option>
+                <select name="sortVal" id="sortOption">
+                  <option value="0">預設排序</option>
+                  <option value="ASC">價格由低到高</option>
 
-              </select>
+                  <option value="DESC">價格由高到低</option>
+
+                </select>
+              </form>
             </div>
           </div>
           <div class="product-grid">
@@ -84,79 +82,6 @@
               </div>
               <% }) %>
           </div>
-
-
-          <!-- <div class=" productCard">
-                                  <div class="card-image">
-                                    <a href="#"><img src="img/bestseller/best2.jpg"></a>
-                                  </div>
-                                  <div class="body-wrapper">
-                                    <div class="card-body">
-                                      <div class="productTitle"><a href="#">草莓果醬餅乾</a></div>
-                                      <span class="productPrice">NT $450</span>
-                                    </div>
-                                    <div class="cartBtn">
-                                      <i class="fas fa-shopping-cart"></i>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <a href="/productDetail"><img src="img/cookies/cookie1.jpeg"></a>
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle"><a href="/productDetail">撒糖屑曲奇餅乾</a></div>
-                                    <span class="productPrice"><span>NT $</span>300</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cakes/butterscotch 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">香橙奶油蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>500</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cakes/choco-fruit 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">水果巧克力蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>500</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="productCard">
-                                <div class="card-image">
-                                  <img src="img/Cupcakes/chocolate 1-1.jpg">
-                                </div>
-                                <div class="body-wrapper">
-                                  <div class="card-body">
-                                    <div class="productTitle">巧克力杯子蛋糕</div>
-                                    <span class="productPrice"><span>NT $</span>350</span>
-                                  </div>
-                                  <div class="cartBtn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                  </div>
-                                </div>
-                              </div> -->
-
         </div>
       </div>
       </div>
@@ -199,36 +124,6 @@
       <!-- Javascript -->
       <%- include('javascript/script') %>
         <script>
-          // $.get('/products/productList',function(e){
-
-          //   e.productInformation.forEach(product => {
-          //     e.productPic.forEach(images=>{
-          //       if(product.productId==images.productId){
-          //         product.imgPath=images.imgPath
-          //       }
-          //     })
-          //   });
-          //   e.productInformation.forEach(product=>{
-          //     let cardHtml=`
-          //         <div class="productCard">
-          //         <div class="card-image">
-          //           <a href="#"><img src="${product.imgPath}"></a>
-          //         </div>
-          //         <div class="body-wrapper">
-          //           <div class="card-body">
-          //             <div class="productTitle"><a href="#">${product.productTitle}</a></div>
-          //             <span class="productPrice">NT$ ${product.productPrice}</span>
-          //           </div>
-          //           <div class="cartBtn">
-          //             <i class="fas fa-shopping-cart"></i>
-          //           </div>
-          //         </div>
-          //         </div>`;
-          //         $('.product-grid').append(cardHtml);
-          //   })
-          //   console.log(e);
-
-          // })
 
           $('.product-grid').on('click', '.fa-shopping-cart', function (e) {
             $("#productNum").val(1)
@@ -237,11 +132,12 @@
             $('.modal-container').show();
             // console.log($(this).data("pid"))
             // console.log($(this).data("cid"))
+            // console.log(e);
             $.ajax({
               url: `/products/productInfo/${$(this).data("cid")}/${$(this).data("pid")}`,
               type: 'get',
               contentType: 'application/json',
-              dataType: "json",
+              // dataType: "json",
               success: function (data) {
                 // console.log(data);
                 $('.productImg').find('a').find("img").attr("src", data.productPic[0].imgPath)
@@ -256,75 +152,21 @@
 
           // select篩選
           $('#sortOption').on('change', function () {
-            // console.log($('#sortOption').val())
-            let sortVal = $('#sortOption').val();
-            $.ajax({
-              url: `/products/sortProduct/${sortVal}`,
-              // data: ({data:'1'}),
-              // data:JSON.stringify({data:'1'}),
-              // type:'post', //res.send
-              type: 'get',
-              // dataType: 'json',
-              contentType: 'application/json',
+            let categoryId = $('.page-heading>span').data('categoryid');
+            let url = `/products/sortProduct/${categoryId}`;
+            $('#sortData').prop('action', url)
+            // console.log(categoryId)
+            $('#sortData').submit();
+            sessionStorage.setItem('selectOption', $('#sortOption').val());
 
-              success: function (e) {
-                // $('.productCard').remove();
-                // $('.product-grid').text(e.message);
-                $('.productCard').remove();
-                renderProductCard(e);
-              }
-            })
-          });
-          function renderProductCard(e) {
-            // console.log(e);
-            e.productInformation.forEach(product => {
-
-              e.productPic.forEach(images => {
-                if (product.productId == images.productId) {
-                  product.imgPath = images.imgPath
-                }
-              })
-            });
-            e.productInformation.forEach(product => {
-              let cardHtml = `
-                    <div class="productCard">
-                    <div class="card-image">
-                      <a href="/productDetail"><img src="${product.imgPath}"></a>
-                    </div>
-                    <div class="body-wrapper">
-                      <div class="card-body">
-                        <div class="productTitle"><a href="/productDetail">${product.productTitle}</a></div>
-                        <span class="productPrice">NT$ ${product.productPrice} / ${product.sizeName}</span>
-                      </div>
-                      <div class="cartBtn">
-                        <a type="button" href="">
-                          <i class="fas fa-shopping-cart"
-                            data-pid="${product.productId}"
-                            data-cid="${product.categoryId}"></i>
-                        </a>
-                      </div>
-                    </div>
-                    </div>`;
-              $('.product-grid').append(cardHtml);
-            });
-          }
-          $('.category:not(:first)').on('click', function (e) {
-            e.preventDefault();
-            let aLinkText = $.trim($(this).text());
-            // $.trim($(this).text())
-            // console.log($('.page-heading>span').text());
-            $.ajax({
-              url: $(this).prop('href'),
-
-              dataType: 'json',
-              success: function (e) {
-                $('.page-heading>span').text(aLinkText);
-                $('.productCard').remove();
-                renderProductCard(e);
-
-              }
-            })
           })
+          let optionVal = sessionStorage.getItem('selectOption');
+          $('#sortOption').val(optionVal);
+          $('.sideMenu>li').on('click', function () {
+            sessionStorage.setItem('selectOption', 0);
+            $('#sortOption').val(sessionStorage.getItem('selectOption'));
+          })
+
 
           if (!sessionStorage.getItem("cartKey")) {
             $("#count").text(0)
@@ -334,7 +176,7 @@
           // var count = 0
           $(".addToCartBtn").on("click", function () {
             // console.log($("#count").text(count))
-            $(".modal-container").hide()
+            $(".modal-container").hide("fade")
             var value = parseInt($("#productNum").val());
             if (sessionStorage.getItem("cartKey") == null) {
               sessionStorage.setItem("cartKey", value)
@@ -344,10 +186,8 @@
               sessionStorage.setItem("cartKey", data)
             }
             $("#count").text(sessionStorage.getItem("cartKey"))
-
           });
           console.log(sessionStorage.getItem("cartKey"))
-
 
         </script>
 
