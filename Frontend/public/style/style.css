@@ -3023,7 +3023,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
+  background-color: white;
 }
 
 .registered .content-wrapper .navBar .nav-link a:hover {
