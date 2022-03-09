@@ -184,6 +184,13 @@
       })
     }
 
+    //會員資訊
+    var userCurrentName;
+    var userCurrentEmail;;
+    var userCurrentPhone;
+    var userCurrentBirthday;
+
+
     // 會員註冊
     $('#signupBtn').on('click', function () {
       console.log('ok');
@@ -258,7 +265,7 @@
           switch (jsonData.data) {
             case 0: //帳號不存在
               Swal.fire({
-                position: 'top',
+                // position: 'top',
                 icon: 'warning',
                 title: '帳號不存在，請註冊帳號',
                 showConfirmButton: false,
@@ -267,8 +274,8 @@
               break;
             case 1: //密碼錯誤
               Swal.fire({
-                position: 'top',
-                icon: 'warning',
+                // position: 'top',
+                icon: 'error',
                 title: '密碼錯誤，請再次輸入',
                 showConfirmButton: false,
                 timer: 1700
@@ -276,17 +283,20 @@
               break;
             case 2: //登入成功
               Swal.fire({
-                position: 'top',
+                // position: 'top',
                 icon: 'success',
                 title: '帳號登入成功',
                 showConfirmButton: false,
                 timer: 1700
               })
               setTimeout(() => {
-                window.location.href = "/user";
-                console.log(jsonData.user.email);
-                $('#userName').val(jsonData.user.email);
+                window.location.href = "/user"; 
               }, 2000);
+              $("input[ name= userName ]").append(jsonData.user.userName);
+              $("input[ name= userMail ]").append(jsonData.user.email);
+              $("input[ name= userPhone ]").append(jsonData.user.userPhone);
+              $("input[ name= userBirthday ]").append(jsonData.user.userBirthday);
+              // $('#userName').val(jsonData.user.email);
               break;
             default:
               console.log("狀態錯誤");
@@ -295,7 +305,6 @@
         }
       })
     });
-
     //變更密碼
     $('#changePasswordBtn').on('click', function () {
       Swal.fire({
