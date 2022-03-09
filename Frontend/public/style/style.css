@@ -3479,15 +3479,8 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   font-size: 1.3rem;
-  padding: 1rem 0;
-  padding-left: 15%;
+  padding: 1rem 2rem;
   background-color: #FF91AF;
   color: #8d8d8d;
 }
@@ -3501,8 +3494,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -ms-flexbox;
   display: flex;
   font-size: 1.3rem;
-  margin: 1rem 0;
+  margin: 1rem;
   padding: 1rem;
+  border-bottom: 1px solid #8d8d8d;
 }
 
 .checkout .orderItems .detail-wrapper {
@@ -3726,12 +3720,12 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .cart .container .tab td > img {
   margin: 0.5rem auto;
-  width: 9rem;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  height: 6rem;
   border-radius: 1rem;
   padding: 3px;
 }

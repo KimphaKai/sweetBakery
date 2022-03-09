@@ -15,6 +15,7 @@
       <div class="checkoutContainer">
         <div class="orderCard">
           <div class="orderHeader">
+            <div class="col" id="productPhoto">商品圖片</div>
             <div class="col" id="productTitle">商品名稱</div>
             <div class="col" id="sizeName">規格</div>
             <div class="col" id="productPrice">單價</div>
@@ -53,7 +54,7 @@
           <% }) %>
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>$</span><span class="sum">1800</span>
+            <span>$</span><span>1800</span>
           </div>
         </div>
       </div>
@@ -186,45 +187,30 @@
       var data = sessionStorage.getItem("data");
       $(".divider").text();
       
-    //-----------------------------------------
+    //-----------------暉暉在改-----------
       // console.log(typeof data);
 
       // 取得cart.js勾選的商品
-      // console.log(sessionStorage.getItem("pid"));
-      // var checkoutProduct = parseInt(
-      //   JSON.parse(sessionStorage.getItem("pid")).id
-      // );
-      // var a =eval("sessionStorage.getItem('pid')");
-      // console.log(a)
+      console.log(sessionStorage.getItem("pid"));
+      var checkoutProduct = parseInt(
+        JSON.parse(sessionStorage.getItem("pid")).id
+      );
+      var a =eval("sessionStorage.getItem('pid')");
+      console.log(a)
     //-----------------------------------------
 
 
       $(".submitBtn").on("click", function () {
-        $(".formInput").each(function(){
-          
-          if ( $(".formInput").val() !== "") {
-            window.location = "/products";
-          } else {
-            $(".submitBtn").prop("disable");
-            Swal.fire({
-              icon: "warning",
-              title: "資料有缺哦~!",
-              text: "",
-            });
-          }
-          
-        })
-        console.log(  $(".formInput").val() )
-      });
-
-            
-      $(function() {
-        let money = 0; //計算總價錢
-        $(".subtotal").each(function (index) {
-            money += parseInt($(".subtotal").eq(index).text().substr(0));
-            // console.log(money);
-        })
-        $(".sum").text(money);
+        if ($(".formInput").text() == "") {
+          $(".submitBtn").prop("disable");
+          Swal.fire({
+            icon: "warning",
+            title: "資料有缺哦~!",
+            text: "打好打滿",
+          });
+        } else {
+          window.location = "/products";
+        }
       });
     </script>
   </body>
