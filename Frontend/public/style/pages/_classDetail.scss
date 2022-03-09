@@ -1,3 +1,9 @@
+.classDetailBG{
+  background-image: url('/img/backgroundTest2.jpg');
+  background-repeat: no-repeat;
+  background-position: right calc(100% - 14rem) ;
+  background-size: 100%;
+}
 .classDetail{
   display: flex;
   flex-direction: column;

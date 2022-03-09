@@ -28,6 +28,8 @@ $(".editPerformance").on("click", function () {
     openModal();
 })
 
+
+
 //modalSave
 $('.modalSave').on('click', function () {
     if ($('.targetInput').val() != 0) {

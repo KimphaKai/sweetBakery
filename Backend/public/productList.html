@@ -190,6 +190,7 @@
                                 <input id="productStatus" type="checkbox" checked>
                                 <span class="slider"></span>
                             </label>
+                            <span class="statusMsg"></span>
                         </div>
 
                         <div class="formGroup">
@@ -243,6 +244,11 @@
                         break;
                 }
                 $(".bigModal").css("display", "flex").show();
+                if($('#productStatus').prop('checked') === true){
+                    $('.statusMsg').text('上架中');
+                }else{
+                    $('.statusMsg').text('下架中');
+                }
             };
 
             function closeModal() {
@@ -252,6 +258,15 @@
                 openModal(this, "商品");
                 $('#categoryId').attr('disabled', false);
             })
+
+            $('#productStatus').on('change',function(){
+                if($('#productStatus').prop('checked') === true){
+                    $('.statusMsg').text('上架中');
+                }else{
+                    $('.statusMsg').text('下架中');
+                }
+            })
+
             // 開啟編輯視窗
             $(".productList").on("click", '.editProduct', function () {
                 openModal(this, "商品");
@@ -276,7 +291,6 @@
                             $('#productStatus').prop('checked', true);
                         } else {
                             $('#productStatus').prop('checked', false);
-
                         }
                         $('#productInfo').val(productItem.productInfo);
                         $('#ingredient').val(productItem.ingredient);

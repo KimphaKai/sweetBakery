@@ -1913,6 +1913,13 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 
+.classDetailBG {
+  background-image: url("/img/backgroundTest2.jpg");
+  background-repeat: no-repeat;
+  background-position: right calc(100% - 14rem);
+  background-size: 100%;
+}
+
 .classDetail {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2415,7 +2422,10 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+  background-image: url("/img/backgroundTest3.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 100%;
   padding: 2rem 0;
 }
 

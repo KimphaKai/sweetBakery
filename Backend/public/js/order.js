@@ -101,16 +101,15 @@ function doPagination(selector, func){
 
 
 
-
 //未確認的資料
 showOrderUncheckedTable(1);
 function showOrderUncheckedTable(currentPage) {
     $.get(`/order/unChecked/page/${currentPage}`, function (e) {
         let orderUncheckTable = e[0];
-
+        
         //分頁
         printPagination(currentPage, e, 5, '.unCheckPagination');
-
+        
         //print data
         $('#unCheckList tbody').empty();
         orderUncheckTable.map(value => {
@@ -127,6 +126,7 @@ function showOrderUncheckedTable(currentPage) {
                 `
             $('#unCheckList tbody').append(trHtml);
         })
+
     })
 }
 
@@ -141,19 +141,19 @@ doPagination('.unCheckPagination', showOrderUncheckedTable);
 
 function getOrderDetail(detailId, total) {
     $.get(`/order/orderDetail/${detailId}`, function (e) {
-        console.log(e);
+        // console.log(e);
         e.map(value => {
             var trHtml = `
-                <div class="orderItem">
-                    <p class="orderItemTitle">${value.productTitle}</p>
-                <div>
-                    <span class="orderItemSize">規格:${value.sizeName}</span>
-                    <span>${value.productPrice}</span>
-                    </div>
-                    <p>x${value.productNum}</p>
-                    <hr>
-                    <span class="subTotal">
-                    <span>小計:</span>
+            <div class="orderItem">
+            <p class="orderItemTitle">${value.productTitle}</p>
+            <div>
+            <span class="orderItemSize">規格:${value.sizeName}</span>
+            <span>${value.productPrice}</span>
+            </div>
+            <p>x${value.productNum}</p>
+            <hr>
+            <span class="subTotal">
+            <span>小計:</span>
                     <span>${value.subTotal}</span>
                     </span>
                 </div>
@@ -161,8 +161,16 @@ function getOrderDetail(detailId, total) {
             $('.orderContent').append(trHtml);
         })
         $('.orderContent').append(`<div class="oderTotal"><span>訂單金額: </span><span>$<span>${total}</span></span></div>`);
+        let newHeight = $('.modalContent').prop('scrollHeight');
+        if (518<newHeight){
+            $('.modalWrap').css('overflow-y', 'scroll');
+        }else{
+            $('.modalWrap').css('overflow-y', 'hidden');
+        }
+
     })
 }
+
 
 
 //訂單明細彈跳視窗
@@ -174,7 +182,6 @@ function popUpOrderDetail(selector){
         let detailId = $(this).children('td:first').text();
         let total = $(this).children('td:nth-of-type(6)').text();
         getOrderDetail(detailId, total);
-    
     })
 };
 

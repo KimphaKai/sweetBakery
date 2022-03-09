@@ -1,6 +1,10 @@
 .user {
     display: flex;
-    background-color: $background-color;
+    // background-color: $background-color;
+    background-image: url('/img/backgroundTest3.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 100%;
     padding: 2rem 0;
     .sidebar {
         margin: 2rem 0 5rem 3rem;
