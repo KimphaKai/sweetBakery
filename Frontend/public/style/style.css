@@ -24,7 +24,7 @@ header .burgerMenu .bar {
   left: -3rem;
   width: 1.8rem;
   height: 0.2rem;
-  background: #fdafbb;
+  background: #FF91AF;
   border-radius: 1rem;
   margin: 0.3rem 0;
   opacity: 1;
@@ -107,7 +107,7 @@ header .search-input {
 }
 
 header .search-input:focus {
-  border-bottom: 2px solid #fdafbb;
+  border-bottom: 2px solid #FF91AF;
 }
 
 header .searchBtn {
@@ -116,7 +116,7 @@ header .searchBtn {
 }
 
 header .searchBtn svg:hover {
-  fill: #fdafbb;
+  fill: #FF91AF;
 }
 
 header .icons {
@@ -126,8 +126,8 @@ header .icons {
 }
 
 header .icons svg:hover {
-  stroke: #fdafbb;
-  fill: #fdafbb;
+  stroke: #FF91AF;
+  fill: #FF91AF;
 }
 
 header .icons .userIcon {
@@ -186,7 +186,7 @@ header .icons .cartIcon .cartItems {
   position: absolute;
   top: -35%;
   right: -40%;
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   font-size: 0.8rem;
   border-radius: 100vw;
@@ -314,6 +314,7 @@ header .icons .cartIcon .cartItems {
   position: relative;
   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .categories .category-item a {
@@ -537,7 +538,7 @@ footer .aboutInfo {
 }
 
 footer .aboutInfo i {
-  color: #fdafbb;
+  color: #FF91AF;
   margin-right: 1rem;
 }
 
@@ -598,7 +599,7 @@ footer .copyright {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Rounded-X M+ 1c", sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   outline: none;
   border: 0;
 }
@@ -755,7 +756,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -ms-flexbox;
   display: flex;
   margin: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid #ececec;
 }
 
@@ -773,6 +774,7 @@ input[type="search"]::-webkit-search-results-decoration {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  border-radius: 0.5rem;
 }
 
 .content {
@@ -839,7 +841,7 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 2rem;
   height: 2rem;
   margin: 0 0.1rem;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 0.5rem;
   cursor: pointer;
 }
@@ -892,11 +894,11 @@ input[type="search"]::-webkit-search-results-decoration {
   margin: 1rem 1rem 0 0;
   font-size: 1rem;
   border-radius: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   background-color: transparent;
   color: #ff90a0;
   cursor: pointer;
@@ -904,7 +906,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .addToCartBtn .fa-cart-plus {
   margin-right: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .addToCartBtn:hover {
@@ -915,7 +917,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .buyBtn {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
 }
 
@@ -1051,7 +1053,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .modal-container .modal-body .productCheckout .productQty .btn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -1084,8 +1086,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal {
   position: fixed;
-  top: 18%;
-  left: 25%;
+  top: 10%;
+  left: 22%;
   border-radius: 1rem;
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -1097,8 +1099,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal .container {
   background: #fff;
-  width: 750px;
-  min-height: 500px;
+  width: 900px;
+  min-height: 600px;
   border-radius: 1rem;
   position: relative;
 }
@@ -1118,6 +1120,68 @@ input[type="search"]::-webkit-search-results-decoration {
   opacity: 0.5;
 }
 
+.loginModal .divShit {
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.loginModal .divShit h1 {
+  margin: 3rem 2.5rem;
+}
+
+.loginModal .divShit span {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.loginModal .divShit input {
+  background: #ececec;
+  border: 1px solid #ececec;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  width: 100%;
+  margin: 0.5rem;
+}
+
+.loginModal .divShit input::-webkit-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input:-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input::-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit input::placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .divShit .forgetPwBtn {
+  font-size: 0.8rem;
+  margin: 1rem 0;
+}
+
+.loginModal .divShit .forgetPwBtn:hover {
+  text-decoration: underline;
+}
+
 .loginModal .form-container {
   position: absolute;
   top: 0;
@@ -1133,7 +1197,7 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 50px;
+  padding: 0 2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1144,7 +1208,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .loginModal .form-container form h1 {
-  margin: 2.5rem;
+  margin: 2rem 2.5rem;
 }
 
 .loginModal .form-container form span {
@@ -1161,6 +1225,22 @@ input[type="search"]::-webkit-search-results-decoration {
   margin: 0.5rem;
 }
 
+.loginModal .form-container form input::-webkit-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input:-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input::-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.loginModal .form-container form input::placeholder {
+  font-size: 1.1rem;
+}
+
 .loginModal .form-container form .forgetPwBtn {
   font-size: 0.8rem;
   margin: 1rem 0;
@@ -1168,6 +1248,11 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal .form-container form .forgetPwBtn:hover {
   text-decoration: underline;
+}
+
+.loginModal #signUp,
+.loginModal #signIn {
+  font-size: 1.1rem;
 }
 
 .loginModal .social-container {
@@ -1218,7 +1303,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .loginModal button:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
   -webkit-transition: 0.2s ease-in;
@@ -1380,7 +1465,7 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 2rem;
   font-size: 2rem;
   text-align: center;
-  color: #fdafbb;
+  color: #FF91AF;
   cursor: pointer;
 }
 
@@ -1433,9 +1518,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .forgetPwModal button:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
-  border-color: #fdafbb;
+  border-color: #FF91AF;
 }
 
 .forgetPwModal .login {
@@ -1547,10 +1632,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .about .content p {
   padding: 0 1rem;
-  line-height: 2rem;
-  font-size: 1.5vmax;
+  font-size: 1.2rem;
   letter-spacing: 3px;
-  width: 80%;
+  line-height: 2.3rem;
   margin: 0 2rem;
 }
 
@@ -1731,7 +1815,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .form .formInput:focus {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
 }
 
 .form .buttons {
@@ -1862,7 +1946,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .search .search-input:focus {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
 }
 
 .classes .search .searchBtn {
@@ -1874,7 +1958,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .search .searchBtn:hover {
-  color: #fdafbb;
+  color: #FF91AF;
 }
 
 @media screen and (max-width: 750px) {
@@ -1999,7 +2083,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .classDetail .classInfo img {
   height: 300px;
   max-width: 100%;
-  margin-right: 2rem;
+  margin-right: 3rem;
+  border-radius: 0.5rem;
 }
 
 .classDetail .classContent {
@@ -2020,7 +2105,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .inputPrice {
-  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .classDetail .classTime {
@@ -2037,6 +2124,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-weight: 700;
   margin-right: 11rem;
   color: #a54c4c;
+  vertical-align: baseline;
 }
 
 .classDetail .guest-input label {
@@ -2074,7 +2162,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classDetail .guest-input .guestBtn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -2082,8 +2170,10 @@ input[type="search"]::-webkit-search-results-decoration {
 .classDetail .errorMsg {
   font-size: 0.8rem;
   color: #D9534F;
-  margin-left: 1rem;
-  display: none;
+  margin-right: 6rem;
+  margin-top: 3rem;
+  text-align: end;
+  visibility: hidden;
 }
 
 .classDetail .classDesc h3 {
@@ -2179,7 +2269,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .products .productCategories .sideMenu {
   background-color: #ffefc2;
-  width: 10rem;
+  width: 11rem;
   height: 400px;
   padding: 1rem;
   line-height: 5rem;
@@ -2268,7 +2358,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .product-body {
-  margin: 0 15%;
+  margin: 0 8%;
 }
 
 .productDetail .productInfo {
@@ -2285,7 +2375,7 @@ input[type="search"]::-webkit-search-results-decoration {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   padding: 0.3rem;
   border-radius: 0.8rem;
 }
@@ -2306,7 +2396,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .thumbnail {
   max-width: 80px;
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   margin-top: 0.5rem;
   padding: 0.2rem;
   opacity: 0.5;
@@ -2315,6 +2405,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .thumbnail:hover, .productDetail .thumbnail.active {
   opacity: 1;
+}
+
+.productDetail .productContent {
+  margin: 1rem 0;
 }
 
 .productDetail .productTitle {
@@ -2341,7 +2435,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .qtyBtn {
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   background-color: transparent;
   color: #a54c4c;
   font-size: 1rem;
@@ -2366,7 +2460,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .qtyBtn:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
   border: none;
 }
@@ -2380,7 +2474,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .productDetail .productDesc {
   margin: 3rem 0;
-  border: 2px solid #fdafbb;
+  border: 2px solid #FF91AF;
   border-radius: 0.5rem;
   min-height: 300px;
   margin-right: 20%;
@@ -2390,7 +2484,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .productDetail .product-heading {
-  border-left: 4px solid #fdafbb;
+  border-left: 4px solid #FF91AF;
   margin-top: 1rem;
   padding: 0 1rem;
 }
@@ -2422,10 +2516,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-image: url("/img/backgroundTest3.jpg");
-  background-repeat: no-repeat;
-  background-position: left;
+  background: url("/img/bg2.jpeg");
   background-size: 100%;
+  background-position: left;
   padding: 2rem 0;
 }
 
@@ -2573,9 +2666,10 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   padding: 2rem 0;
-  height: 100vh;
 }
 
 .userPasswordUpdate .sidebar {
@@ -2584,7 +2678,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .userPasswordUpdate .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
   background-color: #fff;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -2725,10 +2819,24 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .userOrders {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #ffefc2;
+}
+
+.userOrders::before {
+  content: "";
+  background-image: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .userOrders .sidebar {
@@ -2737,7 +2845,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .userOrders .sidebar .sideMenu {
   padding: 1rem 1rem 1rem 2rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
   background-color: #fff;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -2809,7 +2917,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
 }
 
 .userOrders .content-wrapper .navBar .nav-link a:hover {
@@ -2937,7 +3044,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .registered {
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3017,7 +3126,7 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
+  background-color: white;
 }
 
 .registered .content-wrapper .navBar .nav-link a:hover {
@@ -3126,7 +3235,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .userOrderHistory {
-  background-color: #ffefc2;
+  background: url("/img/bg2.jpeg");
+  background-size: 100%;
+  background-position: left;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3206,7 +3317,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 0 1rem;
   color: #919191;
-  background-color: #fff;
 }
 
 .userOrderHistory .content-wrapper .navBar .nav-link a:hover {
@@ -3362,7 +3472,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   width: 100%;
   margin: 1rem auto;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -3376,16 +3486,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   font-size: 1.3rem;
-  padding: 1rem 0;
-  padding-left: 15%;
-  background-color: #fdafbb;
+  padding: 1rem 2rem;
+  background-color: #FF91AF;
   color: #8d8d8d;
 }
 
@@ -3398,8 +3501,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -ms-flexbox;
   display: flex;
   font-size: 1.3rem;
-  margin: 1rem 0;
+  margin: 1rem;
   padding: 1rem;
+  border-bottom: 1px solid #8d8d8d;
 }
 
 .checkout .orderItems .detail-wrapper {
@@ -3450,20 +3554,20 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   color: #a54c4c;
   font-weight: 700;
-  border-top: 1px solid #fdafbb;
+  border-top: 1px solid #FF91AF;
 }
 
 .checkout .customerInfo {
   font-size: 1.3rem;
   margin-top: 2rem;
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 1rem;
   overflow: hidden;
 }
 
 .checkout .customerInfo h4 {
-  background-color: #fdafbb;
-  border-bottom: 1px solid #fdafbb;
+  background-color: #FF91AF;
+  border-bottom: 1px solid #FF91AF;
   color: #fff;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
@@ -3546,6 +3650,8 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 0.2rem;
   margin-right: 1rem;
   cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
 }
 
 .checkout .customerInfo .submitBtn a, .checkout .customerInfo .cancelBtn a {
@@ -3621,7 +3727,12 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .cart .container .tab td > img {
   margin: 0.5rem auto;
-  width: 9rem;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  height: 6rem;
   border-radius: 1rem;
   padding: 3px;
 }
@@ -3656,7 +3767,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .tab td.amount .add, .cart .container .tab td.amount .sub {
-  border: 1px solid #fdafbb;
+  border: 1px solid #FF91AF;
   border-radius: 4px;
   width: 1.5rem;
   font-size: 1.5rem;
@@ -3664,9 +3775,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .tab td.amount .add:hover, .cart .container .tab td.amount .sub:hover {
-  background-color: #fdafbb;
+  background-color: #FF91AF;
   color: #fff;
-  border-color: #fdafbb;
+  border-color: #FF91AF;
 }
 
 .cart .container .tab td.subtotal {
@@ -3715,7 +3826,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .cart .container .totalPrice .btn .confirm:hover {
-  background: #fdafbb;
+  background: #FF91AF;
   color: #fff;
 }
 

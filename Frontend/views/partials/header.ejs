@@ -84,14 +84,8 @@
       <div class="container">
         <div class="closeModal">&times;</div>
         <div class="form-container sign-up-container">
-          <form action="/login/memberRegister" method="post">
+          <div class="divShit">
             <h1>會員註冊</h1>
-            <!-- <div class="social-container">
-              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-              <a href="#" class="social"><i class="fab fa-line"></i></a>
-            </div> -->
-            <!-- <span>&mdash;或&mdash;</span> -->
             <input class="name" type="text" placeholder="姓名" name="memberRegisterName" required />
             <input class="signupEmail" type="email" placeholder="電子信箱" name="memberRegisterEmail" required />
             <input class="signupPassword" type="password" placeholder="密碼" name="memberRegisterPassword" required />
@@ -99,23 +93,17 @@
             <input class="signupPhoneNumber" type="tel" pattern="\d*" minlength="10" maxlength="10" placeholder="手機號碼"
               name="memberRegisterPhone" requried />
             <input class="signupDate" type="date" name="memberRegisterBirthday">
-            <button class="signupBtn" type="submit">註冊</button>
-          </form>
+            <button id="signupBtn" class="signupBtn" type="submit">註冊</button>
+          </div>
         </div>
         <div class="form-container sign-in-container">
-          <form action="/login/memberLogin" method="post">
+          <div class="divShit">
             <h1>會員登入</h1>
-            <!-- <div class="social-container">
-              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-              <a href="#" class="social"><i class="fab fa-line"></i></a>
-            </div> -->
-            <!-- <span>&mdash;或&mdash;</span> -->
             <input class="loginEmail" type="email" placeholder="電子信箱" name="memberLoginEmail" required />
             <input class="loginPassword" type="password" placeholder="密碼" name="memberLoginPassword" required />
             <a class="forgetPwBtn" href="#">忘記密碼?</a>
             <button id="loginBtn" class="loginBtn" type="submit">登入</button>
-          </form>
+          </div>
         </div>
         <div class="overlay-container">
           <div class="overlay">

@@ -1,11 +1,29 @@
 .userOrders {
+  position: relative;
   display: flex;
-  background-color: $background-color;
+  // background-color: $background-color;
+  &::before{
+    content: "";
+    background-image: url('/img/bg2.jpeg');
+    background-size: 100%;
+    background-position: left;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  // background: 
+  // background-size: 100%;
+  // background-position: left;
+  
   .sidebar {
     margin: 2rem 0 5rem 3rem;
     .sideMenu{
       padding: 1rem 1rem 1rem 2rem;
-      border-radius: 0.3rem;
+      border-radius: 1rem;
       background-color: #fff;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       width: 13rem;
@@ -59,7 +77,6 @@
           font-size: 1.3rem;
           margin: 0 1rem;
           color: rgb(145, 145, 145);
-          background-color: #fff;
           &:hover {
             color: $text-color;
           }

@@ -12,6 +12,7 @@
   // width: 1000px;
   max-width: 100%;
 
+
   .heading{
     @include page-heading($text-color);
     width: 100%;
@@ -42,7 +43,8 @@
     img{
       height: 300px;
       max-width: 100%;
-      margin-right: 2rem;
+      margin-right: 3rem;
+      border-radius: 0.5rem;
     }
   }
 
@@ -64,7 +66,8 @@
   } 
 
   .inputPrice{
-    margin-top: 5rem;
+    // margin-top: 5rem;
+    display: flex;
   }
 
   .classTime{
@@ -80,6 +83,7 @@
     font-weight: 700;
     margin-right: 11rem;
     color: $text-color;
+    vertical-align: baseline;
   }
 
   .guest-input{
@@ -118,9 +122,10 @@
   .errorMsg{
     font-size: 0.8rem;
     color: $red;
-    margin-left: 1rem;
-    display: none;
-
+    margin-right: 6rem;
+    margin-top: 3rem;
+    text-align: end;
+    visibility: hidden;
   }
 
   .classDesc{

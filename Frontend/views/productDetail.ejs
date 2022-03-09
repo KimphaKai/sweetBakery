@@ -104,6 +104,27 @@
     <%- include('javascript/script') %>
       <%- include('javascript/slider') %>
 
+        <script>
+          if (!sessionStorage.getItem("cartKey")) {
+            $("#count").text(0)
+          } else {
+            $("#count").text(sessionStorage.getItem("cartKey"))
+          }
+
+          $(".addToCartBtn").on("click", function () {
+            var value = parseInt($("#productNum").val());
+            if (sessionStorage.getItem("cartKey") == null) {
+              sessionStorage.setItem("cartKey", value)
+            } else {
+              var data = parseInt(sessionStorage.getItem("cartKey"))
+              data += value;
+              sessionStorage.setItem("cartKey", data)
+            }
+            $("#count").text(sessionStorage.getItem("cartKey"))
+          });
+          console.log(sessionStorage.getItem("cartKey"))
+        </script>
+
 </body>
 
 </html>

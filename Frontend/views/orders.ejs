@@ -40,7 +40,7 @@
             <a class="orderHistory" href="/orderHistory">購買紀錄</a>
           </div>
           <div class="nav-link">
-            <a class="registered" href="/registered">課程查詢</a>
+            <a class="classSearch" href="/registered">課程查詢</a>
           </div>
         </div>
 
@@ -74,34 +74,39 @@
           </div>
           <div class="divider"></div>
           <!-- -----會員訂單資訊-------- -->
-          <div class="orderItems">
-            <div class="orderThumbnail">
-              <a href="/productDetail"><img src="img/cookies/cookie1.jpeg"></a>
+          <% productInformation.forEach(proInform=> { %>
+            <div class="orderItems">
+              <div class="orderThumbnail">
+                <% productPic .forEach(images=> { %> <%
+                  if(proInform.productId==images.productId){ %> <% if
+                  ((images.productImgId % 3)==1) { %>
+                <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
+                <% } %> <% } %> <% }) %>
+              </div>
+              <div class="detail-wrapper">
+                <div class="col itemTitle">
+                  <span><%= proInform.productTitle %></span>
+                </div>
+                <div class="col itemSize">
+                  <span><%= proInform.sizeName %></span>
+                </div>
+                <div class="col itemPrice">
+                  <span>$</span>
+                  <span><%= proInform.productPrice %></span>
+                </div>
+                <div class="col itemQty">
+                  <span><%= proInform.productNum %></span>
+                </div>
+                <div class="col subtotal">
+                  <span><%= proInform.subTotal %></span>
+                </div>
+              </div>
             </div>
-            <div class="detail-wrapper">
-              <div class="col itemTitle">
-                <span>撒糖屑曲奇餅乾</span>
-              </div>
-              <div class="col itemSize">
-                <span>1盒8入</span>
-              </div>
-              <div class="col itemPrice">
-                <span>$</span>
-                <span>300</span>
-              </div>
-              <div class="col itemQty">
-                <span>1</span>
-              </div>
-              <div class="col subtotal">
-                <span>$</span>
-                <span>300</span>
-              </div>
-            </div>
-          </div>
+          <% }) %>
           <div class="divider"></div>
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>600</span>
+            <span class="sum">600</span>
           </div>
         </div>
 
@@ -188,23 +193,6 @@
         </div>
       </div> -->
       </div>
-
-      <!--------分業選單-------- -->
-      <!-- <div class="pagination">
-      <button class="paginationBtn prev-page" type="button">
-        <i class="fas fa-caret-left"></i>
-      </button>
-      <button class="pageNum" style="background-color: pink; color: white">
-        1
-      </button>
-      <button class="pageNum">2</button>
-      <button class="pageNum">3</button>
-      <button class="pageNum">4</button>
-      <button class="pageNum">5</button>
-      <button class="paginationBtn next-page" type="button">
-        <i class="fas fa-caret-right"></i>
-      </button>
-    </div> -->
     </section>
 
     <!-- Footer Section -->
@@ -212,6 +200,17 @@
 
       <!-- Javascript -->
       <%- include('javascript/script') %>
+
+      <script>
+        $(function() {
+          let money = 0; //計算總價錢
+          $(".subtotal").each(function (index) {
+              money += parseInt($(".subtotal").eq(index).text().substr(0));
+              // console.log(money);
+          })
+          $(".sum").text(money);
+        });
+      </script>
 </body>
 
 </html>

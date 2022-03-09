@@ -15,6 +15,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "mysql": "^2.18.1",
+    "sass": "^1.49.9",
     "spinkit": "^2.0.1"
   }
 }

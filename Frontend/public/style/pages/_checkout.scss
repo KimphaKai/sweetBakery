@@ -27,11 +27,8 @@
 
   .orderHeader{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: 1.3rem;
-    padding:1rem 0;
-    padding-left: 15%;
+    padding:1rem 2rem;
     // background: $background-color;
     background-color: $pink;
     color: $darker-gray;
@@ -43,8 +40,10 @@
   .orderItems{
     display: flex;
     font-size: 1.3rem;
-    margin: 1rem 0;
+    margin: 1rem ;
     padding: 1rem;
+    // background-color: aqua;
+    border-bottom:1px solid $darker-gray ;
     .detail-wrapper{
       display: flex;      
       justify-content: space-between;
@@ -152,6 +151,7 @@
       .storePay{
         font-size: 1.1rem;
       }
+    
       
       .submitBtn, .cancelBtn{
         margin-top: 1rem;
@@ -159,7 +159,9 @@
         border-radius: 0.2rem;
         margin-right: 1rem;
         cursor: pointer;
-        a{
+        color: #fff;
+        font-size: 1rem;
+        a {
           color: #fff;
           font-size: 1rem;
         }

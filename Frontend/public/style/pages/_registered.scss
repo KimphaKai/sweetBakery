@@ -1,5 +1,8 @@
 .registered {
-  background-color: $background-color;
+  // background-color: $background-color;
+  background: url('/img/bg2.jpeg');
+  background-size: 100%;
+  background-position: left;
   display: flex;
   .sidebar {
     margin: 2rem 0 5rem 3rem;
@@ -57,7 +60,7 @@
           font-size: 1.3rem;
           margin: 0 1rem;
           color: rgb(145, 145, 145);
-          background-color: #fff;
+          background-color: white;
           &:hover {
             color: $text-color;
           }

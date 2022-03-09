@@ -65,7 +65,7 @@
 .classCard{
   display: flex;
   margin: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid $gray;
 }
 .classImg{
@@ -79,6 +79,7 @@
     aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
+    border-radius: 0.5rem;
   }
 }
 .content{
