@@ -1945,22 +1945,6 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-pack: center;
           justify-content: center;
   max-width: 100%;
-  position: relative;
-}
-
-.classDetail::before {
-  content: "";
-  background-image: url("/img/bg2.jpeg");
-  background-size: 100% 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.5;
-  z-index: -1;
 }
 
 .classDetail .heading {
