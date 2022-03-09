@@ -1,7 +1,7 @@
 .loginModal {
   position: fixed;
-  top: 18%;
-  left: 25%;
+  top: 10%;
+  left: 22%;
   border-radius: 1rem;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -10,9 +10,9 @@
 
   .container {
     background: #fff;
-    width: 750px;
+    width: 900px;
     // max-width: 100%;
-    min-height: 500px;
+    min-height: 600px;
     border-radius: 1rem;
     position: relative;
   }
@@ -31,7 +31,7 @@
     align-items: center;
     text-align: center;
     h1 {
-      margin: 2rem 2.5rem;
+      margin: 3rem 2.5rem;
     }
     span {
       font-size: 0.8rem;

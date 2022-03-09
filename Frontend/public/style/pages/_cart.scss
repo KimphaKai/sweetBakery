@@ -53,6 +53,9 @@
         &>img{
           margin: 0.5rem auto;
           width: 9rem;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+          object-position: center;
           border-radius: 1rem;
           padding: 3px;
         }

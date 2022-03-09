@@ -756,7 +756,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: -ms-flexbox;
   display: flex;
   margin: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid #ececec;
 }
 
@@ -774,6 +774,7 @@ input[type="search"]::-webkit-search-results-decoration {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  border-radius: 0.5rem;
 }
 
 .content {
@@ -1085,8 +1086,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal {
   position: fixed;
-  top: 18%;
-  left: 25%;
+  top: 10%;
+  left: 22%;
   border-radius: 1rem;
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -1098,8 +1099,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .loginModal .container {
   background: #fff;
-  width: 750px;
-  min-height: 500px;
+  width: 900px;
+  min-height: 600px;
   border-radius: 1rem;
   position: relative;
 }
@@ -1139,7 +1140,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .loginModal .divShit h1 {
-  margin: 2rem 2.5rem;
+  margin: 3rem 2.5rem;
 }
 
 .loginModal .divShit span {
@@ -2075,7 +2076,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .classDetail .classInfo img {
   height: 300px;
   max-width: 100%;
-  margin-right: 2rem;
+  margin-right: 3rem;
+  border-radius: 0.5rem;
 }
 
 .classDetail .classContent {
@@ -3725,6 +3727,11 @@ input[type="search"]::-webkit-search-results-decoration {
 .cart .container .tab td > img {
   margin: 0.5rem auto;
   width: 9rem;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 1rem;
   padding: 3px;
 }
