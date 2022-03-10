@@ -77,11 +77,11 @@
       <!-- ------訂購人資訊------ -->
       <div class="customerInfo">
         <h4>訂購人資訊</h4>
-        <div class="row">
+        <form class="row" action="./products">
           <div class="column">
             <div class="guestData">
               <label class="aaa" for="guestName">姓名</label>
-              <input class="formInput" type="text" id="guestName" name="guestName" placeholder="請輸入姓名" required />
+              <input class="formInput" type="text" id="guestName" name="guestName" placeholder="請輸入姓名" onkeydown="if(event.keyCode==13)event.keyCode=9">
             </div>
             <div class="guestData">
               <label for="guestEmail">電子信箱</label>
@@ -111,7 +111,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -190,12 +190,11 @@
 
 
           $(".submitBtn").on("click", function () {
-            if ($(".formInput").text() == "") {
+            if ($(".formInput").val() == "") {
               $(".submitBtn").prop("disable");
               Swal.fire({
                 icon: "warning",
                 title: "資料有缺哦~!",
-                text: "打好打滿",
               });
             } else {
               window.location = "/products";
