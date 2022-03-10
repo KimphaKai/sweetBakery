@@ -1997,13 +1997,6 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 
-.classDetailBG {
-  background-image: url("/img/backgroundTest2.jpg");
-  background-repeat: no-repeat;
-  background-position: right calc(100% - 14rem);
-  background-size: 100%;
-}
-
 .classDetail {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2136,6 +2129,7 @@ input[type="search"]::-webkit-search-results-decoration {
   text-align: center;
   max-width: 3rem;
   margin-bottom: 1rem;
+  background-color: transparent;
 }
 
 .classDetail .guest-input .guestBtn {
@@ -3489,7 +3483,6 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   padding: 1rem 2rem;
   background-color: #FF91AF;
-  color: #8d8d8d;
 }
 
 .checkout .orderHeader > div {
@@ -3503,7 +3496,11 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.3rem;
   margin: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid #8d8d8d;
+  border-bottom: 1px solid #ececec;
+}
+
+.checkout .orderItems:last-child {
+  border-bottom: none;
 }
 
 .checkout .orderItems .detail-wrapper {
@@ -3542,10 +3539,6 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex: 1;
           flex: 1;
   text-align: center;
-}
-
-.checkout .col > span {
-  color: #8d8d8d;
 }
 
 .checkout .totalPrice {

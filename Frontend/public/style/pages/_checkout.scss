@@ -31,7 +31,6 @@
     padding:1rem 2rem;
     // background: $background-color;
     background-color: $pink;
-    color: $darker-gray;
     > div{
       color: #fff;
     }
@@ -42,8 +41,10 @@
     font-size: 1.3rem;
     margin: 1rem ;
     padding: 1rem;
-    // background-color: aqua;
-    border-bottom:1px solid $darker-gray ;
+    border-bottom:1px solid $gray;
+    &:last-child{
+      border-bottom: none;
+    }
     .detail-wrapper{
       display: flex;      
       justify-content: space-between;
@@ -69,7 +70,7 @@
     flex: 1;
     text-align: center; 
     >span{
-      color: $darker-gray;
+      // color: $darker-gray;
     }
   }
   
