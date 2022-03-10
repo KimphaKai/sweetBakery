@@ -37,7 +37,7 @@
 
           <div class="userData">
             <label for="userName">姓名</label>
-            <input class="formInput" id="userName" name="userName" value="userName"></input>
+            <input class="formInput" id="userName" name="userName" value="<%= userName.userName %>"></input>
           </div>
 
           <div class="userData">
@@ -52,7 +52,7 @@
 
           <div class="userData">
             <label for="userBirthday">生日</label>
-            <input class="formInput" id="userBirthday" name="userBirthday" value="2000-03-18" disabled></input>
+            <input class="formInput" id="userBirthday" name="userBirthday" value="<%= moment(userBirthday.userBirthday).format('yy-MM-DD') %>" disabled></input>
           </div>
 
           <div class="buttons">

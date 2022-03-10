@@ -193,62 +193,62 @@
 
     // 會員註冊
     $('#signupBtn').on('click', function () {
-      console.log('ok');
-      let registerName = $("input[ name = memberRegisterName]").val();
-      let registerEmail = $("input[ name = memberRegisterEmail]").val();
-      let registerPassword = $("input[ name = memberRegisterPassword]").val();
-      let registerPhone = $("input[ name = memberRegisterPhone]").val();
-      let registerBirthday = $("input[ name = memberRegisterBirthday]").val();
+      let memberRegisterName = $("input[ name= memberRegisterName ]").val();
+      let memberRegisterEmail = $("input[ name = memberRegisterEmail ]").val();
+      let memberRegisterPassword = $("input[ name = memberRegisterPassword ]").val();
+      let memberRegisterCheckPassword = $("input[ name = memberRegisterCheckPassword ]").val();
+      let memberRegisterPhone = $("input[ name = memberRegisterPhone ]").val();
+      let memberRegisterBirthday = $("input[ name = memberRegisterBirthday ]").val();
+      console.log(memberRegisterBirthday);
       $.ajax({
-        url : "/login/memberRegister",
-        data : {
-          name : registerName,
-          email : registerEmail,
-          password : registerPassword,
-          phone : registerPhone,
-          birthday : registerBirthday
+        url: "/login/memberRegister",
+        data: {
+          name: memberRegisterName,
+          email: memberRegisterEmail,
+          password: memberRegisterPassword,
+          checkPassword: memberRegisterCheckPassword,
+          phone: memberRegisterPhone,
+          birthday: memberRegisterBirthday
         },
-          type : "post",
-          success: function (jsonData) {
-            switch (jsonData.data) {
-            case 0: //帳號不存在
+        type: "post",
+        success: function (jsonData) {
+          switch (jsonData.data) {
+            case 0: //帳號已存在
               Swal.fire({
                 position: 'top',
                 icon: 'info',
-                title: '帳號已存在，請登入',
+                title: '帳號已存在，請更換帳號',
                 showConfirmButton: false,
                 timer: 1700
               });
               break;
-            case 1: //密碼錯誤
+            case 1: //密碼比對錯誤
               Swal.fire({
                 position: 'top',
                 icon: 'warning',
-                title: '密碼錯誤，請再次輸入',
+                title: '確認密碼與密碼不相符，請再次輸入',
                 showConfirmButton: false,
                 timer: 1700
               });
               break;
-            case 2: //登入成功
+            case 2: //註冊成功
               Swal.fire({
                 position: 'top',
                 icon: 'success',
-                title: '帳號登入成功',
+                title: '帳號註冊成功',
                 showConfirmButton: false,
                 timer: 1700
               })
               setTimeout(() => {
-                window.location.href = "/user";
-                console.log(jsonData.user.email);
-                $('#userName').val(jsonData.user.email);
+                $(".container").removeClass("right-panel-active");
               }, 2000);
               break;
             default:
               console.log("狀態錯誤");
               break;
           }
-          } 
-        })
+        }
+      })
     })
 
     //會員登入
@@ -290,13 +290,8 @@
                 timer: 1700
               })
               setTimeout(() => {
-                window.location.href = "/user"; 
+                window.location.href = "/user";
               }, 2000);
-              $("input[ name= userName ]").append(jsonData.user.userName);
-              $("input[ name= userMail ]").append(jsonData.user.email);
-              $("input[ name= userPhone ]").append(jsonData.user.userPhone);
-              $("input[ name= userBirthday ]").append(jsonData.user.userBirthday);
-              // $('#userName').val(jsonData.user.email);
               break;
             default:
               console.log("狀態錯誤");
@@ -305,6 +300,7 @@
         }
       })
     });
+
     //變更密碼
     $('#changePasswordBtn').on('click', function () {
       Swal.fire({
@@ -315,6 +311,17 @@
         timer: 1700
       });
     })
+
+    //會員狀態
+    // $('.userIcon').mouseenter(function () {
+    //   $('.dropdown').css('display', 'block');
+    // })
+    // $('.userIcon').mouseleave(function(){
+    //   setTimeout(() => {
+    //     $('.dropdown').css('display', 'none');
+    //   }, 500);
+    // })
+
 
     // 會員資料變更
     $('#changeUserInfo').on('click', function () {

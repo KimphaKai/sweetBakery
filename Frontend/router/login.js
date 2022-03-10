@@ -1,6 +1,7 @@
 var express = require("express");
 var loginRouter = express.Router();
 var db = require("../db");
+var app = express();
 
 var bodyparser = require('body-parser');
 
@@ -9,43 +10,50 @@ var compareEmail = 0; // 比對email狀態 1 = true
 loginRouter.use(bodyparser.json()); // 使用bodyparder中介軟體，
 loginRouter.use(bodyparser.urlencoded({ extended: true }));
 
+var moment = require("moment");
+app.locals.moment = require("moment");
 
 //會員註冊
 loginRouter.post('/memberRegister', function (req, res) {
-    compareEmail = 0; //初始
-    console.log(req.body.name);
-    res.json({
-        valueTest: req.body.name,
-    });
+    compareEmail = 2; //初始
     db.query(`SELECT * FROM member`, function (err, rows) {  //抓資料
         rows.forEach(item => {
-            if (item.email == req.body.memberRegisterEmail) {
+            if (item.email == req.body.email) {
                 //帳號已存在
-                compareEmail = 1; //存在
+                compareEmail = 0;
             }
         })
         //將資料存入資料庫
-        if (compareEmail == 0) {
-            //可以註冊帳號
-            db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.body.memberRegisterEmail}', '${req.body.memberRegisterEmail}','${req.body.memberRegisterPassword}', '${req.body.memberRegisterName}','${req.body.memberRegisterPhone}','${req.body.memberRegisterBirthday}','','')`, (error, rows) => {
-                if (error) {
-                    console.log(error);
-                }
-                //如何alert 帳號註冊成功
-                //
-                //
-                console.log('帳號註冊成功');
-                req.session.username = req.body.memberRegisterEmail;  //存在session.username
-            })
-        } else {
-            //如何alert 出畫面顯示已存在
-            //
-            //
-            console.log('帳號已存在');
+        if (compareEmail == 2) {
+            //比對密碼
+            if (req.body.password == req.body.checkPassword) {
+                //可以註冊帳號
+                db.query(`INSERT INTO member (memberId, email, userPassword, userName,  userPhone, userBirthday, fb, google) VALUES ('${req.body.email}', '${req.body.email}','${req.body.password}', '${req.body.name}','${req.body.phone}','${req.body.birthday}','','')`, (error, rows) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                    console.log('帳號註冊成功');
+                    req.session.username = req.body.email;  //存在session.username
+                    //帳號註冊成功
+                    compareEmail = 2
+                    res.json({
+                        data: compareEmail
+                    })
+                })
+            } else {
+                //密碼比對錯誤
+                compareEmail = 1;
+                res.json({
+                    data: compareEmail
+                });
+            }
+        } else if (compareEmail == 0) {
+            //帳號已存在
+            res.json({
+                data: compareEmail
+            });
+            console.log('密碼不相符');
         };
-        setTimeout(() => {
-            res.redirect('/'); //跳轉頁面
-        }, 2000);
     });
 })
 
@@ -53,16 +61,14 @@ loginRouter.post('/memberRegister', function (req, res) {
 loginRouter.post('/memberLogin', function (req, res) {
     if (req.session.username) {  //判斷session暫存資料有無
         db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
+            userCondition = 2;
             if (error) {
                 console.log(error);
             } else {
-                res.render('user', {
-                    userAcount: rows,
-                    userName: rows,
-                    userEmail: rows,
-                    userPhone: rows,
-                    userBirthday: rows
-                });
+                res.json({
+                    user: rows[0],
+                    data: userCondition //帳號登入
+                })
             }
         });
     } else {
@@ -73,7 +79,7 @@ loginRouter.post('/memberLogin', function (req, res) {
                 if (req.body.email == item.email) {
                     if (req.body.password == item.userPassword) {
                         user = item;
-                        req.session.username = req.body.memberLoginEmail;   //取得前端資料，並寫入至後端session暫存
+                        req.session.username = req.body.email;   //取得前端資料，並寫入至後端session暫存
                         userCondition = 2;  //可登入   
                     } else {
                         userCondition = 1; //密碼錯誤
@@ -82,13 +88,6 @@ loginRouter.post('/memberLogin', function (req, res) {
             });
             if (userCondition == 2) { //登入成功
                 console.log('登入成功');
-                // res.render('user', {
-                //     userAcount: user,
-                //     userName: user,
-                //     userEmail: user,
-                //     userPhone: user,
-                //     userBirthday: user
-                // })
                 res.json({
                     user: user,
                     data: userCondition //帳號登入
