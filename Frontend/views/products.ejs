@@ -7,17 +7,17 @@
 
 <body>
   <%- include('partials/header') %>
-
     <section class="products">
+
       <div class="heading">
-        <h1 class="page-heading">
+        <div class="page-heading">
           <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
             <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
           </span>
-        </h1>
+        </div>
         <div class="breadcrumb">
           <ul>
-            <li><a href="/"><i class="fas fa-home"></i>首頁</a></li>
+            <li><a href="/">首頁</a></li>
             <li><a href="">
                 <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
               </a></li>
@@ -27,6 +27,7 @@
 
       <div class="products-container">
         <div class="productCategories">
+          <h1 class="subHeading">商品分類</h1>
           <ul class="sideMenu">
             <li><a class="category" href="/products">所有商品</a></li>
             <% productCategory.forEach((category, index)=> { %>
@@ -58,6 +59,7 @@
                   <% productPic.forEach(images=> { %>
                     <% if(product.productId==images.productId) { %>
                       <div class="card-image">
+                        <div class="imgLoader"></div>
                         <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
                       </div>
                       <% throw 'Break' %>
@@ -186,6 +188,10 @@
             $("#count").text(sessionStorage.getItem("cartKey"))
           });
           console.log(sessionStorage.getItem("cartKey"))
+
+          window.addEventListener("load", function () {
+            $(".imgLoader").css("display", "none")
+          })
 
         </script>
 

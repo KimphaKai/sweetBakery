@@ -1,12 +1,21 @@
 .products{
   .heading{
-    @include page-heading($text-color); 
+    @include page-heading($black); 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // justify-content: space-between;
+    background: url("https://www.kingarthurbaking.com/sites/default/files/inline-images/cupcakes.jpg"); 
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
     // width: 90%;
     width: 100%;
-    border-bottom: 1px solid $gray;
+    height: 300px;
+    // border-bottom: 1px solid rgb(164, 241, 164);
     margin-bottom: 1rem;
+    position: relative;
     h1{
       span{
         margin-left: 5rem;
@@ -31,21 +40,34 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-left: 10%;
+    margin-bottom: 2rem;
   }
 
   .productCategories{
     margin-top: 5%;
     position: relative;
+    .subHeading{
+      text-align: center; 
+      background-color: #ce5d70; 
+      color: white; 
+      // border-top-right-radius: 1rem;
+      // border-top-left-radius: 1rem;
+      border-radius: 1rem;
+      // margin-bottom: 1rem;
+      font-size: 1.5rem;
+      padding: 0.5rem 0;
+    }
     .sideMenu{
       // background-color: $pink;
-      background-color: $background-color;
+      background-color: #f8f8f8;
+      border-radius: 0.5rem;
       width: 11rem;
-      height: 400px;
+      height: 350px;
       // height: 530px;
       padding: 1rem;
-      line-height: 5rem;
+      line-height: 4rem;
       a{
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         // color: #fff;
         color: $text-color;
         margin-left: 1rem;

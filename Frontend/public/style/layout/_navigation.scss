@@ -58,9 +58,27 @@ header{
       position: relative;
       // font-size: 1.2rem;
       font-size: 1.5vw;
-      &:hover{
-        color: $darker-pink;
+      &::after{
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        bottom: -3px;
+        left: 0;
+        background: $pink;
+        border-radius: 1rem;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-in;
       }
+      &:hover{
+        // color: $darker-pink;
+         &:after{
+        transform: scaleX(1);
+        transform-origin: bottom left;
+        }
+      }
+      
     }
   }
       
