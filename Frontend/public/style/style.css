@@ -2241,7 +2241,7 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: url("https://www.kingarthurbaking.com/sites/default/files/inline-images/cupcakes.jpg");
+  background: url("/img/product-bg.jpg");
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
