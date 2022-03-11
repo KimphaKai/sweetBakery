@@ -29,14 +29,13 @@
 
   .product-content{
     width: 100%;
-    // border: 1px solid red;
   }
 
   .product-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-bottom: 2rem;
   }
 
@@ -58,6 +57,7 @@
       width: 11rem;
       height: 350px;
       padding: 1rem;
+      margin-top: 1rem;
       line-height: 4rem;
       a{
         font-size: 1.5rem;
