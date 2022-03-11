@@ -152,27 +152,27 @@ header .icons svg:hover {
   fill: #FF91AF;
 }
 
-header .icons .userIcon {
+header .userIcon {
   position: relative;
 }
 
-header .icons .userIcon:hover {
+header .userIcon:hover {
   display: block;
 }
 
-header .icons .dropdown {
+header .dropdown {
   display: none;
 }
 
-header .icons .dropdown .arrow-up {
+header .dropdown .arrow-up {
   position: absolute;
-  top: 65%;
-  right: 7.8%;
+  top: 70%;
+  right: 5%;
   width: 0;
   height: 0;
 }
 
-header .icons .dropdown ul {
+header .dropdown ul {
   position: absolute;
   top: 70%;
   right: 3%;
@@ -188,20 +188,20 @@ header .icons .dropdown ul {
   border-radius: 0.5rem;
 }
 
-header .icons .dropdown ul a {
+header .dropdown ul a {
   color: #a54c4c;
 }
 
-header .icons .dropdown ul a:hover {
+header .dropdown ul a:hover {
   font-weight: bold;
 }
 
-header .icons .cartIcon {
+header .cartIcon {
   display: inline-block;
   position: relative;
 }
 
-header .icons .cartIcon .cartItems {
+header .cartIcon .cartItems {
   position: absolute;
   top: -35%;
   right: -40%;
@@ -929,7 +929,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .addToCartBtn {
-  border: 2px solid #FF91AF;
+  border: 2px solid #ff90a0;
   background-color: transparent;
   color: #ff90a0;
   cursor: pointer;
@@ -1498,7 +1498,7 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 2rem;
   font-size: 2rem;
   text-align: center;
-  color: #FF91AF;
+  color: #ff90a0;
   cursor: pointer;
 }
 
@@ -1596,7 +1596,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .about .heading .page-heading {
-  color: #da6a6a;
+  color: #ce5d70;
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 1rem;
@@ -1920,7 +1920,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .heading .page-heading {
-  color: #da6a6a;
+  color: #ce5d70;
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 0.8rem;
@@ -2262,7 +2262,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .products .heading .page-heading {
-  color: #da6a6a;
+  color: #ce5d70;
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 1rem;
@@ -2340,10 +2340,33 @@ input[type="search"]::-webkit-search-results-decoration {
   font-size: 1.5rem;
   color: #a54c4c;
   margin-left: 1rem;
+  position: relative;
 }
 
-.products .productCategories .sideMenu a:hover {
-  font-weight: 700;
+.products .productCategories .sideMenu a::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+  background: #FF91AF;
+  border-radius: 1rem;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+}
+
+.products .productCategories .sideMenu a:hover:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 .products .sort-container {

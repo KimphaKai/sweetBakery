@@ -5,7 +5,6 @@ header{
   z-index: 2;
   background: #fff;
   width: 100%;
-  // border-bottom: 1px solid $gray;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   .burgerMenu{
     position: absolute;
@@ -72,7 +71,6 @@ header{
         transition: transform 0.3s ease-in;
       }
       &:hover{
-        // color: $darker-pink;
          &:after{
         transform: scaleX(1);
         transform-origin: bottom left;
@@ -90,7 +88,6 @@ header{
     .searchForm{
       --size: 2rem;
       display: flex;
-      // border-radius: 100vh;
       height: var(--size);
     }
 
@@ -119,65 +116,65 @@ header{
     display: flex;
     svg{
       &:hover{
-       stroke: $pink;
-       fill: $pink;
-      }
-     }
-     .userIcon{
-       position: relative;
-       &:hover{
-         display: block;
-       }
-     }
-     .dropdown{
-      //  position: absolute;
-      display: none;
-      .arrow-up {
-        position: absolute;
-        top: 65%;
-        right: 7.8%;
-        width: 0; 
-        height: 0; 
-      }
-      ul{
-        position: absolute;
-        top: 70%;
-        right: 3%;
-        background-color: $gray;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        right: 5%;
-        font-size: 1.1rem;
-        padding: 0 0.5rem;
-        width: 7rem;
-        height: 8rem;
-        line-height: 2.5rem;
-        border-radius: 0.5rem;
-        a{
-          color: $text-color;
-          &:hover{
-            font-weight: bold;
-          }
-        }
-      }
-  
-    }
-    .cartIcon{
-      display: inline-block;
-      position: relative;
-      .cartItems{
-        position: absolute;
-        top: -35%;
-        right: -40%;
-        background-color: $pink;
-        color: #fff;
-        font-size: 0.8rem;
-        border-radius: 100vw;
-        width: 1.3rem;
-        height: 1.3rem;
-        text-align: center;
+        stroke: $pink;
+        fill: $pink;
       }
     }
   }
+  .userIcon{
+    position: relative;
+    &:hover{
+      display: block;
+    }
+  }
+  .dropdown{
+  display: none;
+  .arrow-up {
+    position: absolute;
+    top: 70%;
+    right: 5%;
+    width: 0; 
+    height: 0; 
+  }
+  ul{
+    position: absolute;
+    top: 70%;
+    right: 3%;
+    background-color: $gray;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    right: 5%;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    width: 7rem;
+    height: 8rem;
+    line-height: 2.5rem;
+    border-radius: 0.5rem;
+    a{
+      color: $text-color;
+      &:hover{
+        font-weight: bold;
+      }
+    }
+  }
+
+}
+.cartIcon{
+  display: inline-block;
+  position: relative;
+  .cartItems{
+    position: absolute;
+    top: -35%;
+    right: -40%;
+    background-color: $pink;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 100vw;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+  }
+}
+
 
   @media screen and (max-width: 950px) {
     padding: 1rem 2rem 1rem 5rem;

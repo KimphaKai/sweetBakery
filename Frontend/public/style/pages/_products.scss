@@ -13,7 +13,7 @@
     margin-bottom: 1rem;
     position: relative;
     .page-heading{
-      color: #da6a6a;
+      color: #ce5d70; 
       font-weight: 700;
       font-size: 1.8rem;
       letter-spacing: 1rem;
@@ -61,12 +61,28 @@
       line-height: 4rem;
       a{
         font-size: 1.5rem;
-        // color: #fff;
         color: $text-color;
         margin-left: 1rem;
+        position: relative;
+        &::after{
+          content: "";
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          bottom: -5px;
+          left: 0;
+          background: $pink;
+          border-radius: 1rem;
+          transform: scaleX(0);
+          transform-origin: bottom right;
+          transition: transform 0.5s ease-in;
+        }
         &:hover{
           // border-bottom: 2px solid $pink;
-          font-weight: 700;
+          &:after{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+            }
         }
       }
      
