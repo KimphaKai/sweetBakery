@@ -8,7 +8,6 @@
 <body>
   <%- include('partials/header') %>
     <section class="products">
-
       <div class="heading">
         <div class="page-heading">
           <h1 data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
@@ -128,7 +127,6 @@
         <script>
 
           $('.product-grid').on('click', '.fa-shopping-cart', function (e) {
-            $("#productNum").val(1)
             e.preventDefault();
             $(this).data("pid");
             $('.modal-container').show();
@@ -152,9 +150,13 @@
 
           });
 
+          $(".addToCartBtn").on("click", function () {
+            $(".modal-container").hide("200ms")
+          });
           // select篩選
+
           $('#sortOption').on('change', function () {
-            let categoryId = $('.page-heading>span').data('categoryid');
+            let categoryId = $('.page-heading>h1').data('categoryid');
             let url = `/products/sortProduct/${categoryId}`;
             $('#sortData').prop('action', url)
             // console.log(categoryId)
@@ -168,7 +170,6 @@
             sessionStorage.setItem('selectOption', 0);
             $('#sortOption').val(sessionStorage.getItem('selectOption'));
           })
-
 
           if (!sessionStorage.getItem("cartKey")) {
             $("#count").text(0)
