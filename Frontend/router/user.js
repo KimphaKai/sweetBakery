@@ -12,8 +12,11 @@ app.locals.moment = require("moment");
 
 //讀取頁面
 userRouter.get("/", function (req, res) {
+  console.log('-------------------');
+  console.log(req.session.username);
   if (req.session.username) { //如果是登入的狀態的話
     db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
+      console.log(rows[0]);
       if (error) {
         console.log(error);
       } else {
@@ -39,12 +42,12 @@ userRouter.get("/", function (req, res) {
 
 //修改個人資料
 userRouter.post('/changeUserInfoContainer', function (req, res) {
-  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       throw error;
     }
   });
-  db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       throw error;
     } else {

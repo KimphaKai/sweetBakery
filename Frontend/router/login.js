@@ -127,14 +127,14 @@ loginRouter.post('/memberForgetPassword'), function (req, res) {
 }
 
 // 獲取主頁
-loginRouter.get('/', function (req, res) {
+// loginRouter.get('/', function (req, res) {
 
-    if (req.session.username) { //判斷session 狀態，如果有效，則返回主頁，否則轉到登入頁面
-        res.render('user', { username: req.session.username });
-    } else {
-        res.redirect('/');
-    }
-})
+//     if (req.session.username) { //判斷session 狀態，如果有效，則返回主頁，否則轉到登入頁面
+//         res.render('user', { username: req.session.username });
+//     } else {
+//         res.redirect('/');
+//     }
+// })
 // 退出
 loginRouter.post('/logout', function (req, res) {
     req.session.username = null; // 刪除session
