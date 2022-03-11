@@ -69,7 +69,7 @@
           </div>
           <div class="totalPrice">
             <span>總金額:</span>
-            <span>$</span><span>1800</span>
+            <span>$</span><span>0</span>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
             <div class="guestData">
               <label class="aaa" for="guestName">姓名</label>
               <input class="formInput" type="text" id="guestName" name="guestName" placeholder="請輸入姓名"
-                onkeydown="if(event.keyCode==13)event.keyCode=9">
+                onkeydown="if(event.keyCode==13)event.keyCode=9" required />
             </div>
             <div class="guestData">
               <label for="guestEmail">電子信箱</label>
@@ -192,11 +192,7 @@
 
 
           $(".submitBtn").on("click", function () {
-<<<<<<< HEAD
-            if ($(".guestData").text() == "") {
-=======
             if ($(".formInput").val() == "") {
->>>>>>> e949fa2068aeaee1ba4c6c93be868540a7b83953
               $(".submitBtn").prop("disable");
               Swal.fire({
                 icon: "warning",
