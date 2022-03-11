@@ -12,8 +12,6 @@ app.locals.moment = require("moment");
 
 //讀取頁面
 userRouter.get("/", function (req, res) {
-  console.log('-------------------');
-  console.log(req.session.username);
   if (req.session.username) { //如果是登入的狀態的話
     db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
       console.log(rows[0]);
