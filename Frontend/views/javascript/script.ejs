@@ -103,8 +103,12 @@
       console.log("signin")
     })
 
-    $(".userIcon").on("click", function () {
-      $(".loginModal").show()
+    // $(".userIcon").on("click", function () {
+    //   $(".loginModal").show()
+    // })
+
+    $('.dropdown-login').on('click', function () {
+      $(".loginModal").show();
     })
 
     //Close login/forget pw modal event
@@ -260,8 +264,6 @@
         data: { email: loginEmail, password: loginPassword },
         type: "post",
         success: function (jsonData) {
-          console.log(jsonData.user);
-          console.log(jsonData.data);
           switch (jsonData.data) {
             case 0: //帳號不存在
               Swal.fire({
@@ -290,7 +292,7 @@
                 timer: 1700
               })
               setTimeout(() => {
-                window.location.href = "/user";
+                window.location.href = "/";
               }, 2000);
               break;
             default:
@@ -313,15 +315,42 @@
     })
 
     //會員狀態
-    // $('.userIcon').mouseenter(function () {
-    //   $('.dropdown').css('display', 'block');
-    // })
-    // $('.userIcon').mouseleave(function(){
-    //   setTimeout(() => {
-    //     $('.dropdown').css('display', 'none');
-    //   }, 500);
-    // })
+    $('.icons').mouseenter(function () {
+      $.ajax({
+        url: "/login/userCurrentCondition",
+        data: {},
+        type: "post",
+        success: function (jsonData) {
+          console.log(jsonData.userCondition);
+          if (jsonData.userCondition) {
+            $('.dropdown').css('display', 'block');
+            console.log('1');
+          } else {
+            $('.dropdown-login').css('display', 'block');
+            console.log('0');
+          }
+        }
+      })
+    })
+    $('.icons').mouseleave(function () {
+      $('.dropdown').css('display', 'none');
+      $('.dropdown-login').css('display', 'none');
+    })
 
+    //會員登出
+    $('#userLogOut').on('click', function () {
+      $.ajax({
+        url: '/login/logout',
+        data: {},
+        type: "post",
+        success: function (jsonData) {
+          //刪除會員username
+          console.log(jsonData.data);
+
+          window.location.href = "/";
+        }
+      })
+    })
 
     // 會員資料變更
     $('#changeUserInfo').on('click', function () {

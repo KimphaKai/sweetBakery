@@ -13,6 +13,14 @@ loginRouter.use(bodyparser.urlencoded({ extended: true }));
 var moment = require("moment");
 app.locals.moment = require("moment");
 
+//會員狀態
+loginRouter.post('/userCurrentCondition', function(req, res){
+    console.log(req.session.username);
+    res.json({
+        userCondition : req.session.username
+    })
+})
+
 //會員註冊
 loginRouter.post('/memberRegister', function (req, res) {
     compareEmail = 2; //初始
@@ -128,9 +136,11 @@ loginRouter.get('/', function (req, res) {
     }
 })
 // 退出
-loginRouter.get('/logout', function (req, res) {
-    req.session.memberLoginEmail = null; // 刪除session
-    res.redirect('login');
+loginRouter.post('/logout', function (req, res) {
+    req.session.username = null; // 刪除session
+    res.json({
+        data: req.session.memberLoginEmail
+    });
 });
 
 

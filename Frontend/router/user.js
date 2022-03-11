@@ -73,9 +73,9 @@ userRouter.post('/changeUserInfoContainer', function (req, res) {
 
 //更改密碼
 userRouter.post('/passwordUpdate', function (req, res) {
-  db.query(`SELECT * FROM member WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
-      db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`SELECT * FROM member WHERE email = "${req.body.userName}"`, function (error, rows) {
+    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "${req.body.userName}"`, function (error, rows) {
+      db.query(`SELECT * FROM member WHERE memberId = "${req.body.userName}"`, function (error, rows) {
         let user = rows[0];
         setTimeout(() => {
           // res.render('user', {
