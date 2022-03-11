@@ -14,6 +14,7 @@ app.locals.moment = require("moment");
 userRouter.get("/", function (req, res) {
   if (req.session.username) { //如果是登入的狀態的話
     db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
+      console.log(rows[0]);
       if (error) {
         console.log(error);
       } else {
@@ -39,12 +40,12 @@ userRouter.get("/", function (req, res) {
 
 //修改個人資料
 userRouter.post('/changeUserInfoContainer', function (req, res) {
-  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`UPDATE member SET userName="${req.body.userName}", userPhone="${req.body.userPhone}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       throw error;
     }
   });
-  db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`SELECT * FROM member WHERE memberId = "${req.session.username}"`, function (error, rows) {
     if (error) {
       throw error;
     } else {
@@ -73,9 +74,9 @@ userRouter.post('/changeUserInfoContainer', function (req, res) {
 
 //更改密碼
 userRouter.post('/passwordUpdate', function (req, res) {
-  db.query(`SELECT * FROM member WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "sweetbakery@gmail.com"`, function (error, rows) {
-      db.query(`SELECT * FROM member WHERE memberId = "sweetbakery@gmail.com"`, function (error, rows) {
+  db.query(`SELECT * FROM member WHERE email = "${req.body.userName}"`, function (error, rows) {
+    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "${req.body.userName}"`, function (error, rows) {
+      db.query(`SELECT * FROM member WHERE memberId = "${req.body.userName}"`, function (error, rows) {
         let user = rows[0];
         setTimeout(() => {
           // res.render('user', {

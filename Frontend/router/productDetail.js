@@ -23,4 +23,12 @@ productDetailRouter.get("/", function (req, res) {
     })
 })
 
+//點選購物車按鈕
+productDetailRouter.post('/cartClick', function (req, res) {
+  res.json({
+    username : req.session.username
+  })
+})
+
+
 module.exports = productDetailRouter;
