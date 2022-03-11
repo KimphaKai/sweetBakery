@@ -202,6 +202,12 @@ productsRouter.get("/sortProduct/:categoryId", function (req, res) {
 
 })
 
+//點選購物車按鈕
+productsRouter.post('/cartClick', function (req, res) {
+  res.json({
+    username : req.session.username
+  })
+})
 
 
 module.exports = productsRouter;

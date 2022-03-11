@@ -11,9 +11,9 @@
 
       <div class="heading">
         <div class="page-heading">
-          <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
+          <h1 data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
             <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
-          </span>
+          </h1>
         </div>
         <div class="breadcrumb">
           <ul>
@@ -176,18 +176,33 @@
             $("#count").text(sessionStorage.getItem("cartKey"))
           }
           $(".addToCartBtn").on("click", function () {
-            $(".modal-container").hide("fade")
-            var value = parseInt($("#productNum").val());
-            if (sessionStorage.getItem("cartKey") == null) {
-              sessionStorage.setItem("cartKey", value)
-            } else {
-              var data = parseInt(sessionStorage.getItem("cartKey"))
-              data += value;
-              sessionStorage.setItem("cartKey", data)
-            }
-            $("#count").text(sessionStorage.getItem("cartKey"))
-          });
-          console.log(sessionStorage.getItem("cartKey"))
+            $.ajax({
+              url: "/products/cartClick",
+              data: {},
+              type: 'post',
+              success: function (jsonData) {
+                if (jsonData.username) {
+                  $(".modal-container").hide("fade")
+                  var value = parseInt($("#productNum").val());
+                  if (sessionStorage.getItem("cartKey") == null) {
+                    sessionStorage.setItem("cartKey", value)
+                  } else {
+                    var data = parseInt(sessionStorage.getItem("cartKey"))
+                    data += value;
+                    sessionStorage.setItem("cartKey", data)
+                  }
+                  $("#count").text(sessionStorage.getItem("cartKey"))
+                  console.log(sessionStorage.getItem("cartKey"));
+                } else {
+                  $('.modal-container').hide();
+                  $(".loginModal").show()
+                }
+              }
+            });
+          })
+
+
+
 
           window.addEventListener("load", function () {
             $(".imgLoader").css("display", "none")
