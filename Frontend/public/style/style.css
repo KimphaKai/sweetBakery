@@ -1581,23 +1581,31 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .about .heading {
   width: 100%;
+  height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-bottom: 1px solid #ececec;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url("/img/about-bg.jpg");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .about .heading .page-heading {
-  color: #a54c4c;
-  font-size: 2.3rem;
-  margin-top: 2rem;
-}
-
-.about .heading h1 span {
-  margin-left: 5rem;
+  color: #da6a6a;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1rem;
 }
 
 .about .heading .breadcrumb {
@@ -1608,7 +1616,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .about .heading .breadcrumb ul {
@@ -1727,7 +1735,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .form .heading .breadcrumb ul {
@@ -1896,28 +1904,35 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .classes .heading {
-  margin-top: 1rem;
+  background: url("/img/class/classroom1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
+  height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-bottom: 1px solid #ececec;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .classes .heading .page-heading {
-  color: #a54c4c;
-  font-size: 2.3rem;
-  margin-top: 2rem;
+  color: #da6a6a;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.8rem;
 }
 
-.classes .heading h1 span:first-child {
-  margin-left: 5rem;
-}
-
-.classes .heading h1 img {
+.classes .heading .page-heading img {
   display: inline-block;
   width: 3rem;
 }
@@ -1930,7 +1945,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .classes .heading .breadcrumb ul {
@@ -1979,6 +1994,7 @@ input[type="search"]::-webkit-search-results-decoration {
   background: transparent;
   width: 15rem;
   border-radius: 2rem;
+  font-size: 1.05rem;
 }
 
 .classes .search .search-input:focus {
@@ -2076,7 +2092,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .classDetail .heading .breadcrumb ul {
@@ -2241,24 +2257,21 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: url("https://www.kingarthurbaking.com/sites/default/files/inline-images/cupcakes.jpg");
-  background-position: bottom;
+  background: url("/img/product-bg.jpg");
+  background-position: bottom right;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 300px;
+  height: 280px;
   margin-bottom: 1rem;
   position: relative;
 }
 
 .products .heading .page-heading {
-  color: #4d4d4d;
-  font-size: 2.3rem;
-  margin-top: 2rem;
-}
-
-.products .heading h1 span {
-  margin-left: 5rem;
+  color: #da6a6a;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1rem;
 }
 
 .products .heading .breadcrumb {
@@ -2269,7 +2282,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .products .heading .breadcrumb ul {
@@ -2284,7 +2297,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .products .products-container {
-  margin: 0 5%;
+  margin: 0 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2390,7 +2403,7 @@ input[type="search"]::-webkit-search-results-decoration {
       -ms-flex-align: end;
           align-items: end;
   margin: 0.3rem 3rem;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
 .productDetail .heading .breadcrumb ul {

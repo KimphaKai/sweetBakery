@@ -11,9 +11,9 @@
 
       <div class="heading">
         <div class="page-heading">
-          <span data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
+          <h1 data-categoryid="<%= (categoryId[0].categoryId) ? categoryId[0].categoryId : '0' %>">
             <%= (categoryId[0].categoryName) ? categoryId[0].categoryName : "所有商品" %>
-          </span>
+          </h1>
         </div>
         <div class="breadcrumb">
           <ul>
@@ -188,6 +188,8 @@
             $("#count").text(sessionStorage.getItem("cartKey"))
           });
           console.log(sessionStorage.getItem("cartKey"))
+
+
 
           window.addEventListener("load", function () {
             $(".imgLoader").css("display", "none")

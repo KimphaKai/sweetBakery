@@ -1,19 +1,24 @@
 .classes{
   overflow: hidden;
   .heading{
-    @include page-heading($text-color);
+    // @include page-heading($text-color);
+    background: url('/img/class/classroom1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     // width: 85%;
     // margin: 2rem 10%;
-    margin-top: 1rem;
-    // margin: 1rem auto;
     width: 100%;
+    height: 280px;
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid $gray;
-    h1{
-      span:first-child{
-        margin-left: 5rem;
-      }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .page-heading{
+      color: #da6a6a;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.8rem;
       img{
         display: inline-block;
         width: 3rem;
@@ -47,6 +52,7 @@
       background: transparent;
       width: 15rem;
       border-radius: 2rem;
+      font-size: 1.05rem;
       &:focus{
         border: 2px solid $pink ;
       }
