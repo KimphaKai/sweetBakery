@@ -177,11 +177,11 @@
           }
           $(".addToCartBtn").on("click", function () {
             $.ajax({
-              url:"/products/cartClick",
-              data:{},
-              type:'post',
+              url: "/products/cartClick",
+              data: {},
+              type: 'post',
               success: function (jsonData) {
-                if(jsonData.username){
+                if (jsonData.username) {
                   $(".modal-container").hide("fade")
                   var value = parseInt($("#productNum").val());
                   if (sessionStorage.getItem("cartKey") == null) {
@@ -193,14 +193,14 @@
                   }
                   $("#count").text(sessionStorage.getItem("cartKey"))
                   console.log(sessionStorage.getItem("cartKey"));
-                }else{
+                } else {
                   $('.modal-container').hide();
                   $(".loginModal").show()
                 }
-                }
-              });
-            })
-            
+              }
+            });
+          })
+
 
 
 
