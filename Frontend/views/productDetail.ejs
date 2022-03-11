@@ -112,17 +112,60 @@
           }
 
           $(".addToCartBtn").on("click", function () {
-            var value = parseInt($("#productNum").val());
-            if (sessionStorage.getItem("cartKey") == null) {
-              sessionStorage.setItem("cartKey", value)
-            } else {
-              var data = parseInt(sessionStorage.getItem("cartKey"))
-              data += value;
-              sessionStorage.setItem("cartKey", data)
-            }
-            $("#count").text(sessionStorage.getItem("cartKey"))
+            $.ajax({
+              url:"/productDetail/cartClick",
+              data:{},
+              type:'post',
+              success: function (jsonData) {
+                if(jsonData.username){
+                  $(".modal-container").hide("fade")
+                  var value = parseInt($("#productNum").val());
+                  if (sessionStorage.getItem("cartKey") == null) {
+                    sessionStorage.setItem("cartKey", value)
+                  } else {
+                    var data = parseInt(sessionStorage.getItem("cartKey"))
+                    data += value;
+                    sessionStorage.setItem("cartKey", data)
+                  }
+                  $("#count").text(sessionStorage.getItem("cartKey"))
+                  console.log(sessionStorage.getItem("cartKey"));
+                  }else{
+                    $('.modal-container').hide();
+                    $(".loginModal").show()
+                  }
+                }
+            })
           });
-          console.log(sessionStorage.getItem("cartKey"))
+          $(".buyBtn").on("click", function () {
+            $.ajax({
+              url:"/productDetail/cartClick",
+              data:{},
+              type:'post',
+              success: function (jsonData) {
+                if(jsonData.username){
+                  $(".modal-container").hide("fade")
+                  var value = parseInt($("#productNum").val());
+                  if (sessionStorage.getItem("cartKey") == null) {
+                    sessionStorage.setItem("cartKey", value)
+                  } else {
+                    var data = parseInt(sessionStorage.getItem("cartKey"))
+                    data += value;
+                    sessionStorage.setItem("cartKey", data)
+                  }
+                  $("#count").text(sessionStorage.getItem("cartKey"))
+                  console.log(sessionStorage.getItem("cartKey"));
+                  }else{
+                    $('.modal-container').hide();
+                    $(".loginModal").show()
+                  }
+                }
+            })
+          });
+
+
+
+
+
         </script>
 
 </body>
