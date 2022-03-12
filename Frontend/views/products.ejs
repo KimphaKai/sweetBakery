@@ -178,9 +178,14 @@
 
 
           $(".addToCartBtn").on("click", function () {
+            let productNum = $('#productNum').val();
+            let productName = $('.productName a').text();
             $.ajax({
               url: "/products/cartClick",
-              data: {},
+              data: {
+                productName: productName,
+                productNum: productNum
+              },
               type: 'post',
               success: function (jsonData) {
                 if (jsonData.username) {

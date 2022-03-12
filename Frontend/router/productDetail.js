@@ -29,17 +29,22 @@ productDetailRouter.get("/", function (req, res) {
 })
 
 //點選購物車按鈕
-productDetailRouter.post("/cartClick", function (req, res) {
-  console.log(req.body.productId);
+productDetailRouter.post("/cartDetailClick", function (req, res) {
+  console.log(req.body.productIitle);
   console.log(req.body.productNum);
-
-  db.query(`INSERT INTO cartlist ("memberId", "productId", "productNum") VALUES ('${req.session.username}', '${req.body.productId}', '${req.body.productNum}');`, function (error, rows) {
-    if (error) {
+  db.query(`SELECT productId FROM product WHERE productTitle ="${req.body.productIitle}"`, function (error, rows) {
+    if(error){
       console.log(error);
+    }else{
+      db.query(`INSERT INTO cartlist (memberId, productId, productNum) VALUES ('${req.session.username}', ${rows[0].productId}, ${req.body.productNum});`, function (error, rows) {
+        if (error) {
+          console.log(error);
+        }
+      })
+      res.json({
+        username: req.session.username
+      })
     }
-  })
-  res.json({
-    username: req.session.username
   })
 })
 

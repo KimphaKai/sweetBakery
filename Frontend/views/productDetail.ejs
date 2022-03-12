@@ -113,12 +113,12 @@
 
           // 判斷是否有登入會員，如果沒有 會跳出登入畫面。 huei /Kai
           $(".addToCartBtn").on("click", function () {
-            let productNum = $('.productNum').val();
-            let productId = $('.productTitle').val();
+            let productNum = $('#productNum').val();
+            let productIitle = $('.productTitle').html();
             $.ajax({
-              url: "/productDetail/cartClick",
+              url: "/productDetail/cartDetailClick",
               data: {
-                productId: productId,
+                productIitle: productIitle,
                 productNum: productNum
               },
               type: 'post',
@@ -150,6 +150,7 @@
               }
             })
           });
+
           $(".buyBtn").on("click", function () {
             $.ajax({
               url: "/productDetail/cartClick",
