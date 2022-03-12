@@ -3088,7 +3088,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .userOrders .content-wrapper .orderItems .orderThumbnail {
-  width: 13%;
+  width: 6rem;
 }
 
 .userOrders .content-wrapper .orderItems .orderThumbnail img {
@@ -3572,11 +3572,6 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   font-size: 1.3rem;
   padding: 1rem 2rem;
-  background-color: #FF91AF;
-}
-
-.checkout .orderHeader > div {
-  color: #fff;
 }
 
 .checkout .orderItems {

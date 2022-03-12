@@ -53,11 +53,11 @@
             </div>
             <div class="orderDate">
               <span>訂購日期:</span>
-              <span>02/24/2022</span>
+              <span>03/12/2022</span>
             </div>
             <div class="pickupDate">
               <span>取貨日期:</span>
-              <span>02/27/2022</span>
+              <span>03/15/2022</span>
             </div>
             <div class="status">
               <span>狀態:</span>
@@ -77,37 +77,48 @@
           <% productInformation.forEach(proInform=> { %>
             <div class="orderItems">
               <div class="orderThumbnail">
-                <% productPic .forEach(images=> { %> <%
-                  if(proInform.productId==images.productId){ %> <% if
-                  ((images.productImgId % 3)==1) { %>
-                <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
-                <% } %> <% } %> <% }) %>
+                <% productPic .forEach(images=> { %> <% if(proInform.productId==images.productId){ %>
+                    <% if ((images.productImgId % 3)==1) { %>
+                      <a href="/productDetail"><img src="<%= images.imgPath %>"></a>
+                      <% } %>
+                        <% } %>
+                          <% }) %>
               </div>
               <div class="detail-wrapper">
                 <div class="col itemTitle">
-                  <span><%= proInform.productTitle %></span>
+                  <span>
+                    <%= proInform.productTitle %>
+                  </span>
                 </div>
                 <div class="col itemSize">
-                  <span><%= proInform.sizeName %></span>
+                  <span>
+                    <%= proInform.sizeName %>
+                  </span>
                 </div>
                 <div class="col itemPrice">
                   <span>$</span>
-                  <span><%= proInform.productPrice %></span>
+                  <span>
+                    <%= proInform.productPrice %>
+                  </span>
                 </div>
                 <div class="col itemQty">
-                  <span><%= proInform.productNum %></span>
+                  <span>
+                    <%= proInform.productNum %>
+                  </span>
                 </div>
                 <div class="col subtotal">
-                  <span><%= proInform.subTotal %></span>
+                  <span>
+                    <%= proInform.subTotal %>
+                  </span>
                 </div>
               </div>
             </div>
-          <% }) %>
-          <div class="divider"></div>
-          <div class="totalPrice">
-            <span>總金額:</span>
-            <span class="sum">600</span>
-          </div>
+            <% }) %>
+              <div class="divider"></div>
+              <div class="totalPrice">
+                <span>總金額:</span>
+                <span class="sum">600</span>
+              </div>
         </div>
 
 
@@ -201,16 +212,16 @@
       <!-- Javascript -->
       <%- include('javascript/script') %>
 
-      <script>
-        $(function() {
-          let money = 0; //計算總價錢
-          $(".subtotal").each(function (index) {
+        <script>
+          $(function () {
+            let money = 0; //計算總價錢
+            $(".subtotal").each(function (index) {
               money += parseInt($(".subtotal").eq(index).text().substr(0));
               // console.log(money);
-          })
-          $(".sum").text(money);
-        });
-      </script>
+            })
+            $(".sum").text(money);
+          });
+        </script>
 </body>
 
 </html>
