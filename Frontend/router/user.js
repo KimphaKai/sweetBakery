@@ -77,7 +77,7 @@ userRouter.post('/changeUserInfoContainer', function (req, res) {
 //更改密碼
 userRouter.post('/passwordUpdate', function (req, res) {
   db.query(`SELECT * FROM member WHERE email = "${req.body.userName}"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "${req.body.userName}"`, function (error, rows) {
+    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "${req.session.username}"`, function (error, rows) {
       db.query(`SELECT * FROM member WHERE memberId = "${req.body.userName}"`, function (error, rows) {
         let user = rows[0];
         setTimeout(() => {
@@ -93,6 +93,7 @@ userRouter.post('/passwordUpdate', function (req, res) {
           //   // 生日
           //   userBirthday: user
           // })
+          req.session.username = null;
           res.render('index');
         }, 2000);
       })

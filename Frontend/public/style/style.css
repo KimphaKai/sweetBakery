@@ -3556,8 +3556,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: flex;
   width: 100%;
   margin: 1rem auto;
-  border: 1px solid #FF91AF;
-  border-radius: 1rem;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.5rem;
   overflow: hidden;
 }
 
@@ -3626,31 +3627,40 @@ input[type="search"]::-webkit-search-results-decoration {
   text-align: center;
 }
 
+.checkout .col > span {
+  color: #8d8d8d;
+}
+
 .checkout .totalPrice {
   text-align: end;
-  padding-right: 6.5%;
+  padding: 1rem;
   font-size: 1.3rem;
   color: #a54c4c;
   font-weight: 700;
-  border-top: 1px solid #FF91AF;
+  border-top: 3.5px solid #ececec;
+}
+
+.checkout .totalPrice .totPrice {
+  margin-right: 3rem;
 }
 
 .checkout .customerInfo {
   font-size: 1.3rem;
   margin-top: 2rem;
-  border: 1px solid #FF91AF;
-  border-radius: 1rem;
+  border: 1px solid #ececec;
+  border-radius: 0.5rem;
   overflow: hidden;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .checkout .customerInfo h4 {
-  background-color: #FF91AF;
-  border-bottom: 1px solid #FF91AF;
-  color: #fff;
+  border-bottom: 1px solid #ececec;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: 3px;
+  background-color: #ececec;
 }
 
 .checkout .customerInfo .row {

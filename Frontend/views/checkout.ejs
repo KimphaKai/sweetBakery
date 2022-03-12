@@ -68,8 +68,8 @@
 
           </div>
           <div class="totalPrice">
-            <span>總金額:</span>
-            <span>$</span><span>0</span>
+            <span>總金額: $</span>
+            <span class="totPrice">0</span>
           </div>
         </div>
       </div>
@@ -203,6 +203,14 @@
               window.location = "/orders";
             }
           });
+
+          $(function getSum() {
+            let money = 0; //計算總價錢
+            $(".subtotal").each(function (index) {
+              money += parseInt($(".subtotal").eq(index).text().substr(0));
+            })
+            $(".totPrice").text(money);
+          })();
         </script>
 </body>
 
