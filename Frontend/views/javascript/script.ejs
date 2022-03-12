@@ -219,7 +219,6 @@
           switch (jsonData.data) {
             case 0: //帳號已存在
               Swal.fire({
-                position: 'top',
                 icon: 'info',
                 title: '帳號已存在，請更換帳號',
                 showConfirmButton: false,
@@ -228,7 +227,6 @@
               break;
             case 1: //密碼比對錯誤
               Swal.fire({
-                position: 'top',
                 icon: 'warning',
                 title: '確認密碼與密碼不相符，請再次輸入',
                 showConfirmButton: false,
@@ -237,7 +235,6 @@
               break;
             case 2: //註冊成功
               Swal.fire({
-                position: 'top',
                 icon: 'success',
                 title: '帳號註冊成功',
                 showConfirmButton: false,
@@ -306,7 +303,6 @@
     //變更密碼
     $('#changePasswordBtn').on('click', function () {
       Swal.fire({
-        position: 'top',
         icon: 'success',
         title: '密碼修改完成',
         showConfirmButton: false,
