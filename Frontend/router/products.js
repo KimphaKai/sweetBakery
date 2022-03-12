@@ -2,6 +2,11 @@ var express = require("express");
 var productsRouter = express.Router();
 var db = require('../db');
 
+var bodyparser = require('body-parser');
+
+productsRouter.use(bodyparser.json()); // 使用bodyparder中介軟體，
+productsRouter.use(bodyparser.urlencoded({ extended: true }));
+
 productsRouter.get("/", function (req, res) {
   let productInformation = {};
   let productCategory = {};
@@ -203,9 +208,22 @@ productsRouter.get("/sortProduct/:categoryId", function (req, res) {
 })
 
 //點選購物車按鈕
-productsRouter.post('/cartClick', function (req, res) {
-  res.json({
-    username : req.session.username
+productsRouter.post("/cartClick", function (req, res) {
+  console.log(req.body.productName);
+  console.log(req.body.productNum);
+  db.query(`SELECT productId FROM product WHERE productTitle ="${req.body.productName}"`, function (error, rows) {
+    if(error){
+      console.log(error);
+    }else{
+      db.query(`INSERT INTO cartlist (memberId, productId, productNum) VALUES ('${req.session.username}', ${rows[0].productId}, ${req.body.productNum});`, function (error, rows) {
+        if (error) {
+          console.log(error);
+        }
+      })
+      res.json({
+        username: req.session.username
+      })
+    }
   })
 })
 
