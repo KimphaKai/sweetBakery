@@ -384,6 +384,8 @@
                                 // console.log(data);
                                 // 清空存放陣列的檔案
                                 eraseClassModalInput();
+                                closeModal();
+                                showClassTimeList();
                             }
                         });
                     } else {
@@ -407,6 +409,8 @@
                             success: function (e) {
                                 eraseClassModalInput();
                                 // console.log(e);
+                                closeModal();
+                                showClassTimeList();
                             }
                         });
                     } else {
@@ -414,8 +418,7 @@
                     }
 
                 }
-                closeModal();
-                showClassTimeList();
+                
             })
 
             // 刪除課程資訊

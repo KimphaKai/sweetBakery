@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <div id="preLoader">
+        <div class="lds-dual-ring"></div>
+    </div>
     <div id="container">
         <div id="navWrapper">
             <a href="/">
@@ -220,6 +223,12 @@
         </div>
 
     </div>
+    <script>
+        //loading
+        window.addEventListener('load', function(){
+            $('#preLoader').css('display', 'none');
+        })
+    </script>
     <script src="./js/backendHome.js"></script>
 </body>
 

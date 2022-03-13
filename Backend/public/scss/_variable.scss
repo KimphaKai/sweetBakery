@@ -24,6 +24,9 @@ $gray:#707070;
             border-bottom-right-radius: 20px;
 
         }
+        th:nth-child(4),td:nth-child(4){
+            width: 13rem;
+        }
         input[type= "text" ], 
         input[type= "number" ],
         input[type= "date" ],
@@ -65,19 +68,47 @@ $gray:#707070;
         input{
             color: $brown;
         }
+        tr:hover{
+            background-color: rgba($secondary,.2);
+        }
     }
 }
 @mixin btnStyle {
-    border: 1px solid $brown;
+    z-index: 1;
+    position: relative;
+    border: 0;
+    box-shadow: 1px 1px 5px rgba($brown, 0.5);
     border-radius: 20px;
     width: 70px;
     height: 35px;
     margin-left: 10px;
     font-size: 13pt;
+    &:before{
+        z-index: -1;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        border-radius: 20px;
+    }
     cursor: pointer;
     &:hover{
-        background-color: $secondary;
         color: white;
+        &:before{
+            animation: hoverEffect .25s;
+            animation-fill-mode: forwards;
+        }
+    }
+    @keyframes hoverEffect{
+        from{
+            width: 0%;
+        }
+        to{
+            width: 100%;
+            background-color: $secondary;
+        }
     }
 }
 @mixin inputSearch {
@@ -92,6 +123,15 @@ $gray:#707070;
         border: 1px solid $brown;
         border-radius: 5px;
         padding: 0 5px;
+        &:hover{
+            border-color: $secondary;
+            background-color: rgba($lightBrown,.2);
+        }
+        &:focus{
+            border: 2px solid rgba($secondary,.8);
+            background-color: rgba($lightBrown,.2);
+            outline: none;
+        }
     }
     i{
         font-size: 18pt;
@@ -225,9 +265,11 @@ $gray:#707070;
         width: 400px;
         height: 160px;
         background-color: $lightBrown;
-        border: 1px solid $brown;
+        border-radius: 5px;
         text-align: center;
         padding: 45px 0;
+        border: 1px solid $secondary;
+        transition: .5s;
         div{
             margin: 0 auto;
             text-align: center;
@@ -241,6 +283,9 @@ $gray:#707070;
             background-color: $brown;
         }
     }
+    #uploadArea:hover{
+        background-color: rgba($lightBrown, 0.6);
+    }
     #showImgArea{
         display: flex;
         flex-direction: row;
@@ -250,7 +295,7 @@ $gray:#707070;
         .imgItem{
             position: relative;
             width: 110px;
-            margin-top: 12px;
+            margin-top: 15px;
             &:not(:nth-child(3)){
                 margin-right: 28px;
             }
@@ -275,8 +320,12 @@ $gray:#707070;
                 }
                 &:last-child{
                     width: 110px;
+                    border: 1px solid $secondary;
+                    border-radius: 5px;
+                    padding: 3px;
                     img{
-                        width: 100%
+                        width: 100%;
+                        border-radius: 5px;
                     }
                 }
             }

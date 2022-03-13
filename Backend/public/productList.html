@@ -89,7 +89,7 @@
             <table class="productList">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" disabled id="CBchecked"></th>
+                        <th><input type="checkbox" hidden disabled id="CBchecked"></th>
                         <th>商品編號</th>
                         <th>商品名稱</th>
                         <th>商品種類</th>
@@ -633,7 +633,7 @@
                     }
                     let listHtml = `
                 <tr>
-                    <td><input type="checkbox" disabled name="CBchecked"></td>
+                    <td><input type="checkbox" hidden disabled name="CBchecked"></td>
                     <td>${value.productId}</td>
                     <td><input class="productName" type="text" value='${value.productTitle}' disabled></td>
                     <td>${value.categoryName}</td>

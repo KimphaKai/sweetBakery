@@ -147,7 +147,10 @@
                 border: 1px solid $brown;
                 border-radius: 5px;
                 margin:40px 10px 0 0;
-                cursor: pointer;
+                &:focus{
+                    border: 2px solid rgba($brown,.8);
+                    outline: none;
+                }
             } 
             p{
                 font-size: 18pt;
@@ -202,6 +205,10 @@
                 border: 1px solid $brown;
                 border-radius: 5px;
                 margin-right: 10px;
+                &:focus{
+                    border: 2px solid rgba($brown,.8);
+                    outline: none;
+                }
             }
         }
         #rankTable{

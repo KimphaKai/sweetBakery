@@ -325,7 +325,11 @@
   border: 1px solid #604545;
   border-radius: 5px;
   margin: 40px 10px 0 0;
-  cursor: pointer;
+}
+
+#tabWrapper #salesInfo #leftArea select:focus {
+  border: 2px solid rgba(96, 69, 69, 0.8);
+  outline: none;
 }
 
 #tabWrapper #salesInfo #leftArea p {
@@ -384,6 +388,11 @@
   margin-right: 10px;
 }
 
+#tabWrapper #rankInfo .selectArea select:focus {
+  border: 2px solid rgba(96, 69, 69, 0.8);
+  outline: none;
+}
+
 #tabWrapper #rankInfo #rankTable {
   width: 100%;
   text-align: center;
@@ -409,6 +418,10 @@
 #tabWrapper #rankInfo #rankTable tr th:last-child, #tabWrapper #rankInfo #rankTable tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+#tabWrapper #rankInfo #rankTable tr th:nth-child(4), #tabWrapper #rankInfo #rankTable tr td:nth-child(4) {
+  width: 13rem;
 }
 
 #tabWrapper #rankInfo #rankTable tr input[type="text"],
@@ -460,6 +473,10 @@
 
 #tabWrapper #rankInfo #rankTable tbody input {
   color: #604545;
+}
+
+#tabWrapper #rankInfo #rankTable tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
 }
 
 #tabWrapper #rankInfo #paginationArea {
@@ -535,6 +552,10 @@
   border-bottom-right-radius: 20px;
 }
 
+#orderWrapper #orderArea .orderList tr th:nth-child(4), #orderWrapper #orderArea .orderList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 #orderWrapper #orderArea .orderList tr input[type="text"],
 #orderWrapper #orderArea .orderList tr input[type="number"],
 #orderWrapper #orderArea .orderList tr input[type="date"],
@@ -586,12 +607,20 @@
   color: #604545;
 }
 
+#orderWrapper #orderArea .orderList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 #orderWrapper #orderArea .orderList tbody tr {
   cursor: pointer;
 }
 
 #orderWrapper #orderArea .orderList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -600,9 +629,46 @@
   cursor: pointer;
 }
 
+#orderWrapper #orderArea .orderList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 #orderWrapper #orderArea .orderList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+#orderWrapper #orderArea .orderList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 #orderWrapper #orderArea #unCheckList {
@@ -629,6 +695,17 @@
   border: 1px solid #604545;
   border-radius: 5px;
   padding: 0 5px;
+}
+
+#orderWrapper #orderArea label input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+#orderWrapper #orderArea label input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 #orderWrapper #orderArea label .fa-times {
@@ -689,6 +766,10 @@
   border-bottom-right-radius: 20px;
 }
 
+#orderWrapper #orderArea #claimed .orderList tr th:nth-child(4), #orderWrapper #orderArea #claimed .orderList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 #orderWrapper #orderArea #claimed .orderList tr input[type="text"],
 #orderWrapper #orderArea #claimed .orderList tr input[type="number"],
 #orderWrapper #orderArea #claimed .orderList tr input[type="date"],
@@ -740,6 +821,10 @@
   color: #604545;
 }
 
+#orderWrapper #orderArea #claimed .orderList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 #productSearchArea {
   position: relative;
 }
@@ -754,6 +839,17 @@
   border: 1px solid #604545;
   border-radius: 5px;
   padding: 0 5px;
+}
+
+#productSearchArea input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+#productSearchArea input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 #productSearchArea i {
@@ -866,6 +962,10 @@
   border-bottom-right-radius: 20px;
 }
 
+.productList tr th:nth-child(4), .productList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 .productList tr input[type="text"],
 .productList tr input[type="number"],
 .productList tr input[type="date"],
@@ -917,6 +1017,10 @@
   color: #604545;
 }
 
+.productList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 .productList th:first-child, .productList td:first-child {
   line-height: 10pt;
   padding-left: 10px;
@@ -936,7 +1040,11 @@
 }
 
 .productList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -945,9 +1053,36 @@
   cursor: pointer;
 }
 
+.productList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 .productList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+.productList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 #addCategoryArea {
@@ -972,6 +1107,17 @@
   height: 35px;
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+#addCategoryArea label input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+#addCategoryArea label input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 #addCategoryArea button {
@@ -1028,6 +1174,10 @@
   border-bottom-right-radius: 20px;
 }
 
+.categoryList tr th:nth-child(4), .categoryList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 .categoryList tr input[type="text"],
 .categoryList tr input[type="number"],
 .categoryList tr input[type="date"],
@@ -1079,8 +1229,16 @@
   color: #604545;
 }
 
+.categoryList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 .categoryList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -1089,9 +1247,36 @@
   cursor: pointer;
 }
 
+.categoryList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 .categoryList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+.categoryList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 .categoryList input {
@@ -1123,6 +1308,17 @@
   border: 1px solid #604545;
   border-radius: 5px;
   padding: 0 5px;
+}
+
+.classSearchArea input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+.classSearchArea input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 .classSearchArea i {
@@ -1195,6 +1391,10 @@
   border-bottom-right-radius: 20px;
 }
 
+.classList tr th:nth-child(4), .classList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 .classList tr input[type="text"],
 .classList tr input[type="number"],
 .classList tr input[type="date"],
@@ -1246,6 +1446,10 @@
   color: #604545;
 }
 
+.classList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 .classList th:nth-of-type(4) {
   width: 100px;
 }
@@ -1263,7 +1467,11 @@
 }
 
 .classList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -1272,9 +1480,36 @@
   cursor: pointer;
 }
 
+.classList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 .classList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+.classList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 #mainWrapper {
@@ -1296,6 +1531,17 @@
   border: 1px solid #604545;
   border-radius: 5px;
   padding: 0 5px;
+}
+
+.classTimeSearchArea input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+.classTimeSearchArea input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 .classTimeSearchArea i {
@@ -1402,6 +1648,10 @@
   border-bottom-right-radius: 20px;
 }
 
+.classTimeList tr th:nth-child(4), .classTimeList tr td:nth-child(4) {
+  width: 13rem;
+}
+
 .classTimeList tr input[type="text"],
 .classTimeList tr input[type="number"],
 .classTimeList tr input[type="date"],
@@ -1453,6 +1703,10 @@
   color: #604545;
 }
 
+.classTimeList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 .classTimeList tbody tr {
   height: 80px;
   padding: 5px 0;
@@ -1471,7 +1725,11 @@
 }
 
 .classTimeList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -1480,9 +1738,36 @@
   cursor: pointer;
 }
 
+.classTimeList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 .classTimeList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+.classTimeList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 .classReservationSearchArea {
@@ -1500,6 +1785,17 @@
   border: 1px solid #604545;
   border-radius: 5px;
   padding: 0 5px;
+}
+
+.classReservationSearchArea input:hover {
+  border-color: #978484;
+  background-color: rgba(220, 214, 198, 0.2);
+}
+
+.classReservationSearchArea input:focus {
+  border: 2px solid rgba(151, 132, 132, 0.8);
+  background-color: rgba(220, 214, 198, 0.2);
+  outline: none;
 }
 
 .classReservationSearchArea i {
@@ -1546,6 +1842,10 @@
 .classReservationList tr th:last-child, .classReservationList tr td:last-child {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.classReservationList tr th:nth-child(4), .classReservationList tr td:nth-child(4) {
+  width: 13rem;
 }
 
 .classReservationList tr input[type="text"],
@@ -1599,6 +1899,10 @@
   color: #604545;
 }
 
+.classReservationList tbody tr:hover {
+  background-color: rgba(151, 132, 132, 0.2);
+}
+
 .classReservationList tbody tr {
   height: 80px;
 }
@@ -1608,7 +1912,11 @@
 }
 
 .classReservationList .btnStyle {
-  border: 1px solid #604545;
+  z-index: 1;
+  position: relative;
+  border: 0;
+  -webkit-box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
+          box-shadow: 1px 1px 5px rgba(96, 69, 69, 0.5);
   border-radius: 20px;
   width: 70px;
   height: 35px;
@@ -1618,9 +1926,36 @@
   width: 100px;
 }
 
+.classReservationList .btnStyle:before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+}
+
 .classReservationList .btnStyle:hover {
-  background-color: #978484;
   color: white;
+}
+
+.classReservationList .btnStyle:hover:before {
+  -webkit-animation: hoverEffect .25s;
+          animation: hoverEffect .25s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes hoverEffect {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+    background-color: #978484;
+  }
 }
 
 .bigModal {
@@ -1848,9 +2183,12 @@
   width: 400px;
   height: 160px;
   background-color: #DCD6C6;
-  border: 1px solid #604545;
+  border-radius: 5px;
   text-align: center;
   padding: 45px 0;
+  border: 1px solid #978484;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm #uploadArea div {
@@ -1864,6 +2202,10 @@
   border-radius: 50px;
   color: white;
   background-color: #604545;
+}
+
+.bigModal .modalWrap .modalContent .bigModalForm #uploadArea:hover {
+  background-color: rgba(220, 214, 198, 0.6);
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea {
@@ -1883,7 +2225,7 @@
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem {
   position: relative;
   width: 110px;
-  margin-top: 12px;
+  margin-top: 15px;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem:not(:nth-child(3)) {
@@ -1912,10 +2254,14 @@
 
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:last-child {
   width: 110px;
+  border: 1px solid #978484;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm #showImgArea .imgItem div:last-child img {
   width: 100%;
+  border-radius: 5px;
 }
 
 .bigModal .modalWrap .modalContent .bigModalForm .formField {
@@ -2318,5 +2664,63 @@
 ::selection {
   background: rgba(220, 214, 198, 0.5);
   color: #604545;
+}
+
+#preLoader {
+  background-color: #DCD6C6;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#preLoader .lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+#preLoader .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  -webkit-animation: lds-dual-ring 1.2s linear infinite;
+          animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */
