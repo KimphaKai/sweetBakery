@@ -47,12 +47,14 @@
 
           <div class="userData">
             <label for="userPhone">聯絡電話</label>
-            <input class="formInput" id="userPhone" name="userPhone" value="<%= userPhone.userPhone %>"></input>
+            <input type="tel" minlength="10" maxlength="10" class="formInput" id="userPhone" name="userPhone"
+              value="<%= userPhone.userPhone %>"></input>
           </div>
 
           <div class="userData">
             <label for="userBirthday">生日</label>
-            <input class="formInput" id="userBirthday" name="userBirthday" value="<%= moment(userBirthday.userBirthday).format('yy-MM-DD') %>" disabled></input>
+            <input class="formInput" id="userBirthday" name="userBirthday"
+              value="<%= moment(userBirthday.userBirthday).format('yy-MM-DD') %>" disabled></input>
           </div>
 
           <div class="buttons">
