@@ -131,10 +131,13 @@ header{
   display: none;
   .arrow-up {
     position: absolute;
-    top: 70%;
-    right: 5%;
+    top: 60%;
+    right: 7.5%;
     width: 0; 
     height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid $gray;
   }
   ul{
     position: absolute;
