@@ -79,13 +79,13 @@ userRouter.post('/passwordUpdate', function (req, res) {
   console.log(req.body.newPassword);
 
   // db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
-      let user = rows[0];
-      setTimeout(() => {
-        req.session.username = null;
-        res.render('index');
-      }, 2000);
-    })
+  db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    let user = rows[0];
+    setTimeout(() => {
+      req.session.username = null;
+      res.render('index');
+    }, 2000);
+  })
   // })
 })
 
