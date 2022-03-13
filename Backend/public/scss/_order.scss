@@ -76,6 +76,15 @@
                 border       : 1px solid $brown;
                 border-radius: 5px;
                 padding      : 0 5px;
+                &:hover{
+                    border-color: $secondary;
+                    background-color: rgba($lightBrown,.2);
+                }
+                &:focus{
+                    border: 2px solid rgba($secondary,.8);
+                    background-color: rgba($lightBrown,.2);
+                    outline: none;
+                }
             }
 
             .fa-times {

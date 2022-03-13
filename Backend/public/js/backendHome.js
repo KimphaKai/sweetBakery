@@ -1,4 +1,5 @@
 
+
 // 導覽列次項目展開
 $('.navItem').on('click', function () {
     $('.navItem').removeClass('navActive');
@@ -183,7 +184,6 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
     // console.log(e[1]);
     let salesDataArr =doChartData(e[1]);
 
-
     //處理chart data(沒資料的那天塞0)
     function doChartData(data){
         let i =1;
@@ -202,20 +202,40 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
         return arr;
     }
     
+    
+    var nowDate = new Date();
+    nowDate = nowDate.getDate();
     var dateLabels=[];
+    var bgColor=[];
+    var borColor=[];
     function doChartLabels(lastMonthDate){
         let arr=[];
         let lastDateOfMonth = parseInt(lastMonthDate.substr(6,7));
         for(var i = 1; i<=lastDateOfMonth ;i++){
+            
             arr.push(i);
         }
         return arr;
     }
 
+
+
     dateLabels = doChartLabels(lastmDate);
+    dateLabels.map(date=>{
+        if(date==nowDate){
+            bgColor.push('rgba(250, 147, 162, 0.3)');
+            borColor.push('#fa8292');
+        }else{
+            bgColor.push('rgba(175, 245, 110, 0.3)');
+            borColor.push('#84cf3e');
+        }
+    });
+    
     
     //--------------折線圖----------------//
     var ctx = $('#myChart');
+
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -223,10 +243,23 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
             datasets: [{
                 label: '日營業額',
                 data: salesDataArr,
-                backgroundColor: 'rgba(250, 80, 130, .2)',
-                borderColor: 'rgba(250, 80, 130, .5)',
-                borderWidth: 1
-            }]
+                backgroundColor: bgColor,
+                borderColor: borColor,
+                borderWidth: 1,
+                order:2
+             }//,{
+            //     label: 'Line Dataset',
+            //     data: salesDataArr,
+            //     type: 'line',
+            //     fill: false,
+            //     // backgroundColor:"#978484",
+            //     borderColor: "rgb(54, 99, 16)",
+            //     order:1,
+            //     borderWidth: 1,
+            //     lineTension:0
+            //     // this dataset is drawn on top
+            // }
+            ]
         },
         options: {
             title: {
@@ -290,7 +323,6 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
     $('#salesMonth').val(`${thisMonth}`);
 
 
-    
     // select years option
     $('#salesYear').on('change',function(){
 
@@ -303,7 +335,10 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
 
             //chart data
             myChart.data.datasets[0].data=doChartData(e[1]);
+            // myChart.data.datasets[1].data=doChartData(e[1]);
             myChart.data.labels=doChartLabels(ylmDate);
+            myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
+            myChart.data.datasets[0].borderColor="#84cf3e";
             myChart.update();
 
             //months options
@@ -333,7 +368,10 @@ $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
             //chart data
             // console.log(doChartData(e[1]));
             myChart.data.datasets[0].data=doChartData(e[1]);
+            // myChart.data.datasets[1].data=doChartData(e[1]);
             myChart.data.labels=doChartLabels(thatLastDate);
+            myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
+            myChart.data.datasets[0].borderColor="#84cf3e";
             myChart.update();
         })
     })
