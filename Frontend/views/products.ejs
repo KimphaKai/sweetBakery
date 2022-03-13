@@ -190,15 +190,15 @@
               success: function (jsonData) {
                 if (jsonData.username) {
                   $(".modal-container").hide("fade")
-                  var value = parseInt($("#productNum").val());
-                  if (sessionStorage.getItem("cartKey") == null) {
-                    sessionStorage.setItem("cartKey", value)
-                  } else {
-                    var data = parseInt(sessionStorage.getItem("cartKey"))
-                    data += value;
-                    sessionStorage.setItem("cartKey", data)
-                  }
-                  $("#count").text(sessionStorage.getItem("cartKey"))
+                  // var value = parseInt($("#productNum").val());
+                  // if (sessionStorage.getItem("cartKey") == null) {
+                  //   sessionStorage.setItem("cartKey", value)
+                  // } else {
+                  //   var data = parseInt(sessionStorage.getItem("cartKey"))
+                  //   data += value;
+                  //   sessionStorage.setItem("cartKey", data)
+                  // }
+                  $("#count").text(jsonData.data)
                   console.log(sessionStorage.getItem("cartKey"));
                 } else {
                   $('.modal-container').hide();

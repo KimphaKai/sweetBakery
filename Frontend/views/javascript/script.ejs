@@ -359,5 +359,19 @@
         timer: 1700
       });
     })
+
+    // 點選購物車按鈕新增數量在購物車上
+    $('.cartIcon').on('click', function () {
+      $.ajax({
+        url:'/cart/productNum/cartIcon',
+        data:{},
+        type:'post',
+        success: function (jsonData) {
+          console.log('front-------');
+          window.location.href = "/cart";
+          $("#count").text(jsonData.data);
+        }
+      })
+    })
   })
 </script>

@@ -212,16 +212,30 @@ productsRouter.post("/cartClick", function (req, res) {
   console.log(req.body.productName);
   console.log(req.body.productNum);
   db.query(`SELECT productId FROM product WHERE productTitle ="${req.body.productName}"`, function (error, rows) {
-    if(error){
+    if (error) {
       console.log(error);
-    }else{
+    } else {
       db.query(`INSERT INTO cartlist (memberId, productId, productNum) VALUES ('${req.session.username}', ${rows[0].productId}, ${req.body.productNum});`, function (error, rows) {
         if (error) {
           console.log(error);
+        } else {
+          db.query(`SELECT productNum FROM cartlist WHERE memberId ="${req.session.username}"`, function (error, rows) {
+            let cartNum = 0;
+            if (error) {
+              console.log(error);
+            } else {
+              console.log(rows);
+              rows.forEach(element => {
+                cartNum = cartNum + element.productNum;
+              });
+              console.log(cartNum);
+              res.json({
+                data: cartNum,
+                username: req.session.username
+              })
+            }
+          })
         }
-      })
-      res.json({
-        username: req.session.username
       })
     }
   })

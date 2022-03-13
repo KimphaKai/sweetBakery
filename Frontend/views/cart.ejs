@@ -166,6 +166,17 @@
         <%- include('javascript/cartList') %>
 
           <script>
+            //進入頁面抓購物車數量
+            $(document).ready(function () {
+              $.ajax({
+                url:'/cart/cartProductNum',
+                data:{},
+                type:'get',
+                success: function (jsonData) {
+                  $("#count").text(jsonData.data);
+                }
+              })
+            })
 
             //-------------更改數量可以同時存進資料庫------------- 
 
@@ -208,6 +219,7 @@
                 data: data,
                 success: function (data) {
                   console.log(data);
+                  $("#count").text(data.data);
                 }
               })
             })
@@ -224,7 +236,7 @@
                 type: 'post',
                 data: data,
                 success: function (data) {
-                  // console.log(data);
+                  $("#count").text(data.data);
                 }
               })
             });
@@ -274,6 +286,8 @@
               }
 
             })
+
+            //讀取畫面拿到購物車數量
 
           </script>
 </body>
