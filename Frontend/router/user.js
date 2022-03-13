@@ -76,40 +76,16 @@ userRouter.post('/changeUserInfoContainer', function (req, res) {
 
 //更改密碼
 userRouter.post('/passwordUpdate', function (req, res) {
-<<<<<<< HEAD
-  db.query(`SELECT * FROM member WHERE email = "${req.body.userName}"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE email = "${req.session.username}"`, function (error, rows) {
-      db.query(`SELECT * FROM member WHERE memberId = "${req.body.userName}"`, function (error, rows) {
-        let user = rows[0];
-        setTimeout(() => {
-          // res.render('user', {
-          //   // 會員帳號
-          //   userAcount: user,
-          //   // 會員姓名
-          //   userName: user,
-          //   // 信箱
-          //   userEmail: user,
-          //   // 電話
-          //   userPhone: user,
-          //   // 生日
-          //   userBirthday: user
-          // })
-          req.session.username = null;
-          res.render('index');
-        }, 2000);
-      })
-=======
   console.log(req.body.newPassword);
 
   // db.query(`SELECT * FROM member WHERE email = "${req.session.username}"`, function (error, rows) {
-    db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
-      let user = rows[0];
-      setTimeout(() => {
-        req.session.username = null;
-        res.render('index');
-      }, 2000);
->>>>>>> 5870807db79480f0ad2c646a5e2f354c929afb23
-    })
+  db.query(`UPDATE member SET userPassword="${req.body.newPassword}" WHERE memberId = "${req.session.username}"`, function (error, rows) {
+    let user = rows[0];
+    setTimeout(() => {
+      req.session.username = null;
+      res.render('index');
+    }, 2000);
+  })
   // })
 })
 
