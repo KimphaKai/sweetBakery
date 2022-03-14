@@ -120,43 +120,59 @@ function numberFormat (num){
     return str.join(".");
 }
 
+increasingSalesData();
+orderData();
+performanceData();
+salesInfoData();
 //本週成長銷售額(這週-上週)
-$.get(`/home/capsule/sales/${firstDate}/${lastDate}/${lastWeekFirstDate}/${lastWeekLastDate}`,function(e){
-    // console.log(e);
-    let lastTot = e[0][0].total;
-    let currTot = e[1][0].total;
-    let value = currTot-lastTot;
-    if(value<0){
-        $('.salesData').text("-"+numberFormat(value));
-    }else{
-        $('.salesData').text("+ "+numberFormat(value));
-    }
-})
+function increasingSalesData(){
+    $.get(`/home/capsule/sales/${firstDate}/${lastDate}/${lastWeekFirstDate}/${lastWeekLastDate}`,function(e){
+        // console.log(e);
+        let lastTot = e[0][0].total;
+        let currTot = e[1][0].total;
+        let value = currTot-lastTot;
+        if(value<0){
+            $('.salesData').text("-"+numberFormat(value));
+        }else{
+            $('.salesData').text("+ "+numberFormat(value));
+        }
+    })
+}
 
 
 //本週取消/已完成訂單
-$.get(`/home/capsule/orders/${firstDate}/${lastDate}`,function(e){
-    let cancel = e[0][0].COUNT;
-    let confirm = e[1][0].COUNT;
-    $('.cancelData').text(cancel);
-    $('.confirmData').text(confirm);
-})
+function orderData(){
+    $.get(`/home/capsule/orders/${firstDate}/${lastDate}`,function(e){
+        let cancel = e[0][0].COUNT;
+        let confirm = e[1][0].COUNT;
+        $('.cancelData').text(cancel);
+        $('.confirmData').text(confirm);
+    })
+}
+
 
 //本月目前業績
-$.get(`/home/capsule/monthSales/${firstmDate}/${lastmDate}`,function(e){
-    if(e[0].total<10000){ 4300
-        var value =Math.round( (e[0].total/10000)*100)/100;
-    }else if(e[0].total<1000000){ 
-        var value =Math.round( (e[0].total/10000)*10)/10;
-    }else if(e[0].total>999999){
-        var value =Math.round( (e[0].total/10000));
-    }
+function performanceData(){
+    $.get(`/home/capsule/monthSales/${firstmDate}/${lastmDate}`,function(e){
+        if(e[0].total<10000){ 4300
+            var value =Math.round( (e[0].total/10000)*100)/100;
+        }else if(e[0].total<1000000){ 
+            var value =Math.round( (e[0].total/10000)*10)/10;
+        }else if(e[0].total>999999){
+            var value =Math.round( (e[0].total/10000));
+        }
+    
+        $('.currSales').text(value);
+    })
+}
 
-    $('.currSales').text(value);
-})
 
-
-
+setInterval(function(){
+    increasingSalesData();
+    orderData();
+    performanceData();
+    salesInfoData();
+},300000)
 //-------------下方銷售額--------------
 
 
@@ -178,204 +194,205 @@ function getFirLasInOneMonth(year,month){
     return [thatFirstDate,thatLastDate];
 }
 
-
-$.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
-    $('#sales').text(numberFormat(e[0][0].total));
-    // console.log(e[1]);
-    let salesDataArr =doChartData(e[1]);
-
-    //處理chart data(沒資料的那天塞0)
-    function doChartData(data){
-        let i =1;
-        let arr = [];
-        data.forEach(function(value){
-            //把日期轉成數值
-            let date =parseInt(value.date.substr(6,8));
-            //比對是否有哪天沒有資料，若沒有塞0
-            while(date !== i){
-                arr.push(0);
+function salesInfoData(){
+    $.get(`/home/salesInfo/${firstmDate}/${lastmDate}`,function(e){
+        $('#sales').text(numberFormat(e[0][0].total));
+        // console.log(e[1]);
+        let salesDataArr =doChartData(e[1]);
+    
+        //處理chart data(沒資料的那天塞0)
+        function doChartData(data){
+            let i =1;
+            let arr = [];
+            data.forEach(function(value){
+                //把日期轉成數值
+                let date =parseInt(value.date.substr(6,8));
+                //比對是否有哪天沒有資料，若沒有塞0
+                while(date !== i){
+                    arr.push(0);
+                    i++;
+                }
+                arr.push(value.total);
                 i++;
+            })
+            return arr;
+        }
+        
+        
+        var nowDate = new Date();
+        nowDate = nowDate.getDate();
+        var dateLabels=[];
+        var bgColor=[];
+        var borColor=[];
+        function doChartLabels(lastMonthDate){
+            let arr=[];
+            let lastDateOfMonth = parseInt(lastMonthDate.substr(6,7));
+            for(var i = 1; i<=lastDateOfMonth ;i++){
+                
+                arr.push(i);
             }
-            arr.push(value.total);
-            i++;
-        })
-        return arr;
-    }
-    
-    
-    var nowDate = new Date();
-    nowDate = nowDate.getDate();
-    var dateLabels=[];
-    var bgColor=[];
-    var borColor=[];
-    function doChartLabels(lastMonthDate){
-        let arr=[];
-        let lastDateOfMonth = parseInt(lastMonthDate.substr(6,7));
-        for(var i = 1; i<=lastDateOfMonth ;i++){
-            
-            arr.push(i);
+            return arr;
         }
-        return arr;
-    }
-
-
-
-    dateLabels = doChartLabels(lastmDate);
-    dateLabels.map(date=>{
-        if(date==nowDate){
-            bgColor.push('rgba(250, 147, 162, 0.3)');
-            borColor.push('#fa8292');
-        }else{
-            bgColor.push('rgba(175, 245, 110, 0.3)');
-            borColor.push('#84cf3e');
-        }
-    });
     
     
-    //--------------折線圖----------------//
-    var ctx = $('#myChart');
-
-
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: dateLabels,
-            datasets: [{
-                label: '日營業額',
-                data: salesDataArr,
-                backgroundColor: bgColor,
-                borderColor: borColor,
-                borderWidth: 1,
-                order:2
-             }//,{
-            //     label: 'Line Dataset',
-            //     data: salesDataArr,
-            //     type: 'line',
-            //     fill: false,
-            //     // backgroundColor:"#978484",
-            //     borderColor: "rgb(54, 99, 16)",
-            //     order:1,
-            //     borderWidth: 1,
-            //     lineTension:0
-            //     // this dataset is drawn on top
-            // }
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: '營業額分析長條圖',
-                fontSize: 30,
-                fontColor: '#604545',
+    
+        dateLabels = doChartLabels(lastmDate);
+        dateLabels.map(date=>{
+            if(date==nowDate){
+                bgColor.push('rgba(250, 147, 162, 0.3)');
+                borColor.push('#fa8292');
+            }else{
+                bgColor.push('rgba(175, 245, 110, 0.3)');
+                borColor.push('#84cf3e');
+            }
+        });
+        
+        
+        //--------------折線圖----------------//
+        var ctx = $('#myChart');
+    
+    
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dateLabels,
+                datasets: [{
+                    label: '日營業額',
+                    data: salesDataArr,
+                    backgroundColor: bgColor,
+                    borderColor: borColor,
+                    borderWidth: 1,
+                    order:2
+                 }//,{
+                //     label: 'Line Dataset',
+                //     data: salesDataArr,
+                //     type: 'line',
+                //     fill: false,
+                //     // backgroundColor:"#978484",
+                //     borderColor: "rgb(54, 99, 16)",
+                //     order:1,
+                //     borderWidth: 1,
+                //     lineTension:0
+                //     // this dataset is drawn on top
+                // }
+                ]
             },
-            responsive: false,
-            //保持縱橫比
-            maintainAspectRatio: false,
-            legend: {
-                display: false,
-                position: 'top',
-            },
-            scales: {
-                xAxes: [{
-                    // x 軸標題
-                    scaleLabel: {
-                        display: true,
-                        labelString: "日期",
-                        fontSize: 20
-                    },
-                }],
-                yAxes: [{
-                    // y 軸標題
-                    scaleLabel: {
-                        display: true,
-                        labelString: "日營業額",
-                        fontSize: 20
+            options: {
+                title: {
+                    display: true,
+                    text: '營業額分析長條圖',
+                    fontSize: 30,
+                    fontColor: '#604545',
+                },
+                responsive: false,
+                //保持縱橫比
+                maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                    position: 'top',
+                },
+                scales: {
+                    xAxes: [{
+                        // x 軸標題
+                        scaleLabel: {
+                            display: true,
+                            labelString: "日期",
+                            fontSize: 20
+                        },
+                    }],
+                    yAxes: [{
+                        // y 軸標題
+                        scaleLabel: {
+                            display: true,
+                            labelString: "日營業額",
+                            fontSize: 20
+                        }
+                    }]
+                },
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 10,
+                        bottom: 10
                     }
-                }]
-            },
-            layout: {
-                padding: {
-                    left: 20,
-                    right: 20,
-                    top: 10,
-                    bottom: 10
                 }
             }
-        }
-    });
-
-    //----------------select-----------------
-    //select default years
-    $('#salesYear').text('');
-    e[2].map(value=>{
-        let optionsHTML = `<option value="${value.year}">${value.year}年</option>` 
-        $('#salesYear').append(optionsHTML);
-    })
-    $('#salesYear').val(`${thisYear}`);
-
-    //select default months
-    $('#salesMonth').text('');
-    e[3].map(value=>{
-        let month = parseInt(value.month);
-        let optionsHTML = `<option value="${month}">${month}月</option>`
-        $('#salesMonth').append(optionsHTML);
-    })
-    $('#salesMonth').val(`${thisMonth}`);
-
-
-    // select years option
-    $('#salesYear').on('change',function(){
-
-        let selectedYear = $('#salesYear').val();//抓點選的年份
-
-        let ylmDate=(getLastDateYearJan(selectedYear));//抓那年1月的最後一天
-        $.get(`/home/salesInfo/years/options/${selectedYear}0101/${ylmDate}`,function(e){
-            //totSales
-            $('#sales').text(numberFormat(e[0][0].total));
-
-            //chart data
-            myChart.data.datasets[0].data=doChartData(e[1]);
-            // myChart.data.datasets[1].data=doChartData(e[1]);
-            myChart.data.labels=doChartLabels(ylmDate);
-            myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
-            myChart.data.datasets[0].borderColor="#84cf3e";
-            myChart.update();
-
-            //months options
-            $('#salesMonth').text('');
-            e[2].map(value=>{
-                let month = parseInt(value.month);
-                let optionsHTML = `<option value="${month}">${month}月</option>`
-                $('#salesMonth').append(optionsHTML);
+        });
+    
+        //----------------select-----------------
+        //select default years
+        $('#salesYear').text('');
+        e[2].map(value=>{
+            let optionsHTML = `<option value="${value.year}">${value.year}年</option>` 
+            $('#salesYear').append(optionsHTML);
+        })
+        $('#salesYear').val(`${thisYear}`);
+    
+        //select default months
+        $('#salesMonth').text('');
+        e[3].map(value=>{
+            let month = parseInt(value.month);
+            let optionsHTML = `<option value="${month}">${month}月</option>`
+            $('#salesMonth').append(optionsHTML);
+        })
+        $('#salesMonth').val(`${thisMonth}`);
+    
+    
+        // select years option
+        $('#salesYear').on('change',function(){
+    
+            let selectedYear = $('#salesYear').val();//抓點選的年份
+    
+            let ylmDate=(getLastDateYearJan(selectedYear));//抓那年1月的最後一天
+            $.get(`/home/salesInfo/years/options/${selectedYear}0101/${ylmDate}`,function(e){
+                //totSales
+                $('#sales').text(numberFormat(e[0][0].total));
+    
+                //chart data
+                myChart.data.datasets[0].data=doChartData(e[1]);
+                // myChart.data.datasets[1].data=doChartData(e[1]);
+                myChart.data.labels=doChartLabels(ylmDate);
+                myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
+                myChart.data.datasets[0].borderColor="#84cf3e";
+                myChart.update();
+    
+                //months options
+                $('#salesMonth').text('');
+                e[2].map(value=>{
+                    let month = parseInt(value.month);
+                    let optionsHTML = `<option value="${month}">${month}月</option>`
+                    $('#salesMonth').append(optionsHTML);
+                })
+                $('#salesMonth').val('1');
+    
             })
-            $('#salesMonth').val('1');
-
+            
         })
         
-    })
+        // select months option
+        $('#salesMonth').on('change',function(){
+            let year = $('#salesYear').val();
+            let month = $('#salesMonth').val();//取得選到的月份
+            let thatFirstDate = getFirLasInOneMonth(year,month)[0];
+            let thatLastDate = getFirLasInOneMonth(year,month)[1];
+            $.get(`/home/salesInfo/months/options/${thatFirstDate}/${thatLastDate}`,function(e){
+                
+                //totSales
+                $('#sales').text(numberFormat(e[0][0].total));
     
-    // select months option
-    $('#salesMonth').on('change',function(){
-        let year = $('#salesYear').val();
-        let month = $('#salesMonth').val();//取得選到的月份
-        let thatFirstDate = getFirLasInOneMonth(year,month)[0];
-        let thatLastDate = getFirLasInOneMonth(year,month)[1];
-        $.get(`/home/salesInfo/months/options/${thatFirstDate}/${thatLastDate}`,function(e){
-            
-            //totSales
-            $('#sales').text(numberFormat(e[0][0].total));
-
-            //chart data
-            // console.log(doChartData(e[1]));
-            myChart.data.datasets[0].data=doChartData(e[1]);
-            // myChart.data.datasets[1].data=doChartData(e[1]);
-            myChart.data.labels=doChartLabels(thatLastDate);
-            myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
-            myChart.data.datasets[0].borderColor="#84cf3e";
-            myChart.update();
+                //chart data
+                // console.log(doChartData(e[1]));
+                myChart.data.datasets[0].data=doChartData(e[1]);
+                // myChart.data.datasets[1].data=doChartData(e[1]);
+                myChart.data.labels=doChartLabels(thatLastDate);
+                myChart.data.datasets[0].backgroundColor="rgba(175, 245, 110, 0.3)";
+                myChart.data.datasets[0].borderColor="#84cf3e";
+                myChart.update();
+            })
         })
     })
-})
+}
 
 
 //-------------下方商品排行--------------
