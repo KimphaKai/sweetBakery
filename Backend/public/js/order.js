@@ -113,13 +113,15 @@ function showOrderUncheckedTable(currentPage) {
         //print data
         $('#unCheckList tbody').empty();
         orderUncheckTable.map(value => {
+            let orderDate = new Date(value.orderDate).toLocaleDateString("sq-AL", { year: 'numeric', month: '2-digit', day: '2-digit' });
+            let pickupDate = new Date(value.pickupDate).toLocaleDateString("sq-AL", { year: 'numeric', month: '2-digit', day: '2-digit' });
             var trHtml = `
             <tr>
                 <td>${value.orderId}</td>
                 <td>${value.buyerName}</td>
                 <td>${value.buyerPhone}</td>
-                <td>${value.orderDate.substr(0, 10)}</td>
-                <td>${value.pickupDate.substr(0, 10)}</td>
+                <td>${orderDate}</td>
+                <td>${pickupDate}</td>
                 <td>${value.total}</td>
                 <td><button class="btnStyle checkedBtn">確定</button><button class="btnStyle cancelBtn">取消</button></td>
                 </tr>
