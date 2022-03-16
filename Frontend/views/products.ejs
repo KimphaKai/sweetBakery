@@ -163,7 +163,9 @@
 
           })
           let optionVal = sessionStorage.getItem('selectOption');
-          $('#sortOption').val(optionVal);
+          // console.log(optionVal)
+          optionVal==null?$('#sortOption').val('0'):$('#sortOption').val(optionVal);
+          // $('#sortOption').val(optionVal);
           $('.sideMenu>li').on('click', function () {
             sessionStorage.setItem('selectOption', 0);
             $('#sortOption').val(sessionStorage.getItem('selectOption'));
